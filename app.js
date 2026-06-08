@@ -43,26 +43,30 @@ const lessonsData = [
     <strong>הטיית מידע (Data Bias)</strong> דומה למצב שבו חברת לגו יצרה רק לבנים אדומות במשך שנים, ולכן ה-AI בטוח שלא קיימים צבעים אחרים בעולם.
 </div>
         `,
-        actionType: "textarea",
-        actionLabel: "הדבקו כאן את תשובת ה-AI שקיבלתם כדי להשלים את שיעור 1:",
-        placeholderText: "הדביקו את קוד ה-VBA, את סיכום מאמר המניות, או את שאלות הטריוויה על סדרות שנות ה-90...",
+        actionType: "multi_capabilities",
+        actionLabel: "אתגר הליבה (The AI Gauntlet)",
+        placeholderText: "",
         tools: [
             { name: "פתח את ChatGPT", url: "https://chatgpt.com" },
             { name: "פתח את Gemini", url: "https://gemini.google.com" },
             { name: "פתח את Copilot", url: "https://copilot.microsoft.com" }
         ],
-        instructionText: `<strong>משימה מעשית:</strong><br>
-        1. פתחו כלי AI (כמו ChatGPT, Gemini או Copilot) בלשונית חדשה.<br>
-        2. בחרו באחת מיכולות הליבה שלמדתם וכתבו פרומפט מפורט המבוסס על מבנה ה-PROMPT.<br>
-        3. <strong>בחרו את אחת המשימות הבאות:</strong><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;א) צרו <strong>קוד Excel VBA</strong> למעקב אחר ביצועי תיק מניות פיננסי.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;ב) בצעו <strong>סיכום ממוקד</strong> של מאמר חדשותי העוסק במגמות שוק ההון.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;ג) צרו רשימה של <strong>שאלות טריוויה יצירתיות</strong> על סדרות טלוויזיה משנות ה-90 (כמו חברים, סיינפלד).<br>
-        4. העתיקו את תשובת ה-AI שקיבלתם והדביקו אותה בתיבת הטקסט למטה.`,
+        instructionText: `<strong>משימת אתגר הליבה (The AI Gauntlet):</strong><br>
+        פתחו כלי AI בלשונית חדשה ועברו את רצף משימות יכולות הליבה הבא (השתמשו במבנה ה-PROMPT):<br><br>
+        1. <strong>יצירת תמונות:</strong> בקשו מה-AI פרומפט ליצירת תמונה של כלב בשם טס (Tess) בונה מגדל מקוביות לגו.<br>
+        2. <strong>תכנון משימות:</strong> בקשו תוכנית שלב-אחר-שלב לבניית גיליון אקסל המחשב ריבית דריבית עבור הלוואה.<br>
+        3. <strong>תרגום ולוקליזציה:</strong> הדביקו ביקורת על סדרת טלוויזיה ובקשו תרגום ליפנית תוך שמירה על טון נלהב.<br>
+        4. <strong>תמצות וסיכום:</strong> הדביקו פסקה צפופה על מגמות שוק ההון ובקשו לתמצת אותה בדיוק לשתי נקודות פשוטות.<br>
+        5. <strong>סיעור מוחות:</strong> בקשו מה-AI להעלות 5 שאלות טריוויה אינטראקטיביות על היסטוריית לגו.`,
         validate: (input) => {
-            return input && input.trim().length > 15;
+            if (!input || typeof input !== "object") return false;
+            return input.imgPrompt && input.imgPrompt.trim().length > 8 &&
+                   input.taskPlan && input.taskPlan.trim().length > 15 &&
+                   input.translation && input.translation.trim().length > 5 &&
+                   input.summary && input.summary.trim().length > 15 &&
+                   input.trivia && input.trivia.trim().length > 15;
         },
-        errorMessage: "הקלט קצר מדי! אנא ודאו שהעתקתם את התוצאה המלאה של ה-AI (לפחות 15 תווים)."
+        errorMessage: "חלק מנושאי אתגר הליבה (AI Gauntlet) לא הוזנו או קצרים מדי. אנא מלאו את כל 5 שדות המשימה כנדרש!"
     },
     {
         id: "lesson_2",
@@ -477,31 +481,31 @@ function renderActionBlock(lesson) {
         const data = savedVal || { imgPrompt: "", taskPlan: "", translation: "", summary: "", trivia: "" };
         inputHtml = `
             <div class="action-input-area" style="gap: 12px;">
-                <h4 style="font-size:13px; color: var(--success-color); border-bottom: 1px solid var(--border-color); padding-bottom: 4px;">הזינו את תוצאות משימותיכם:</h4>
+                <h4 style="font-size:13px; color: var(--success-color); border-bottom: 1px solid var(--border-color); padding-bottom: 4px;">הזינו את תוצאות אתגר הליבה (AI Gauntlet):</h4>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">1. יצירת תמונות (Image Prompt):</label>
-                    <input type="text" class="input-text-standard" id="input-img-prompt" placeholder="פרומפט תמונת הכלב העתידני מלגו..." value="${data.imgPrompt || ""}">
+                    <label style="color:var(--text-header); font-size: 12px;">1. יצירת תמונות: פרומפט לכלבה טס בונה מגדל לגו (Image Generation):</label>
+                    <input type="text" class="input-text-standard" id="input-img-prompt" placeholder="הדביקו את פרומפט התמונה (או תיאור התמונה שהפקתם)..." value="${data.imgPrompt || ""}">
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">2. תכנון משימות (Excel VBA Calculator):</label>
-                    <textarea class="textarea-monospace" style="min-height:55px;" id="input-task-plan" placeholder="שלבי בניית מחשבון הריבית באקסל שנוצרו...">${data.taskPlan || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 12px;">2. תכנון משימות: שלבים למחשבון ריבית באקסל (Task Breakdown):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-task-plan" placeholder="הדביקו את תוכנית העבודה לבניית מחשבון ריבית באקסל...">${data.taskPlan || ""}</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">3. תרגום ולוקליזציה (Translation):</label>
-                    <input type="text" class="input-text-standard" id="input-translation" placeholder="תרגום כתוביות / ידיעת חדשות לעברית..." value="${data.translation || ""}">
+                    <label style="color:var(--text-header); font-size: 12px;">3. תרגום ולוקליזציה: תרגום ביקורת טלוויזיה ליפנית (Translation):</label>
+                    <input type="text" class="input-text-standard" id="input-translation" placeholder="הדביקו את התרגום שנוצר ביפנית בטון נלהב..." value="${data.translation || ""}">
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">4. תמצות וסיכום (Stock Summarization):</label>
-                    <textarea class="textarea-monospace" style="min-height:55px;" id="input-summary" placeholder="סיכום 3 נקודות של מאמר מניות...">${data.summary || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 12px;">4. תמצות וסיכום: סיכום 2 נקודות של מגמות שוק ההון (Summarization):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-summary" placeholder="הדביקו את תמצות הדוח הפיננסי המכיל בדיוק 2 נקודות מפתח...">${data.summary || ""}</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">5. סיעור מוחות (TV Trivia Questions):</label>
-                    <textarea class="textarea-monospace" style="min-height:55px;" id="input-trivia" placeholder="3 שאלות טריוויה של סדרות שנות ה-90...">${data.trivia || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 12px;">5. סיעור מוחות: 5 שאלות טריוויה על היסטוריית לגו (Ideation):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-trivia" placeholder="הדביקו את 5 שאלות הטריוויה על לגו שהמודל ייצר...">${data.trivia || ""}</textarea>
                 </div>
             </div>
         `;
