@@ -1,0 +1,994 @@
+/* CSS Design System - "AI ליוצרים" IDE Aesthetic */
+
+:root {
+    /* Color Palette */
+    --bg-darker: #111112;
+    --bg-dark: #1e1e1e;
+    --bg-sidebar: #252526;
+    --bg-activity: #333333;
+    --bg-tabs: #2d2d2d;
+    --bg-tab-active: #1e1e1e;
+    --bg-terminal: #141416;
+    --border-color: #3c3c3c;
+    
+    /* Code Editor Syntax Colors (VS Code / Monokai Inspired) */
+    --syntax-keyword: #569cd6;
+    --syntax-string: #ce9178;
+    --syntax-comment: #6a9955;
+    --syntax-function: #dcdcaa;
+    --syntax-variable: #9cdcfe;
+    --syntax-number: #b5cea8;
+    --syntax-tag: #569cd6;
+    --syntax-class: #4ec9b0;
+    
+    /* Visual Accents & Alerts */
+    --accent-color: #007acc;      /* VS Code Blue */
+    --accent-hover: #0098ff;
+    --success-color: #4ec9b0;     /* Mint/Green */
+    --warning-color: #cca700;     /* Gold */
+    --error-color: #f44747;       /* Soft Red */
+    --text-main: #d4d4d4;
+    --text-muted: #858585;
+    --text-header: #ffffff;
+    
+    /* Fonts */
+    --font-hebrew: 'Assistant', sans-serif;
+    --font-code: 'Fira Code', 'Consolas', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-hebrew);
+}
+
+body {
+    background-color: var(--bg-darker);
+    color: var(--text-main);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Base Layout Structure */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.ide-workspace {
+    display: flex;
+    flex-direction: row-reverse; /* RTL Layout: Activity Bar & Sidebar on the Right, Editor & Sandbox on the Left */
+    flex: 1;
+    height: calc(100vh - 22px); /* Space for status bar */
+    overflow: hidden;
+}
+
+/* 1. Activity Bar (Rightmost in RTL) */
+.ide-activity-bar {
+    width: 48px;
+    background-color: var(--bg-darker);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.activity-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.activity-btn:hover {
+    color: var(--text-header);
+}
+
+.activity-btn.active {
+    color: var(--accent-color);
+}
+
+.activity-btn.active::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 5px;
+    bottom: 5px;
+    width: 3px;
+    background-color: var(--accent-color);
+}
+
+.activity-btn svg {
+    transition: transform 0.2s;
+}
+
+.activity-btn:hover svg {
+    transform: scale(1.1);
+}
+
+/* 2. Sidebar (Explorer & Lessons list) */
+.ide-sidebar {
+    width: 250px;
+    background-color: var(--bg-sidebar);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h3 {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.sidebar-section {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-title {
+    padding: 4px 16px;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.section-title .icon {
+    margin-left: 6px;
+    transition: transform 0.2s;
+}
+
+.file-list {
+    list-style: none;
+    margin-top: 5px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 20px 6px 10px;
+    font-size: 13px;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-right: 2px solid transparent;
+}
+
+.file-item:hover {
+    background-color: #2d2d2d;
+}
+
+.file-item.active {
+    background-color: #37373d;
+    color: var(--text-header);
+    border-right-color: var(--accent-color);
+}
+
+.file-item .file-icon {
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.file-item .checkmark-status {
+    margin-right: auto;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: #2d2d2d;
+}
+
+.file-item.completed .checkmark-status {
+    background-color: rgba(78, 201, 176, 0.2);
+    color: var(--success-color);
+}
+
+.file-item.active-working .checkmark-status {
+    background-color: rgba(0, 122, 204, 0.2);
+    color: var(--accent-color);
+}
+
+/* Sidebar Progress Panel */
+.progress-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+.progress-container-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.progress-radial {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.progress-text-center {
+    position: absolute;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-header);
+}
+
+.lesson-checkmarks {
+    list-style: none;
+    width: 100%;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.checkmark-item {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.checkmark-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    margin-left: 8px;
+    display: inline-block;
+    position: relative;
+}
+
+.checkmark-item.done .checkmark-circle {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.checkmark-item.done .checkmark-circle::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 3px;
+    height: 6px;
+    border: solid black;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+.checkmark-item.done {
+    color: var(--text-main);
+}
+
+/* 3. Main Editor Panel (Lesson Text) */
+.ide-editor-container {
+    flex: 1.2;
+    background-color: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-left: 1px solid var(--border-color);
+}
+
+.editor-tab-bar {
+    display: flex;
+    background-color: var(--bg-tabs);
+    height: 35px;
+    border-bottom: 1px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.editor-tab {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+    background-color: var(--bg-tabs);
+    border-left: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.editor-tab.active {
+    background-color: var(--bg-tab-active);
+    color: var(--text-header);
+    border-top: 2px solid var(--accent-color);
+    height: 35px;
+}
+
+.editor-tab:hover:not(.active) {
+    background-color: #333333;
+    color: var(--text-main);
+}
+
+.editor-tab .close-tab {
+    margin-right: 8px;
+    font-size: 11px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.editor-tab:hover .close-tab {
+    opacity: 0.6;
+}
+
+.editor-tab .close-tab:hover {
+    opacity: 1;
+}
+
+/* Code Editor Window */
+.editor-content-area {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+}
+
+.editor-window {
+    display: flex;
+    padding: 15px;
+    min-height: 100%;
+}
+
+.line-numbers {
+    width: 35px;
+    text-align: left;
+    color: #5a5a5a;
+    font-family: var(--font-code);
+    font-size: 13px;
+    line-height: 1.6;
+    user-select: none;
+    border-left: 1px solid var(--border-color);
+    padding-left: 8px;
+}
+
+.code-viewport {
+    flex: 1;
+    padding-right: 15px;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Formatting for markdown-like lesson text */
+.lesson-h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-header);
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+.lesson-h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--syntax-class);
+    margin: 20px 0 10px 0;
+}
+
+.lesson-p {
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+/* Analogy block highlight */
+.analogy-box {
+    background-color: rgba(204, 167, 0, 0.08);
+    border-right: 4px solid var(--warning-color);
+    padding: 12px 16px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.analogy-box strong {
+    color: var(--warning-color);
+}
+
+/* Technical alert block */
+.tech-box {
+    background-color: rgba(86, 156, 214, 0.08);
+    border-right: 4px solid var(--syntax-keyword);
+    padding: 12px 16px;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+.tech-box strong {
+    color: var(--syntax-keyword);
+}
+
+/* Code Snippets within lessons */
+.lesson-code-block {
+    background-color: var(--bg-darker);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-family: var(--font-code);
+    font-size: 13px;
+    direction: ltr;
+    text-align: left;
+    overflow-x: auto;
+}
+
+/* Syntax Highlighting Utilities */
+.keyword { color: var(--syntax-keyword); font-weight: bold; }
+.string { color: var(--syntax-string); }
+.comment { color: var(--syntax-comment); font-style: italic; }
+.fn { color: var(--syntax-function); }
+.var { color: var(--syntax-variable); }
+.num { color: var(--syntax-number); }
+
+/* 4. Split Sandbox Panel (Leftmost in RTL) */
+.ide-sandbox-container {
+    flex: 1;
+    background-color: var(--bg-darker);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.panel-header {
+    display: flex;
+    background-color: var(--bg-sidebar);
+    border-bottom: 1px solid var(--border-color);
+    height: 35px;
+}
+
+.panel-header .tab {
+    padding: 0 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    border-left: 1px solid var(--border-color);
+    font-weight: 700;
+}
+
+.panel-header .tab.active {
+    background-color: var(--bg-darker);
+    color: var(--text-header);
+    border-top: 2px solid var(--success-color);
+    height: 35px;
+}
+
+.sandbox-content {
+    flex: 1.2;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sandbox-actions {
+    padding: 10px 20px;
+    background-color: var(--bg-sidebar);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--success-color);
+    color: #111112;
+}
+
+.btn-primary:hover {
+    background-color: #63d3bc;
+}
+
+.btn-secondary {
+    background-color: #3e3e42;
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background-color: #4e4e52;
+}
+
+/* Integrated Terminal styles */
+.ide-terminal-panel {
+    flex: 0.8;
+    background-color: var(--bg-terminal);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.terminal-header {
+    height: 28px;
+    background-color: var(--bg-sidebar);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.terminal-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.terminal-controls button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-controls button:hover {
+    color: var(--text-header);
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    font-family: var(--font-code);
+    font-size: 12px;
+    line-height: 1.5;
+    direction: ltr;
+    text-align: left;
+}
+
+.terminal-line {
+    margin-bottom: 4px;
+    word-break: break-all;
+}
+
+.terminal-line.system-msg {
+    color: var(--text-muted);
+}
+
+.terminal-line.cmd-prompt::before {
+    content: "$ ";
+    color: var(--success-color);
+}
+
+.terminal-line.cmd-prompt {
+    color: var(--text-header);
+}
+
+.terminal-line.success-msg {
+    color: var(--success-color);
+}
+
+.terminal-line.error-msg {
+    color: var(--error-color);
+}
+
+.terminal-line.warning-msg {
+    color: var(--warning-color);
+}
+
+.terminal-line.info-msg {
+    color: var(--syntax-variable);
+}
+
+/* General Interactive Input Components in Sandbox */
+.sandbox-card {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sandbox-card h4 {
+    font-size: 14px;
+    color: var(--text-header);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+.form-control {
+    background-color: var(--bg-darker);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 13px;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* --- LESSON SPECIFIC SANDBOX STYLING --- */
+
+/* Lesson 1: Prompt Builder */
+.prompt-template-builder {
+    background-color: var(--bg-darker);
+    border-radius: 4px;
+    padding: 12px;
+    font-family: var(--font-code);
+    font-size: 12px;
+    line-height: 1.6;
+    border: 1px dashed var(--accent-color);
+    direction: rtl;
+    text-align: right;
+}
+
+.prompt-token {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 11px;
+    margin: 2px;
+}
+
+.token-role { background-color: rgba(86, 156, 214, 0.2); color: var(--syntax-keyword); }
+.token-task { background-color: rgba(220, 220, 170, 0.2); color: var(--syntax-function); }
+.token-context { background-color: rgba(206, 145, 120, 0.2); color: var(--syntax-string); }
+.token-format { background-color: rgba(78, 201, 176, 0.2); color: var(--syntax-class); }
+
+/* Lesson 2: Gemini Canvas Simulator */
+.canvas-split {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+
+.code-editor-simulator {
+    background-color: var(--bg-darker);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-code);
+    font-size: 11px;
+    padding: 10px;
+    direction: ltr;
+    text-align: left;
+    height: 150px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.diff-added {
+    background-color: rgba(78, 201, 176, 0.15);
+    border-right: 2px solid var(--success-color);
+    display: block;
+    width: 100%;
+}
+
+.live-preview-window {
+    background-color: #ffffff;
+    color: #111112;
+    border-radius: 4px;
+    padding: 12px;
+    min-height: 100px;
+    border: 1px solid var(--border-color);
+    font-size: 13px;
+    direction: ltr;
+    text-align: left;
+}
+
+.preview-title {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2px;
+}
+
+/* Lesson 3: Drag-and-Drop Deployment Pipeline Map */
+.pipeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+.pipeline-nodes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.pipeline-node {
+    flex: 1;
+    background-color: var(--bg-dark);
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 15px 10px;
+    text-align: center;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.pipeline-node.active-drop {
+    border-color: var(--accent-color);
+    background-color: rgba(0, 122, 204, 0.05);
+}
+
+.pipeline-node.success-drop {
+    border-color: var(--success-color);
+    background-color: rgba(78, 201, 176, 0.05);
+}
+
+.node-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-header);
+    margin-bottom: 5px;
+}
+
+.draggable-items {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: var(--bg-darker);
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    border: 1px solid var(--border-color);
+}
+
+.drag-block {
+    background-color: #333333;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-family: var(--font-code);
+    color: var(--text-header);
+    cursor: grab;
+    user-select: none;
+    transition: background-color 0.2s, transform 0.1s;
+    direction: ltr;
+}
+
+.drag-block:hover {
+    background-color: var(--accent-color);
+}
+
+.drag-block.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+/* Lesson 4: Antigravity Config & TV Tracker */
+.sync-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sync-status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(0, 122, 204, 0.05);
+    border: 1px solid var(--accent-color);
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 122, 204, 0.7);
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 122, 204, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(0, 122, 204, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 122, 204, 0);
+    }
+}
+
+.sync-live-preview {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px;
+}
+
+/* Lesson 5: Agent Builder */
+.agent-config-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skills-deck {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.skill-chip {
+    background-color: #2d2d2d;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    user-select: none;
+}
+
+.skill-chip.selected {
+    background-color: rgba(78, 201, 176, 0.2);
+    border-color: var(--success-color);
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.agent-logic-card {
+    border-right: 3px solid var(--success-color);
+}
+
+/* General Layout Utilities */
+.ide-status-bar {
+    height: 22px;
+    background-color: #007acc; /* Match VS Code blue standard */
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 12px;
+    z-index: 10;
+    direction: rtl;
+}
+
+.status-left, .status-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon.spin {
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Animations & Transitions */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive UI Adjustments */
+@media (max-width: 1024px) {
+    .ide-workspace {
+        flex-direction: column;
+        overflow-y: auto;
+        height: auto;
+    }
+    .ide-sidebar {
+        width: 100%;
+        height: 200px;
+    }
+    .ide-editor-container {
+        height: 400px;
+    }
+    .ide-sandbox-container {
+        height: 600px;
+    }
+}
