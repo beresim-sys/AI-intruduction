@@ -232,7 +232,13 @@ let overallProgress = 0;
 
 // Inputs store for lesson submissions
 let userSubmissions = {
-    lesson_1: "",
+    lesson_1: {
+        imgPrompt: "",
+        taskPlan: "",
+        translation: "",
+        summary: "",
+        trivia: ""
+    },
     lesson_2: "",
     lesson_3: "",
     lesson_4: false,
@@ -467,7 +473,39 @@ function renderActionBlock(lesson) {
     let inputHtml = "";
     const savedVal = userSubmissions[lesson.id];
     
-    if (lesson.actionType === "textarea" || lesson.actionType === "code") {
+    if (lesson.actionType === "multi_capabilities") {
+        const data = savedVal || { imgPrompt: "", taskPlan: "", translation: "", summary: "", trivia: "" };
+        inputHtml = `
+            <div class="action-input-area" style="gap: 12px;">
+                <h4 style="font-size:13px; color: var(--success-color); border-bottom: 1px solid var(--border-color); padding-bottom: 4px;">הזינו את תוצאות משימותיכם:</h4>
+                
+                <div class="form-group">
+                    <label style="color:var(--text-header); font-size: 12px;">1. יצירת תמונות (Image Prompt):</label>
+                    <input type="text" class="input-text-standard" id="input-img-prompt" placeholder="פרומפט תמונת הכלב העתידני מלגו..." value="${data.imgPrompt || ""}">
+                </div>
+                
+                <div class="form-group">
+                    <label style="color:var(--text-header); font-size: 12px;">2. תכנון משימות (Excel VBA Calculator):</label>
+                    <textarea class="textarea-monospace" style="min-height:55px;" id="input-task-plan" placeholder="שלבי בניית מחשבון הריבית באקסל שנוצרו...">${data.taskPlan || ""}</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label style="color:var(--text-header); font-size: 12px;">3. תרגום ולוקליזציה (Translation):</label>
+                    <input type="text" class="input-text-standard" id="input-translation" placeholder="תרגום כתוביות / ידיעת חדשות לעברית..." value="${data.translation || ""}">
+                </div>
+                
+                <div class="form-group">
+                    <label style="color:var(--text-header); font-size: 12px;">4. תמצות וסיכום (Stock Summarization):</label>
+                    <textarea class="textarea-monospace" style="min-height:55px;" id="input-summary" placeholder="סיכום 3 נקודות של מאמר מניות...">${data.summary || ""}</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label style="color:var(--text-header); font-size: 12px;">5. סיעור מוחות (TV Trivia Questions):</label>
+                    <textarea class="textarea-monospace" style="min-height:55px;" id="input-trivia" placeholder="3 שאלות טריוויה של סדרות שנות ה-90...">${data.trivia || ""}</textarea>
+                </div>
+            </div>
+        `;
+    } else if (lesson.actionType === "textarea" || lesson.actionType === "code") {
         inputHtml = `
             <div class="action-input-area">
                 <label for="action-task-input">${lesson.actionLabel}</label>
@@ -510,13 +548,37 @@ function renderActionBlock(lesson) {
     `;
     
     // Bind auto-save listeners
-    const inputElement = document.getElementById("action-task-input");
-    if (inputElement) {
-        const eventType = lesson.actionType === "checkbox" ? "change" : "input";
-        inputElement.addEventListener(eventType, () => {
-            const val = lesson.actionType === "checkbox" ? inputElement.checked : inputElement.value;
-            userSubmissions[lesson.id] = val;
-        });
+    if (lesson.actionType === "multi_capabilities") {
+        const imgEl = document.getElementById("input-img-prompt");
+        const taskEl = document.getElementById("input-task-plan");
+        const transEl = document.getElementById("input-translation");
+        const sumEl = document.getElementById("input-summary");
+        const trivEl = document.getElementById("input-trivia");
+        
+        const saveMulti = () => {
+            userSubmissions.lesson_1 = {
+                imgPrompt: imgEl ? imgEl.value : "",
+                taskPlan: taskEl ? taskEl.value : "",
+                translation: transEl ? transEl.value : "",
+                summary: sumEl ? sumEl.value : "",
+                trivia: trivEl ? trivEl.value : ""
+            };
+        };
+        
+        if (imgEl) imgEl.addEventListener("input", saveMulti);
+        if (taskEl) taskEl.addEventListener("input", saveMulti);
+        if (transEl) transEl.addEventListener("input", saveMulti);
+        if (sumEl) sumEl.addEventListener("input", saveMulti);
+        if (trivEl) trivEl.addEventListener("input", saveMulti);
+    } else {
+        const inputElement = document.getElementById("action-task-input");
+        if (inputElement) {
+            const eventType = lesson.actionType === "checkbox" ? "change" : "input";
+            inputElement.addEventListener(eventType, () => {
+                const val = lesson.actionType === "checkbox" ? inputElement.checked : inputElement.value;
+                userSubmissions[lesson.id] = val;
+            });
+        }
     }
 }
 
@@ -550,7 +612,12 @@ function handleVerifyTask() {
         writeTerminalLine("מנתח תוצאות קלט מתוך סביבת העבודה החיצונית...", "info-msg");
         
         if (lesson.id === "lesson_1") {
-            writeTerminalLine("[Success] נמצאה תגובת AI תקינה הכוללת פלט מתודי. המושג Role/Task אומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 1: פרומפט תמונת הכלב מלגו אומת (Image prompt verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 2: פירוק משימת אקסל אומת (Excel task plan verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 3: תרגום ולוקליזציה אומת (Hebrew translation verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 4: תמצות דוח מניה אומת (Stock summarization verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 5: סיעור מוחות שאלות טריוויה אומת (Trivia ideation verified).", "success-msg");
+            writeTerminalLine("[Success] כל 5 יכולות הליבה אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_2") {
             writeTerminalLine("[Success] קוד המקור HTML/CSS נקרא בהצלחה. זוהו תגיות שלד ומבנה.", "success-msg");
         } else if (lesson.id === "lesson_3") {
@@ -604,6 +671,14 @@ function handleResetInput() {
     
     if (lesson.actionType === "checkbox") {
         userSubmissions[lesson.id] = false;
+    } else if (lesson.actionType === "multi_capabilities") {
+        userSubmissions.lesson_1 = {
+            imgPrompt: "",
+            taskPlan: "",
+            translation: "",
+            summary: "",
+            trivia: ""
+        };
     } else {
         userSubmissions[lesson.id] = "";
     }
