@@ -192,6 +192,16 @@ body {
     border-right-color: var(--accent-color);
 }
 
+.file-item.locked {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none; /* Disable click when locked */
+}
+
+.file-item.locked:hover {
+    background: none;
+}
+
 .file-item .file-icon {
     margin-left: 8px;
     display: flex;
@@ -300,7 +310,7 @@ body {
 
 /* 3. Main Editor Panel (Lesson Text) */
 .ide-editor-container {
-    flex: 1.2;
+    flex: 1.1;
     background-color: var(--bg-dark);
     display: flex;
     flex-direction: column;
@@ -459,7 +469,7 @@ body {
 
 /* 4. Split Sandbox Panel (Leftmost in RTL) */
 .ide-sandbox-container {
-    flex: 1;
+    flex: 1.1;
     background-color: var(--bg-darker);
     display: flex;
     flex-direction: column;
@@ -486,12 +496,12 @@ body {
 .panel-header .tab.active {
     background-color: var(--bg-darker);
     color: var(--text-header);
-    border-top: 2px solid var(--success-color);
+    border-top: 2px solid var(--accent-color);
     height: 35px;
 }
 
 .sandbox-content {
-    flex: 1.2;
+    flex: 1.3;
     padding: 20px;
     overflow-y: auto;
     display: flex;
@@ -525,12 +535,12 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--success-color);
-    color: #111112;
+    background-color: var(--accent-color);
+    color: #ffffff;
 }
 
 .btn-primary:hover {
-    background-color: #63d3bc;
+    background-color: var(--accent-hover);
 }
 
 .btn-secondary {
@@ -544,7 +554,7 @@ body {
 
 /* Integrated Terminal styles */
 .ide-terminal-panel {
-    flex: 0.8;
+    flex: 0.7;
     background-color: var(--bg-terminal);
     border-top: 1px solid var(--border-color);
     display: flex;
@@ -627,300 +637,134 @@ body {
     color: var(--syntax-variable);
 }
 
-/* General Interactive Input Components in Sandbox */
-.sandbox-card {
-    background-color: var(--bg-dark);
+/* Action Item Box Widgets */
+.action-box-container {
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: 15px;
+    background-color: var(--bg-dark);
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.sandbox-card h4 {
-    font-size: 14px;
-    color: var(--text-header);
+.action-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 6px;
+    padding-bottom: 8px;
 }
 
-.form-group {
+.action-badge {
+    background-color: rgba(204, 167, 0, 0.2);
+    color: var(--warning-color);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.action-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-header);
+}
+
+.action-steps {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-main);
+}
+
+.action-steps ol {
+    margin-right: 18px;
+}
+
+.action-link-btn {
+    background-color: rgba(0, 122, 204, 0.15);
+    border: 1px solid var(--accent-color);
+    color: var(--syntax-variable);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background-color 0.2s;
+    margin-top: 5px;
+}
+
+.action-link-btn:hover {
+    background-color: rgba(0, 122, 204, 0.3);
+}
+
+/* Form Styles for Action Submissions */
+.action-input-area {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
+    margin-top: 5px;
 }
 
-.form-group label {
+.action-input-area label {
     font-size: 12px;
-    color: var(--text-muted);
     font-weight: bold;
+    color: var(--success-color);
 }
 
-.form-control {
+.textarea-monospace {
+    font-family: var(--font-code);
+    background-color: var(--bg-darker);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 12px;
+    min-height: 120px;
+    resize: vertical;
+    direction: ltr;
+    text-align: left;
+}
+
+.textarea-monospace:focus {
+    outline: none;
+    border-color: var(--success-color);
+}
+
+.input-text-standard {
     background-color: var(--bg-darker);
     border: 1px solid var(--border-color);
     color: var(--text-main);
     border-radius: 4px;
     padding: 8px 12px;
     font-size: 13px;
-    transition: border-color 0.2s;
+    direction: ltr;
+    text-align: left;
 }
 
-.form-control:focus {
+.input-text-standard:focus {
     outline: none;
-    border-color: var(--accent-color);
-}
-
-/* --- LESSON SPECIFIC SANDBOX STYLING --- */
-
-/* Lesson 1: Prompt Builder */
-.prompt-template-builder {
-    background-color: var(--bg-darker);
-    border-radius: 4px;
-    padding: 12px;
-    font-family: var(--font-code);
-    font-size: 12px;
-    line-height: 1.6;
-    border: 1px dashed var(--accent-color);
-    direction: rtl;
-    text-align: right;
-}
-
-.prompt-token {
-    display: inline-block;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 11px;
-    margin: 2px;
-}
-
-.token-role { background-color: rgba(86, 156, 214, 0.2); color: var(--syntax-keyword); }
-.token-task { background-color: rgba(220, 220, 170, 0.2); color: var(--syntax-function); }
-.token-context { background-color: rgba(206, 145, 120, 0.2); color: var(--syntax-string); }
-.token-format { background-color: rgba(78, 201, 176, 0.2); color: var(--syntax-class); }
-
-/* Lesson 2: Gemini Canvas Simulator */
-.canvas-split {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    height: 100%;
-}
-
-.code-editor-simulator {
-    background-color: var(--bg-darker);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-family: var(--font-code);
-    font-size: 11px;
-    padding: 10px;
-    direction: ltr;
-    text-align: left;
-    height: 150px;
-    overflow-y: auto;
-    white-space: pre-wrap;
-    line-height: 1.5;
-}
-
-.diff-added {
-    background-color: rgba(78, 201, 176, 0.15);
-    border-right: 2px solid var(--success-color);
-    display: block;
-    width: 100%;
-}
-
-.live-preview-window {
-    background-color: #ffffff;
-    color: #111112;
-    border-radius: 4px;
-    padding: 12px;
-    min-height: 100px;
-    border: 1px solid var(--border-color);
-    font-size: 13px;
-    direction: ltr;
-    text-align: left;
-}
-
-.preview-title {
-    font-size: 10px;
-    font-weight: bold;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 2px;
-}
-
-/* Lesson 3: Drag-and-Drop Deployment Pipeline Map */
-.pipeline-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-    width: 100%;
-}
-
-.pipeline-nodes {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    position: relative;
-    padding: 10px 0;
-    gap: 10px;
-}
-
-.pipeline-node {
-    flex: 1;
-    background-color: var(--bg-dark);
-    border: 2px dashed var(--border-color);
-    border-radius: 8px;
-    padding: 15px 10px;
-    text-align: center;
-    min-height: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    transition: border-color 0.3s, background-color 0.3s;
-}
-
-.pipeline-node.active-drop {
-    border-color: var(--accent-color);
-    background-color: rgba(0, 122, 204, 0.05);
-}
-
-.pipeline-node.success-drop {
     border-color: var(--success-color);
-    background-color: rgba(78, 201, 176, 0.05);
 }
 
-.node-title {
-    font-size: 12px;
-    font-weight: bold;
-    color: var(--text-header);
-    margin-bottom: 5px;
-}
-
-.draggable-items {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: var(--bg-darker);
-    padding: 10px;
-    border-radius: 6px;
-    width: 100%;
-    border: 1px solid var(--border-color);
-}
-
-.drag-block {
-    background-color: #333333;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 6px 12px;
-    font-size: 11px;
-    font-family: var(--font-code);
-    color: var(--text-header);
-    cursor: grab;
-    user-select: none;
-    transition: background-color 0.2s, transform 0.1s;
-    direction: ltr;
-}
-
-.drag-block:hover {
-    background-color: var(--accent-color);
-}
-
-.drag-block.dragging {
-    opacity: 0.5;
-    cursor: grabbing;
-}
-
-/* Lesson 4: Antigravity Config & TV Tracker */
-.sync-dashboard {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.sync-status-indicator {
+.checkbox-container {
     display: flex;
     align-items: center;
-    gap: 10px;
-    background-color: rgba(0, 122, 204, 0.05);
-    border: 1px solid var(--accent-color);
-    padding: 10px 15px;
-    border-radius: 4px;
-    font-size: 12px;
-}
-
-.pulse-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-color);
-    border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(0, 122, 204, 0.7);
-    animation: pulse 1.2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 122, 204, 0.7);
-    }
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 6px rgba(0, 122, 204, 0);
-    }
-    100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 122, 204, 0);
-    }
-}
-
-.sync-live-preview {
-    background-color: var(--bg-dark);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 12px;
-}
-
-/* Lesson 5: Agent Builder */
-.agent-config-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.skills-deck {
-    display: flex;
     gap: 8px;
-    flex-wrap: wrap;
-}
-
-.skill-chip {
-    background-color: #2d2d2d;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 11px;
     cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 13px;
     user-select: none;
 }
 
-.skill-chip.selected {
-    background-color: rgba(78, 201, 176, 0.2);
-    border-color: var(--success-color);
-    color: var(--success-color);
-    font-weight: bold;
-}
-
-.agent-logic-card {
-    border-right: 3px solid var(--success-color);
+.checkbox-container input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }
 
 /* General Layout Utilities */

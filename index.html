@@ -62,7 +62,7 @@
                         <span>שיעורים (AI_FOR_BUILDERS)</span>
                     </div>
                     <ul class="file-list" id="lessons-list">
-                        <!-- Populated by JS -->
+                        <!-- Populated by JS with locking logic -->
                     </ul>
                 </div>
 
@@ -109,28 +109,27 @@
             <!-- 4. Split Panel (Left side in RTL: Sandbox & Terminal) -->
             <section class="ide-sandbox-container">
                 <div class="panel-header">
-                    <div class="tab active" id="tab-sandbox">ארגז חול אינטראקטיבי (Sandbox)</div>
-                    <div class="tab" id="tab-preview-mode" style="display:none;">תצוגה מקדימה</div>
+                    <div class="tab active" id="tab-sandbox">משימה לביצוע (Action Item)</div>
                 </div>
                 
-                <!-- Sandbox Content (changes depending on the lesson active) -->
+                <!-- Sandbox Content (contains action steps and inputs) -->
                 <div class="sandbox-content" id="sandbox-viewport">
-                    <!-- Dynamically injected sandbox interface -->
+                    <!-- Dynamically injected action items (inputs/textareas) -->
                 </div>
 
-                <!-- Run Simulator Actions -->
+                <!-- Run Simulator Actions (Unified Submit buttons) -->
                 <div class="sandbox-actions">
                     <button class="btn btn-primary" id="btn-run-code">
-                        <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"></path></svg>
-                        <span>הרץ קוד (Run Code)</span>
+                        <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M12 2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-1 9H5V5h6v6z"></path></svg>
+                        <span>אשר והשלם משימה (Verify Task)</span>
                     </button>
-                    <button class="btn btn-secondary" id="btn-reset-sandbox">אפס שלב</button>
+                    <button class="btn btn-secondary" id="btn-reset-sandbox">נקה קלט</button>
                 </div>
 
                 <!-- Integrated Terminal Panel (Bottom of sandbox area) -->
                 <div class="ide-terminal-panel">
                     <div class="terminal-header">
-                        <span class="terminal-title">מסוף פלט (Terminal)</span>
+                        <span class="terminal-title">מסוף אימות פרויקט (Verification Terminal)</span>
                         <div class="terminal-controls">
                             <button id="clear-terminal" title="נקה מסוף">
                                 <svg viewBox="0 0 16 16" width="12" height="12"><path fill="currentColor" d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0-1A6 6 0 1 0 8 2a6 6 0 0 0 0 12zm2.854-8.854a.5.5 0 0 1 0 .708L8.707 8l2.147 2.146a.5.5 0 0 1-.708.708L8 8.707l-2.146 2.147a.5.5 0 0 1-.708-.708L7.293 8 5.146 5.854a.5.5 0 0 1 .708-.708L8 7.293l2.146-2.147a.5.5 0 0 1 .708 0z"></path></svg>
@@ -138,7 +137,7 @@
                         </div>
                     </div>
                     <div class="terminal-body" id="terminal-output">
-                        <div class="terminal-line system-msg">מוכן להרצת פרויקט... בחר שיעור כדי להתחיל.</div>
+                        <div class="terminal-line system-msg">מערכת אימות המשימות של Antigravity מוכנה...</div>
                     </div>
                 </div>
             </section>
