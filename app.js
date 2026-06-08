@@ -6,35 +6,26 @@ const lessonsData = [
         id: "lesson_1",
         fileName: "lesson_1_prompt.md",
         tabLabel: "lesson_1_prompt.md",
-        title: "שיעור 1: אמנות הפרומפט ויכולות ליבה של AI",
+        title: "שיעור 1: ניווט ב-Gemini ואמנות הפרומפט",
         unlocked: true,
         completed: false,
         content: `
-<h1 class="lesson-h1">שיעור 1: אמנות הפרומפט ויכולות ליבה של AI</h1>
+<h1 class="lesson-h1">שיעור 1: ניווט ב-Gemini ואמנות הפרומפט</h1>
 <p class="lesson-p">ברוכים הבאים לצעד הראשון שלכם בעולם ה-AI! אם יש לכם רקע בסיסי בתכנות (משתנים, לולאות ולוגיקה), כתיבת פרומפט (Prompt) ל-AI תרגיש לכם טבעית לחלוטין. מדובר בהגדרת קלט לוגי ומובנה כדי לקבל פלט איכותי ומדויק.</p>
 
-<h2 class="lesson-h2">יכולות הליבה של כלי ה-AI היומיומיים</h2>
-<p class="lesson-p">לפני שנתחיל לבנות, חשוב להבין את מגוון יכולות הליבה של מודלי שפה ו-AI מודרניים:</p>
+<h2 class="lesson-h2">שליטה בממשק של Gemini</h2>
+<p class="lesson-p">לפני שנתחיל לכתוב פרומפטים, נלמד כיצד לנצל את כלי הממשק השונים בתוך Gemini:</p>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li><strong>🖼️ יצירת תמונות (Image Generation):</strong> הפקת ייצוגים חזותיים מתיאור טקסטואלי (למשל: הנחיית Midjourney או DALL-E לייצר <em>"כלב עתידני העשוי כולו מלבני לגו"</em>).</li>
-    <li><strong>📋 תכנון ופירוק משימות (Task Planning & Breakdown):</strong> פירוק תהליכים מורכבים לצעדים ברורים (למשל: בניית מדריך שלב-אחר-שלב ליצירת מחשבון ריבית דריבית באקסל, או תכנון מסלול טיול מפורט לפריז).</li>
-    <li><strong>🌐 תרגום ולוקליזציה (Translation & Localization):</strong> התאמת טקסטים בין שפות שונות תוך שמירה על הקשר מקצועי וטבעי (למשל: תרגום חדשות פיננסיות גלובליות או כתוביות לטלוויזיה).</li>
-    <li><strong>📝 תמצות וסיכום (Summarization):</strong> זיקוק כמויות מידע עצומות לנקודות מפתח קצרות (למשל: הדבקת דוח פיננסי של מניה באורך 20 עמודים ובקשת סיכום מנהלים בן 3 נקודות).</li>
-    <li><strong>💡 סיעור מוחות ורעיונאות (Ideation & Brainstorming):</strong> יצירת רעיונות וקונספטים חדשים (למשל: העלאת שאלות טריוויה יצירתיות לאפליקציה אינטראקטיבית).</li>
+    <li><strong>➕ כפתור ה-Plus ('+'):</strong> מאפשר להעלות קבצים ותמונות לניתוח (למשל: העלאת קובץ CSV של נתוני מניות היסטוריים לניתוח מגמות, או תמונה של ערכת לגו שתרצו לזהות).</li>
+    <li><strong>🎙️ קלט קולי (Voice Input - המיקרופון):</strong> מאפשר לכם להכתיב את הפרומפטים בקולכם לצורך סיעור מוחות מהיר, טבעי וללא שימוש בידיים.</li>
+    <li><strong>⚙️ בחירת מנוע ה-AI שלכם (Models):</strong>
+        <br>&bull; <em>Gemini Flash:</em> מהיר במיוחד, אידיאלי למשימות יומיומיות בנפח גבוה (כמו המלצות צפייה בסדרות טלוויזיה או תרגום מהיר).
+        <br>&bull; <em>Gemini Flash-8B (Light):</em> מנוע קל ומהיר להפליא, מיועד לזמני תגובה (latency) קצרים במיוחד במשימות טקסט בסיסיות.
+        <br>&bull; <em>Gemini Pro:</em> מנוע הדגל לפתרון בעיות מורכבות, מצוין לחשיבה לוגית עמוקה, כתיבת קוד מתקדם (כמו כתיבת סקריפט אקסל VBA מורכב) וניתוח מעמיק.</li>
 </ul>
 
-<div class="analogy-box">
-    <strong>💡 אנלוגיית הבונה:</strong> כתיבת פרומפט היא כמו כתיבת <strong>מאקרו מורכב באקסל (Excel Macro)</strong> או הכנת <strong>הוראות לגו (Lego Manual)</strong>. אם תפחיתו פרמטר אחד או שתדלגו על שלב לוגי, המאקרו ייכשל או שהלגו יקרוס.
-</div>
-
-<h2 class="lesson-h2">תבנית ה-PROMPT: ארבעת עמודי התווך</h2>
-<p class="lesson-p">כדי לרתום את יכולות הליבה הללו בצורה הטובה ביותר, נשתמש בארבעת עמודי התווך של הפרומפט:</p>
-<ul style="margin-right: 20px; margin-bottom: 12px; line-height: 1.6;">
-    <li><strong>Role (תפקיד):</strong> הגדרת ה"אישיות" של ה-AI (למשל: <em>"פעל ככותב שאלות טריוויה טלוויזיוני"</em>).</li>
-    <li><strong>Task (משימה):</strong> מה בדיוק ה-AI צריך לבצע (למשל: <em>"צור 5 שאלות טריוויה"</em>).</li>
-    <li><strong>Context (הקשר):</strong> נתוני הרקע והחוקים (למשל: <em>"התמקד בסדרות טלוויזיה משנות ה-90 בלבד"</em>).</li>
-    <li><strong>Format (פורמט):</strong> מבנה הפלט הרצוי (למשל: <em>"הצג בפורמט JSON עם שאלות ותשובות"</em>).</li>
-</ul>
+<h2 class="lesson-h2">יכולות הליבה ותבנית ה-PROMPT</h2>
+<p class="lesson-p">כדי לרתום את יכולות הליבה (יצירת תמונות, תכנון משימות, תרגום, תמצות וסיעור מוחות) בצורה הטובה ביותר, נשתמש בארבעת עמודי התווך של הפרומפט: <strong>Role (תפקיד), Task (משימה), Context (הקשר), ו-Format (פורמט)</strong>.</p>
 
 <h2 class="lesson-h2">הזיות מודל (Hallucinations) והטיות מידע (Biases)</h2>
 <div class="tech-box">
@@ -237,11 +228,11 @@ let overallProgress = 0;
 // Inputs store for lesson submissions
 let userSubmissions = {
     lesson_1: {
-        imgPrompt: "",
-        taskPlan: "",
-        translation: "",
-        summary: "",
-        trivia: ""
+        plusButton: "",
+        voiceInput: "",
+        imageGen: "",
+        excelPlan: "",
+        tvTranslation: ""
     },
     lesson_2: "",
     lesson_3: "",
@@ -478,34 +469,34 @@ function renderActionBlock(lesson) {
     const savedVal = userSubmissions[lesson.id];
     
     if (lesson.actionType === "multi_capabilities") {
-        const data = savedVal || { imgPrompt: "", taskPlan: "", translation: "", summary: "", trivia: "" };
+        const data = savedVal || { plusButton: "", voiceInput: "", imageGen: "", excelPlan: "", tvTranslation: "" };
         inputHtml = `
             <div class="action-input-area" style="gap: 12px;">
                 <h4 style="font-size:13px; color: var(--success-color); border-bottom: 1px solid var(--border-color); padding-bottom: 4px;">הזינו את תוצאות אתגר הליבה (AI Gauntlet):</h4>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">1. יצירת תמונות: פרומפט לכלבה טס בונה מגדל לגו (Image Generation):</label>
-                    <input type="text" class="input-text-standard" id="input-img-prompt" placeholder="הדביקו את פרומפט התמונה (או תיאור התמונה שהפקתם)..." value="${data.imgPrompt || ""}">
+                    <label style="color:var(--text-header); font-size: 12px;">1. בדיקת כפתור ה-'+': ניתוח תמונה/אקסל ב-Gemini Pro (Plus Button):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-plus-button" placeholder="הדביקו את תיאור התמונה או נתוני האקסל ש-Gemini Pro הפיק עבורכם...">${data.plusButton || ""}</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">2. תכנון משימות: שלבים למחשבון ריבית באקסל (Task Breakdown):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-task-plan" placeholder="הדביקו את תוכנית העבודה לבניית מחשבון ריבית באקסל...">${data.taskPlan || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 12px;">2. בדיקת קלט קולי: 3 רעיונות להצגת לגו ב-Gemini Flash (Voice Input):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-voice-input" placeholder="הדביקו את 3 הרעיונות להצגת האוסף שהכתבתם והפקתם...">${data.voiceInput || ""}</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">3. תרגום ולוקליזציה: תרגום ביקורת טלוויזיה ליפנית (Translation):</label>
-                    <input type="text" class="input-text-standard" id="input-translation" placeholder="הדביקו את התרגום שנוצר ביפנית בטון נלהב..." value="${data.translation || ""}">
+                    <label style="color:var(--text-header); font-size: 12px;">3. יצירת תמונות: פרומפט לכלבה טס צופה בטיקר מניות (Image Generation):</label>
+                    <input type="text" class="input-text-standard" id="input-image-gen" placeholder="הדביקו את פרומפט התמונה (או תיאור התמונה שנוצרה)..." value="${data.imageGen || ""}">
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">4. תמצות וסיכום: סיכום 2 נקודות של מגמות שוק ההון (Summarization):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-summary" placeholder="הדביקו את תמצות הדוח הפיננסי המכיל בדיוק 2 נקודות מפתח...">${data.summary || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 12px;">4. תכנון משימות: שלבים למחשבון ריבית באקסל (Task Breakdown):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-excel-plan" placeholder="הדביקו את תוכנית השלבים לבניית גיליון אקסל לחישוב ריבית...">${data.excelPlan || ""}</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">5. סיעור מוחות: 5 שאלות טריוויה על היסטוריית לגו (Ideation):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-trivia" placeholder="הדביקו את 5 שאלות הטריוויה על לגו שהמודל ייצר...">${data.trivia || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 12px;">5. תרגום ולוקליזציה: תרגום ביקורת טלוויזיה ליפנית (Translation):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-tv-translation" placeholder="הדביקו את התרגום ליפנית בטון נלהב שנוצר..." >${data.tvTranslation || ""}</textarea>
                 </div>
             </div>
         `;
@@ -553,27 +544,27 @@ function renderActionBlock(lesson) {
     
     // Bind auto-save listeners
     if (lesson.actionType === "multi_capabilities") {
-        const imgEl = document.getElementById("input-img-prompt");
-        const taskEl = document.getElementById("input-task-plan");
-        const transEl = document.getElementById("input-translation");
-        const sumEl = document.getElementById("input-summary");
-        const trivEl = document.getElementById("input-trivia");
+        const plusEl = document.getElementById("input-plus-button");
+        const voiceEl = document.getElementById("input-voice-input");
+        const imgEl = document.getElementById("input-image-gen");
+        const excelEl = document.getElementById("input-excel-plan");
+        const tvEl = document.getElementById("input-tv-translation");
         
         const saveMulti = () => {
             userSubmissions.lesson_1 = {
-                imgPrompt: imgEl ? imgEl.value : "",
-                taskPlan: taskEl ? taskEl.value : "",
-                translation: transEl ? transEl.value : "",
-                summary: sumEl ? sumEl.value : "",
-                trivia: trivEl ? trivEl.value : ""
+                plusButton: plusEl ? plusEl.value : "",
+                voiceInput: voiceEl ? voiceEl.value : "",
+                imageGen: imgEl ? imgEl.value : "",
+                excelPlan: excelEl ? excelEl.value : "",
+                tvTranslation: tvEl ? tvEl.value : ""
             };
         };
         
+        if (plusEl) plusEl.addEventListener("input", saveMulti);
+        if (voiceEl) voiceEl.addEventListener("input", saveMulti);
         if (imgEl) imgEl.addEventListener("input", saveMulti);
-        if (taskEl) taskEl.addEventListener("input", saveMulti);
-        if (transEl) transEl.addEventListener("input", saveMulti);
-        if (sumEl) sumEl.addEventListener("input", saveMulti);
-        if (trivEl) trivEl.addEventListener("input", saveMulti);
+        if (excelEl) excelEl.addEventListener("input", saveMulti);
+        if (tvEl) tvEl.addEventListener("input", saveMulti);
     } else {
         const inputElement = document.getElementById("action-task-input");
         if (inputElement) {
@@ -616,12 +607,12 @@ function handleVerifyTask() {
         writeTerminalLine("מנתח תוצאות קלט מתוך סביבת העבודה החיצונית...", "info-msg");
         
         if (lesson.id === "lesson_1") {
-            writeTerminalLine("[Success] משימה 1: פרומפט תמונת הכלב מלגו אומת (Image prompt verified).", "success-msg");
-            writeTerminalLine("[Success] משימה 2: פירוק משימת אקסל אומת (Excel task plan verified).", "success-msg");
-            writeTerminalLine("[Success] משימה 3: תרגום ולוקליזציה אומת (Hebrew translation verified).", "success-msg");
-            writeTerminalLine("[Success] משימה 4: תמצות דוח מניה אומת (Stock summarization verified).", "success-msg");
-            writeTerminalLine("[Success] משימה 5: סיעור מוחות שאלות טריוויה אומת (Trivia ideation verified).", "success-msg");
-            writeTerminalLine("[Success] כל 5 יכולות הליבה אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
+            writeTerminalLine("[Success] משימה 1: ניתוח כפתור + אומת (Gemini Pro Plus verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 2: קלט קולי אומת (Gemini Flash Voice verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 3: פרומפט תמונת הכלבה טס אומת (Image prompt verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 4: תכנון ריבית באקסל אומת (Excel task plan verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 5: תרגום ביקורת ליפנית אומת (Japanese translation verified).", "success-msg");
+            writeTerminalLine("[Success] כל 5 שלבי ה-AI Gauntlet אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_2") {
             writeTerminalLine("[Success] קוד המקור HTML/CSS נקרא בהצלחה. זוהו תגיות שלד ומבנה.", "success-msg");
         } else if (lesson.id === "lesson_3") {
@@ -677,11 +668,11 @@ function handleResetInput() {
         userSubmissions[lesson.id] = false;
     } else if (lesson.actionType === "multi_capabilities") {
         userSubmissions.lesson_1 = {
-            imgPrompt: "",
-            taskPlan: "",
-            translation: "",
-            summary: "",
-            trivia: ""
+            plusButton: "",
+            voiceInput: "",
+            imageGen: "",
+            excelPlan: "",
+            tvTranslation: ""
         };
     } else {
         userSubmissions[lesson.id] = "";
