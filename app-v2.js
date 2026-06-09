@@ -1,4 +1,4 @@
-// AI for Builders: From Prompt to Production - Core Application Logic
+﻿// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -97,7 +97,37 @@ function getDynamicLessons(name, interests) {
 <p class="lesson-p">שלום ${name}! בשיעור זה נצלול לעומק עבודה מעשית בתוך סביבת ה-Workspace הייחודית של Gemini Canvas.</p>
 
 <h2 class="lesson-h2">מהו Gemini Canvas?</h2>
-<p class="lesson-p">Gemini Canvas הוא סביבת עבודה שיתופית המיועדת ליצירת תכנים ארוכים וכתיבת קוד. הוא מאפשר לכם לערוך, ללטש ולבנות מוצרים אמיתיים במקום רק לנהל שיחה רגי�        {
+<p class="lesson-p">Gemini Canvas הוא סביבת עבודה שיתופית המיועדת ליצירת תכנים ארוכים וכתיבת קוד. הוא מאפשר לכם לערוך, ללטש ולבנות מוצרים אמיתיים במקום רק לנהל שיחה רגילה בחלון הצ'אט.</p>
+
+<h2 class="lesson-h2">יכולות ליבה מרכזיות (Core Capabilities)</h2>
+<ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
+    <li style="margin-bottom: 8px;"><strong>מסמכים חכמים (Smart Documents):</strong> יצירת פרוטוקולים מורכבים (כמו פרוטוקול טיפול ברעלת הריון - Preeclampsia) או כתיבת קורות חיים מקצועיים וממוקדים.</li>
+    <li style="margin-bottom: 8px;"><strong>טפסים חכמים ואוטומציה (Smart Forms & Automation):</strong> חיסכון בזמן על ידי בניית מערכות לקליטת נתונים. דוגמאות: שאלון קליני להתאמת משאבות חלב (Breast Pumps) או טופס אישור הגעה (RSVP) לבת מצווה (Bat Mitzvah).</li>
+    <li style="margin-bottom: 8px;"><strong>כלים אינטראקטיביים (Interactive Tools):</strong> בניית אבות-טיפוס "חיים" ופעילים. דוגמאות: סימולטור לזיהוי סיבוכי מחלת הסוכרת (Diabetes) או דף נחיתה מקצועי לתיק העבודות שלכם.</li>
+</ul>
+
+<h2 class="lesson-h2">תהליך העבודה ב-Canvas ב-4 שלבים</h2>
+<ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
+    <li style="margin-bottom: 6px;"><strong>1. הפעלה (Activate):</strong> שימוש במודל Gemini Pro.</li>
+    <li style="margin-bottom: 6px;"><strong>2. טריגר (Trigger):</strong> כתיבת פרומפט שמתחיל במילים: "Open a canvas to build..." (פתח קנבס כדי לבנות...).</li>
+    <li style="margin-bottom: 6px;"><strong>3. עריכה (Edit):</strong> שימוש במברשת ה-"עריכה" (Edit) או עריכת הטקסט והקוד ישירות בחלון ה-Canvas הצדדי.</li>
+    <li style="margin-bottom: 6px;"><strong>4. איטרציה (Iterate):</strong> שימוש בתפריט ה-"כיוונון" (Adjust) כדי לשפר את האורך, הטון (למשל שינוי לטון רומנטי) או לפתור באגים בקוד.</li>
+</ul>
+            `,
+            actionType: "canvas_two_tasks",
+            actionLabel: "הדביקו את כתובת ה-URL של הפרויקט שלכם או תארו את הפתרון הסופי שבניתם:",
+            placeholderText: "לדוגמה: הדבקתי את קישור ה-Canvas, או תיאור של מדריך שלב אחר שלב עבור...",
+            tools: [
+                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
+            ],
+            instructionText: "שלטו ב-Gemini Canvas באמצעות שתי המשימות המעשיות שלמטה: משימה 1 (התחלה מונחית) ומשימה 2 (אתגר היוצר המעשי).",
+            validate: (input) => {
+                if (!input || typeof input !== "object") return false;
+                return input.task1Checkbox === true && input.task2Textarea && input.task2Textarea.trim().length > 15;
+            },
+            errorMessage: "אנא ודאו שסימנתם את תיבת הסימון של משימה 1, ושתיארתם את פרויקט משימה 2 בפירוט (לפחות 15 תווים)."
+        },
+        {
             id: "lesson_3",
             fileName: "lesson_3_deploy.yaml",
             tabLabel: "lesson_3_deploy.yaml",
@@ -147,56 +177,6 @@ function getDynamicLessons(name, interests) {
                        (clean.includes(".vercel.app") || clean.includes(".com") || clean.includes(".net") || clean.includes(".dev"));
             },
             errorMessage: "אנא ודאו שסימנתם את כל 3 משימות הפריסה בצ'קליסט, ושכתובת ה-Vercel URL שהזנתם תקינה ומתחילה ב-http:// או https://."
-        },.com" }
-            ],
-            instructionText: "שלטו ב-Gemini Canvas באמצעות שתי המשימות המעשיות שלמטה: משימה 1 (התחלה מונחית) ומשימה 2 (אתגר היוצר המעשי).",
-            validate: (input) => {
-                if (!input || typeof input !== "object") return false;
-                return input.task1Checkbox === true && input.task2Textarea && input.task2Textarea.trim().length > 15;
-            },
-            errorMessage: "אנא ודאו שסימנתם את תיבת הסימון של משימה 1, ושתיארתם את פרויקט משימה 2 בפירוט (לפחות 15 תווים)."
-        },
-        {
-            id: "lesson_3",
-            fileName: "lesson_3_deploy.yaml",
-            tabLabel: "lesson_3_deploy.yaml",
-            title: "שיעור 3: צינור הפריסה (GitHub, Vercel ודומיינים)",
-            unlocked: false,
-            completed: false,
-            content: `
-<h1 class="lesson-h1">שיעור 3: צינור הפריסה (GitHub, Vercel ודומיינים)</h1>
-<p class="lesson-p">כתבתם קוד מעולה עם ה-AI, הוא רץ על המחשב המקומי שלכם... אבל איך גורמים לעולם לראות אותו? איך הופכים קובץ במחשב לקישור אינטרנט חי (Live URL)?</p>
-
-<h2 class="lesson-h2">חלוקת התפקידים בצינור הפריסה (Deployment Pipeline)</h2>
-<div class="tech-box">
-    <strong>📦 GitHub (בקרת גרסאות ומחסן קוד):</strong> מאחסן את הקוד שלכם בענן, עוקב אחר כל שינוי שביצעתם ומאפשר לכם לנהל גרסאות של הפרויקט.
-    <br><br>
-    <strong>🚀 Vercel (אחסון ופריסה מהירה):</strong> שירות ענן שמתחבר ל-GitHub שלכם. ברגע שהוא מזהה שינוי בקוד, הוא בונה אותו מחדש ומפיץ אותו לשרתים בכל העולם עם דומיין ייחודי.
-</div>
-
-<div class="analogy-box">
-    <strong>[אנלוגיית המחסן וההפצה]</strong> תחשבו על הקוד שלכם כעל מוצר או פרויקט בתחום <strong>${i4}</strong> או <strong>${i5}</strong>. GitHub הוא המחסן הראשי שבו נשמרות הגרסאות השונות, ו-Vercel הוא מערך ההפצה והשילוח שמנגיש את המוצר הזה ללקוחות בכל העולם באופן מיידי.
-</div>
-            `,
-            actionType: "url",
-            actionLabel: "הזינו את קישור הדומיין הפעיל שלכם מ-Vercel כאן:",
-            placeholderText: "https://your-project.vercel.app",
-            tools: [
-                { name: "פתח את GitHub", url: "https://github.com" },
-                { name: "פתח את Vercel", url: "https://vercel.com" }
-            ],
-            instructionText: `<strong>משימה מעשית לפריסת האתר:</strong><br>
-            1. פתחו את **GitHub** וצרו Repository (מחסן) חדש וציבורי.<br>
-            2. העלו את הקוד של דף הנחיתה בנושא <strong>${i4}</strong> או <strong>${i5}</strong> (משיעור 2) לתוך המחסן.<br>
-            3. פתחו את **Vercel**, חברו את מחסן ה-GitHub שלכם, ובצעו פריסה (Deploy) לקוד.<br>
-            4. העתיקו והדביקו את כתובת האתר החי (Vercel URL) שנוצר עבורכם כאן למטה.`,
-            validate: (input) => {
-                if (!input) return false;
-                const clean = input.trim().toLowerCase();
-                return (clean.startsWith("http://") || clean.startsWith("https://")) && 
-                       (clean.includes(".vercel.app") || clean.includes(".com") || clean.includes(".net") || clean.includes(".dev") || clean.includes(".html"));
-            },
-            errorMessage: "כתובת ה-URL אינה תקינה! ודאו שהזנתם כתובת מלאה המתחילה ב-http:// או https:// ושמפנה לדומיין פעיל."
         },
         {
             id: "lesson_4",
