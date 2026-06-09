@@ -1,35 +1,35 @@
 /* CSS Design System - "AI ליוצרים" IDE Aesthetic */
 
 :root {
-    /* Color Palette */
-    --bg-darker: #111112;
-    --bg-dark: #1e1e1e;
-    --bg-sidebar: #252526;
-    --bg-activity: #333333;
-    --bg-tabs: #2d2d2d;
-    --bg-tab-active: #1e1e1e;
-    --bg-terminal: #141416;
-    --border-color: #3c3c3c;
+    /* Color Palette - Romantic Pastel Theme */
+    --bg-darker: #FFF0F5;         /* Lavender Blush - soft background */
+    --bg-dark: #FFFFFF;           /* Pure white for clear reading inside editor */
+    --bg-sidebar: #FAF0F3;        /* Soft creamy rose */
+    --bg-activity: #F5E1E9;       /* Soft mauve for activity bar */
+    --bg-tabs: #F5E1E9;           /* Mauve tab background */
+    --bg-tab-active: #FFFFFF;     /* White active tab background */
+    --bg-terminal: #F8EEF2;       /* Soft grey-rose console background */
+    --border-color: #EAD3DD;      /* Subtle dusty lavender border */
     
-    /* Code Editor Syntax Colors (VS Code / Monokai Inspired) */
-    --syntax-keyword: #569cd6;
-    --syntax-string: #ce9178;
-    --syntax-comment: #6a9955;
-    --syntax-function: #dcdcaa;
-    --syntax-variable: #9cdcfe;
-    --syntax-number: #b5cea8;
-    --syntax-tag: #569cd6;
-    --syntax-class: #4ec9b0;
+    /* Code Editor Syntax Colors (Pastel Light Mode Inspired) */
+    --syntax-keyword: #A65B7D;    /* Soft plum/raspberry */
+    --syntax-string: #D08C60;     /* Warm pastel orange/brown */
+    --syntax-comment: #8FA782;    /* Dusty sage green */
+    --syntax-function: #6A95B7;   /* Soft powder blue */
+    --syntax-variable: #8E6F8E;   /* Dusty lavender-violet */
+    --syntax-number: #A6925B;     /* Dusty gold */
+    --syntax-tag: #A65B7D;
+    --syntax-class: #669E9E;      /* Soft turquoise */
     
     /* Visual Accents & Alerts */
-    --accent-color: #007acc;      /* VS Code Blue */
-    --accent-hover: #0098ff;
-    --success-color: #4ec9b0;     /* Mint/Green */
-    --warning-color: #cca700;     /* Gold */
-    --error-color: #f44747;       /* Soft Red */
-    --text-main: #d4d4d4;
-    --text-muted: #858585;
-    --text-header: #ffffff;
+    --accent-color: #C86B85;      /* Elegant dusty rose */
+    --accent-hover: #B55D75;
+    --success-color: #79C2AD;     /* Soft pastel mint green */
+    --warning-color: #EAA282;     /* Warm peach */
+    --error-color: #E98080;       /* Soft coral red */
+    --text-main: #4A3F44;         /* Deep charcoal plum text */
+    --text-muted: #8D7A82;        /* Muted dusty plum text */
+    --text-header: #3D2E34;       /* Deep dark chocolate plum headers */
     
     /* Fonts */
     --font-hebrew: 'Assistant', sans-serif;
@@ -71,7 +71,7 @@ body {
 /* 1. Activity Bar (Rightmost in RTL) */
 .ide-activity-bar {
     width: 48px;
-    background-color: var(--bg-darker);
+    background-color: var(--bg-activity);
     border-left: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
@@ -185,11 +185,11 @@ body {
 }
 
 .file-item:hover {
-    background-color: #2d2d2d;
+    background-color: var(--bg-activity);
 }
 
 .file-item.active {
-    background-color: #37373d;
+    background-color: var(--bg-activity);
     color: var(--text-header);
     border-right-color: var(--accent-color);
 }
@@ -215,17 +215,17 @@ body {
     font-size: 10px;
     font-weight: bold;
     padding: 2px 6px;
-    border-radius: 4px;
-    background-color: #2d2d2d;
+    border-radius: 8px;
+    background-color: #EAD3DD;
 }
 
 .file-item.completed .checkmark-status {
-    background-color: rgba(78, 201, 176, 0.2);
+    background-color: rgba(121, 194, 173, 0.2);
     color: var(--success-color);
 }
 
 .file-item.active-working .checkmark-status {
-    background-color: rgba(0, 122, 204, 0.2);
+    background-color: rgba(200, 107, 133, 0.15);
     color: var(--accent-color);
 }
 
@@ -345,11 +345,13 @@ body {
     background-color: var(--bg-tab-active);
     color: var(--text-header);
     border-top: 2px solid var(--accent-color);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     height: 35px;
 }
 
 .editor-tab:hover:not(.active) {
-    background-color: #333333;
+    background-color: #EAD3DD;
     color: var(--text-main);
 }
 
@@ -424,11 +426,11 @@ body {
 
 /* Analogy block highlight */
 .analogy-box {
-    background-color: rgba(204, 167, 0, 0.08);
+    background-color: rgba(234, 162, 130, 0.1);
     border-right: 4px solid var(--warning-color);
     padding: 12px 16px;
     margin: 15px 0;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 
 .analogy-box strong {
@@ -437,11 +439,11 @@ body {
 
 /* Technical alert block */
 .tech-box {
-    background-color: rgba(86, 156, 214, 0.08);
+    background-color: rgba(166, 91, 125, 0.08);
     border-right: 4px solid var(--syntax-keyword);
     padding: 12px 16px;
     margin: 15px 0;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 
 .tech-box strong {
@@ -452,7 +454,7 @@ body {
 .lesson-code-block {
     background-color: var(--bg-darker);
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: 12px;
     padding: 10px 14px;
     margin: 12px 0;
     font-family: var(--font-code);
@@ -523,10 +525,10 @@ body {
 }
 
 .btn {
-    padding: 8px 16px;
+    padding: 8px 18px;
     font-size: 13px;
     font-weight: 700;
-    border-radius: 4px;
+    border-radius: 20px;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
@@ -644,12 +646,13 @@ body {
 /* Action Item Box Widgets */
 .action-box-container {
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 16px;
     background-color: var(--bg-dark);
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    box-shadow: 0 4px 15px rgba(200, 107, 133, 0.05);
 }
 
 .action-header {
@@ -661,12 +664,12 @@ body {
 }
 
 .action-badge {
-    background-color: rgba(204, 167, 0, 0.2);
-    color: var(--warning-color);
+    background-color: rgba(200, 107, 133, 0.12);
+    color: var(--accent-color);
     font-size: 12px;
     font-weight: 800;
     padding: 2px 8px;
-    border-radius: 4px;
+    border-radius: 8px;
     text-transform: uppercase;
 }
 
@@ -687,12 +690,12 @@ body {
 }
 
 .action-link-btn {
-    background-color: rgba(0, 122, 204, 0.15);
+    background-color: rgba(200, 107, 133, 0.05);
     border: 1px solid var(--accent-color);
-    color: var(--syntax-variable);
+    color: var(--accent-color);
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 4px;
+    padding: 8px 16px;
+    border-radius: 20px;
     font-size: 13px;
     font-weight: bold;
     display: inline-flex;
@@ -726,7 +729,7 @@ body {
     background-color: var(--bg-darker);
     border: 1px solid var(--border-color);
     color: var(--text-main);
-    border-radius: 4px;
+    border-radius: 12px;
     padding: 10px;
     font-size: 13px;
     min-height: 120px;
@@ -744,7 +747,7 @@ body {
     background-color: var(--bg-darker);
     border: 1px solid var(--border-color);
     color: var(--text-main);
-    border-radius: 4px;
+    border-radius: 12px;
     padding: 8px 12px;
     font-size: 14px;
     direction: ltr;
@@ -863,7 +866,7 @@ body {
     max-width: 90%;
     background-color: var(--bg-dark);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 16px;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -957,9 +960,9 @@ body {
     color: var(--error-color);
     font-size: 15px;
     font-weight: bold;
-    background-color: rgba(244, 71, 71, 0.1);
-    border: 1px solid rgba(244, 71, 71, 0.2);
-    border-radius: 4px;
+    background-color: rgba(233, 128, 128, 0.15);
+    border: 1px solid rgba(233, 128, 128, 0.25);
+    border-radius: 12px;
     padding: 8px 12px;
     margin-top: 10px;
 }
