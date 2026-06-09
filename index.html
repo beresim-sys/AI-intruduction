@@ -145,6 +145,47 @@
         </main>
     </div>
 
+    <!-- Onboarding Overlay (Module 0) -->
+    <div id="onboarding-overlay" class="onboarding-overlay">
+        <div class="onboarding-card">
+            <div class="onboarding-header">
+                <h2>התחלת למידה מותאמת אישית</h2>
+                <div class="onboarding-subtitle">AI ליוצרים: מפרומפט למוצר</div>
+            </div>
+            <div class="onboarding-body">
+                <p class="onboarding-welcome-text">
+                    Welcome! To make this learning journey as relevant and engaging as possible, please share your name and 5 areas of interest. We will custom-tailor the AI concepts, examples, and practice exercises throughout the site specifically to the things you love.
+                </p>
+                <p class="onboarding-welcome-text-he">
+                    ברוכים הבאים! כדי להפוך את מסע הלמידה הזה לרלוונטי ומעניין ככל האפשר, אנא שתפו את שמכם ו-5 תחומי העניין שלכם. אנו נתאים אישית את מושגי ה-AI, הדוגמאות והתרגילים המעשיים בכל האתר במיוחד לדברים שאתם אוהבים.
+                </p>
+                
+                <div class="onboarding-form">
+                    <div class="form-group">
+                        <label for="user-name">שם מלא / כינוי (Name):</label>
+                        <input type="text" id="user-name" class="input-text-standard" placeholder="הקלידו את שמכם...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="margin-top: 10px; color: var(--success-color);">חמישה תחומי עניין שונים (5 Areas of Interest):</label>
+                        <div class="interests-grid">
+                            <input type="text" class="interest-input input-text-standard" placeholder="תחום עניין 1 (לדוגמה: אקסל, כלבים)...">
+                            <input type="text" class="interest-input input-text-standard" placeholder="תחום עניין 2 (לדוגמה: לגו, סדרות טלוויזיה)...">
+                            <input type="text" class="interest-input input-text-standard" placeholder="תחום עניין 3 (לדוגמה: שוק ההון, מתכונים)...">
+                            <input type="text" class="interest-input input-text-standard" placeholder="תחום עניין 4 (לדוגמה: מוזיקה, פיתוח אתרים)...">
+                            <input type="text" class="interest-input input-text-standard" placeholder="תחום עניין 5 (לדוגמה: ספורט, צילום)...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="onboarding-error" class="onboarding-error-msg" style="display: none;"></div>
+            </div>
+            <div class="onboarding-footer">
+                <button id="btn-start-course" class="btn btn-primary">בנה לי תוכנית לימודים אישית (Start Learning)</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Script loading -->
     <script src="app.js"></script>
 </body>

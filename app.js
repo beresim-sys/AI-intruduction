@@ -1,243 +1,254 @@
-// AI for Builders: From Prompt to Production (בעברית) - Core Application Logic with External Tool Action Items
+// AI for Builders: From Prompt to Production - Core Application Logic
+// This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
-// 1. Data Store: Lesson Content and Action Item Settings
-const lessonsData = [
-    {
-        id: "lesson_1",
-        fileName: "lesson_1_prompt.md",
-        tabLabel: "lesson_1_prompt.md",
-        title: "שיעור 1: ניווט ב-Gemini ואמנות הפרומפט",
-        unlocked: true,
-        completed: false,
-        content: `
-<h1 class="lesson-h1">שיעור 1: ניווט ב-Gemini ואמנות הפרומפט</h1>
-<p class="lesson-p">ברוכים הבאים לצעד הראשון שלכם בעולם ה-AI! אם יש לכם רקע בסיסי בתכנות (משתנים, לולאות ולוגיקה), כתיבת פרומפט (Prompt) ל-AI תרגיש לכם טבעית לחלוטין. מדובר בהגדרת קלט לוגי ומובנה כדי לקבל פלט איכותי ומדויק.</p>
+// 1. Function to generate custom lesson content based on Name and 5 Interests
+function getDynamicLessons(name, interests) {
+    const i1 = interests[0];
+    const i2 = interests[1];
+    const i3 = interests[2];
+    const i4 = interests[3];
+    const i5 = interests[4];
+
+    return [
+        {
+            id: "lesson_1",
+            fileName: "lesson_1_prompt.md",
+            tabLabel: "lesson_1_prompt.md",
+            title: "שיעור 1: ניווט ב-Gemini ואמנות הפרומפט",
+            unlocked: true,
+            completed: false,
+            content: `
+<h1 class="lesson-h1">שלום ${name}! ברוכים הבאים לשיעור 1: ניווט ב-Gemini ואמנות הפרומפט</h1>
+<p class="lesson-p">ברוכים הבאים לצעד הראשון שלכם בעולם ה-AI! כמתכנתים עם רקע בסיסי בתכנות (משתנים, לולאות ולוגיקה), כתיבת פרומפט (Prompt) ל-AI תרגיש לכם טבעית לחלוטין. מדובר בהגדרת קלט לוגי ומובנה כדי לקבל פלט איכותי ומדויק.</p>
 
 <h2 class="lesson-h2">שליטה בממשק של Gemini</h2>
 <p class="lesson-p">לפני שנתחיל לכתוב פרומפטים, נלמד כיצד לנצל את כלי הממשק השונים בתוך Gemini:</p>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li><strong>כפתור הפלוס ('+'):</strong> מאפשר להעלות קבצים ותמונות לניתוח (למשל: העלאת קובץ CSV של נתוני מניות היסטוריים לניתוח מגמות, או תמונה של ערכת לגו שתרצו לזהות).</li>
+    <li><strong>כפתור הפלוס ('+'):</strong> מאפשר להעלות קבצים ותמונות לניתוח (למשל: העלאת מסמך או קובץ הקשור ל-<strong>${i1}</strong> כדי לנתח מגמות או מידע).</li>
     <li><strong>קלט קולי (Voice Input - המיקרופון):</strong> מאפשר לכם להכתיב את הפרומפטים בקולכם לצורך סיעור מוחות מהיר, טבעי וללא שימוש בידיים.</li>
     <li><strong>בחירת מנוע ה-AI שלכם (Models):</strong>
-        <br>&bull; <em>Gemini Flash:</em> מנוע מהיר במיוחד, אידיאלי למשימות יומיומיות בנפח גבוה (כמו המלצות צפייה בסדרות טלוויזיה או תרגום מהיר).
-        <br>&bull; <em>Gemini Flash-8B (Light):</em> מנוע קל ומהיר להפליא, מיועד לזמני תגובה (latency) קצרים במיוחד במשימות טקסט בסיסיות.
-        <br>&bull; <em>Gemini Pro:</em> מנוע הדגל לפתרון בעיות מורכבות, מצוין לחשיבה לוגית עמוקה, כתיבת קוד מתקדם (כמו כתיבת סקריפט אקסל VBA מורכב) וניתוח מעמיק.</li>
+        <br>&bull; <em>Gemini Flash:</em> מנוע מהיר במיוחד, אידיאלי למשימות יומיומיות בנפח גבוה.
+        <br>&bull; <em>Gemini Flash-8B (Light):</em> מנוע קל ומהיר להפליא, מיועד לזמני תגובה (latency) קצרים במיוחד.
+        <br>&bull; <em>Gemini Pro:</em> מנוע הדגל לפתרון בעיות מורכבות, מצוין לחשיבה לוגית עמוקה, כתיבת קוד מתקדם וניתוח מעמיק.</li>
 </ul>
 
 <h2 class="lesson-h2">יכולות הליבה של כלי ה-AI היומיומיים</h2>
-<p class="lesson-p">מודלי שפה ו-AI מודרניים מצטיינים במגוון יכולות מפתח:</p>
+<p class="lesson-p">מודלי שפה ו-AI מודרניים מצטיינים במגוון יכולות מפתח, אותן ניתן להמחיש באמצעות תחומי העניין שלך:</p>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li><strong>יצירת תמונות (Image Generation):</strong> הפקת ייצוגים חזותיים מתיאור טקסטואלי (למשל: הנחיית Midjourney או DALL-E לייצר תמונות).</li>
-    <li><strong>תכנון ופירוק משימות (Task Planning & Breakdown):</strong> פירוק תהליכים מורכבים לשלבים מעשיים ברורים (למשל: פירוק בניית מחשבון ריבית באקסל).</li>
-    <li><strong>תרגום ולוקליזציה (Translation & Localization):</strong> התאמת טקסטים בין שפות שונות תוך שמירה על הקשר וטון מקצועי (למשל: תרגום כתוביות לטלוויזיה).</li>
-    <li><strong>תמצות וסיכום (Summarization):</strong> זיקוק כמויות מידע גדולות למשפטי מפתח תמציתיים (למשל: תמצות דוח מניות שנתי).</li>
-    <li><strong>סיעור מוחות ורעיונאות (Ideation & Brainstorming):</strong> העלאת רעיונות יצירתיים לפרויקטים, שאלות טריוויה וכדומה.</li>
+    <li><strong>יצירת תמונות (Image Generation):</strong> הפקת ייצוגים חזותיים מתיאור טקסטואלי. למשל, ליצור תמונה יצירתית ומרהיבה של <strong>${i5}</strong>.</li>
+    <li><strong>תכנון ופירוק משימות (Task Planning & Breakdown):</strong> פירוק תהליכים מורכבים לשלבים מעשיים ברורים. למשל, תכנון פרויקט או מטרה מורכבת בתחום <strong>${i1}</strong>.</li>
+    <li><strong>תרגום ולוקליזציה (Translation & Localization):</strong> התאמת טקסטים בין שפות שונות תוך שמירה על הקשר וטון. למשל, תרגום מדריך או מידע על <strong>${i2}</strong> לשפה אחרת.</li>
+    <li><strong>תמצות וסיכום (Summarization):</strong> זיקוק כמויות מידע גדולות למשפטי מפתח תמציתיים. למשל, סיכום דוחות ומאמרים ארוכים בנושא <strong>${i3}</strong>.</li>
+    <li><strong>סיעור מוחות ורעיונאות (Ideation & Brainstorming):</strong> העלאת רעיונות יצירתיים. למשל, רעיונות לשילוב מוצלח של <strong>${i4}</strong> בפעילות יומיומית.</li>
 </ul>
 
 <div class="analogy-box">
-    <strong>אנלוגיית הבונה:</strong> כתיבת פרומפט היא כמו כתיבת <strong>מאקרו מורכב באקסל (Excel Macro)</strong> או הכנת <strong>הוראות לגו (Lego Manual)</strong>. אם תפחיתו פרמטר אחד או שתדלגו על שלב לוגי, המאקרו ייכשל או שהלגו יקרוס.
+    <strong>[אנלוגיה המבוססת על תחומי העניין שלך]</strong> כתיבת פרומפט היא כמו תכנון מערכת המשלבת את עקרונות הניהול של <strong>${i1}</strong> או הרכבת פאזל מורכב של <strong>${i2}</strong>. אם תפחיתו פרמטר אחד או שתדלגו על שלב לוגי, התוצאה לא תהיה שלמה.
 </div>
 
 <h2 class="lesson-h2">עקרונות כתיבת הפרומפט ותבנית ה-PROMPT</h2>
 <p class="lesson-p">כדי לרתום את יכולות הליבה הללו בצורה הטובה ביותר, נשתמש בארבעת עמודי התווך של הפרומפט:</p>
 <ul style="margin-right: 20px; margin-bottom: 12px; line-height: 1.6;">
-    <li><strong>Role (תפקיד המודל):</strong> הגדרת ה"אישיות" וההקשר המקצועי של ה-AI (למשל: <em>"פעל כמתכנת לגו מומחה"</em>).</li>
-    <li><strong>Task (משימה):</strong> מה בדיוק ה-AI צריך לבצע (למשל: <em>"חשב את מספר הלבנים הנדרש"</em>).</li>
-    <li><strong>Context (הקשר ונתוני רקע):</strong> נתוני הרקע והחוקים (למשל: <em>"עבור מגדל בגובה מטר"</em>).</li>
+    <li><strong>Role (תפקיד המודל):</strong> הגדרת ה"אישיות" וההקשר המקצועי של ה-AI (למשל: <em>"פעל כמעצב מומחה בתחום ${i5}"</em>).</li>
+    <li><strong>Task (משימה):</strong> מה בדיוק ה-AI צריך לבצע (למשל: <em>"נסח שלבים לתחילת עבודה"</em>).</li>
+    <li><strong>Context (הקשר ונתוני רקע):</strong> נתוני הרקע והחוקים (למשל: <em>"עבור מתחילים ללא ניסיון קודם ב-${i1}"</em>).</li>
     <li><strong>Format (פורמט פלט):</strong> מבנה הפלט הרצוי (למשל: <em>"הצג בטבלה או ברשימת נקודות"</em>).</li>
 </ul>
 
 <h2 class="lesson-h2">הזיות מודל (Hallucinations) והטיות מידע (Biases)</h2>
 <div class="tech-box">
-    <strong>אנלוגיית הלגו הפגום:</strong>
-    הזיית מודל היא כמו חוברת לגו שבה אחד השלבים מורה לך לחבר קובייה כחולה ישירות לאוויר בלי שום תמיכה מתחתיה.
-    <strong>הטיית מידע (Data Bias)</strong> דומה למצב שבו חברת לגו יצרה רק לבנים אדומות במשך שנים, ולכן ה-AI בטוח שלא קיימים צבעים אחרים בעולם.
+    <strong>[דוגמת ההזיה וההטיה]</strong>
+    הזיית מודל היא כמו לקבל תוכנית עבודה על <strong>${i3}</strong> שבה שלב אחד מורה לך לבצע פעולה בלתי אפשרית פיזית או לוגית.
+    <strong>הטיית מידע (Data Bias)</strong> דומה למצב שבו ה-AI נחשף רק למידע מסוים על <strong>${i4}</strong>, ולכן הוא בטוח שכל שאר הגישות לנושא אינן נכונות.
 </div>
-        `,
-        actionType: "multi_capabilities",
-        actionLabel: "אתגר הליבה (The AI Gauntlet)",
-        placeholderText: "",
-        tools: [
-            { name: "פתח את Gemini", url: "https://gemini.google.com" }
-        ],
-        instructionText: `<strong>משימת אתגר הליבה (The AI Gauntlet):</strong><br>
-        פתחו את Gemini בלשונית חדשה ועברו את רצף משימות יכולות הליבה וממשק המערכת הבא (השתמשו במבנה ה-PROMPT):<br><br>
-        1. <strong>בדיקת כפתור ה-'+':</strong> לחצו על כפתור הפלוס, העלו תמונת מסך של גיליון אקסל או תמונה של כלב, ובקשו מ-Gemini Pro לנתח ולתאר אותה.<br>
-        2. <strong>בדיקת קלט קולי:</strong> לחצו על המיקרופון והכתיבו בקשה ל-Gemini Flash להעלות 3 רעיונות יצירתיים להצגת אוסף לגו.<br>
-        3. <strong>יצירת תמונות:</strong> בקשו מה-AI ליצור תמונה של כלב בשם טס (Tess) צופה במסך טלוויזיה המציג טיקר מניות פיננסי.<br>
-        4. <strong>תכנון משימות:</strong> בקשו תוכנית שלב-אחר-שלב לבניית גיליון אקסל המחשב ריבית דריבית עבור הלוואה.<br>
-        5. <strong>תרגום ולוקליזציה:</strong> הדביקו ביקורת על סדרת טלוויזיה ובקשו לתרגם אותה ליפנית תוך שמירה על טון נלהב.`,
-        validate: (input) => {
-            if (!input || typeof input !== "object") return false;
-            return input.plusButton && input.plusButton.trim().length > 15 &&
-                   input.voiceInput && input.voiceInput.trim().length > 15 &&
-                   input.imageGen && input.imageGen.trim().length > 8 &&
-                   input.excelPlan && input.excelPlan.trim().length > 15 &&
-                   input.tvTranslation && input.tvTranslation.trim().length > 15;
+            `,
+            actionType: "multi_capabilities",
+            actionLabel: "אתגר הליבה (The AI Gauntlet)",
+            placeholderText: "",
+            tools: [
+                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
+            ],
+            instructionText: `<strong>משימת אתגר הליבה (The AI Gauntlet):</strong><br>
+            פתחו את Gemini בלשונית חדשה ועברו את רצף משימות יכולות הליבה הבא (השתמשו במבנה ה-PROMPT):<br><br>
+            1. <strong>בדיקת כפתור ה-'+':</strong> לחצו על כפתור הפלוס, העלו קובץ או תמונה הקשורים ל-<strong>${i2}</strong>, ובקשו מ-Gemini Pro לנתח ולתאר אותה.<br>
+            2. <strong>בדיקת קלט קולי:</strong> לחצו על המיקרופון והכתיבו בקשה ל-Gemini Flash לסער מוחות להעלאת רעיונות המשלבים בין <strong>${i3}</strong> לבין <strong>${i4}</strong>.<br>
+            3. <strong>יצירת תמונות:</strong> בקשו מה-AI ליצור תמונה יצירתית ומקורית המבוססת על <strong>${i5}</strong>.<br>
+            4. <strong>תכנון משימות:</strong> בקשו מ-Gemini תוכנית שלב-אחר-שלב כדי להשיג יעד או לפתור בעיה ב-<strong>${i1}</strong>.<br>
+            5. <strong>תרגום ולוקליזציה:</strong> הדביקו או כתבו טקסט קצר על <strong>${i2}</strong> ובקשו לתרגם אותו לשפה אחרת (לדוגמה: יפנית, ספרדית או אנגלית).`,
+            validate: (input) => {
+                if (!input || typeof input !== "object") return false;
+                return input.plusButton && input.plusButton.trim().length > 10 &&
+                       input.voiceInput && input.voiceInput.trim().length > 10 &&
+                       input.imageGen && input.imageGen.trim().length > 5 &&
+                       input.excelPlan && input.excelPlan.trim().length > 10 &&
+                       input.tvTranslation && input.tvTranslation.trim().length > 10;
+            },
+            errorMessage: "חלק מנושאי אתגר הליבה (AI Gauntlet) לא הוזנו או קצרים מדי. אנא מלאו את כל 5 שדות המשימה כנדרש!"
         },
-        errorMessage: "חלק מנושאי אתגר הליבה (AI Gauntlet) לא הוזנו או קצרים מדי. אנא מלאו את כל 5 שדות המשימה כנדרש!"
-    },
-    {
-        id: "lesson_2",
-        fileName: "lesson_2_canvas.js",
-        tabLabel: "lesson_2_canvas.js",
-        title: "שיעור 2: תכנות יצירתי עם Gemini Canvas",
-        unlocked: false,
-        completed: false,
-        content: `
+        {
+            id: "lesson_2",
+            fileName: "lesson_2_canvas.js",
+            tabLabel: "lesson_2_canvas.js",
+            title: "שיעור 2: תכנות יצירתי עם Gemini Canvas",
+            unlocked: false,
+            completed: false,
+            content: `
 <h1 class="lesson-h1">שיעור 2: תכנות יצירתי עם Gemini Canvas</h1>
 <p class="lesson-p">כשאתם מתכנתים פרויקט אמיתי, חלון צ'אט רגיל הוא פשוט לא מספיק. אתם לא רוצים להעתיק ולהדביק את כל הקוד מחדש בכל פעם שאתם עושים שינוי קטן. כאן נכנס לתמונה ה-<strong>Gemini Canvas</strong>.</p>
 
 <div class="analogy-box">
-    <strong>👥 אנלוגיית הבונה:</strong> Gemini Canvas הוא כמו <strong>שותף לתכנות (Pair Programmer)</strong> שיושב לצידכם. במקום לשלוח לכם פלט ארוך ולבקש מכם להעתיק אותו, הוא עובד איתכם על אותו קובץ קוד, מסמן באדום קוד שנמחק ובסגנון ירוק קוד חדש שנוסף (Diff View), ממש כמו ב-Git.
+    <strong>[שותף לקוד - Gemini Canvas]</strong> Gemini Canvas הוא כמו <strong>שותף לתכנות (Pair Programmer)</strong> שיושב לצידכם. במקום לשלוח לכם פלט ארוך ולבקש מכם להעתיק אותו, הוא עובד איתכם על אותו קובץ קוד, מסמן קוד שנמחק או נוסף, ומאפשר עריכה ממוקדת של פונקציות.
 </div>
 
-<h2 class="lesson-h2">מה אפשר לבנות עם Canvas?</h2>
-<p class="lesson-p">Canvas מבין את מבנה הקובץ כולו ויכול לעדכן פונקציות ספציפיות בלי לפגוע בשאר הקוד. דוגמאות לשימושים:</p>
+<h2 class="lesson-h2">שימוש ב-Canvas לתכנות ייעודי</h2>
+<p class="lesson-p">Canvas מבין את מבנה הקובץ כולו ויכול לעדכן פונקציות ספציפיות בלי לפגוע בשאר הקוד. במהלך השיעור נשתמש ב-<strong>${i3}</strong> כדוגמה מרכזית לבניית קוד, עיצוב או לוגיקה מותאמת אישית.</p>
 <ul style="margin-right: 20px; margin-bottom: 12px; line-height: 1.6;">
-    <li>יצירת דף נחיתה לעסק של הולכת כלבים ועדכון עיצובי ממוקד שלו.</li>
-    <li>פיתוח לוח בקרה (Dashboard) למעקב אחר תיק מניות.</li>
-    <li>בניית אפליקציית מעקב אחר אוספי לגו.</li>
-    <li>בניית חידון המלצות טלוויזיה המבוסס על משתנים מותאמים אישית.</li>
+    <li>נבקש מה-AI לכתוב סקריפט או דף שמדגים רעיון סביב <strong>${i3}</strong>.</li>
+    <li>נבצע שינויים מונחי פרומפט בקוד כדי להוסיף רכיבים מורכבים יותר.</li>
 </ul>
-        `,
-        actionType: "code",
-        actionLabel: "הדביקו את קוד ה-HTML/CSS הסופי שלכם כאן כדי לפתוח את שיעור 3:",
-        placeholderText: "<!DOCTYPE html>\n<html>\n<head>...",
-        tools: [
-            { name: "פתח את Gemini (ודא הפעלת Canvas)", url: "https://gemini.google.com" }
-        ],
-        instructionText: `<strong>משימה מעשית:</strong><br>
-        1. פתחו את Gemini ועברו למצב **Canvas** (או בקשו ממנו לפתוח קובץ קוד ייעודי בתוך חלון ה-Canvas).<br>
-        2. בקשו ממנו ליצור קוד HTML/CSS של דף נחיתה קטן.<br>
-        3. <strong>בחרו נושא:</strong> אתר שירות הולכת כלבים, מערכת מעקב אוסף לגו, או דף חידון טלוויזיה.<br>
-        4. בצעו איתו איטרציה (בקשו שינוי סגנון או הוספת כפתור ב-Canvas) והעתיקו את קוד ה-HTML/CSS הסופי לכאן.`,
-        validate: (input) => {
-            if (!input) return false;
-            const clean = input.toLowerCase();
-            return clean.includes("<html") || clean.includes("<div") || clean.includes("<body") || clean.includes("<style");
+            `,
+            actionType: "code",
+            actionLabel: `הדביקו את קוד ה-HTML/CSS הסופי של דף הנחיתה שלכם עבור ${i4} או ${i5} כאן:`,
+            placeholderText: "<!DOCTYPE html>\n<html>\n<head>...",
+            tools: [
+                { name: "פתח את Gemini (Canvas)", url: "https://gemini.google.com" }
+            ],
+            instructionText: `<strong>משימה מעשית ב-Gemini Canvas:</strong><br>
+            1. פתחו את Gemini וודאו שאתם משתמשים בממשק ה-**Canvas** (או בקשו ממנו לכתוב קוד בקובץ צדדי).<br>
+            2. בקשו ממנו ליצור קוד HTML/CSS/JS מלא עבור דף נחיתה או פרויקט קטן המוקדש ל-<strong>${i4}</strong> או ל-<strong>${i5}</strong>.<br>
+            3. בצעו איתו לפחות שינוי אחד (איטרציה) כדי לעדכן את העיצוב או להוסיף רכיב ב-Canvas.<br>
+            4. העתיקו והדביקו את קוד המקור הסופי של ה-HTML/CSS כאן למטה.`,
+            validate: (input) => {
+                if (!input) return false;
+                const clean = input.toLowerCase();
+                return clean.includes("<html") || clean.includes("<div") || clean.includes("<body") || clean.includes("<style");
+            },
+            errorMessage: "הקוד שהוזן אינו קוד HTML/CSS תקין! ודאו שהעתקתם את קוד המקור המלא הכולל תגיות HTML או CSS."
         },
-        errorMessage: "הקוד שהוזן אינו קוד HTML/CSS תקין! ודאו שהעתקתם את קוד המקור המלא הכולל תגיות HTML או CSS."
-    },
-    {
-        id: "lesson_3",
-        fileName: "lesson_3_deploy.yaml",
-        tabLabel: "lesson_3_deploy.yaml",
-        title: "שיעור 3: צינור הפריסה (GitHub, Vercel ודומיינים)",
-        unlocked: false,
-        completed: false,
-        content: `
+        {
+            id: "lesson_3",
+            fileName: "lesson_3_deploy.yaml",
+            tabLabel: "lesson_3_deploy.yaml",
+            title: "שיעור 3: צינור הפריסה (GitHub, Vercel ודומיינים)",
+            unlocked: false,
+            completed: false,
+            content: `
 <h1 class="lesson-h1">שיעור 3: צינור הפריסה (GitHub, Vercel ודומיינים)</h1>
-<p class="lesson-p">כתבתם קוד מעולה עם ה-AI, הוא רץ על המחשב המקומי שלכם... אבל איך גורמים לעולם לראות אותו? איך הופכים קובץ במחשב לקישור אינטרנט חי (Live URL) שאפשר לשלוח לחברים?</p>
+<p class="lesson-p">כתבתם קוד מעולה עם ה-AI, הוא רץ על המחשב המקומי שלכם... אבל איך גורמים לעולם לראות אותו? איך הופכים קובץ במחשב לקישור אינטרנט חי (Live URL)?</p>
 
 <h2 class="lesson-h2">חלוקת התפקידים בצינור הפריסה (Deployment Pipeline)</h2>
 <div class="tech-box">
-    <strong>📦 GitHub (בקרת גרסאות ומחסן קוד):</strong> מאחסן את הקוד שלכם בענן, עוקב אחר כל שינוי שביצעתם (קוממיטים) ומאפשר לכם לחזור אחורה בזמן אם משהו נשבר.
+    <strong>📦 GitHub (בקרת גרסאות ומחסן קוד):</strong> מאחסן את הקוד שלכם בענן, עוקב אחר כל שינוי שביצעתם ומאפשר לכם לנהל גרסאות של הפרויקט.
     <br><br>
-    <strong>🚀 Vercel (אחסון ופריסה מהירה):</strong> שירות ענן שמתחבר ל-GitHub שלכם. ברגע שהוא מזהה שינוי בקוד, הוא בונה אותו מחדש ומפיץ אותו לשרתים בכל העולם עם דומיין ייחודי (למשל: <code>your-app.vercel.app</code>).
+    <strong>🚀 Vercel (אחסון ופריסה מהירה):</strong> שירות ענן שמתחבר ל-GitHub שלכם. ברגע שהוא מזהה שינוי בקוד, הוא בונה אותו מחדש ומפיץ אותו לשרתים בכל העולם עם דומיין ייחודי.
 </div>
 
 <div class="analogy-box">
-    <strong>🚚 אנלוגיית הבונה:</strong> תחשבו על הקוד שלכם כעל <strong>חבילת לגו במפעל</strong>. GitHub הוא המחסן שבו שומרים ומקטלגים את החבילות, ו-Vercel הוא משאית ההובלה שבונה את הלגו ומביאה אותו ישירות לבית של הלקוח.
+    <strong>[אנלוגיית המחסן וההפצה]</strong> תחשבו על הקוד שלכם כעל מוצר או פרויקט בתחום <strong>${i4}</strong> או <strong>${i5}</strong>. GitHub הוא המחסן הראשי שבו נשמרות הגרסאות השונות, ו-Vercel הוא מערך ההפצה והשילוח שמנגיש את המוצר הזה ללקוחות בכל העולם באופן מיידי.
 </div>
-        `,
-        actionType: "url",
-        actionLabel: "הזינו את קישור הדומיין הפעיל שלכם מ-Vercel כאן כדי להמשיך:",
-        placeholderText: "https://your-project.vercel.app",
-        tools: [
-            { name: "פתח את GitHub", url: "https://github.com" },
-            { name: "פתח את Vercel", url: "https://vercel.com" }
-        ],
-        instructionText: `<strong>משימה מעשית:</strong><br>
-        1. פתחו את **GitHub** וצרו Repository (מחסן) חדש וציבורי.<br>
-        2. העלו את הקובץ (או הקבצים) שנוצרו בשיעור 2 לתוך המחסן החדש.<br>
-        3. פתחו את **Vercel**, חברו את חשבון ה-GitHub שלכם, ובצעו פריסה (Deploy) למחסן שיצרתם.<br>
-        4. העתיקו והדביקו את כתובת האתר החי (Vercel URL) שנוצר עבורכם כאן למטה.`,
-        validate: (input) => {
-            if (!input) return false;
-            const clean = input.trim().toLowerCase();
-            return (clean.startsWith("http://") || clean.startsWith("https://")) && 
-                   (clean.includes(".vercel.app") || clean.includes(".com") || clean.includes(".net") || clean.includes(".dev"));
+            `,
+            actionType: "url",
+            actionLabel: "הזינו את קישור הדומיין הפעיל שלכם מ-Vercel כאן:",
+            placeholderText: "https://your-project.vercel.app",
+            tools: [
+                { name: "פתח את GitHub", url: "https://github.com" },
+                { name: "פתח את Vercel", url: "https://vercel.com" }
+            ],
+            instructionText: `<strong>משימה מעשית לפריסת האתר:</strong><br>
+            1. פתחו את **GitHub** וצרו Repository (מחסן) חדש וציבורי.<br>
+            2. העלו את הקוד של דף הנחיתה בנושא <strong>${i4}</strong> או <strong>${i5}</strong> (משיעור 2) לתוך המחסן.<br>
+            3. פתחו את **Vercel**, חברו את מחסן ה-GitHub שלכם, ובצעו פריסה (Deploy) לקוד.<br>
+            4. העתיקו והדביקו את כתובת האתר החי (Vercel URL) שנוצר עבורכם כאן למטה.`,
+            validate: (input) => {
+                if (!input) return false;
+                const clean = input.trim().toLowerCase();
+                return (clean.startsWith("http://") || clean.startsWith("https://")) && 
+                       (clean.includes(".vercel.app") || clean.includes(".com") || clean.includes(".net") || clean.includes(".dev") || clean.includes(".html"));
+            },
+            errorMessage: "כתובת ה-URL אינה תקינה! ודאו שהזנתם כתובת מלאה המתחילה ב-http:// או https:// ושמפנה לדומיין פעיל."
         },
-        errorMessage: "כתובת ה-URL אינה תקינה! ודאו שהזנתם כתובת מלאה המתחילה ב-http:// או https:// ושמפנה לדומיין פעיל."
-    },
-    {
-        id: "lesson_4",
-        fileName: "lesson_4_antigravity.json",
-        tabLabel: "lesson_4_antigravity.json",
-        title: "שיעור 4: אוטומציה עם Antigravity",
-        unlocked: false,
-        completed: false,
-        content: `
+        {
+            id: "lesson_4",
+            fileName: "lesson_4_antigravity.json",
+            tabLabel: "lesson_4_antigravity.json",
+            title: "שיעור 4: אוטומציה עם Antigravity",
+            unlocked: false,
+            completed: false,
+            content: `
 <h1 class="lesson-h1">שיעור 4: אוטומציה עם Antigravity</h1>
-<p class="lesson-p">בשיעור 3 ראינו את הצינור הידני: כתיבת קוד ב-AI, העתקה, דחיפה ל-GitHub, המתנה לבנייה ב-Vercel. זה עובד, אבל זה לוקח זמן. מה אם יכולנו לבצע שינויים ישירות דרך הוראות ה-AI שלנו והאתר ישתנה <strong>בזמן אמת</strong>?</p>
+<p class="lesson-p">בשיעור 3 ראינו את הצינור הידני: כתיבת קוד ב-AI, העתקה, דחיפה ל-GitHub, המתנה לבנייה ב-Vercel. מה אם יכולנו לבצע שינויים ישירות דרך הוראות ה-AI שלנו והאתר ישתנה <strong>בזמן אמת</strong> ללא מאמץ ידני?</p>
 
 <h2 class="lesson-h2">הכירו את Antigravity Auto-Sync</h2>
-<p class="lesson-p">מערכת <strong>Antigravity</strong> מחברת את חלון העבודה של ה-AI ישירות לסביבת הפריסה שלכם. במקום לבצע העתק-הדבק ידני של קוד, השינויים שלכם מסונכרנים אוטומטית לענן.</p>
+<p class="lesson-p">מערכת <strong>Antigravity</strong> מחברת את חלון העבודה של ה-AI שלכם ישירות לסביבת הפריסה שלכם. השינויים שלכם מסונכרנים אוטומטית לענן ללא צורך בהעתק-הדבק ידני.</p>
 
 <div class="analogy-box">
-    <strong>📈 אנלוגיית שוק ההון:</strong> ההבדל בין השיטה הידנית ל-Antigravity הוא כמו ההבדל בין <strong>התקשרות טלפונית לברוקר</strong> כדי שיקנה מניה, לבין <strong>מערכת מסחר אלקטרונית מהירה</strong> שמבצעת פקודות בשבריר שנייה על סמך נתונים חיים.
+    <strong>[אנלוגיית אוטומציה]</strong> ההבדל בין השיטה הידנית ל-Antigravity הוא כמו ההבדל בין עדכון ידני של לוח מעקב עבור <strong>${i1}</strong> לבין מערכת אוטומטית שמקבלת עדכוני מידע חיים ומעדכנת את הנתונים באופן מיידי ללא מגע יד אדם.
 </div>
-        `,
-        actionType: "checkbox",
-        actionLabel: "אשרו את ביצוע האינטגרציה הבאה:",
-        placeholderText: "",
-        tools: [
-            { name: "פתח את Antigravity", url: "https://antigravity.dev" }
-        ],
-        instructionText: `<strong>משימה מעשית:</strong><br>
-        1. פתחו את פאנל העבודה של **Antigravity**.<br>
-        2. צרו פרויקט חדש המבוסס על תחומי עניין (למשל: **מעקב סדרות צפייה בטלוויזיה**).<br>
-        3. חברו את חשבונות ה-GitHub וה-Vercel שלכם לפרויקט.<br>
-        4. בצעו שינוי הנחיה ב-Antigravity (למשל, הוספת עמודת מעקב שעות) וראו כיצד השינוי מסתנכרן אוטומטית (Auto-Sync) לקישור ה-Live שלכם.<br>
-        5. סמנו את תיבת הסימון למטה לאישור השלמת השלב.`,
-        validate: (input) => {
-            return input === true;
+            `,
+            actionType: "checkbox",
+            actionLabel: "אשרו את ביצוע האינטגרציה והסינכרון האוטומטי:",
+            placeholderText: "",
+            tools: [
+                { name: "פתח את Antigravity", url: "https://antigravity.dev" }
+            ],
+            instructionText: `<strong>משימה מעשית באוטומציה:</strong><br>
+            1. פתחו את פאנל העבודה של **Antigravity**.<br>
+            2. צרו פרויקט חדש שמטרתו לעקוב אחר עדכונים או מידע עבור <strong>${i1}</strong>.<br>
+            3. חברו את חשבונות ה-GitHub וה-Vercel שלכם לפרויקט.<br>
+            4. בצעו שינוי פרומפט כלשהו בפאנל וראו כיצד השינויים מסונכרנים אוטומטית (Auto-Sync) לקישור ה-Live שלכם.<br>
+            5. סמנו את תיבת הסימון למטה לאישור השלמת השלב.`,
+            validate: (input) => {
+                return input === true;
+            },
+            errorMessage: "אנא סמנו את תיבת האישור כדי לאשר שהשלמתם את ההובלה האוטומטית ב-Antigravity."
         },
-        errorMessage: "אנא סמנו את תיבת האישור כדי לאשר שהשלמתם את ההובלה האוטומטית ב-Antigravity."
-    },
-    {
-        id: "lesson_5",
-        fileName: "lesson_5_agents.py",
-        tabLabel: "lesson_5_agents.py",
-        title: "שיעור 5: בינה ואוטומציה (סוכנים וכישורים)",
-        unlocked: false,
-        completed: false,
-        content: `
+        {
+            id: "lesson_5",
+            fileName: "lesson_5_agents.py",
+            tabLabel: "lesson_5_agents.py",
+            title: "שיעור 5: בינה ואוטומציה (סוכנים וכישורים)",
+            unlocked: false,
+            completed: false,
+            content: `
 <h1 class="lesson-h1">שיעור 5: בינה ואוטומציה (סוכנים וכישורים)</h1>
 <p class="lesson-p">עד עכשיו השתמשנו ב-AI כדי לכתוב קוד או לעצב אתרים. אבל הצעד המלהיב באמת הוא לבנות מערכות שפועלות <strong>בעצמן</strong> - מערכות היודעות לקבל החלטות ולבצע משימות. אלו הם <strong>סוכני AI (Agents)</strong>.</p>
 
 <h2 class="lesson-h2">המוח והידיים: סוכנים (Agents) מול כישורים (Skills)</h2>
 <p class="lesson-p">בסביבת Antigravity, אנו מחלקים את הארכיטקטורה לשני חלקים:</p>
 <ul style="margin-right: 20px; margin-bottom: 12px; line-height: 1.6;">
-    <li><strong>סוכן (Agent - המוח):</strong> מודל ה-AI שמקבל החלטות לוגיות על סמך הנחיות שנתתם לו (למשל: <em>"אם מניה יורדת מתחת למחיר X, החלט האם לקנות"</em>).</li>
-    <li><strong>כישורים (Skills - הידיים):</strong> פונקציות קוד ספציפיות המאפשרות לסוכן לתקשר עם העולם החיצון (למשל: חיפוש בגוגל, קריאת גיליון Excel, שליחת התראה, או בדיקת שוק מניות חי).</li>
+    <li><strong>סוכן (Agent - המוח):</strong> מודל ה-AI שמקבל החלטות לוגיות על סמך הנחיות שנתתם לו.</li>
+    <li><strong>כישורים (Skills - הידיים):</strong> פונקציות קוד ספציפיות המאפשרות לסוכן לתקשר עם העולם החיצון (כמו חיפוש באינטרנט, קריאת קבצים, שליחת מיילים, או קריאת נתוני API).</li>
 </ul>
 
 <div class="analogy-box">
-    <strong>🧩 אנלוגיית הלגו:</strong>
-    הסוכן הוא ה-<strong>Architect (המתכנן הראשי)</strong> שיודע מה הוא רוצה לבנות. הכישורים הם ה-<strong>Lego Sets (ערכות הלגו השונות)</strong> העומדות לרשותו - גלגלים, מנועים ומפרקים - המאפשרות לו להפוך את התוכנית שלו למכונית נוסעת באמת.
+    <strong>[אנלוגיית התפקידים]</strong>
+    הסוכן הוא כמו מנהל פרויקט או מתכנן בתחום <strong>${i2}</strong> או <strong>${i3}</strong> שיודע מה הוא רוצה להשיג. הכישורים הם הכלים המקצועיים העומדים לרשותו המאפשרות לו לבצע את העבודה בפועל בצורה מושלמת.
 </div>
-        `,
-        actionType: "textarea",
-        actionLabel: "תארו בקצרה את הסוכן והכישור שיצרתם כדי להשלים את הקורס!",
-        placeholderText: "לדוגמה: יצרתי סוכן עוזר מסחר המשתמש בכישור Web Search כדי לבדוק כותרות על מניית טסלה...",
-        tools: [
-            { name: "פתח את סביבת הסוכנים ב-Antigravity", url: "https://antigravity.dev" }
-        ],
-        instructionText: `<strong>משימה מעשית:</strong><br>
-        1. נווטו למדור ה-**Agents** בתוך מרחב העבודה שלכם ב-Antigravity.<br>
-        2. הגדירו סוכן חדש והצמידו לו כישור (Skill) ספציפי.<br>
-        3. **לדוגמה:** סוכן פיננסי המחובר לכישור **Web Search Skill** או סוכן לניהול מלאי לגו המחובר למחשבון נוסחאות אקסל.<br>
-        4. רשמו תיאור קצר בן משפט או שניים של הסוכן והכישור ששילבתם בקופסת הטקסט מטה.`,
-        validate: (input) => {
-            return input && input.trim().length > 20;
-        },
-        errorMessage: "התיאור קצר מדי! אנא פרטו קצת יותר (לפחות 20 תווים) על סוכן ה-AI ועל ה-Skill שחיברתם לו."
-    }
-];
+            `,
+            actionType: "textarea",
+            actionLabel: "תארו בקצרה את הסוכן והכישור שיצרתם כדי להשלים את הקורס!",
+            placeholderText: `לדוגמה: יצרתי סוכן עבור ${i2} המשתמש בכישור Web Search כדי להביא חדשות...`,
+            tools: [
+                { name: "פתח את סביבת הסוכנים ב-Antigravity", url: "https://antigravity.dev" }
+            ],
+            instructionText: `<strong>משימה מעשית בסוכני AI וכישורים:</strong><br>
+            1. נווטו למדור ה-**Agents** בתוך מרחב העבודה שלכם ב-Antigravity.<br>
+            2. הגדירו סוכן חדש והצמידו לו כישור (Skill) ספציפי (למשל: כישור חיפוש ברשת **Web Search**).<br>
+            3. המטרה של הסוכן היא למשוך באופן אוטומטי את החדשות, הנתונים או המגמות העדכניות ביותר לגבי <strong>${i2}</strong> או <strong>${i3}</strong> לתוך האתר שלכם.<br>
+            4. רשמו תיאור קצר בן משפט או שניים של הסוכן והכישור ששילבתם בקופסת הטקסט מטה.`,
+            validate: (input) => {
+                return input && input.trim().length > 15;
+            },
+            errorMessage: "התיאור קצר מדי! אנא פרטו קצת יותר (לפחות 15 תווים) על סוכן ה-AI ועל ה-Skill שחיברתם לו."
+        }
+    ];
+}
 
 // 2. Global State Variables
+let userName = "";
+let userInterests = [];
+let lessonsData = [];
+
 let currentLessonIndex = 0;
 let activeTabs = ["lesson_1_prompt.md"];
 let activeTab = "lesson_1_prompt.md";
@@ -260,15 +271,34 @@ let userSubmissions = {
 
 // 3. Document Elements & Initialization
 document.addEventListener("DOMContentLoaded", () => {
-    initApp();
+    const savedName = localStorage.getItem("user_name");
+    const savedInterests = localStorage.getItem("user_interests");
+    
+    bindGlobalListeners();
+    
+    if (savedName && savedInterests) {
+        userName = savedName;
+        userInterests = JSON.parse(savedInterests);
+        lessonsData = getDynamicLessons(userName, userInterests);
+        
+        // Hide onboarding overlay immediately
+        const overlay = document.getElementById("onboarding-overlay");
+        if (overlay) overlay.style.display = "none";
+        
+        startApp();
+    } else {
+        // Show onboarding overlay
+        const overlay = document.getElementById("onboarding-overlay");
+        if (overlay) {
+            overlay.style.display = "flex";
+            overlay.style.opacity = "1";
+        }
+        
+        document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
+    }
 });
 
-function initApp() {
-    renderSidebarLessons();
-    renderTabs();
-    loadLesson(currentLessonIndex);
-    updateProgressRing();
-    
+function bindGlobalListeners() {
     // Global Action Buttons
     document.getElementById("btn-run-code").addEventListener("click", handleVerifyTask);
     document.getElementById("btn-reset-sandbox").addEventListener("click", handleResetInput);
@@ -279,13 +309,79 @@ function initApp() {
     
     // Activity bar settings click
     document.getElementById("btn-settings").addEventListener("click", () => {
-        alert("הגדרות סביבת עבודה: עיצוב VS Code מוגדר כברירת מחדל.");
+        const reset = confirm("האם ברצונך לאפס את תוכנית הלימודים ולהתחיל מחדש את תהליך ההתאמה האישית?");
+        if (reset) {
+            localStorage.clear();
+            window.location.reload();
+        }
     });
     
     // Sidebar progress click
     document.getElementById("btn-progress-sidebar").addEventListener("click", () => {
         alert(`התקדמות נוכחית בקורס: ${overallProgress}%. עליך להשלים את משימת ה-Action Item של כל שיעור כדי לפתוח את הבא.`);
     });
+}
+
+function startApp() {
+    renderSidebarLessons();
+    renderTabs();
+    loadLesson(currentLessonIndex);
+    updateProgressRing();
+}
+
+function handleOnboardingSubmit() {
+    const nameInput = document.getElementById("user-name");
+    const nameVal = nameInput.value.trim();
+    
+    const interestInputs = Array.from(document.querySelectorAll(".interest-input"));
+    const interests = interestInputs.map(input => input.value.trim()).filter(val => val !== "");
+    
+    if (!nameVal) {
+        showOnboardingError("אנא הקלידו את שמכם (Name).");
+        return;
+    }
+    
+    if (interests.length < 5) {
+        showOnboardingError("אנא מלאו את כל 5 תחומי העניין שלכם.");
+        return;
+    }
+    
+    // Check distinct/unique interests
+    const unique = new Set(interests.map(i => i.toLowerCase()));
+    if (unique.size < 5) {
+        showOnboardingError("אנא הזינו 5 תחומי עניין שונים וייחודיים זה מזה.");
+        return;
+    }
+    
+    // Validation passed! Save state
+    const errorContainer = document.getElementById("onboarding-error");
+    if (errorContainer) errorContainer.style.display = "none";
+    
+    userName = nameVal;
+    userInterests = interests;
+    lessonsData = getDynamicLessons(userName, userInterests);
+    
+    localStorage.setItem("user_name", userName);
+    localStorage.setItem("user_interests", JSON.stringify(userInterests));
+    
+    // Animate onboarding overlay fade out
+    const overlay = document.getElementById("onboarding-overlay");
+    if (overlay) {
+        overlay.style.opacity = "0";
+        setTimeout(() => {
+            overlay.style.display = "none";
+        }, 300);
+    }
+    
+    startApp();
+}
+
+function showOnboardingError(msg) {
+    const errorContainer = document.getElementById("onboarding-error");
+    if (errorContainer) {
+        errorContainer.innerText = msg;
+        errorContainer.style.display = "block";
+    }
 }
 
 // 4. Render Sidebar and Tabs with Locking Mechanics
@@ -296,7 +392,7 @@ function renderSidebarLessons() {
     lessonsData.forEach((lesson, index) => {
         const li = document.createElement("li");
         
-        let statusText = "🔒 נעול";
+        let statusText = "נעול";
         li.className = "file-item";
         
         if (!lesson.unlocked) {
@@ -305,7 +401,7 @@ function renderSidebarLessons() {
             if (index === currentLessonIndex) {
                 li.classList.add("active");
                 li.classList.add("active-working");
-                statusText = "⏳ בתהליך";
+                statusText = "בתהליך";
             } else if (lesson.completed) {
                 li.classList.add("completed");
                 statusText = "✓ הושלם";
@@ -424,7 +520,7 @@ function loadLesson(index) {
     document.getElementById("editor-text-content").innerHTML = lesson.content;
     
     // Generate line numbers
-    generateLineNumbers(35);
+    generateLineNumbers(40);
     
     // Render the Action Item block
     renderActionBlock(lesson);
@@ -488,33 +584,39 @@ function renderActionBlock(lesson) {
     
     if (lesson.actionType === "multi_capabilities") {
         const data = savedVal || { plusButton: "", voiceInput: "", imageGen: "", excelPlan: "", tvTranslation: "" };
+        const i1 = userInterests[0];
+        const i2 = userInterests[1];
+        const i3 = userInterests[2];
+        const i4 = userInterests[3];
+        const i5 = userInterests[4];
+        
         inputHtml = `
             <div class="action-input-area" style="gap: 12px;">
                 <h4 style="font-size:13px; color: var(--success-color); border-bottom: 1px solid var(--border-color); padding-bottom: 4px;">הזינו את תוצאות אתגר הליבה (AI Gauntlet):</h4>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">1. בדיקת כפתור ה-'+': ניתוח תמונה/אקסל ב-Gemini Pro (Plus Button):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-plus-button" placeholder="הדביקו את תיאור התמונה או נתוני האקסל ש-Gemini Pro הפיק עבורכם...">${data.plusButton || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 13px;">1. כפתור ה-'+' (ניתוח קובץ בנושא ${i2}):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-plus-button" placeholder="הדביקו את ניתוח ה-AI לקובץ של ${i2}...">${data.plusButton || ""}</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">2. בדיקת קלט קולי: 3 רעיונות להצגת לגו ב-Gemini Flash (Voice Input):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-voice-input" placeholder="הדביקו את 3 הרעיונות להצגת האוסף שהכתבתם והפקתם...">${data.voiceInput || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 13px;">2. קלט קולי (שילוב ${i3} ו-${i4}):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-voice-input" placeholder="הדביקו את רעיונות השילוב בין ${i3} ו-${i4}...">${data.voiceInput || ""}</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">3. יצירת תמונות: פרומפט לכלבה טס צופה בטיקר מניות (Image Generation):</label>
-                    <input type="text" class="input-text-standard" id="input-image-gen" placeholder="הדביקו את פרומפט התמונה (או תיאור התמונה שנוצרה)..." value="${data.imageGen || ""}">
+                    <label style="color:var(--text-header); font-size: 13px;">3. יצירת תמונה (פרומפט של ${i5}):</label>
+                    <input type="text" class="input-text-standard" id="input-image-gen" placeholder="הדביקו את תיאור או פרומפט התמונה של ${i5}..." value="${data.imageGen || ""}">
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">4. תכנון משימות: שלבים למחשבון ריבית באקסל (Task Breakdown):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-excel-plan" placeholder="הדביקו את תוכנית השלבים לבניית גיליון אקסל לחישוב ריבית...">${data.excelPlan || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 13px;">4. פירוק משימה (תוכנית עבור ${i1}):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-excel-plan" placeholder="הדביקו את תוכנית השלבים להשגת יעד ב-${i1}...">${data.excelPlan || ""}</textarea>
                 </div>
                 
                 <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 12px;">5. תרגום ולוקליזציה: תרגום ביקורת טלוויזיה ליפנית (Translation):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-tv-translation" placeholder="הדביקו את התרגום ליפנית בטון נלהב שנוצר..." >${data.tvTranslation || ""}</textarea>
+                    <label style="color:var(--text-header); font-size: 13px;">5. תרגום (תרגום טקסט בנושא ${i2}):</label>
+                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-tv-translation" placeholder="הדביקו את תרגום הטקסט העוסק ב-${i2}..." >${data.tvTranslation || ""}</textarea>
                 </div>
             </div>
         `;
@@ -625,11 +727,11 @@ function handleVerifyTask() {
         writeTerminalLine("מנתח תוצאות קלט מתוך סביבת העבודה החיצונית...", "info-msg");
         
         if (lesson.id === "lesson_1") {
-            writeTerminalLine("[Success] משימה 1: ניתוח כפתור + אומת (Gemini Pro Plus verified).", "success-msg");
-            writeTerminalLine("[Success] משימה 2: קלט קולי אומת (Gemini Flash Voice verified).", "success-msg");
-            writeTerminalLine("[Success] משימה 3: פרומפט תמונת הכלבה טס אומת (Image prompt verified).", "success-msg");
-            writeTerminalLine("[Success] משימה 4: תכנון ריבית באקסל אומת (Excel task plan verified).", "success-msg");
-            writeTerminalLine("[Success] משימה 5: תרגום ביקורת ליפנית אומת (Japanese translation verified).", "success-msg");
+            writeTerminalLine("[Success] משימה 1: ניתוח כפתור + אומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 2: קלט קולי אומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 3: פרומפט יצירת תמונה אומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 4: תכנון ופירוק משימה אומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 5: תרגום ולוקליזציה אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] כל 5 שלבי ה-AI Gauntlet אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_2") {
             writeTerminalLine("[Success] קוד המקור HTML/CSS נקרא בהצלחה. זוהו תגיות שלד ומבנה.", "success-msg");
@@ -637,7 +739,7 @@ function handleVerifyTask() {
             writeTerminalLine(`[Success] מנסה להתחבר לכתובת ${inputVal.trim()}...`, "info-msg");
             writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין!", "success-msg");
         } else if (lesson.id === "lesson_4") {
-            writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונצרן.", "success-msg");
+            writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונכרן.", "success-msg");
         } else if (lesson.id === "lesson_5") {
             writeTerminalLine("[Success] תיאור הסוכן נקרא. בקרת הכישורים (Skills) של סוכן Antigravity הושלמה.", "success-msg");
         }
@@ -665,8 +767,8 @@ function handleVerifyTask() {
             selectLesson(nextIndex);
         } else {
             // Course finished!
-            writeTerminalLine("🏆 מזל טוב! השלמתם את הקורס 'AI ליוצרים: מפרומפט למוצר' באופן מלא!", "success-msg");
-            alert("🏆 כל הכבוד! השלמתם את כל 5 השיעורים והמשימות המעשיות בקורס בהצלחה! כעת למדתם כיצד לקחת רעיון מפרומפט תפקיד, לכתוב אותו ב-Canvas, לפרוס ב-Vercel, לבצע אוטומציית Antigravity ולבנות סוכנים חכמים!");
+            writeTerminalLine("[הושלם] מזל טוב! השלמתם את הקורס באופן מלא!", "success-msg");
+            alert("🏆 כל הכבוד! השלמתם את כל 5 השיעורים והמשימות המעשיות בקורס בהצלחה! למדתם כיצד לקחת רעיון, לכתוב אותו ב-Canvas, לפרוס ב-Vercel, לבצע אוטומציית Antigravity ולבנות סוכנים חכמים!");
         }
         
     }, 1200);

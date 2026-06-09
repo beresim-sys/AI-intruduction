@@ -123,7 +123,7 @@ body {
 
 /* 2. Sidebar (Explorer & Lessons list) */
 .ide-sidebar {
-    width: 20%;
+    width: calc(25% - 48px);
     min-width: 220px;
     background-color: var(--bg-sidebar);
     border-left: 1px solid var(--border-color);
@@ -472,7 +472,8 @@ body {
 
 /* 4. Split Sandbox Panel (Leftmost in RTL) */
 .ide-sandbox-container {
-    flex: 1;
+    width: 25%;
+    flex-shrink: 0;
     background-color: var(--bg-darker);
     display: flex;
     flex-direction: column;
@@ -840,4 +841,131 @@ body {
         width: 100%;
         height: 600px;
     }
+}
+
+/* Module 0 Onboarding Overlay */
+.onboarding-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(17, 17, 18, 0.96);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.onboarding-card {
+    width: 650px;
+    max-width: 90%;
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease-out;
+    direction: rtl;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.onboarding-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.onboarding-header h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-header);
+}
+
+.onboarding-subtitle {
+    font-size: 13px;
+    color: var(--accent-color);
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.onboarding-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.onboarding-welcome-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-main);
+    border-right: 3px solid var(--accent-color);
+    padding-right: 12px;
+    font-style: italic;
+    direction: ltr;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.onboarding-welcome-text-he {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-main);
+    border-right: 3px solid var(--success-color);
+    padding-right: 12px;
+    margin-bottom: 15px;
+}
+
+.onboarding-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text-header);
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 600px) {
+    .interests-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.onboarding-error-msg {
+    color: var(--error-color);
+    font-size: 13px;
+    font-weight: bold;
+    background-color: rgba(244, 71, 71, 0.1);
+    border: 1px solid rgba(244, 71, 71, 0.2);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-top: 10px;
+}
+
+.onboarding-footer {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end;
 }
