@@ -316,6 +316,19 @@ function bindGlobalListeners() {
         }
     });
     
+    // Persistent Log Out / Switch User Button
+    const logoutBtn = document.getElementById("btn-logout");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            const confirmLogout = confirm("האם ברצונך להתנתק ולמחוק את נתוני המשתמש הנוכחי?");
+            if (confirmLogout) {
+                localStorage.removeItem("user_name");
+                localStorage.removeItem("user_interests");
+                window.location.reload();
+            }
+        });
+    }
+    
     // Sidebar progress click
     document.getElementById("btn-progress-sidebar").addEventListener("click", () => {
         alert(`התקדמות נוכחית בקורס: ${overallProgress}%. עליך להשלים את משימת ה-Action Item של כל שיעור כדי לפתוח את הבא.`);
