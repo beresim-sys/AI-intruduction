@@ -97,28 +97,57 @@ function getDynamicLessons(name, interests) {
 <p class="lesson-p">שלום ${name}! בשיעור זה נצלול לעומק עבודה מעשית בתוך סביבת ה-Workspace הייחודית של Gemini Canvas.</p>
 
 <h2 class="lesson-h2">מהו Gemini Canvas?</h2>
-<p class="lesson-p">Gemini Canvas הוא סביבת עבודה שיתופית המיועדת ליצירת תכנים ארוכים וכתיבת קוד. הוא מאפשר לכם לערוך, ללטש ולבנות מוצרים אמיתיים במקום רק לנהל שיחה רגילה בחלון הצ'אט.</p>
+<p class="lesson-p">Gemini Canvas הוא סביבת עבודה שיתופית המיועדת ליצירת תכנים ארוכים וכתיבת קוד. הוא מאפשר לכם לערוך, ללטש ולבנות מוצרים אמיתיים במקום רק לנהל שיחה רגי�        {
+            id: "lesson_3",
+            fileName: "lesson_3_deploy.yaml",
+            tabLabel: "lesson_3_deploy.yaml",
+            title: "שיעור 3: מקוד לענן – צינור הפריסה",
+            unlocked: false,
+            completed: false,
+            content: `
+<h1 class="lesson-h1">שיעור 3: מקוד לענן – צינור הפריסה (The Deployment Pipeline)</h1>
+<p class="lesson-p">שלום ${name}! בשיעור זה נלמד כיצד להוציא את הפרויקט שיצרנו ב-Gemini Canvas אל העולם באמצעות קישור אינטרנט חי (Live URL).</p>
 
-<h2 class="lesson-h2">יכולות ליבה מרכזיות (Core Capabilities)</h2>
+<h2 class="lesson-h2">למה אנחנו צריכים את זה?</h2>
+<p class="lesson-p">בניתם פרויקט מדהים ב-Gemini Canvas. כעת, בואו נהפוך אותו לנגיש לכל העולם באמצעות קישור אינטרנט חי (Live URL)!</p>
+
+<h2 class="lesson-h2">תהליך הפריסה ב-3 שלבים</h2>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 8px;"><strong>מסמכים חכמים (Smart Documents):</strong> יצירת פרוטוקולים מורכבים (כמו פרוטוקול טיפול ברעלת הריון - Preeclampsia) או כתיבת קורות חיים מקצועיים וממוקדים.</li>
-    <li style="margin-bottom: 8px;"><strong>טפסים חכמים ואוטומציה (Smart Forms & Automation):</strong> חיסכון בזמן על ידי בניית מערכות לקליטת נתונים. דוגמאות: שאלון קליני להתאמת משאבות חלב (Breast Pumps) או טופס אישור הגעה (RSVP) לבת מצווה (Bat Mitzvah).</li>
-    <li style="margin-bottom: 8px;"><strong>כלים אינטראקטיביים (Interactive Tools):</strong> בניית אבות-טיפוס "חיים" ופעילים. דוגמאות: סימולטור לזיהוי סיבוכי מחלת הסוכרת (Diabetes) או דף נחיתה מקצועי לתיק העבודות שלכם.</li>
+    <li style="margin-bottom: 8px;"><strong>1. GitHub (הכספת הדיגיטלית שלכם):</strong> GitHub הוא המקום שבו הקוד שלכם נשמר ומנוהל. חשבו עליו כעל ארכיון מקצועי לפרויקטים שלכם.
+    <br><em>פעולה:</em> הרשמו ל-GitHub וצרו מחסן חדש (Repository) - שזוהי למעשה תיקיית הפרויקט שלכם בענן.</li>
+    <li style="margin-bottom: 8px;"><strong>2. Vercel (פלטפורמת האחסון והאירוח שלכם):</strong> Vercel מתחבר ל-GitHub ומפרסם ("בונה") אוטומטית את קוד המקור שלכם לכדי אתר אינטרנט פעיל.
+    <br><em>פעולה:</em> הרשמו ל-Vercel באמצעות חיבור חשבון ה-GitHub שלכם.</li>
+    <li style="margin-bottom: 8px;"><strong>3. החיבור (הקסם):</strong> כשאתם מחברים את Vercel למחסן ה-GitHub שלכם, בכל פעם שתעדכנו את הקוד ב-GitHub (למשל, עדכון מעקב ה-<strong>${i4}</strong> שלכם), האתר החי שלכם ב-Vercel יתעדכן אוטומטית ללא שום מאמץ מצידכם.</li>
 </ul>
 
-<h2 class="lesson-h2">תהליך העבודה ב-Canvas ב-4 שלבים</h2>
+<h2 class="lesson-h2">שלבי הגדרת התצורה (Step-by-Step Configuration)</h2>
+<p class="lesson-p">בצעו את הצעדים הבאים כדי להעלות את הפרויקט שלכם לאוויר:</p>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 6px;"><strong>1. הפעלה (Activate):</strong> שימוש במודל Gemini Pro.</li>
-    <li style="margin-bottom: 6px;"><strong>2. טריגר (Trigger):</strong> כתיבת פרומפט שמתחיל במילים: "Open a canvas to build..." (פתח קנבס כדי לבנות...).</li>
-    <li style="margin-bottom: 6px;"><strong>3. עריכה (Edit):</strong> שימוש במברשת ה-"עריכה" (Edit) או עריכת הטקסט והקוד ישירות בחלון ה-Canvas הצדדי.</li>
-    <li style="margin-bottom: 6px;"><strong>4. איטרציה (Iterate):</strong> שימוש בתפריט ה-"כיוונון" (Adjust) כדי לשפר את האורך, הטון (למשל שינוי לטון רומנטי) או לפתור באגים בקוד.</li>
+    <li><strong>שלב 1:</strong> צרו מחסן (Repository) חדש ב-GitHub. אתחלו אותו עם קובץ README.md.</li>
+    <li><strong>שלב 2:</strong> העלו את קבצי ה-HTML/CSS שלכם משיעור 2 לתוך המחסן שפתחתם.</li>
+    <li><strong>שלב 3:</strong> כנסו ל-Vercel, לחצו על "Add New" ואז על "Project".</li>
+    <li><strong>שלב 4:</strong> בחרו את מחסן ה-GitHub שלכם מתוך הרשימה ולחצו על "Import".</li>
+    <li><strong>שלב 5:</strong> לחצו על "Deploy". תוך שניות, Vercel תבנה ותספק לכם קישור חי (לדוגמה: <em>your-project.vercel.app</em>).</li>
 </ul>
             `,
-            actionType: "canvas_two_tasks",
-            actionLabel: "הדביקו את כתובת ה-URL של הפרויקט שלכם או תארו את הפתרון הסופי שבניתם:",
-            placeholderText: "לדוגמה: הדבקתי את קישור ה-Canvas, או תיאור של מדריך שלב אחר שלב עבור...",
+            actionType: "deploy_url",
+            actionLabel: "Paste your new live Vercel URL here:",
+            placeholderText: "https://your-project.vercel.app",
             tools: [
-                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
+                { name: "פתח את GitHub", url: "https://github.com" },
+                { name: "פתח את Vercel", url: "https://vercel.com" }
+            ],
+            instructionText: "עקבו אחר 5 השלבים שלמעלה כדי לקחת את הפרויקט שלכם משיעור 2 ולהעלות אותו לאינטרנט.",
+            validate: (input) => {
+                if (!input || typeof input !== "object") return false;
+                if (!input.chk1 || !input.chk2 || !input.chk3) return false;
+                if (!input.url) return false;
+                const clean = input.url.trim().toLowerCase();
+                return (clean.startsWith("http://") || clean.startsWith("https://")) && 
+                       (clean.includes(".vercel.app") || clean.includes(".com") || clean.includes(".net") || clean.includes(".dev"));
+            },
+            errorMessage: "אנא ודאו שסימנתם את כל 3 משימות הפריסה בצ'קליסט, ושכתובת ה-Vercel URL שהזנתם תקינה ומתחילה ב-http:// או https://."
+        },.com" }
             ],
             instructionText: "שלטו ב-Gemini Canvas באמצעות שתי המשימות המעשיות שלמטה: משימה 1 (התחלה מונחית) ומשימה 2 (אתגר היוצר המעשי).",
             validate: (input) => {
@@ -269,7 +298,12 @@ let userSubmissions = {
         task1Checkbox: false,
         task2Textarea: ""
     },
-    lesson_3: "",
+    lesson_3: {
+        chk1: false,
+        chk2: false,
+        chk3: false,
+        url: ""
+    },
     lesson_4: false,
     lesson_5: ""
 };
@@ -552,7 +586,16 @@ function loadLesson(index) {
     // Update sidebar dynamic header greeting and count
     const sidebarNameEl = document.getElementById("sidebar-username");
     const sidebarCountEl = document.getElementById("sidebar-lesson-count");
-    if (sidebarNameEl) sidebarNameEl.innerText = userName;
+    if (sidebarNameEl) {
+        const greetings = [
+            `שלום, ${userName}!`,
+            `ברוך שובך, ${userName}!`,
+            `אתה מתקדם נהדר, ${userName}!`,
+            `כל הכבוד, ${userName}!`,
+            `כמעט סיימנו, ${userName}!`
+        ];
+        sidebarNameEl.innerText = greetings[index] || `שלום, ${userName}!`;
+    }
     if (sidebarCountEl) sidebarCountEl.innerText = index + 1;
 
     // Update run/verify button text dynamically
@@ -562,6 +605,11 @@ function loadLesson(index) {
             runBtn.innerHTML = `
                 <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M12.5 1h-9c-.8 0-1.5.7-1.5 1.5v11c0 .8.7 1.5 1.5 1.5h9c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5zm-.5 12h-8V3h8v10z"></path></svg>
                 <span>הגש פרויקט (Submit Project)</span>
+            `;
+        } else if (lesson.id === "lesson_3") {
+            runBtn.innerHTML = `
+                <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0z"></path></svg>
+                <span>אמת פריסה (Verify Deployment)</span>
             `;
         } else {
             runBtn.innerHTML = `
@@ -717,6 +765,35 @@ function renderActionBlock(lesson) {
                 </div>
             </div>
         `;
+    } else if (lesson.actionType === "deploy_url") {
+        const data = savedVal || { chk1: false, chk2: false, chk3: false, url: "" };
+        inputHtml = `
+            <div class="action-input-area" style="gap: 12px;">
+                <h4 style="font-size: 13px; color: var(--success-color); font-weight: bold; margin-bottom: 6px;">צ'קליסט פריסה (Deployment Checklist):</h4>
+                
+                <label class="checkbox-container" style="margin-bottom: 6px;">
+                    <input type="checkbox" id="chk-deploy-1" ${data.chk1 ? "checked" : ""}>
+                    <span style="font-size:12px; color: var(--text-main); font-weight: normal;">נוצר מחסן ב-GitHub והקוד הועלה אליו.</span>
+                </label>
+                
+                <label class="checkbox-container" style="margin-bottom: 6px;">
+                    <input type="checkbox" id="chk-deploy-2" ${data.chk2 ? "checked" : ""}>
+                    <span style="font-size:12px; color: var(--text-main); font-weight: normal;">חשבון ה-Vercel קושר לחשבון ה-GitHub.</span>
+                </label>
+                
+                <label class="checkbox-container" style="margin-bottom: 6px;">
+                    <input type="checkbox" id="chk-deploy-3" ${data.chk3 ? "checked" : ""}>
+                    <span style="font-size:12px; color: var(--text-main); font-weight: normal;">הפרויקט נפרס (Deployed) בהצלחה לענן.</span>
+                </label>
+                
+                <div style="border-top: 1px dashed var(--border-color); margin: 10px 0;"></div>
+                
+                <div class="form-group">
+                    <label for="action-task-input" style="font-size: 12px; color: var(--text-header); font-weight: bold; display: block; margin-bottom: 4px;">Paste your new live Vercel URL here:</label>
+                    <input type="text" class="input-text-standard" id="action-task-input" placeholder="https://your-project.vercel.app" value="${data.url || ""}">
+                </div>
+            </div>
+        `;
     } else if (lesson.actionType === "textarea" || lesson.actionType === "code") {
         inputHtml = `
             <div class="action-input-area">
@@ -795,6 +872,25 @@ function renderActionBlock(lesson) {
         
         if (checkEl) checkEl.addEventListener("change", saveCanvasTasks);
         if (textEl) textEl.addEventListener("input", saveCanvasTasks);
+    } else if (lesson.actionType === "deploy_url") {
+        const chk1El = document.getElementById("chk-deploy-1");
+        const chk2El = document.getElementById("chk-deploy-2");
+        const chk3El = document.getElementById("chk-deploy-3");
+        const urlEl = document.getElementById("action-task-input");
+        
+        const saveDeployData = () => {
+            userSubmissions.lesson_3 = {
+                chk1: chk1El ? chk1El.checked : false,
+                chk2: chk2El ? chk2El.checked : false,
+                chk3: chk3El ? chk3El.checked : false,
+                url: urlEl ? urlEl.value : ""
+            };
+        };
+        
+        if (chk1El) chk1El.addEventListener("change", saveDeployData);
+        if (chk2El) chk2El.addEventListener("change", saveDeployData);
+        if (chk3El) chk3El.addEventListener("change", saveDeployData);
+        if (urlEl) urlEl.addEventListener("input", saveDeployData);
     } else {
         const inputElement = document.getElementById("action-task-input");
         if (inputElement) {
@@ -848,7 +944,8 @@ function handleVerifyTask() {
             writeTerminalLine("[Success] משימה 2: תיאור פרויקט ה-Canvas האישי נקרא בהצלחה.", "success-msg");
             writeTerminalLine("[Success] פרויקטי Gemini Canvas הושלמו ואומתו בהצלחה! שיעור 2 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_3") {
-            writeTerminalLine(`[Success] מנסה להתחבר לכתובת ${inputVal.trim()}...`, "info-msg");
+            const urlVal = (typeof inputVal === "object" ? inputVal.url : inputVal) || "";
+            writeTerminalLine(`[Success] מנסה להתחבר לכתובת ${urlVal.trim()}...`, "info-msg");
             writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין!", "success-msg");
         } else if (lesson.id === "lesson_4") {
             writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונכרן.", "success-msg");
@@ -910,6 +1007,13 @@ function handleResetInput() {
         userSubmissions.lesson_2 = {
             task1Checkbox: false,
             task2Textarea: ""
+        };
+    } else if (lesson.actionType === "deploy_url") {
+        userSubmissions.lesson_3 = {
+            chk1: false,
+            chk2: false,
+            chk3: false,
+            url: ""
         };
     } else {
         userSubmissions[lesson.id] = "";
