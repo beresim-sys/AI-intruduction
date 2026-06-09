@@ -261,7 +261,7 @@ body {
 
 .progress-text-center {
     position: absolute;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     color: var(--text-header);
 }
@@ -269,7 +269,7 @@ body {
 .lesson-checkmarks {
     list-style: none;
     width: 100%;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--text-muted);
 }
 
@@ -777,7 +777,7 @@ body {
 /* General Layout Utilities */
 .ide-status-bar {
     height: 22px;
-    background-color: #007acc; /* Match VS Code blue standard */
+    background-color: var(--accent-color);
     color: #ffffff;
     display: flex;
     justify-content: space-between;
@@ -786,6 +786,10 @@ body {
     font-size: 12px;
     z-index: 10;
     direction: rtl;
+}
+
+.project-progress-percent {
+    font-size: 14px;
 }
 
 .status-left, .status-right {
