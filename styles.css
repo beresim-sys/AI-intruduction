@@ -884,13 +884,13 @@ body {
 }
 
 .onboarding-header h2 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
     color: var(--text-header);
 }
 
 .onboarding-subtitle {
-    font-size: 13px;
+    font-size: 15px;
     color: var(--accent-color);
     margin-top: 5px;
     font-weight: bold;
@@ -903,7 +903,7 @@ body {
 }
 
 .onboarding-welcome-text {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.6;
     color: var(--text-main);
     border-right: 3px solid var(--accent-color);
@@ -915,7 +915,7 @@ body {
 }
 
 .onboarding-welcome-text-he {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     color: var(--text-main);
     border-right: 3px solid var(--success-color);
@@ -936,7 +936,7 @@ body {
 }
 
 .form-group label {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     color: var(--text-header);
 }
@@ -955,7 +955,7 @@ body {
 
 .onboarding-error-msg {
     color: var(--error-color);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
     background-color: rgba(244, 71, 71, 0.1);
     border: 1px solid rgba(244, 71, 71, 0.2);
@@ -968,4 +968,12 @@ body {
     margin-top: 25px;
     display: flex;
     justify-content: flex-end;
+}
+
+.onboarding-card .input-text-standard {
+    font-size: 15px;
+}
+
+.onboarding-card .btn {
+    font-size: 15px;
 }
