@@ -550,12 +550,12 @@ body {
 }
 
 .btn-secondary {
-    background-color: #3e3e42;
-    color: var(--text-main);
+    background-color: var(--text-muted);
+    color: #ffffff;
 }
 
 .btn-secondary:hover {
-    background-color: #4e4e52;
+    background-color: var(--text-main);
 }
 
 /* Integrated Terminal styles */
