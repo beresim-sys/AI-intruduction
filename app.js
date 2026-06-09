@@ -16,20 +16,40 @@ const lessonsData = [
 <h2 class="lesson-h2">שליטה בממשק של Gemini</h2>
 <p class="lesson-p">לפני שנתחיל לכתוב פרומפטים, נלמד כיצד לנצל את כלי הממשק השונים בתוך Gemini:</p>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li><strong>➕ כפתור ה-Plus ('+'):</strong> מאפשר להעלות קבצים ותמונות לניתוח (למשל: העלאת קובץ CSV של נתוני מניות היסטוריים לניתוח מגמות, או תמונה של ערכת לגו שתרצו לזהות).</li>
-    <li><strong>🎙️ קלט קולי (Voice Input - המיקרופון):</strong> מאפשר לכם להכתיב את הפרומפטים בקולכם לצורך סיעור מוחות מהיר, טבעי וללא שימוש בידיים.</li>
-    <li><strong>⚙️ בחירת מנוע ה-AI שלכם (Models):</strong>
-        <br>&bull; <em>Gemini Flash:</em> מהיר במיוחד, אידיאלי למשימות יומיומיות בנפח גבוה (כמו המלצות צפייה בסדרות טלוויזיה או תרגום מהיר).
+    <li><strong>כפתור הפלוס ('+'):</strong> מאפשר להעלות קבצים ותמונות לניתוח (למשל: העלאת קובץ CSV של נתוני מניות היסטוריים לניתוח מגמות, או תמונה של ערכת לגו שתרצו לזהות).</li>
+    <li><strong>קלט קולי (Voice Input - המיקרופון):</strong> מאפשר לכם להכתיב את הפרומפטים בקולכם לצורך סיעור מוחות מהיר, טבעי וללא שימוש בידיים.</li>
+    <li><strong>בחירת מנוע ה-AI שלכם (Models):</strong>
+        <br>&bull; <em>Gemini Flash:</em> מנוע מהיר במיוחד, אידיאלי למשימות יומיומיות בנפח גבוה (כמו המלצות צפייה בסדרות טלוויזיה או תרגום מהיר).
         <br>&bull; <em>Gemini Flash-8B (Light):</em> מנוע קל ומהיר להפליא, מיועד לזמני תגובה (latency) קצרים במיוחד במשימות טקסט בסיסיות.
         <br>&bull; <em>Gemini Pro:</em> מנוע הדגל לפתרון בעיות מורכבות, מצוין לחשיבה לוגית עמוקה, כתיבת קוד מתקדם (כמו כתיבת סקריפט אקסל VBA מורכב) וניתוח מעמיק.</li>
 </ul>
 
-<h2 class="lesson-h2">יכולות הליבה ותבנית ה-PROMPT</h2>
-<p class="lesson-p">כדי לרתום את יכולות הליבה (יצירת תמונות, תכנון משימות, תרגום, תמצות וסיעור מוחות) בצורה הטובה ביותר, נשתמש בארבעת עמודי התווך של הפרומפט: <strong>Role (תפקיד), Task (משימה), Context (הקשר), ו-Format (פורמט)</strong>.</p>
+<h2 class="lesson-h2">יכולות הליבה של כלי ה-AI היומיומיים</h2>
+<p class="lesson-p">מודלי שפה ו-AI מודרניים מצטיינים במגוון יכולות מפתח:</p>
+<ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
+    <li><strong>יצירת תמונות (Image Generation):</strong> הפקת ייצוגים חזותיים מתיאור טקסטואלי (למשל: הנחיית Midjourney או DALL-E לייצר תמונות).</li>
+    <li><strong>תכנון ופירוק משימות (Task Planning & Breakdown):</strong> פירוק תהליכים מורכבים לשלבים מעשיים ברורים (למשל: פירוק בניית מחשבון ריבית באקסל).</li>
+    <li><strong>תרגום ולוקליזציה (Translation & Localization):</strong> התאמת טקסטים בין שפות שונות תוך שמירה על הקשר וטון מקצועי (למשל: תרגום כתוביות לטלוויזיה).</li>
+    <li><strong>תמצות וסיכום (Summarization):</strong> זיקוק כמויות מידע גדולות למשפטי מפתח תמציתיים (למשל: תמצות דוח מניות שנתי).</li>
+    <li><strong>סיעור מוחות ורעיונאות (Ideation & Brainstorming):</strong> העלאת רעיונות יצירתיים לפרויקטים, שאלות טריוויה וכדומה.</li>
+</ul>
+
+<div class="analogy-box">
+    <strong>אנלוגיית הבונה:</strong> כתיבת פרומפט היא כמו כתיבת <strong>מאקרו מורכב באקסל (Excel Macro)</strong> או הכנת <strong>הוראות לגו (Lego Manual)</strong>. אם תפחיתו פרמטר אחד או שתדלגו על שלב לוגי, המאקרו ייכשל או שהלגו יקרוס.
+</div>
+
+<h2 class="lesson-h2">עקרונות כתיבת הפרומפט ותבנית ה-PROMPT</h2>
+<p class="lesson-p">כדי לרתום את יכולות הליבה הללו בצורה הטובה ביותר, נשתמש בארבעת עמודי התווך של הפרומפט:</p>
+<ul style="margin-right: 20px; margin-bottom: 12px; line-height: 1.6;">
+    <li><strong>Role (תפקיד המודל):</strong> הגדרת ה"אישיות" וההקשר המקצועי של ה-AI (למשל: <em>"פעל כמתכנת לגו מומחה"</em>).</li>
+    <li><strong>Task (משימה):</strong> מה בדיוק ה-AI צריך לבצע (למשל: <em>"חשב את מספר הלבנים הנדרש"</em>).</li>
+    <li><strong>Context (הקשר ונתוני רקע):</strong> נתוני הרקע והחוקים (למשל: <em>"עבור מגדל בגובה מטר"</em>).</li>
+    <li><strong>Format (פורמט פלט):</strong> מבנה הפלט הרצוי (למשל: <em>"הצג בטבלה או ברשימת נקודות"</em>).</li>
+</ul>
 
 <h2 class="lesson-h2">הזיות מודל (Hallucinations) והטיות מידע (Biases)</h2>
 <div class="tech-box">
-    <strong>🧩 אנלוגיית הלגו הפגום:</strong>
+    <strong>אנלוגיית הלגו הפגום:</strong>
     הזיית מודל היא כמו חוברת לגו שבה אחד השלבים מורה לך לחבר קובייה כחולה ישירות לאוויר בלי שום תמיכה מתחתיה.
     <strong>הטיית מידע (Data Bias)</strong> דומה למצב שבו חברת לגו יצרה רק לבנים אדומות במשך שנים, ולכן ה-AI בטוח שלא קיימים צבעים אחרים בעולם.
 </div>
@@ -38,24 +58,22 @@ const lessonsData = [
         actionLabel: "אתגר הליבה (The AI Gauntlet)",
         placeholderText: "",
         tools: [
-            { name: "פתח את ChatGPT", url: "https://chatgpt.com" },
-            { name: "פתח את Gemini", url: "https://gemini.google.com" },
-            { name: "פתח את Copilot", url: "https://copilot.microsoft.com" }
+            { name: "פתח את Gemini", url: "https://gemini.google.com" }
         ],
         instructionText: `<strong>משימת אתגר הליבה (The AI Gauntlet):</strong><br>
-        פתחו כלי AI בלשונית חדשה ועברו את רצף משימות יכולות הליבה הבא (השתמשו במבנה ה-PROMPT):<br><br>
-        1. <strong>יצירת תמונות:</strong> בקשו מה-AI פרומפט ליצירת תמונה של כלב בשם טס (Tess) בונה מגדל מקוביות לגו.<br>
-        2. <strong>תכנון משימות:</strong> בקשו תוכנית שלב-אחר-שלב לבניית גיליון אקסל המחשב ריבית דריבית עבור הלוואה.<br>
-        3. <strong>תרגום ולוקליזציה:</strong> הדביקו ביקורת על סדרת טלוויזיה ובקשו תרגום ליפנית תוך שמירה על טון נלהב.<br>
-        4. <strong>תמצות וסיכום:</strong> הדביקו פסקה צפופה על מגמות שוק ההון ובקשו לתמצת אותה בדיוק לשתי נקודות פשוטות.<br>
-        5. <strong>סיעור מוחות:</strong> בקשו מה-AI להעלות 5 שאלות טריוויה אינטראקטיביות על היסטוריית לגו.`,
+        פתחו את Gemini בלשונית חדשה ועברו את רצף משימות יכולות הליבה וממשק המערכת הבא (השתמשו במבנה ה-PROMPT):<br><br>
+        1. <strong>בדיקת כפתור ה-'+':</strong> לחצו על כפתור הפלוס, העלו תמונת מסך של גיליון אקסל או תמונה של כלב, ובקשו מ-Gemini Pro לנתח ולתאר אותה.<br>
+        2. <strong>בדיקת קלט קולי:</strong> לחצו על המיקרופון והכתיבו בקשה ל-Gemini Flash להעלות 3 רעיונות יצירתיים להצגת אוסף לגו.<br>
+        3. <strong>יצירת תמונות:</strong> בקשו מה-AI ליצור תמונה של כלב בשם טס (Tess) צופה במסך טלוויזיה המציג טיקר מניות פיננסי.<br>
+        4. <strong>תכנון משימות:</strong> בקשו תוכנית שלב-אחר-שלב לבניית גיליון אקסל המחשב ריבית דריבית עבור הלוואה.<br>
+        5. <strong>תרגום ולוקליזציה:</strong> הדביקו ביקורת על סדרת טלוויזיה ובקשו לתרגם אותה ליפנית תוך שמירה על טון נלהב.`,
         validate: (input) => {
             if (!input || typeof input !== "object") return false;
-            return input.imgPrompt && input.imgPrompt.trim().length > 8 &&
-                   input.taskPlan && input.taskPlan.trim().length > 15 &&
-                   input.translation && input.translation.trim().length > 5 &&
-                   input.summary && input.summary.trim().length > 15 &&
-                   input.trivia && input.trivia.trim().length > 15;
+            return input.plusButton && input.plusButton.trim().length > 15 &&
+                   input.voiceInput && input.voiceInput.trim().length > 15 &&
+                   input.imageGen && input.imageGen.trim().length > 8 &&
+                   input.excelPlan && input.excelPlan.trim().length > 15 &&
+                   input.tvTranslation && input.tvTranslation.trim().length > 15;
         },
         errorMessage: "חלק מנושאי אתגר הליבה (AI Gauntlet) לא הוזנו או קצרים מדי. אנא מלאו את כל 5 שדות המשימה כנדרש!"
     },
@@ -165,7 +183,7 @@ const lessonsData = [
         actionLabel: "אשרו את ביצוע האינטגרציה הבאה:",
         placeholderText: "",
         tools: [
-            { name: "פתח את Antigravity", url: "https://antigravity.dev" } // Simulated or live workspace
+            { name: "פתח את Antigravity", url: "https://antigravity.dev" }
         ],
         instructionText: `<strong>משימה מעשית:</strong><br>
         1. פתחו את פאנל העבודה של **Antigravity**.<br>
@@ -197,7 +215,7 @@ const lessonsData = [
 </ul>
 
 <div class="analogy-box">
-    <strong>🏗️ אנלוגיית הלגו:</strong>
+    <strong>🧩 אנלוגיית הלגו:</strong>
     הסוכן הוא ה-<strong>Architect (המתכנן הראשי)</strong> שיודע מה הוא רוצה לבנות. הכישורים הם ה-<strong>Lego Sets (ערכות הלגו השונות)</strong> העומדות לרשותו - גלגלים, מנועים ומפרקים - המאפשרות לו להפוך את התוכנית שלו למכונית נוסעת באמת.
 </div>
         `,
@@ -619,7 +637,7 @@ function handleVerifyTask() {
             writeTerminalLine(`[Success] מנסה להתחבר לכתובת ${inputVal.trim()}...`, "info-msg");
             writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין!", "success-msg");
         } else if (lesson.id === "lesson_4") {
-            writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונכרן.", "success-msg");
+            writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונצרן.", "success-msg");
         } else if (lesson.id === "lesson_5") {
             writeTerminalLine("[Success] תיאור הסוכן נקרא. בקרת הכישורים (Skills) של סוכן Antigravity הושלמה.", "success-msg");
         }
