@@ -329,6 +329,12 @@ function bindGlobalListeners() {
         });
     }
     
+    // Skip Button
+    const skipBtn = document.getElementById("btn-skip-lesson");
+    if (skipBtn) {
+        skipBtn.addEventListener("click", handleSkipLesson);
+    }
+    
     // Sidebar progress click
     document.getElementById("btn-progress-sidebar").addEventListener("click", () => {
         alert(`התקדמות נוכחית בקורס: ${overallProgress}%. עליך להשלים את משימת ה-Action Item של כל שיעור כדי לפתוח את הבא.`);
@@ -537,6 +543,16 @@ function loadLesson(index) {
     
     // Render the Action Item block
     renderActionBlock(lesson);
+    
+    // Update skip button text dynamically based on the lesson index
+    const skipBtn = document.getElementById("btn-skip-lesson");
+    if (skipBtn) {
+        if (index === lessonsData.length - 1) {
+            skipBtn.innerText = "סיום הקורס (Finish)";
+        } else {
+            skipBtn.innerText = "דלג לשיעור הבא (Skip)";
+        }
+    }
     
     // Write Status update to the terminal
     writeTerminalLine(`נפתח בהצלחה: ${lesson.fileName}. מוכן לאימות קלט משימה.`, "system-msg");
@@ -812,6 +828,48 @@ function handleResetInput() {
     }
     
     renderActionBlock(lesson);
+}
+
+// 9.5. Skip Lesson / Finish Course
+function handleSkipLesson() {
+    const lesson = lessonsData[currentLessonIndex];
+    const term = document.getElementById("terminal-output");
+    
+    // Append skip command to terminal
+    const cmdLine = document.createElement("div");
+    cmdLine.className = "terminal-line cmd-prompt";
+    cmdLine.innerText = `antigravity skip-lesson ${lesson.id}`;
+    term.appendChild(cmdLine);
+    
+    writeTerminalLine(`מבצע מעבר/דילוג על שיעור ${currentLessonIndex + 1}...`, "info-msg");
+    
+    // Mark current lesson as completed
+    lesson.completed = true;
+    
+    const nextIndex = currentLessonIndex + 1;
+    if (nextIndex < lessonsData.length) {
+        // Unlock next lesson
+        lessonsData[nextIndex].unlocked = true;
+        writeTerminalLine(`שיעור ${nextIndex + 1} נפתח בעקבות דילוג.`, "success-msg");
+        
+        // Refresh UI state
+        renderSidebarLessons();
+        renderTabs();
+        updateProgressRing();
+        
+        alert("✓ דילגת על השיעור הנוכחי. השיעור הבא פתוח כעת עבורך.");
+        selectLesson(nextIndex);
+    } else {
+        // Finish course!
+        writeTerminalLine("[הושלם] מזל טוב! השלמתם את הקורס באופן מלא!", "success-msg");
+        
+        // Refresh UI state
+        renderSidebarLessons();
+        renderTabs();
+        updateProgressRing();
+        
+        alert("🏆 כל הכבוד! סיימת את כל חמשת שיעורי הקורס בהצלחה!");
+    }
 }
 
 // 10. Helper Utilities
