@@ -123,7 +123,7 @@ body {
 
 /* 2. Sidebar (Explorer & Lessons list) */
 .ide-sidebar {
-    width: 15%;
+    width: 20%;
     min-width: 220px;
     background-color: var(--bg-sidebar);
     border-left: 1px solid var(--border-color);
@@ -312,7 +312,7 @@ body {
 
 /* 3. Main Editor Panel (Lesson Text) */
 .ide-editor-container {
-    width: 60%;
+    width: 50%;
     flex-shrink: 0;
     background-color: var(--bg-dark);
     display: flex;
