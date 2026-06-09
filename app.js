@@ -89,47 +89,43 @@ function getDynamicLessons(name, interests) {
             id: "lesson_2",
             fileName: "lesson_2_canvas.js",
             tabLabel: "lesson_2_canvas.js",
-            title: "שיעור 2: כוחו של Gemini Canvas – מצ'אט לבונה",
+            title: "שיעור 2: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 2: כוחו של Gemini Canvas – מצ'אט לבונה</h1>
-<p class="lesson-p">שלום ${name}! בשיעור זה נלמד כיצד לעבור מצ'אט פשוט לסביבת עבודה שיתופית ודינמית בעזרת Gemini Canvas.</p>
-<p class="lesson-p">Gemini Canvas מאפשר לכם להתקדם מעבר לצ'אט הפשוט אל עבר סביבת עבודה שיתופית דינמית. הוא מתוכנן במיוחד לעבודה עם מסמכים מורכבים, כתיבת קוד ואוטומציה מובנית.</p>
+<h1 class="lesson-h1">שיעור 2: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר</h1>
+<p class="lesson-p">שלום ${name}! בשיעור זה נצלול לעומק עבודה מעשית בתוך סביבת ה-Workspace הייחודית של Gemini Canvas.</p>
 
-<h2 class="lesson-h2">תהליך העבודה הפשוט ב-Canvas ב-4 שלבים</h2>
+<h2 class="lesson-h2">מהו Gemini Canvas?</h2>
+<p class="lesson-p">Gemini Canvas הוא סביבת עבודה שיתופית המיועדת ליצירת תכנים ארוכים וכתיבת קוד. הוא מאפשר לכם לערוך, ללטש ולבנות מוצרים אמיתיים במקום רק לנהל שיחה רגילה בחלון הצ'אט.</p>
+
+<h2 class="lesson-h2">יכולות ליבה מרכזיות (Core Capabilities)</h2>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 8px;"><strong>1. הפעלה (Activate):</strong> פתחו את Gemini וודאו שאתם משתמשים במודל ה-Gemini Pro המומלץ.</li>
-    <li style="margin-bottom: 8px;"><strong>2. פרומפט ל-Canvas (Prompt for Canvas):</strong> השתמשו בטריגר ספציפי בפרומפט שלכם, כגון: "Open a canvas to create a [document/code/form] about [Interest]."</li>
-    <li style="margin-bottom: 8px;"><strong>3. מרחב העבודה (The Workspace):</strong> שימו לב לחלון הצדדי החדש שנפתח. זהו ה-Canvas שלכם. כעת תוכלו לערוך את התוכן ישירות, לבקש מה-AI להציע שינויים, או להשתמש במברשת ה-"עריכה" (Edit) כדי לשנות חלקים ספציפיים בקוד או בטקסט.</li>
-    <li style="margin-bottom: 8px;"><strong>4. איטרציה (Iterate):</strong> השתמשו בתפריט ה-"כיוונון" (Adjust) כדי לשנות את האורך, סגנון הכתיבה (טון), או כדי לתקן באגים בקוד שלכם.</li>
+    <li style="margin-bottom: 8px;"><strong>מסמכים חכמים (Smart Documents):</strong> יצירת פרוטוקולים מורכבים (כמו פרוטוקול טיפול ברעלת הריון - Preeclampsia) או כתיבת קורות חיים מקצועיים וממוקדים.</li>
+    <li style="margin-bottom: 8px;"><strong>טפסים חכמים ואוטומציה (Smart Forms & Automation):</strong> חיסכון בזמן על ידי בניית מערכות לקליטת נתונים. דוגמאות: שאלון קליני להתאמת משאבות חלב (Breast Pumps) או טופס אישור הגעה (RSVP) לבת מצווה (Bat Mitzvah).</li>
+    <li style="margin-bottom: 8px;"><strong>כלים אינטראקטיביים (Interactive Tools):</strong> בניית אבות-טיפוס "חיים" ופעילים. דוגמאות: סימולטור לזיהוי סיבוכי מחלת הסוכרת (Diabetes) או דף נחיתה מקצועי לתיק העבודות שלכם.</li>
 </ul>
 
-<h2 class="lesson-h2">יישומי מפתח (Key Applications)</h2>
+<h2 class="lesson-h2">תהליך העבודה ב-Canvas ב-4 שלבים</h2>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 10px;"><strong>מסמכים חכמים (Smart Documents):</strong> יצירת פרוטוקולים מורכבים (לדוגמה: הנחיות רפואיים לטיפול ברעלת הריון - Preeclampsia) או התאמה אישית של קורות החיים שלכם למשרה ספציפית.</li>
-    <li style="margin-bottom: 10px;"><strong>טפסים חכמים (Smart Forms):</strong> אוטומציה של איסוף נתונים, כמו טופסי אישור הגעה (RSVP) לאירועים מבוססי <strong>${i1}</strong> (למשל בת מצווה - Bat Mitzvah) או שאלונים קליניים להתאמת משאבות חלב (Breast Pumps) על בסיס <strong>${i2}</strong>.</li>
-    <li style="margin-bottom: 10px;"><strong>כלים אינטראקטיביים (Interactive Tools):</strong> פיתוח סימולציות (לדוגמה: משחקים לימודיים המסמלצים קבלת החלטות בזמן אמת כמו זיהוי סיבוכי סוכרת - Diabetes) או דפי נחיתה עבור <strong>${i3}</strong> שישמשו כאב-טיפוס חי.</li>
+    <li style="margin-bottom: 6px;"><strong>1. הפעלה (Activate):</strong> שימוש במודל Gemini Pro.</li>
+    <li style="margin-bottom: 6px;"><strong>2. טריגר (Trigger):</strong> כתיבת פרומפט שמתחיל במילים: "Open a canvas to build..." (פתח קנבס כדי לבנות...).</li>
+    <li style="margin-bottom: 6px;"><strong>3. עריכה (Edit):</strong> שימוש במברשת ה-"עריכה" (Edit) או עריכת הטקסט והקוד ישירות בחלון ה-Canvas הצדדי.</li>
+    <li style="margin-bottom: 6px;"><strong>4. איטרציה (Iterate):</strong> שימוש בתפריט ה-"כיוונון" (Adjust) כדי לשפר את האורך, הטון (למשל שינוי לטון רומנטי) או לפתור באגים בקוד.</li>
 </ul>
             `,
-            actionType: "textarea",
-            actionLabel: "תארו את השינויים שביצעתם בתוך ה-Canvas:",
-            placeholderText: "לדוגמה: שיניתי את סכמת הצבעים לגווני פסטל רומנטיים, שדרגתי את הניסוחים למקצועיים יותר והוספתי...",
+            actionType: "canvas_two_tasks",
+            actionLabel: "הדביקו את כתובת ה-URL של הפרויקט שלכם או תארו את הפתרון הסופי שבניתם:",
+            placeholderText: "לדוגמה: הדבקתי את קישור ה-Canvas, או תיאור של מדריך שלב אחר שלב עבור...",
             tools: [
                 { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
             ],
-            instructionText: `<strong>בואו נבנה את פרויקט ה-Canvas הראשון שלכם. עקבו אחר הצעדים הבאים:</strong><br>
-            1. פתחו את **Gemini** בלשונית חדשה.<br>
-            2. העתיקו והדביקו את הפרומפט הבא:<br>
-            <div class="lesson-code-block" style="font-size:12px; margin: 8px 0; direction: ltr; text-align: left;">"Open a canvas and generate a simple HTML/CSS/JS page for a ${i4} tracker. Include a header, an input field, and a button."</div>
-            3. לאחר שהקנבס נפתח, לחצו על שורת טקסט או קוד ובקשו מה-AI: <br>
-            <div class="lesson-code-block" style="font-size:12px; margin: 8px 0; direction: ltr; text-align: left;">"Change the color scheme to be more pastel and romantic."</div>
-            4. השתמשו באפשרות ה-'Rewrite' (שכתוב) או 'Edit' (עריכה) כדי להפוך את הטקסט למקצועי ומכובד יותר.`,
+            instructionText: "שלטו ב-Gemini Canvas באמצעות שתי המשימות המעשיות שלמטה: משימה 1 (התחלה מונחית) ומשימה 2 (אתגר היוצר המעשי).",
             validate: (input) => {
-                if (!input) return false;
-                return input.trim().length > 15;
+                if (!input || typeof input !== "object") return false;
+                return input.task1Checkbox === true && input.task2Textarea && input.task2Textarea.trim().length > 15;
             },
-            errorMessage: "התיאור שהוזן קצר מדי! אנא בצעו את הצעדים בקנבס ותארו את השינויים בפירוט (לפחות 15 תווים)."
+            errorMessage: "אנא ודאו שסימנתם את תיבת הסימון של משימה 1, ושתיארתם את פרויקט משימה 2 בפירוט (לפחות 15 תווים)."
         },
         {
             id: "lesson_3",
@@ -269,7 +265,10 @@ let userSubmissions = {
         excelPlan: "",
         tvTranslation: ""
     },
-    lesson_2: "",
+    lesson_2: {
+        task1Checkbox: false,
+        task2Textarea: ""
+    },
     lesson_3: "",
     lesson_4: false,
     lesson_5: ""
@@ -549,6 +548,28 @@ function loadLesson(index) {
     
     // Render the Action Item block
     renderActionBlock(lesson);
+
+    // Update sidebar dynamic header greeting and count
+    const sidebarNameEl = document.getElementById("sidebar-username");
+    const sidebarCountEl = document.getElementById("sidebar-lesson-count");
+    if (sidebarNameEl) sidebarNameEl.innerText = userName;
+    if (sidebarCountEl) sidebarCountEl.innerText = index + 1;
+
+    // Update run/verify button text dynamically
+    const runBtn = document.getElementById("btn-run-code");
+    if (runBtn) {
+        if (lesson.id === "lesson_2") {
+            runBtn.innerHTML = `
+                <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M12.5 1h-9c-.8 0-1.5.7-1.5 1.5v11c0 .8.7 1.5 1.5 1.5h9c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5zm-.5 12h-8V3h8v10z"></path></svg>
+                <span>הגש פרויקט (Submit Project)</span>
+            `;
+        } else {
+            runBtn.innerHTML = `
+                <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M12 2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-1 9H5V5h6v6z"></path></svg>
+                <span>אשר והשלם משימה (Verify Task)</span>
+            `;
+        }
+    }
     
     // Update skip button text dynamically based on the lesson index
     const skipBtn = document.getElementById("btn-skip-lesson");
@@ -655,6 +676,47 @@ function renderActionBlock(lesson) {
                 </div>
             </div>
         `;
+    } else if (lesson.actionType === "canvas_two_tasks") {
+        const data = savedVal || { task1Checkbox: false, task2Textarea: "" };
+        const i1 = userInterests[0];
+        const i5 = userInterests[4];
+        
+        inputHtml = `
+            <div class="action-input-area" style="gap: 15px;">
+                <div class="task-section">
+                    <h4 style="font-size: 13px; color: var(--success-color); font-weight: bold; margin-bottom: 6px;">משימה 1: התחלה מודרכת (The Guided Start)</h4>
+                    <p style="font-size: 12px; color: var(--text-main); margin-bottom: 8px; line-height: 1.4;">
+                        פתחו את Gemini בלשונית חדשה. הדביקו את הפרומפט הבא:<br>
+                        <span style="font-family: var(--font-code); background: var(--bg-darker); padding: 4px 6px; border-radius: 6px; display: block; margin: 4px 0; font-size:11px; direction: ltr; text-align: left;">"Open a canvas and write a short professional bio for ${userName} that highlights an interest in ${i1}."</span>
+                        לאחר שהקנבס נפתח, השתמשו במברשת ה-'Edit' כדי לשנות את המשפט האחרון לטון 'רומנטי' (Romantic).
+                    </p>
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="input-task-1-checkbox" ${data.task1Checkbox ? "checked" : ""}>
+                        <span style="font-size: 12px; color: var(--text-header); font-weight: bold;">פתחתי בהצלחה את ה-Canvas וערכתי את הטקסט.</span>
+                    </label>
+                </div>
+                
+                <div style="border-top: 1px dashed var(--border-color); margin: 10px 0;"></div>
+                
+                <div class="task-section">
+                    <h4 style="font-size: 13px; color: var(--success-color); font-weight: bold; margin-bottom: 6px;">משימה 2: פרויקט יצירתי עצמאי (The Builder Challenge)</h4>
+                    <p style="font-size: 12px; color: var(--text-main); margin-bottom: 8px; line-height: 1.4;">
+                        עכשיו תורכם לבנות מאפס. בחרו באחת משלוש הקטגוריות שלמדנו (מסמך, טופס, או כלי אינטראקטיבי) וצרו פרויקט המוקדש לתחום העניין שלכם ב-<strong>${i5}</strong>.
+                    </p>
+                    <div style="font-size: 11px; color: var(--text-muted); background: var(--bg-darker); padding: 8px; border-radius: 8px; margin-bottom: 8px; line-height: 1.3;">
+                        <strong>רעיונות להשראה:</strong>
+                        <br>&bull; <strong>מסמך:</strong> מדריך שלבים להשתלטות על ${i5} (Step-by-Step Guide to Mastering ${i5}).
+                        <br>&bull; <strong>טופס:</strong> טופס RSVP למפגש חובבי ${i5} (RSVP Form for a ${i5} Enthusiasts Meetup).
+                        <br>&bull; <strong>כלי:</strong> קוד עבור לוח מעקב חי של ${i5} (Live ${i5} Tracker Dashboard).
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-main); margin-bottom: 6px;">
+                        פתחו Canvas חדש, בנו את הפרויקט שלכם, ובצעו לפחות שתי איטרציות של שיפור עד שהוא יהיה מושלם.
+                    </p>
+                    <label for="input-task-2-textarea" style="font-size: 12px; color: var(--text-header); font-weight: bold; display: block; margin-bottom: 4px;">הדביקו את כתובת ה-URL של הפרויקט שלכם או תארו את הפתרון הסופי שבניתם:</label>
+                    <textarea class="textarea-monospace" id="input-task-2-textarea" placeholder="הדביקו קישור ל-Canvas או תארו את הפרויקט שעיצבתם..." style="min-height: 80px; font-size:12px;">${data.task2Textarea || ""}</textarea>
+                </div>
+            </div>
+        `;
     } else if (lesson.actionType === "textarea" || lesson.actionType === "code") {
         inputHtml = `
             <div class="action-input-area">
@@ -720,6 +782,19 @@ function renderActionBlock(lesson) {
         if (imgEl) imgEl.addEventListener("input", saveMulti);
         if (excelEl) excelEl.addEventListener("input", saveMulti);
         if (tvEl) tvEl.addEventListener("input", saveMulti);
+    } else if (lesson.actionType === "canvas_two_tasks") {
+        const checkEl = document.getElementById("input-task-1-checkbox");
+        const textEl = document.getElementById("input-task-2-textarea");
+        
+        const saveCanvasTasks = () => {
+            userSubmissions.lesson_2 = {
+                task1Checkbox: checkEl ? checkEl.checked : false,
+                task2Textarea: textEl ? textEl.value : ""
+            };
+        };
+        
+        if (checkEl) checkEl.addEventListener("change", saveCanvasTasks);
+        if (textEl) textEl.addEventListener("input", saveCanvasTasks);
     } else {
         const inputElement = document.getElementById("action-task-input");
         if (inputElement) {
@@ -769,7 +844,9 @@ function handleVerifyTask() {
             writeTerminalLine("[Success] משימה 5: תרגום ולוקליזציה אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] כל 5 שלבי ה-AI Gauntlet אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_2") {
-            writeTerminalLine("[Success] קוד המקור HTML/CSS נקרא בהצלחה. זוהו תגיות שלד ומבנה.", "success-msg");
+            writeTerminalLine("[Success] משימה 1: אישור עריכת ה-Canvas אומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 2: תיאור פרויקט ה-Canvas האישי נקרא בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] פרויקטי Gemini Canvas הושלמו ואומתו בהצלחה! שיעור 2 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_3") {
             writeTerminalLine(`[Success] מנסה להתחבר לכתובת ${inputVal.trim()}...`, "info-msg");
             writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין!", "success-msg");
@@ -828,6 +905,11 @@ function handleResetInput() {
             imageGen: "",
             excelPlan: "",
             tvTranslation: ""
+        };
+    } else if (lesson.actionType === "canvas_two_tasks") {
+        userSubmissions.lesson_2 = {
+            task1Checkbox: false,
+            task2Textarea: ""
         };
     } else {
         userSubmissions[lesson.id] = "";
