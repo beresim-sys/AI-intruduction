@@ -1,35 +1,35 @@
 /* CSS Design System - "AI ליוצרים" IDE Aesthetic */
 
 :root {
-    /* Color Palette - Romantic Pastel Theme (Cozy Twilight Blue Variation) */
-    --bg-darker: #D2DFE6;         /* Soft pastel grey-blue - frame background */
-    --bg-dark: #F0F4F8;           /* Soft powder-blue blush - editor & card background */
-    --bg-sidebar: #D4E2EB;        /* Soft dusty powder-blue - sidebar background */
-    --bg-activity: #BDCED6;       /* Muted soft steel blue - activity bar */
-    --bg-tabs: #BDCED6;           /* Tab bar inactive background */
-    --bg-tab-active: #F0F4F8;     /* Active tab background (matches editor) */
-    --bg-terminal: #DBE6EC;       /* Soft grey-blue console background */
-    --border-color: #A9C2CF;      /* Subtle soft steel blue border */
+    /* Color Palette - Romantic Pastel Theme (Cozy Mint Green Variation) */
+    --bg-darker: #D5E5DE;         /* Soft pastel grey-mint - frame background */
+    --bg-dark: #F3FAF7;           /* Soft powder-mint blush - editor & card background */
+    --bg-sidebar: #DBE8E2;        /* Soft dusty powder-mint - sidebar background */
+    --bg-activity: #BCD4CB;       /* Muted soft steel mint - activity bar */
+    --bg-tabs: #BCD4CB;           /* Tab bar inactive background */
+    --bg-tab-active: #F3FAF7;     /* Active tab background (matches editor) */
+    --bg-terminal: #E2ECE7;       /* Soft grey-mint console background */
+    --border-color: #AECFBF;      /* Subtle soft steel mint border */
     
-    /* Code Editor Syntax Colors (Pastel Twilight Blue Inspired) */
-    --syntax-keyword: #4F6791;    /* Slate indigo keyword */
+    /* Code Editor Syntax Colors (Pastel Mint Green Inspired) */
+    --syntax-keyword: #436657;    /* Deep forest green keyword */
     --syntax-string: #B0683A;     /* Soft terracotta string */
     --syntax-comment: #688A58;    /* Muted sage green comment */
-    --syntax-function: #3F729C;   /* Slate blue function */
-    --syntax-variable: #5B688A;   /* Muted indigo variable */
+    --syntax-function: #357E88;   /* Teal function */
+    --syntax-variable: #5B738A;   /* Muted blue variable */
     --syntax-number: #8C773E;     /* Soft gold number */
-    --syntax-tag: #4F6791;
-    --syntax-class: #3B7A7A;      /* Soft teal class */
+    --syntax-tag: #436657;
+    --syntax-class: #3B7A60;      /* Soft teal-mint class */
     
     /* Visual Accents & Alerts */
-    --accent-color: #467D9C;      /* Ocean sky blue accent */
-    --accent-hover: #346582;
+    --accent-color: #498E75;      /* Forest/mint green accent */
+    --accent-hover: #35725D;
     --success-color: #519B86;     /* Soft teal/mint green */
-    --warning-color: #C27F63;     /* Warm peach warning/analogy */
+    --warning-color: #C28B63;     /* Warm peach warning/analogy */
     --error-color: #C25E5E;       /* Soft coral red error */
-    --text-main: #2E3A42;         /* Deep charcoal blue text */
-    --text-muted: #61727E;        /* Muted slate blue text */
-    --text-header: #1D262C;       /* Deep navy chocolate headers */
+    --text-main: #2E3D38;         /* Deep charcoal green text */
+    --text-muted: #61776F;        /* Muted slate green text */
+    --text-header: #1D2A24;       /* Deep navy-forest green headers */
     
     /* Fonts */
     --font-hebrew: 'Assistant', sans-serif;
@@ -216,7 +216,7 @@ body {
     font-weight: bold;
     padding: 2px 6px;
     border-radius: 8px;
-    background-color: #EAD3DD;
+    background-color: #D2EADF;
 }
 
 .file-item.completed .checkmark-status {
@@ -225,7 +225,7 @@ body {
 }
 
 .file-item.active-working .checkmark-status {
-    background-color: rgba(200, 107, 133, 0.15);
+    background-color: rgba(73, 142, 117, 0.15);
     color: var(--accent-color);
 }
 
@@ -355,7 +355,7 @@ body {
 }
 
 .editor-tab:hover:not(.active) {
-    background-color: #EAD3DD;
+    background-color: #D2EADF;
     color: var(--text-main);
 }
 
@@ -656,7 +656,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    box-shadow: 0 4px 15px rgba(70, 125, 156, 0.05);
+    box-shadow: 0 4px 15px rgba(73, 142, 117, 0.05);
 }
 
 .action-header {
@@ -668,7 +668,7 @@ body {
 }
 
 .action-badge {
-    background-color: rgba(200, 107, 133, 0.12);
+    background-color: rgba(73, 142, 117, 0.12);
     color: var(--accent-color);
     font-size: 12px;
     font-weight: 800;
@@ -694,7 +694,7 @@ body {
 }
 
 .action-link-btn {
-    background-color: rgba(200, 107, 133, 0.05);
+    background-color: rgba(73, 142, 117, 0.05);
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
     text-decoration: none;
@@ -711,7 +711,7 @@ body {
 }
 
 .action-link-btn:hover {
-    background-color: rgba(0, 122, 204, 0.3);
+    background-color: rgba(73, 142, 117, 0.2);
 }
 
 /* Form Styles for Action Submissions */
