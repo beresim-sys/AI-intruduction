@@ -89,47 +89,47 @@ function getDynamicLessons(name, interests) {
             id: "lesson_2",
             fileName: "lesson_2_canvas.js",
             tabLabel: "lesson_2_canvas.js",
-            title: "שיעור 2: כוחו של Gemini Canvas – מעבר לצ'אט פשוט",
+            title: "שיעור 2: כוחו של Gemini Canvas – מצ'אט לבונה",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 2: כוחו של Gemini Canvas – מעבר לצ'אט פשוט</h1>
-<p class="lesson-p">שלום ${name}! בשיעור זה נצלול לעומק היכולות הטרנספורמטיביות של <strong>Gemini Canvas</strong>.</p>
-<p class="lesson-p">Gemini Canvas משנה לחלוטין את הדרך שבה אנו עובדים עם בינה מלאכותית. הוא מעביר את המיקוד שלנו מ<strong>"כתיבת קוד או טקסט"</strong> (פעולה של העתקה והדבקה חוזרת) ל<strong>"בניית פתרונות"</strong>. במקום לנהל שיחה ליניארית שבה ה-AI פולט קטעי קוד מחדש בכל פעם, Canvas פותח מרחב עבודה דינמי ומשותף שבו אתם וה-AI עובדים על אותו מסמך או פרויקט במקביל.</p>
+<h1 class="lesson-h1">שיעור 2: כוחו של Gemini Canvas – מצ'אט לבונה</h1>
+<p class="lesson-p">שלום ${name}! בשיעור זה נלמד כיצד לעבור מצ'אט פשוט לסביבת עבודה שיתופית ודינמית בעזרת Gemini Canvas.</p>
+<p class="lesson-p">Gemini Canvas מאפשר לכם להתקדם מעבר לצ'אט הפשוט אל עבר סביבת עבודה שיתופית דינמית. הוא מתוכנן במיוחד לעבודה עם מסמכים מורכבים, כתיבת קוד ואוטומציה מובנית.</p>
 
-<h2 class="lesson-h2">שלושה שימושי ליבה מרכזיים (Core Use Cases)</h2>
+<h2 class="lesson-h2">תהליך העבודה הפשוט ב-Canvas ב-4 שלבים</h2>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 10px;"><strong>יצירת מסמכים חכמים (Smart Document Creation):</strong> יצירה ללא מאמץ של מסמכים ארוכים ומורכבים. אתם מתרכזים במסר המרכזי, וה-AI מטפל בניסוחים ובפורמט.
-    <br><em>דוגמאות:</em> סיכום פרוטוקולים רפואיים מורכבים (כמו טיפול ברעלת הריון - Preeclampsia), או הפיכת נתונים גולמיים לקורות חיים בעלי השפעה רבה המותאמים למשרות ספציפיות.</li>
-    <li style="margin-bottom: 10px;"><strong>טפסים חכמים ואוטומציה (Smart Forms & Automation):</strong> חיסכון אדיר בעבודה ידנית על ידי בניית מערכות הקולטות ומעבדות נתונים.
-    <br><em>דוגמאות:</em> שאלון קליני הממליץ על משאבת החלב (Breast Pump) המתאימה ביותר לפי העדפות האם, או טופס אישור הגעה (RSVP) לאירועים (כגון בת מצווה - Bat Mitzvah) האוסף ומארגן את פרטי האורחים באופן מיידי.</li>
-    <li style="margin-bottom: 10px;"><strong>כלים אינטראקטיביים וסימולציות (Interactive Tools & Simulations):</strong> יצירת מרחבים ומוצרים דיגיטליים "חיים".
-    <br><em>דוגמאות:</em> משחקים לימודיים המסמלצים קבלת החלטות בזמן אמת (כמו זיהוי סיבוכי סוכרת - Diabetes), דפי נחיתה מקצועיים, או אתרי תיק עבודות אישיים המוכנים לשיתוף מיידי.</li>
+    <li style="margin-bottom: 8px;"><strong>1. הפעלה (Activate):</strong> פתחו את Gemini וודאו שאתם משתמשים במודל ה-Gemini Pro המומלץ.</li>
+    <li style="margin-bottom: 8px;"><strong>2. פרומפט ל-Canvas (Prompt for Canvas):</strong> השתמשו בטריגר ספציפי בפרומפט שלכם, כגון: "Open a canvas to create a [document/code/form] about [Interest]."</li>
+    <li style="margin-bottom: 8px;"><strong>3. מרחב העבודה (The Workspace):</strong> שימו לב לחלון הצדדי החדש שנפתח. זהו ה-Canvas שלכם. כעת תוכלו לערוך את התוכן ישירות, לבקש מה-AI להציע שינויים, או להשתמש במברשת ה-"עריכה" (Edit) כדי לשנות חלקים ספציפיים בקוד או בטקסט.</li>
+    <li style="margin-bottom: 8px;"><strong>4. איטרציה (Iterate):</strong> השתמשו בתפריט ה-"כיוונון" (Adjust) כדי לשנות את האורך, סגנון הכתיבה (טון), או כדי לתקן באגים בקוד שלכם.</li>
 </ul>
 
-<div class="analogy-box">
-    <strong>[התאמה אישית של תחומי העניין שלך]</strong>
-    בואו נראה כיצד תחומי העניין שלכם משתלבים בשימושים הללו:
-    <br>- את תחום העניין <strong>${i3}</strong> נוכל להפוך ל<strong>מסמך חכם (Smart Document)</strong> המרכז מידע מעמיק.
-    <br>- את תחום העניין <strong>${i4}</strong> נוכל להפוך ל<strong>טופס אוטומטי (Automation)</strong> שמנהל את נתוני הפעילות.
-    <br>- ואת תחום העניין <strong>${i5}</strong> נוכל להפוך ל<strong>סימולציה אינטראקטיבית (Interactive Simulation)</strong> מעשית ודינמית.
-</div>
+<h2 class="lesson-h2">יישומי מפתח (Key Applications)</h2>
+<ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
+    <li style="margin-bottom: 10px;"><strong>מסמכים חכמים (Smart Documents):</strong> יצירת פרוטוקולים מורכבים (לדוגמה: הנחיות רפואיים לטיפול ברעלת הריון - Preeclampsia) או התאמה אישית של קורות החיים שלכם למשרה ספציפית.</li>
+    <li style="margin-bottom: 10px;"><strong>טפסים חכמים (Smart Forms):</strong> אוטומציה של איסוף נתונים, כמו טופסי אישור הגעה (RSVP) לאירועים מבוססי <strong>${i1}</strong> (למשל בת מצווה - Bat Mitzvah) או שאלונים קליניים להתאמת משאבות חלב (Breast Pumps) על בסיס <strong>${i2}</strong>.</li>
+    <li style="margin-bottom: 10px;"><strong>כלים אינטראקטיביים (Interactive Tools):</strong> פיתוח סימולציות (לדוגמה: משחקים לימודיים המסמלצים קבלת החלטות בזמן אמת כמו זיהוי סיבוכי סוכרת - Diabetes) או דפי נחיתה עבור <strong>${i3}</strong> שישמשו כאב-טיפוס חי.</li>
+</ul>
             `,
-            actionType: "code",
-            actionLabel: "הדביקו את קוד הפרויקט או תוצאת העבודה שלכם מ-Gemini Canvas כאן:",
-            placeholderText: "הדביקו כאן את הקוד או את תוצר העבודה שלכם...",
+            actionType: "textarea",
+            actionLabel: "תארו את השינויים שביצעתם בתוך ה-Canvas:",
+            placeholderText: "לדוגמה: שיניתי את סכמת הצבעים לגווני פסטל רומנטיים, שדרגתי את הניסוחים למקצועיים יותר והוספתי...",
             tools: [
-                { name: "פתח את Gemini Canvas בלשונית חדשה", url: "https://gemini.google.com" }
+                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
             ],
-            instructionText: `<strong>משימה מעשית ב-Gemini Canvas:</strong><br>
-            1. פתחו את **Gemini Canvas** בלשונית חדשה.<br>
-            2. בחרו באחת משלוש הקטגוריות למעלה וצרו פרויקט המבוסס על תחומי העניין שלכם. למשל: צרו 'מלאי חכם לאוסף לגו' (Lego Collection Smart Inventory), 'טופס RSVP לטיול כלבים' (Dog Walking RSVP Form), או 'סימולציה לחיזוי שוק ההון' (Stock Market Prediction Simulation).<br>
-            3. העתיקו והדביקו את הקוד או תוצאת העבודה שלכם כאן למטה.`,
+            instructionText: `<strong>בואו נבנה את פרויקט ה-Canvas הראשון שלכם. עקבו אחר הצעדים הבאים:</strong><br>
+            1. פתחו את **Gemini** בלשונית חדשה.<br>
+            2. העתיקו והדביקו את הפרומפט הבא:<br>
+            <div class="lesson-code-block" style="font-size:12px; margin: 8px 0; direction: ltr; text-align: left;">"Open a canvas and generate a simple HTML/CSS/JS page for a ${i4} tracker. Include a header, an input field, and a button."</div>
+            3. לאחר שהקנבס נפתח, לחצו על שורת טקסט או קוד ובקשו מה-AI: <br>
+            <div class="lesson-code-block" style="font-size:12px; margin: 8px 0; direction: ltr; text-align: left;">"Change the color scheme to be more pastel and romantic."</div>
+            4. השתמשו באפשרות ה-'Rewrite' (שכתוב) או 'Edit' (עריכה) כדי להפוך את הטקסט למקצועי ומכובד יותר.`,
             validate: (input) => {
                 if (!input) return false;
                 return input.trim().length > 15;
             },
-            errorMessage: "התוכן שהוזן קצר מדי! אנא בצעו את המשימה ב-Gemini Canvas והדביקו את התוצר או הקוד שנוצר כאן."
+            errorMessage: "התיאור שהוזן קצר מדי! אנא בצעו את הצעדים בקנבס ותארו את השינויים בפירוט (לפחות 15 תווים)."
         },
         {
             id: "lesson_3",
