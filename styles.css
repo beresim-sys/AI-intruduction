@@ -1,35 +1,35 @@
 /* CSS Design System - "AI ליוצרים" IDE Aesthetic */
 
 :root {
-    /* Color Palette - Romantic Pastel Theme (Cozy Twilight Variation) */
-    --bg-darker: #EAD3DD;         /* Muted lavender-mauve - frame background */
-    --bg-dark: #FAF0F3;           /* Soft creamy lavender-blush - editor & card background */
-    --bg-sidebar: #ECD2DD;        /* Muted dusty rose - sidebar background */
-    --bg-activity: #D5B3C1;       /* Muted lavender-mauve - activity bar */
-    --bg-tabs: #D5B3C1;           /* Tab bar inactive background */
-    --bg-tab-active: #FAF0F3;     /* Active tab background (matches editor) */
-    --bg-terminal: #E5CAD6;       /* Soft grey-plum console background */
-    --border-color: #CBA3B4;      /* Dusty rose-lavender border */
+    /* Color Palette - Romantic Pastel Theme (Cozy Twilight Blue Variation) */
+    --bg-darker: #D2DFE6;         /* Soft pastel grey-blue - frame background */
+    --bg-dark: #F0F4F8;           /* Soft powder-blue blush - editor & card background */
+    --bg-sidebar: #D4E2EB;        /* Soft dusty powder-blue - sidebar background */
+    --bg-activity: #BDCED6;       /* Muted soft steel blue - activity bar */
+    --bg-tabs: #BDCED6;           /* Tab bar inactive background */
+    --bg-tab-active: #F0F4F8;     /* Active tab background (matches editor) */
+    --bg-terminal: #DBE6EC;       /* Soft grey-blue console background */
+    --border-color: #A9C2CF;      /* Subtle soft steel blue border */
     
-    /* Code Editor Syntax Colors (Pastel Twilight Inspired) */
-    --syntax-keyword: #8A3B5F;    /* Deep raspberry plum */
-    --syntax-string: #B0683A;     /* Soft terracotta */
-    --syntax-comment: #688A58;    /* Muted sage green */
-    --syntax-function: #3F729C;   /* Slate blue */
-    --syntax-variable: #6A4C6A;   /* Muted plum-violet */
-    --syntax-number: #8C773E;     /* Soft gold */
-    --syntax-tag: #8A3B5F;
-    --syntax-class: #3B7A7A;      /* Muted teal */
+    /* Code Editor Syntax Colors (Pastel Twilight Blue Inspired) */
+    --syntax-keyword: #4F6791;    /* Slate indigo keyword */
+    --syntax-string: #B0683A;     /* Soft terracotta string */
+    --syntax-comment: #688A58;    /* Muted sage green comment */
+    --syntax-function: #3F729C;   /* Slate blue function */
+    --syntax-variable: #5B688A;   /* Muted indigo variable */
+    --syntax-number: #8C773E;     /* Soft gold number */
+    --syntax-tag: #4F6791;
+    --syntax-class: #3B7A7A;      /* Soft teal class */
     
     /* Visual Accents & Alerts */
-    --accent-color: #A0445C;      /* Deep raspberry rose accent */
-    --accent-hover: #8E354C;
-    --success-color: #519B86;     /* Deep pastel mint green */
-    --warning-color: #C27F63;     /* Warm peach/terracotta */
-    --error-color: #C25E5E;       /* Deep soft coral red */
-    --text-main: #38262C;         /* Rich charcoal plum text */
-    --text-muted: #735460;        /* Muted charcoal plum text */
-    --text-header: #251419;       /* Deep dark chocolate plum headers */
+    --accent-color: #467D9C;      /* Ocean sky blue accent */
+    --accent-hover: #346582;
+    --success-color: #519B86;     /* Soft teal/mint green */
+    --warning-color: #C27F63;     /* Warm peach warning/analogy */
+    --error-color: #C25E5E;       /* Soft coral red error */
+    --text-main: #2E3A42;         /* Deep charcoal blue text */
+    --text-muted: #61727E;        /* Muted slate blue text */
+    --text-header: #1D262C;       /* Deep navy chocolate headers */
     
     /* Fonts */
     --font-hebrew: 'Assistant', sans-serif;
@@ -652,7 +652,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    box-shadow: 0 4px 15px rgba(200, 107, 133, 0.05);
+    box-shadow: 0 4px 15px rgba(70, 125, 156, 0.05);
 }
 
 .action-header {
