@@ -662,7 +662,7 @@ body {
 .action-badge {
     background-color: rgba(204, 167, 0, 0.2);
     color: var(--warning-color);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 800;
     padding: 2px 8px;
     border-radius: 4px;
@@ -670,13 +670,13 @@ body {
 }
 
 .action-title {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--text-header);
 }
 
 .action-steps {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.5;
     color: var(--text-main);
 }
@@ -692,7 +692,7 @@ body {
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     display: inline-flex;
     align-items: center;
@@ -715,7 +715,7 @@ body {
 }
 
 .action-input-area label {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     color: var(--success-color);
 }
@@ -727,7 +727,7 @@ body {
     color: var(--text-main);
     border-radius: 4px;
     padding: 10px;
-    font-size: 12px;
+    font-size: 13px;
     min-height: 120px;
     resize: vertical;
     direction: ltr;
@@ -745,7 +745,7 @@ body {
     color: var(--text-main);
     border-radius: 4px;
     padding: 8px 12px;
-    font-size: 13px;
+    font-size: 14px;
     direction: ltr;
     text-align: left;
 }
@@ -760,7 +760,7 @@ body {
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 14px;
     user-select: none;
 }
 
