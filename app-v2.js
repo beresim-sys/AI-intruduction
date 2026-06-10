@@ -153,7 +153,8 @@ function getDynamicLessons(name, interests) {
             actionLabel: "הדביקו את קוד ה-HTML או את הפרומפט שבו השתמשתם ליצירת דף הנחיתה של NotebookLM:",
             placeholderText: "לדוגמה: הדבקתי את קוד ה-HTML שעיצבתי, או תיאור הפרומפט שלי...",
             tools: [
-                { name: "פתח את NotebookLM", url: "https://notebooklm.google" }
+                { name: "פתח את NotebookLM", url: "https://notebooklm.google" },
+                { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "notebooklm-tutorial.html" }
             ],
             instructionText: `<strong>משימה מעשית - NotebookLM:</strong><br>
             1. קראו את שלבי התוכן של NotebookLM שלמטה.<br>
@@ -335,6 +336,7 @@ function getDynamicLessons(name, interests) {
 }
 
 
+
 // 2. Global State Variables
 let userName = "";
 let userInterests = [];
@@ -395,6 +397,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
+        const skipBtn = document.getElementById("btn-skip-onboarding");
+        if (skipBtn) {
+            skipBtn.addEventListener("click", handleSkipOnboarding);
+        }
     }
 });
 
@@ -493,6 +499,55 @@ function handleOnboardingSubmit() {
     }
     
     startApp();
+}
+
+function handleSkipOnboarding() {
+    const onboardingCard = document.querySelector(".onboarding-card");
+    if (onboardingCard) {
+        onboardingCard.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; gap: 20px;">
+                <div style="width: 50px; height: 50px; border: 4px solid var(--border-color); border-top-color: var(--success-color); border-radius: 50%; animation: rotate 1s linear infinite;"></div>
+                <h3 style="color: var(--text-header); font-size: 18px; font-weight: 700; margin: 0;">מכינים עבורך תרגילים אישיים...</h3>
+            </div>
+        `;
+    }
+
+    const randomTopics = [
+        "היסטוריה אירופית של המאה ה-20",
+        "פיתוחים רפואיים ופרמקולוגיים",
+        "אוריינות פיננסית וריבית דריבית",
+        "יישומים של בינה מלאכותית",
+        "עשה זאת בעצמך, יצירה ותחזוקת הבית",
+        "צילום דיגיטלי ועריכת תמונות",
+        "ספורט ואורח חיים בריא",
+        "מוזיקה ותאוריית הצליל",
+        "בישול ואמנות הקולינריה",
+        "פיתוח אפליקציות ועיצוב ממשק"
+    ];
+
+    const shuffled = [...randomTopics].sort(() => 0.5 - Math.random());
+    const selectedInterests = shuffled.slice(0, 5);
+    const guestName = "אורח/ת";
+
+    userName = guestName;
+    userInterests = selectedInterests;
+    lessonsData = getDynamicLessons(userName, userInterests);
+
+    localStorage.setItem("user_name", userName);
+    localStorage.setItem("user_interests", JSON.stringify(userInterests));
+
+    setTimeout(() => {
+        const overlay = document.getElementById("onboarding-overlay");
+        if (overlay) {
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+                overlay.style.display = "none";
+                startApp();
+            }, 300);
+        } else {
+            startApp();
+        }
+    }, 1500);
 }
 
 function showOnboardingError(msg) {
@@ -648,7 +703,7 @@ function loadLesson(index) {
     const sidebarNameEl = document.getElementById("sidebar-username");
     const sidebarCountEl = document.getElementById("sidebar-lesson-count");
     if (sidebarNameEl) {
-                const greetings = [
+                        const greetings = [
             `שלום, ${userName}!`,
             `ברוך שובך, ${userName}!`,
             `אתה מתקדם נהדר, ${userName}!`,
@@ -926,7 +981,7 @@ function renderActionBlock(lesson) {
         const textEl = document.getElementById("input-task-2-textarea");
         
         const saveCanvasTasks = () => {
-            userSubmissions.lesson_3 = {
+            userSubmissions.lesson_4 = {
                 task1Checkbox: checkEl ? checkEl.checked : false,
                 task2Textarea: textEl ? textEl.value : ""
             };
@@ -994,7 +1049,7 @@ function handleVerifyTask() {
         // Success path
         writeTerminalLine("מנתח תוצאות קלט מתוך סביבת העבודה החיצונית...", "info-msg");
         
-                if (lesson.id === "lesson_1") {
+                        if (lesson.id === "lesson_1") {
             writeTerminalLine("[Success] משימה 1: ניתוח כפתור + אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 2: קלט קולי אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 3: פרומפט יצירת תמונה אומת בהצלחה.", "success-msg");
@@ -1068,7 +1123,7 @@ function handleResetInput() {
             tvTranslation: ""
         };
     } else if (lesson.actionType === "canvas_two_tasks") {
-        userSubmissions.lesson_3 = {
+        userSubmissions.lesson_4 = {
             task1Checkbox: false,
             task2Textarea: ""
         };
