@@ -443,29 +443,35 @@ document.addEventListener("DOMContentLoaded", () => {
     
     bindGlobalListeners();
     
+    // Always render the Splash Screen (onboarding overlay) first
+    const overlay = document.getElementById("onboarding-overlay");
+    if (overlay) {
+        overlay.style.display = "flex";
+        overlay.style.opacity = "1";
+    }
+    
+    // Prefill form inputs if saved details exist
     if (savedName && savedInterests) {
-        userName = savedName;
-        userInterests = JSON.parse(savedInterests);
-        lessonsData = getDynamicLessons(userName, userInterests);
+        const nameInput = document.getElementById("user-name");
+        if (nameInput) nameInput.value = savedName;
         
-        // Hide onboarding overlay immediately
-        const overlay = document.getElementById("onboarding-overlay");
-        if (overlay) overlay.style.display = "none";
-        
-        startApp();
-    } else {
-        // Show onboarding overlay
-        const overlay = document.getElementById("onboarding-overlay");
-        if (overlay) {
-            overlay.style.display = "flex";
-            overlay.style.opacity = "1";
+        try {
+            const interests = JSON.parse(savedInterests);
+            const interestInputs = Array.from(document.querySelectorAll(".interest-input"));
+            interestInputs.forEach((input, index) => {
+                if (interests[index]) {
+                    input.value = interests[index];
+                }
+            });
+        } catch (e) {
+            console.error("Error parsing saved user interests:", e);
         }
-        
-        document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
-        const skipBtn = document.getElementById("btn-skip-onboarding");
-        if (skipBtn) {
-            skipBtn.addEventListener("click", handleSkipOnboarding);
-        }
+    }
+    
+    document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
+    const skipBtn = document.getElementById("btn-skip-onboarding");
+    if (skipBtn) {
+        skipBtn.addEventListener("click", handleSkipOnboarding);
     }
 });
 
