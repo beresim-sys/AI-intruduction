@@ -1,4 +1,4 @@
-﻿// AI for Builders: From Prompt to Production - Core Application Logic
+// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -906,7 +906,6 @@ function renderActionBlock(lesson) {
                 </div>
             </div>
         `;
-    }
     } else if (lesson.actionType === "notebooklm_assignment") {
         const data = savedVal || { chk1: false, chk2: false, uploaded: false, fileName: "" };
         inputHtml = `
