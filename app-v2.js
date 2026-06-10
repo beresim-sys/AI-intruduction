@@ -109,6 +109,65 @@ function getDynamicLessons(name, interests) {
     דמיינו שאתם מתכוננים למבחן בנושא <strong>${i1}</strong> או <strong>${i2}</strong>. במקום לשאול עובר אורח ברחוב שקרא פעם משהו בנושא (כמו מודל AI רגיל), אתם פונים לספרייה פרטית המכילה אך ורק את ספרי הלימוד המדויקים שלכם ומקבלים תשובות המבוססות על עמודים ספציפיים.
 </div>
 
+<h2 class="lesson-h2">אילו מקורות מידע אפשר להעלות למחברת?</h2>
+<p class="lesson-p">המערכת יודעת להתמודד עם מגוון רחב של פורמטים. הנה כמה מהנפוצים שבהם:</p>
+
+<div class="sources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 15px 0;">
+    <!-- Card 1 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">קובצי PDF ומסמכים</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">העלו מאמרים אקדמיים, סיכומי שיעור, ספרי לימוד דיגיטליים, או שקופיות של מצגות שהומרו ל-PDF.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+                <line x1="15" y1="3" x2="15" y2="21"></line>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="3" y1="15" x2="21" y2="15"></line>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">קובצי נתונים ואקסל</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">המערכת יודעת לקרוא ולנתח נתונים מתוך טבלאות, גיליונות חישוב (Excel / Google Sheets), דוחות וסטטיסטיקות, ולעזור לכם להפיק מהם תובנות.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v1a7 7 0 0 1-14 0v-1"></path>
+                <line x1="12" y1="19" x2="12" y2="22"></line>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">קובצי שמע (Audio)</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">יש לכם הקלטה של הרצאה או ראיון? העלו את קובץ השמע, ו-NotebookLM יתמלל אותו מאחורי הקלעים ויהפוך את התוכן הטקסטואלי שלו לזמין לחיפוש וסיכום.</p>
+    </div>
+</div>
+
+<!-- Highlight Box (Special Feature: Gemini Chats) -->
+<div class="special-feature-box" style="background: linear-gradient(135deg, rgba(73, 142, 117, 0.12), rgba(53, 114, 93, 0.04)); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 20px; margin: 20px 0; text-align: right; box-shadow: 0 4px 15px rgba(73, 142, 117, 0.1);">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--accent-color);">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 7.92c.11.047.22.094.33.141a1 1 0 0 1 0 1.876c-.11.047-.22.094-.33.141a7.5 7.5 0 0 0-7.92 7.92c-.047.11-.094.22-.141.33a1 1 0 0 1-1.876 0c-.047-.11-.094-.22-.141-.33a7.5 7.5 0 0 0-7.92-7.92c-.11-.047-.22-.094-.33-.141a1 1 0 0 1 0-1.876c.11-.047.22-.094.33-.141a7.5 7.5 0 0 0 7.92-7.92c.047-.11.094-.22.141-.33A1 1 0 0 1 12 3z"></path>
+        </svg>
+        <strong style="font-size: 14px; font-weight: 700;">פיצ'ר מתקדם: קישור שיחות מ-Gemini כמקור מידע</strong>
+    </div>
+    <p style="font-size: 12px; color: var(--text-main); line-height: 1.5; margin: 0;">
+        ידעתם שאתם יכולים להשתמש בשיחות קודמות שלכם כחומר גלם? אם ניהלתם סיעור מוחות, חקרתם נושא לעומק, או יצרתם תוכן בעזרת הצ'אט של Gemini, תוכלו לייבא את השיחה הזו ישירות אל תוך המחברת ב-NotebookLM.
+        <br><strong style="color: var(--accent-color);">איך זה עוזר?</strong> המערכת תתייחס לכל הרעיונות והתובנות שעלו בשיחה ההיא כבסיס ידע לגיטימי לכל דבר, ותשלב אותם עם שאר המאמרים והמסמכים שלכם ליצירת תמונה מלאה ועשירה יותר של הפרויקט.
+    </p>
+</div>
+
 <h2 class="lesson-h2">יכולות המפתח של NotebookLM: מה אפשר לעשות איתו?</h2>
 <p class="lesson-p">NotebookLM מספק ארגז כלים שלם לעיבוד ולמידה של חומרים מורכבים:</p>
 
@@ -149,21 +208,21 @@ function getDynamicLessons(name, interests) {
 <h2 class="lesson-h2">הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
 <p class="lesson-p">הסטודיו הוא מרחב העבודה הדיגיטלי שלכם בתוך NotebookLM. כאן אתם יכולים לנהל מספר "מחברות" (Notebooks) שונות במקביל, לארגן את מסמכי המקור, להנחות את ה-AI להתמקד בנושאים ספציפיים בלבד, ולייצא את התוצרים שנוצרו לפורמטים פופולריים כמו קובצי Word, PDF, מצגות או קובצי שמע בלחיצת כפתור אחת.</p>
             `,
-            actionType: "textarea",
-            actionLabel: "הדביקו את קוד ה-HTML או את הפרומפט שבו השתמשתם ליצירת דף הנחיתה של NotebookLM:",
-            placeholderText: "לדוגמה: הדבקתי את קוד ה-HTML שעיצבתי, או תיאור הפרומפט שלי...",
+            actionType: "notebooklm_assignment",
+            actionLabel: "",
+            placeholderText: "",
             tools: [
                 { name: "פתח את NotebookLM", url: "https://notebooklm.google" },
                 { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "notebooklm-tutorial.html" }
             ],
             instructionText: `<strong>משימה מעשית - NotebookLM:</strong><br>
-            1. קראו את שלבי התוכן של NotebookLM שלמטה.<br>
-            2. פתחו את מנוע ה-AI ונסחו פרומפט שלם לבניית דף נחיתה אינטראקטיבי ומעוצב בכתב RTL לפי ההנחיות בשיעור.<br>
-            3. הדביקו את הפרומפט או את קוד ה-HTML שנוצר בתיבת הטקסט מטה כדי לאמת ולהמשיך.`,
+            1. בצעו את שלבי ההכנה והמשימות בתיבת המשימה מטה.<br>
+            2. העלו צילום מסך של המחברת שלכם כדי לאמת ולהשלים את השיעור.`,
             validate: (input) => {
-                return input && input.trim().length > 15;
+                if (!input || typeof input !== "object") return false;
+                return input.chk1 === true && input.chk2 === true && input.uploaded === true;
             },
-            errorMessage: "אנא הדביקו את הפרומפט או הקוד של דף הנחיתה שעיצבתם (לפחות 15 תווים)."
+            errorMessage: "אנא ודאו שסימנתם את שני שלבי ההכנה והעליתם צילום מסך של המחברת שלכם."
         },
         {
             id: "lesson_3",
@@ -337,6 +396,7 @@ function getDynamicLessons(name, interests) {
 
 
 
+
 // 2. Global State Variables
 let userName = "";
 let userInterests = [];
@@ -356,7 +416,12 @@ let userSubmissions = {
         excelPlan: "",
         tvTranslation: ""
     },
-    lesson_2: "",
+    lesson_2: {
+        chk1: false,
+        chk2: false,
+        uploaded: false,
+        fileName: ""
+    },
     lesson_3: {
         task1Checkbox: false,
         task2Textarea: ""
@@ -397,6 +462,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
+        const skipBtn = document.getElementById("btn-skip-onboarding");
+        if (skipBtn) {
+            skipBtn.addEventListener("click", handleSkipOnboarding);
+        }
         const skipBtn = document.getElementById("btn-skip-onboarding");
         if (skipBtn) {
             skipBtn.addEventListener("click", handleSkipOnboarding);
@@ -499,6 +568,55 @@ function handleOnboardingSubmit() {
     }
     
     startApp();
+}
+
+function handleSkipOnboarding() {
+    const onboardingCard = document.querySelector(".onboarding-card");
+    if (onboardingCard) {
+        onboardingCard.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; gap: 20px;">
+                <div style="width: 50px; height: 50px; border: 4px solid var(--border-color); border-top-color: var(--success-color); border-radius: 50%; animation: rotate 1s linear infinite;"></div>
+                <h3 style="color: var(--text-header); font-size: 18px; font-weight: 700; margin: 0;">מכינים עבורך תרגילים אישיים...</h3>
+            </div>
+        `;
+    }
+
+    const randomTopics = [
+        "היסטוריה אירופית של המאה ה-20",
+        "פיתוחים רפואיים ופרמקולוגיים",
+        "אוריינות פיננסית וריבית דריבית",
+        "יישומים של בינה מלאכותית",
+        "עשה זאת בעצמך, יצירה ותחזוקת הבית",
+        "צילום דיגיטלי ועריכת תמונות",
+        "ספורט ואורח חיים בריא",
+        "מוזיקה ותאוריית הצליל",
+        "בישול ואמנות הקולינריה",
+        "פיתוח אפליקציות ועיצוב ממשק"
+    ];
+
+    const shuffled = [...randomTopics].sort(() => 0.5 - Math.random());
+    const selectedInterests = shuffled.slice(0, 5);
+    const guestName = "אורח/ת";
+
+    userName = guestName;
+    userInterests = selectedInterests;
+    lessonsData = getDynamicLessons(userName, userInterests);
+
+    localStorage.setItem("user_name", userName);
+    localStorage.setItem("user_interests", JSON.stringify(userInterests));
+
+    setTimeout(() => {
+        const overlay = document.getElementById("onboarding-overlay");
+        if (overlay) {
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+                overlay.style.display = "none";
+                startApp();
+            }, 300);
+        } else {
+            startApp();
+        }
+    }, 1500);
 }
 
 function handleSkipOnboarding() {
@@ -703,7 +821,7 @@ function loadLesson(index) {
     const sidebarNameEl = document.getElementById("sidebar-username");
     const sidebarCountEl = document.getElementById("sidebar-lesson-count");
     if (sidebarNameEl) {
-                        const greetings = [
+                                const greetings = [
             `שלום, ${userName}!`,
             `ברוך שובך, ${userName}!`,
             `אתה מתקדם נהדר, ${userName}!`,
@@ -841,6 +959,79 @@ function renderActionBlock(lesson) {
                 </div>
             </div>
         `;
+    }
+    } else if (lesson.actionType === "notebooklm_assignment") {
+        const data = savedVal || { chk1: false, chk2: false, uploaded: false, fileName: "" };
+        inputHtml = `
+            <div class="action-input-area notebooklm-mission-card" style="background: rgba(73, 142, 117, 0.08); border: 1.5px dashed var(--primary-color); border-radius: 20px; padding: 20px; gap: 16px; display: flex; flex-direction: column;">
+                
+                <!-- Section Header -->
+                <div class="mission-header" style="text-align: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 12px;">
+                    <h4 style="font-size: 15px; color: var(--primary-color); font-weight: 700; margin-bottom: 4px;">🚀 משימה מעשית: יוצאים לדרך עם NotebookLM!</h4>
+                    <p style="font-size: 11.5px; color: var(--text-muted);">עקבו אחר שלבי ההכנה ובצעו את שתי המשימות בתוך המחברת שלכם.</p>
+                </div>
+
+                <!-- Setup Phase -->
+                <div class="mission-setup" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color);">
+                    <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 8px; text-align: right;">שלב 1: הקמת סביבת העבודה</h5>
+                    <div style="display: flex; flex-direction: column; gap: 8px; text-align: right;">
+                        <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="nb-setup-1" \\${data.chk1 ? "checked" : ""}>
+                            <span>פתחו מחברת חדשה (New Notebook) ב-NotebookLM.</span>
+                        </label>
+                        <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="nb-setup-2" \\${data.chk2 ? "checked" : ""}>
+                            <span>העלו לפחות 2 מקורות מידע הקשורים לחומר הלימוד שלכם (למשל: קובץ PDF, סיכום שיעור, קישור לאתר אינטרנט או סרטון YouTube רלוונטי).</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Core Tasks -->
+                <div class="mission-tasks" style="display: flex; flex-direction: column; gap: 12px; text-align: right;">
+                    <!-- Task A -->
+                    <div class="task-subcard" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color); transition: transform 0.2s;">
+                        <h5 style="font-size: 13px; color: var(--accent-color); font-weight: 700; margin-bottom: 6px;">משימה 1: שאלת חיפוש ממוקדת</h5>
+                        <p style="font-size: 11.5px; color: var(--text-main); line-height: 1.4; margin-bottom: 6px;">הקלידו בשורת הצ'אט שאלה ספציפית וממוקדת מתוך המקורות שהעליתם (למשל: "מהם 3 הגורמים ל..." או "חלץ סיכום קצר של פרק א'").</p>
+                        <div style="font-size: 10.5px; color: var(--primary-color); background: rgba(73, 142, 117, 0.05); padding: 6px 10px; border-radius: 8px; border-right: 2px solid var(--primary-color);">
+                            <strong>טיפ מקצועי:</strong> שימו לב כיצד המערכת עונה לכם ומצרפת מספרים קטנים המפנים לציטוט המדויק מתוך חומרי הגלם שלכם.
+                        </div>
+                    </div>
+
+                    <!-- Task B -->
+                    <div class="task-subcard" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color); transition: transform 0.2s;">
+                        <h5 style="font-size: 13px; color: var(--accent-color); font-weight: 700; margin-bottom: 6px;">משימה 2: יצירת מוצר בסטודיו (לבחירתכם)</h5>
+                        <p style="font-size: 11.5px; color: var(--text-main); line-height: 1.4; margin-bottom: 6px;">פתחו את פאנל הסטודיו (Studio Panel) בצד המסך והפיקו תוצר למידה אחד לבחירתכם מתוך האפשרויות:</p>
+                        <ul style="font-size: 11px; color: var(--text-muted); padding-right: 18px; line-height: 1.4; list-style-type: disc;">
+                            <li>שיחת פודקאסט קולית (Audio Overview)</li>
+                            <li>סט כרטיסיות לימוד (Flashcards) לשינון</li>
+                            <li>בוחן אמריקאי עצמי (Quiz)</li>
+                            <li>מפת חשיבה ויזואלית (Mind Map) קשרים</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Submission Component -->
+                <div class="mission-submission" style="background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid var(--border-color); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 2px;">סיימתם? שתפו אותנו!</h5>
+                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-bottom: 4px;">צלמו מסך של מסך המחברת שלכם (הכולל את התשובה מהצ'אט ואת התוצר שיצרתם בסטודיו) והעלו אותו כאן כדי לקבל משוב מהמורה.</p>
+                    
+                    <input type="file" id="nb-screenshot-upload" accept="image/*" style="display: none;">
+                    <button id="btn-upload-trigger" class="btn btn-primary" style="padding: 6px 16px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; border-radius: 20px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span>העלאת צילום מסך (Upload Screenshot)</span>
+                    </button>
+                    
+                    <div id="nb-upload-status" style="font-size: 11px; color: var(--primary-color); font-weight: 600; margin-top: 4px; display: \\${data.uploaded ? 'block' : 'none'};">
+                        \\${data.uploaded ? '✓ קובץ הועלה: ' + data.fileName : ''}
+                    </div>
+                </div>
+
+            </div>
+        `;
     } else if (lesson.actionType === "canvas_two_tasks") {
         const data = savedVal || { task1Checkbox: false, task2Textarea: "" };
         const i1 = userInterests[0];
@@ -954,7 +1145,51 @@ function renderActionBlock(lesson) {
     `;
     
     // Bind auto-save listeners
-    if (lesson.actionType === "multi_capabilities") {
+    if (lesson.actionType === "notebooklm_assignment") {
+        const chk1El = document.getElementById("nb-setup-1");
+        const chk2El = document.getElementById("nb-setup-2");
+        const uploadEl = document.getElementById("nb-screenshot-upload");
+        const triggerEl = document.getElementById("btn-upload-trigger");
+        const statusEl = document.getElementById("nb-upload-status");
+
+        const saveNotebookLMMission = () => {
+            userSubmissions.lesson_2 = {
+                chk1: chk1El ? chk1El.checked : false,
+                chk2: chk2El ? chk2El.checked : false,
+                uploaded: userSubmissions.lesson_2 ? userSubmissions.lesson_2.uploaded : false,
+                fileName: userSubmissions.lesson_2 ? userSubmissions.lesson_2.fileName : ""
+            };
+        };
+
+        if (chk1El) chk1El.addEventListener("change", saveNotebookLMMission);
+        if (chk2El) chk2El.addEventListener("change", saveNotebookLMMission);
+
+        if (triggerEl && uploadEl) {
+            triggerEl.addEventListener("click", () => {
+                uploadEl.click();
+            });
+        }
+
+        if (uploadEl) {
+            uploadEl.addEventListener("change", (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    if (!userSubmissions.lesson_2 || typeof userSubmissions.lesson_2 !== "object") {
+                        userSubmissions.lesson_2 = { chk1: false, chk2: false, uploaded: false, fileName: "" };
+                    }
+                    userSubmissions.lesson_2.uploaded = true;
+                    userSubmissions.lesson_2.fileName = file.name;
+                    saveNotebookLMMission();
+                    if (statusEl) {
+                        statusEl.innerText = `✓ קובץ הועלה: ${file.name}`;
+                        statusEl.style.display = "block";
+                    }
+                    writeTerminalLine(`[System] קובץ ${file.name} הועלה בהצלחה לאימות.`, "info-msg");
+                }
+            });
+        }
+    }
+    else if (lesson.actionType === "multi_capabilities") {
         const plusEl = document.getElementById("input-plus-button");
         const voiceEl = document.getElementById("input-voice-input");
         const imgEl = document.getElementById("input-image-gen");
@@ -1049,7 +1284,7 @@ function handleVerifyTask() {
         // Success path
         writeTerminalLine("מנתח תוצאות קלט מתוך סביבת העבודה החיצונית...", "info-msg");
         
-                        if (lesson.id === "lesson_1") {
+                                if (lesson.id === "lesson_1") {
             writeTerminalLine("[Success] משימה 1: ניתוח כפתור + אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 2: קלט קולי אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 3: פרומפט יצירת תמונה אומת בהצלחה.", "success-msg");
@@ -1096,7 +1331,7 @@ function handleVerifyTask() {
         } else {
             // Course finished!
             writeTerminalLine("[הושלם] מזל טוב! השלמתם את הקורס באופן מלא!", "success-msg");
-            alert("🏆 כל הכבוד! השלמתם את כל 5 השיעורים והמשימות המעשיות בקורס בהצלחה! למדתם כיצד לקחת רעיון, לכתוב אותו ב-Canvas, לפרוס ב-Vercel, לבצע אוטומציית Antigravity ולבנות סוכנים חכמים!");
+                        alert("🏆 כל הכבוד! השלמתם את כל 6 השיעורים והמשימות המעשיות בקורס בהצלחה! למדתם כיצד לקחת רעיון, להשתמש ב-NotebookLM, לכתוב ב-Canvas, לפרוס ב-Vercel, לבצע אוטומציית Antigravity ולבנות סוכנים חכמים!");
         }
         
     }, 1200);
@@ -1113,6 +1348,14 @@ function handleResetInput() {
     writeTerminalLine(`מנקה נתוני משימה עבור ${lesson.fileName}...`, "warning-msg");
     
     if (lesson.actionType === "checkbox") {
+        // noop
+    } else if (lesson.actionType === "notebooklm_assignment") {
+        userSubmissions.lesson_2 = {
+            chk1: false,
+            chk2: false,
+            uploaded: false,
+            fileName: ""
+        };
         userSubmissions[lesson.id] = false;
     } else if (lesson.actionType === "multi_capabilities") {
         userSubmissions.lesson_1 = {
