@@ -87,13 +87,92 @@ function getDynamicLessons(name, interests) {
         },
         {
             id: "lesson_2",
-            fileName: "lesson_2_canvas.js",
-            tabLabel: "lesson_2_canvas.js",
-            title: "שיעור 2: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר",
+            fileName: "lesson_2_notebooklm.md",
+            tabLabel: "lesson_2_notebooklm.md",
+            title: "שיעור 2: למידה חכמה ועיגון מידע עם NotebookLM",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 2: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר</h1>
+<h1 class="lesson-h1">שיעור 2: למידה חכמה ועיגון מידע עם NotebookLM</h1>
+<p class="lesson-p">שלום ${name}! בשיעור זה נכיר כלי מהפכני מבית Google שישנה לחלוטין את הדרך שבה אתם חוקרים, לומדים ומארגנים מידע - <strong>NotebookLM</strong>.</p>
+
+<h2 class="lesson-h2">עקרון הליבה: 100% החומר שלכם, 0% המצאות (Grounding)</h2>
+<p class="lesson-p">החיסרון הגדול של מודלי שפה מסורתיים הוא "הזיות" (Hallucinations) - מצב שבו המודל ממציא עובדות שנראות משכנעות אך אינן נכונות במציאות. בלימודים אקדמיים או במחקר מקצועי, להזיות כאלו יכול להיות מחיר כבד.</p>
+
+<div class="tech-box">
+    <strong>מהו עיגון מידע (Grounding)?</strong>
+    NotebookLM פותר את בעיית ההזיות על ידי עיגון (Grounding) של מודל ה-AI אך ורק במסמכים ובמקורות שאתם מעלים אליו. כאשר אתם שואלים אותו שאלה, הוא אינו שואב מידע מרחבי האינטרנט, אלא מצטט ישירות מתוך המקורות שלכם, תוך הצגת קישורים ומספרי עמודים מדויקים לאימות מהיר.
+</div>
+
+<div class="analogy-box">
+    <strong>[אנלוגיית עיגון המידע]</strong>
+    דמיינו שאתם מתכוננים למבחן בנושא <strong>${i1}</strong> או <strong>${i2}</strong>. במקום לשאול עובר אורח ברחוב שקרא פעם משהו בנושא (כמו מודל AI רגיל), אתם פונים לספרייה פרטית המכילה אך ורק את ספרי הלימוד המדויקים שלכם ומקבלים תשובות המבוססות על עמודים ספציפיים.
+</div>
+
+<h2 class="lesson-h2">יכולות המפתח של NotebookLM: מה אפשר לעשות איתו?</h2>
+<p class="lesson-p">NotebookLM מספק ארגז כלים שלם לעיבוד ולמידה של חומרים מורכבים:</p>
+
+<div class="features-grid-notebooklm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 16 16" width="14" height="14" style="vertical-align: middle; margin-left: 6px;"><path fill="currentColor" d="M12.5 1h-9c-.8 0-1.5.7-1.5 1.5v11c0 .8.7 1.5 1.5 1.5h9c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5zm-.5 12h-8V3h8v10z"></path></svg>
+            סיכומים ומפות חשיבה
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">הפקה אוטומטית של מדריכי למידה מפורטים, טבלאות השוואה ותרשימים ויזואליים מתוך חומרי הלימוד שטענתם.</p>
+    </div>
+    
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 16 16" width="14" height="14" style="vertical-align: middle; margin-left: 6px;"><path fill="currentColor" d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path></svg>
+            בחנים וכרטיסיות למידה
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">יצירה מיידית של מבחנים אמריקאיים לתרגול עצמי וכרטיסיות (Flashcards) אינטראקטיביות לשינון מהיר של מושגי מפתח.</p>
+    </div>
+    
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 16 16" width="14" height="14" style="vertical-align: middle; margin-left: 6px;"><path fill="currentColor" d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path></svg>
+            פודקאסט לימודי (Audio Overviews)
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">המרת טקסטים ארוכים ויבשים לשיחת פודקאסט דינמית וקולחת בין שני מנחי AI, שמפשטים את הנושאים הכי מורכבים בטון טבעי ומשעשע.</p>
+    </div>
+    
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 16 16" width="14" height="14" style="vertical-align: middle; margin-left: 6px;"><path fill="currentColor" d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-3.5-2a.5.5 0 0 0-.5.5v1.5a.5.5 0 0 0 .223.416l1.25.833a.5.5 0 0 0 .554-.832L13 12.083V11a.5.5 0 0 0-.5-.5zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path></svg>
+            סקירות וידאו קולנועיות
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">יצירה אוטומטית של תסריטים וסרטוני הסבר קצרים המפשטים נושאים מורכבים ומחברים מושגים חזותיים דרך אנימציה מודרכת.</p>
+    </div>
+</div>
+
+<h2 class="lesson-h2">הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
+<p class="lesson-p">הסטודיו הוא מרחב העבודה הדיגיטלי שלכם בתוך NotebookLM. כאן אתם יכולים לנהל מספר "מחברות" (Notebooks) שונות במקביל, לארגן את מסמכי המקור, להנחות את ה-AI להתמקד בנושאים ספציפיים בלבד, ולייצא את התוצרים שנוצרו לפורמטים פופולריים כמו קובצי Word, PDF, מצגות או קובצי שמע בלחיצת כפתור אחת.</p>
+            `,
+            actionType: "textarea",
+            actionLabel: "הדביקו את קוד ה-HTML או את הפרומפט שבו השתמשתם ליצירת דף הנחיתה של NotebookLM:",
+            placeholderText: "לדוגמה: הדבקתי את קוד ה-HTML שעיצבתי, או תיאור הפרומפט שלי...",
+            tools: [
+                { name: "פתח את NotebookLM", url: "https://notebooklm.google" }
+            ],
+            instructionText: `<strong>משימה מעשית - NotebookLM:</strong><br>
+            1. קראו את שלבי התוכן של NotebookLM שלמטה.<br>
+            2. פתחו את מנוע ה-AI ונסחו פרומפט שלם לבניית דף נחיתה אינטראקטיבי ומעוצב בכתב RTL לפי ההנחיות בשיעור.<br>
+            3. הדביקו את הפרומפט או את קוד ה-HTML שנוצר בתיבת הטקסט מטה כדי לאמת ולהמשיך.`,
+            validate: (input) => {
+                return input && input.trim().length > 15;
+            },
+            errorMessage: "אנא הדביקו את הפרומפט או הקוד של דף הנחיתה שעיצבתם (לפחות 15 תווים)."
+        },
+        {
+            id: "lesson_3",
+            fileName: "lesson_3_canvas.js",
+            tabLabel: "lesson_3_canvas.js",
+            title: "שיעור 3: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר",
+            unlocked: false,
+            completed: false,
+            content: `
+<h1 class="lesson-h1">שיעור 3: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר</h1>
 <p class="lesson-p">שלום ${name}! בשיעור זה נצלול לעומק עבודה מעשית בתוך סביבת ה-Workspace הייחודית של Gemini Canvas.</p>
 
 <h2 class="lesson-h2">מהו Gemini Canvas?</h2>
@@ -128,14 +207,14 @@ function getDynamicLessons(name, interests) {
             errorMessage: "אנא ודאו שסימנתם את תיבת הסימון של משימה 1, ושתיארתם את פרויקט משימה 2 בפירוט (לפחות 15 תווים)."
         },
         {
-            id: "lesson_3",
-            fileName: "lesson_3_deploy.yaml",
-            tabLabel: "lesson_3_deploy.yaml",
-            title: "שיעור 3: מקוד לענן – צינור הפריסה",
+            id: "lesson_4",
+            fileName: "lesson_4_deploy.yaml",
+            tabLabel: "lesson_4_deploy.yaml",
+            title: "שיעור 4: מקוד לענן – צינור הפריסה",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 3: מקוד לענן – צינור הפריסה (The Deployment Pipeline)</h1>
+<h1 class="lesson-h1">שיעור 4: מקוד לענן – צינור הפריסה (The Deployment Pipeline)</h1>
 <p class="lesson-p">שלום ${name}! בשיעור זה נלמד כיצד להוציא את הפרויקט שיצרנו ב-Gemini Canvas אל העולם באמצעות קישור אינטרנט חי (Live URL).</p>
 
 <h2 class="lesson-h2">למה אנחנו צריכים את זה?</h2>
@@ -179,14 +258,14 @@ function getDynamicLessons(name, interests) {
             errorMessage: "אנא ודאו שסימנתם את כל 3 משימות הפריסה בצ'קליסט, ושכתובת ה-Vercel URL שהזנתם תקינה ומתחילה ב-http:// או https://."
         },
         {
-            id: "lesson_4",
-            fileName: "lesson_4_antigravity.json",
-            tabLabel: "lesson_4_antigravity.json",
-            title: "שיעור 4: אוטומציה עם Antigravity",
+            id: "lesson_5",
+            fileName: "lesson_5_antigravity.json",
+            tabLabel: "lesson_5_antigravity.json",
+            title: "שיעור 5: אוטומציה עם Antigravity",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 4: אוטומציה עם Antigravity</h1>
+<h1 class="lesson-h1">שיעור 5: אוטומציה עם Antigravity</h1>
 <p class="lesson-p">בשיעור 3 ראינו את הצינור הידני: כתיבת קוד ב-AI, העתקה, דחיפה ל-GitHub, המתנה לבנייה ב-Vercel. מה אם יכולנו לבצע שינויים ישירות דרך הוראות ה-AI שלנו והאתר ישתנה <strong>בזמן אמת</strong> ללא מאמץ ידני?</p>
 
 <h2 class="lesson-h2">הכירו את Antigravity Auto-Sync</h2>
@@ -214,14 +293,14 @@ function getDynamicLessons(name, interests) {
             errorMessage: "אנא סמנו את תיבת האישור כדי לאשר שהשלמתם את ההובלה האוטומטית ב-Antigravity."
         },
         {
-            id: "lesson_5",
-            fileName: "lesson_5_agents.py",
-            tabLabel: "lesson_5_agents.py",
-            title: "שיעור 5: בינה ואוטומציה (סוכנים וכישורים)",
+            id: "lesson_6",
+            fileName: "lesson_6_agents.py",
+            tabLabel: "lesson_6_agents.py",
+            title: "שיעור 6: בינה ואוטומציה (סוכנים וכישורים)",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 5: בינה ואוטומציה (סוכנים וכישורים)</h1>
+<h1 class="lesson-h1">שיעור 6: בינה ואוטומציה (סוכנים וכישורים)</h1>
 <p class="lesson-p">עד עכשיו השתמשנו ב-AI כדי לכתוב קוד או לעצב אתרים. אבל הצעד המלהיב באמת הוא לבנות מערכות שפועלות <strong>בעצמן</strong> - מערכות היודעות לקבל החלטות ולבצע משימות. אלו הם <strong>סוכני AI (Agents)</strong>.</p>
 
 <h2 class="lesson-h2">המוח והידיים: סוכנים (Agents) מול כישורים (Skills)</h2>
@@ -255,6 +334,7 @@ function getDynamicLessons(name, interests) {
     ];
 }
 
+
 // 2. Global State Variables
 let userName = "";
 let userInterests = [];
@@ -274,18 +354,19 @@ let userSubmissions = {
         excelPlan: "",
         tvTranslation: ""
     },
-    lesson_2: {
+    lesson_2: "",
+    lesson_3: {
         task1Checkbox: false,
         task2Textarea: ""
     },
-    lesson_3: {
+    lesson_4: {
         chk1: false,
         chk2: false,
         chk3: false,
         url: ""
     },
-    lesson_4: false,
-    lesson_5: ""
+    lesson_5: false,
+    lesson_6: ""
 };
 
 // 3. Document Elements & Initialization
@@ -567,12 +648,13 @@ function loadLesson(index) {
     const sidebarNameEl = document.getElementById("sidebar-username");
     const sidebarCountEl = document.getElementById("sidebar-lesson-count");
     if (sidebarNameEl) {
-        const greetings = [
+                const greetings = [
             `שלום, ${userName}!`,
             `ברוך שובך, ${userName}!`,
             `אתה מתקדם נהדר, ${userName}!`,
             `כל הכבוד, ${userName}!`,
-            `כמעט סיימנו, ${userName}!`
+            `כמעט סיימנו, ${userName}!`,
+            `הישג מדהים, ${userName}!`
         ];
         sidebarNameEl.innerText = greetings[index] || `שלום, ${userName}!`;
     }
@@ -581,12 +663,12 @@ function loadLesson(index) {
     // Update run/verify button text dynamically
     const runBtn = document.getElementById("btn-run-code");
     if (runBtn) {
-        if (lesson.id === "lesson_2") {
+                if (lesson.id === "lesson_3") {
             runBtn.innerHTML = `
                 <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M12.5 1h-9c-.8 0-1.5.7-1.5 1.5v11c0 .8.7 1.5 1.5 1.5h9c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5zm-.5 12h-8V3h8v10z"></path></svg>
                 <span>הגש פרויקט (Submit Project)</span>
             `;
-        } else if (lesson.id === "lesson_3") {
+        } else if (lesson.id === "lesson_4") {
             runBtn.innerHTML = `
                 <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0z"></path></svg>
                 <span>אמת פריסה (Verify Deployment)</span>
@@ -844,7 +926,7 @@ function renderActionBlock(lesson) {
         const textEl = document.getElementById("input-task-2-textarea");
         
         const saveCanvasTasks = () => {
-            userSubmissions.lesson_2 = {
+            userSubmissions.lesson_3 = {
                 task1Checkbox: checkEl ? checkEl.checked : false,
                 task2Textarea: textEl ? textEl.value : ""
             };
@@ -859,7 +941,7 @@ function renderActionBlock(lesson) {
         const urlEl = document.getElementById("action-task-input");
         
         const saveDeployData = () => {
-            userSubmissions.lesson_3 = {
+            userSubmissions.lesson_4 = {
                 chk1: chk1El ? chk1El.checked : false,
                 chk2: chk2El ? chk2El.checked : false,
                 chk3: chk3El ? chk3El.checked : false,
@@ -912,7 +994,7 @@ function handleVerifyTask() {
         // Success path
         writeTerminalLine("מנתח תוצאות קלט מתוך סביבת העבודה החיצונית...", "info-msg");
         
-        if (lesson.id === "lesson_1") {
+                if (lesson.id === "lesson_1") {
             writeTerminalLine("[Success] משימה 1: ניתוח כפתור + אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 2: קלט קולי אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 3: פרומפט יצירת תמונה אומת בהצלחה.", "success-msg");
@@ -920,19 +1002,21 @@ function handleVerifyTask() {
             writeTerminalLine("[Success] משימה 5: תרגום ולוקליזציה אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] כל 5 שלבי ה-AI Gauntlet אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_2") {
+            writeTerminalLine("[Success] דף הנחיתה של NotebookLM זוהה ואומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] עקרונות עיגון המידע (Grounding) והסטודיו מומחשים כהלכה. שיעור 2 הושלם.", "success-msg");
+        } else if (lesson.id === "lesson_3") {
             writeTerminalLine("[Success] משימה 1: אישור עריכת ה-Canvas אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 2: תיאור פרויקט ה-Canvas האישי נקרא בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] פרויקטי Gemini Canvas הושלמו ואומתו בהצלחה! שיעור 2 הושלם.", "success-msg");
-        } else if (lesson.id === "lesson_3") {
+            writeTerminalLine("[Success] פרויקטי Gemini Canvas הושלמו ואומתו בהצלחה! שיעור 3 הושלם.", "success-msg");
+        } else if (lesson.id === "lesson_4") {
             const urlVal = (typeof inputVal === "object" ? inputVal.url : inputVal) || "";
             writeTerminalLine(`[Success] מנסה להתחבר לכתובת ${urlVal.trim()}...`, "info-msg");
-            writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין!", "success-msg");
-        } else if (lesson.id === "lesson_4") {
-            writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונכרן.", "success-msg");
+            writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין! שיעור 4 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_5") {
-            writeTerminalLine("[Success] תיאור הסוכן נקרא. בקרת הכישורים (Skills) של סוכן Antigravity הושלמה.", "success-msg");
+            writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונכרן. שיעור 5 הושלם.", "success-msg");
+        } else if (lesson.id === "lesson_6") {
+            writeTerminalLine("[Success] תיאור הסוכן נקרא. בקרת הכישורים (Skills) של סוכן Antigravity הושלמה. שיעור 6 הושלם.", "success-msg");
         }
-        
         // Mark current lesson as completed
         lesson.completed = true;
         
@@ -984,12 +1068,12 @@ function handleResetInput() {
             tvTranslation: ""
         };
     } else if (lesson.actionType === "canvas_two_tasks") {
-        userSubmissions.lesson_2 = {
+        userSubmissions.lesson_3 = {
             task1Checkbox: false,
             task2Textarea: ""
         };
     } else if (lesson.actionType === "deploy_url") {
-        userSubmissions.lesson_3 = {
+        userSubmissions.lesson_4 = {
             chk1: false,
             chk2: false,
             chk3: false,
@@ -1040,7 +1124,7 @@ function handleSkipLesson() {
         renderTabs();
         updateProgressRing();
         
-        alert("🏆 כל הכבוד! סיימת את כל חמשת שיעורי הקורס בהצלחה!");
+        alert("🏆 כל הכבוד! סיימת את כל ששת שיעורי הקורס בהצלחה!");
     }
 }
 
