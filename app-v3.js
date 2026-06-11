@@ -329,9 +329,9 @@ function getDynamicLessons(name, interests) {
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 7.92c.11.047.22.094.33.141a1 1 0 0 1 0 1.876c-.11.047-.22.094-.33.141a7.5 7.5 0 0 0-7.92 7.92c-.047.11-.094.22-.141.33a1 1 0 0 1-1.876 0c-.047-.11-.094-.22-.141-.33a7.5 7.5 0 0 0-7.92-7.92c-.11-.047-.22-.094-.33-.141a1 1 0 0 1 0-1.876c.11-.047.22-.094.33-.141a7.5 7.5 0 0 0 7.92-7.92c.047-.11.094-.22.141-.33A1 1 0 0 1 12 3z"></path>
         </svg>
-        <strong style="font-size: 14px; font-weight: 700;">פיצ'ר מתקדם: קישור שיחות מ-Gemini כמקור מידע</strong>
+        <strong style="font-size: 16px; font-weight: 700;">פיצ'ר מתקדם: קישור שיחות מ-Gemini כמקור מידע</strong>
     </div>
-    <p style="font-size: 12px; color: var(--text-main); line-height: 1.5; margin: 0;">
+    <p style="font-size: 14px; color: var(--text-main); line-height: 1.5; margin: 0;">
         ידעתם שאתם יכולים להשתמש בשיחות קודמות שלכם כחומר גלם? אם ניהלתם סיעור מוחות, חקרתם נושא לעומק, או יצרתם תוכן בעזרת הצ'אט של Gemini, תוכלו לייבא את השיחה הזו ישירות אל תוך המחברת ב-NotebookLM.
         <br><strong style="color: var(--accent-color);">איך זה עוזר?</strong> המערכת תתייחס לכל הרעיונות והתובנות שעלו בשיחה ההיא כבסיס ידע לגיטימי לכל דבר, ותשלב אותם עם שאר המאמרים והמסמכים שלכם ליצירת תמונה מלאה ועשירה יותר של הפרויקט.
     </p>
