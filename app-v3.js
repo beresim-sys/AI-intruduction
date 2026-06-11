@@ -271,9 +271,9 @@ function getDynamicLessons(name, interests) {
             <polyline points="2 17 12 22 22 17"></polyline>
             <polyline points="2 12 12 17 22 12"></polyline>
         </svg>
-        <strong style="font-size: 14px; font-weight: 700;">טיפ זהב: מתי להשתמש ב-GEM ומתי ב-NotebookLM?</strong>
+        <strong style="font-size: 16px; font-weight: 700;">טיפ זהב: מתי להשתמש ב-GEM ומתי ב-NotebookLM?</strong>
     </div>
-    <p style="font-size: 12px; color: var(--text-main); line-height: 1.5; margin: 0;">
+    <p style="font-size: 14px; color: var(--text-main); line-height: 1.5; margin: 0;">
         האם כדאי להשתמש ב-Gemini GEM או ב-NotebookLM? הנה כלל האצבע: השתמשו ב-<strong>GEM</strong> כשאתם רוצים מורה פרטי אישי שינהל אתכם שיחה אקטיבית ודינמית וילמד אתכם נושאים שלב אחר שלב באמצעות שאלות והסברים. לעומת זאת, השתמשו ב-<strong>NotebookLM</strong> כשברצונכם לחקור ולסכם כמות גדולה של מסמכי מקור שונים בו-זמנית, להצליב ביניהם, או להפיק מהם תוצרים כמו פודקאסט שמע או מדריך למידה מקיף עם מראי מקום מדויקים.
     </p>
 </div>
