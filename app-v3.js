@@ -438,9 +438,12 @@ let userSubmissions = {
 
 // 3. Document Elements & Initialization
 document.addEventListener("DOMContentLoaded", () => {
-    const savedName = localStorage.getItem("user_name");
-    const savedInterests = localStorage.getItem("user_interests");
-    
+    // Clear persisted onboarding states to guarantee a clean slate
+    localStorage.removeItem("user_name");
+    localStorage.removeItem("user_interests");
+    sessionStorage.removeItem("user_name");
+    sessionStorage.removeItem("user_interests");
+
     bindGlobalListeners();
     
     // Always render the Splash Screen (onboarding overlay) first
@@ -450,23 +453,14 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.opacity = "1";
     }
     
-    // Prefill form inputs if saved details exist
-    if (savedName && savedInterests) {
-        const nameInput = document.getElementById("user-name");
-        if (nameInput) nameInput.value = savedName;
-        
-        try {
-            const interests = JSON.parse(savedInterests);
-            const interestInputs = Array.from(document.querySelectorAll(".interest-input"));
-            interestInputs.forEach((input, index) => {
-                if (interests[index]) {
-                    input.value = interests[index];
-                }
-            });
-        } catch (e) {
-            console.error("Error parsing saved user interests:", e);
-        }
-    }
+    // Explicitly reset form input fields to empty strings
+    const nameInput = document.getElementById("user-name");
+    if (nameInput) nameInput.value = "";
+    
+    const interestInputs = Array.from(document.querySelectorAll(".interest-input"));
+    interestInputs.forEach(input => {
+        if (input) input.value = "";
+    });
     
     document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
     const skipBtn = document.getElementById("btn-skip-onboarding");
