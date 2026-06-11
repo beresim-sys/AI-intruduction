@@ -226,7 +226,8 @@ function getDynamicLessons(name, interests) {
             actionLabel: "",
             placeholderText: "",
             tools: [
-                { name: "פתח את מנהל ה-Gems ב-Gemini", url: "https://gemini.google.com/gems" }
+                { name: "פתח את מנהל ה-Gems ב-Gemini", url: "https://gemini.google.com/gems" },
+                { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "gemini-gem-tutorial.html" }
             ],
             instructionText: `<strong>משימה מעשית - Gemini GEM:</strong><br>
             1. בצעו את שלבי ההכנה והגדרת ה-GEM בתיבת המשימה מטה.<br>

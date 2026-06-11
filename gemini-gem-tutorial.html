@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>איך מקימים Gemini GEM אישי? מדריך צעד אחר צעד</title>
+    <!-- Google Fonts: Rubik & Assistant -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Cozy Mint Green Palette matching index.html */
+            --bg-frame: #D5E5DE;
+            --bg-page: #F3FAF7;
+            --bg-card: #ffffff;
+            --text-main: #2E3D38;
+            --text-header: #1D2A24;
+            --text-muted: #5A6E66;
+            --primary-color: #498E75;
+            --primary-hover: #3b745f;
+            --accent-color: #C28B63;
+            --accent-hover: #a87650;
+            --border-color: #DBE8E2;
+            --shadow-color: rgba(73, 142, 117, 0.08);
+            --step-inactive: #e2ece7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Assistant', 'Rubik', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 750px;
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Rubik', sans-serif;
+            font-size: 28px;
+            color: var(--text-header);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* Timeline / Stepper Styles */
+        .stepper-container {
+            position: relative;
+            margin-bottom: 40px;
+            padding-right: 32px; /* For vertical line */
+        }
+
+        .stepper-line {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            width: 2px;
+            height: calc(100% - 70px);
+            background-color: var(--border-color);
+            z-index: 1;
+            transition: background-color 0.3s;
+        }
+
+        .step-card {
+            position: relative;
+            background: var(--bg-page);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 24px 30px;
+            margin-bottom: 24px;
+            z-index: 2;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        box-shadow 0.3s, 
+                        border-color 0.3s, 
+                        background-color 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(73, 142, 117, 0.12);
+            border-color: var(--primary-color);
+            background-color: #ffffff;
+        }
+
+        .step-card.active {
+            border-color: var(--primary-color);
+            background-color: #ffffff;
+            box-shadow: 0 8px 24px rgba(73, 142, 117, 0.15);
+        }
+
+        /* Number Badge */
+        .step-number {
+            position: absolute;
+            top: 24px;
+            right: -48px;
+            width: 34px;
+            height: 34px;
+            background-color: var(--step-inactive);
+            border: 2px solid #ffffff;
+            color: var(--text-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 15px;
+            z-index: 3;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        .step-card.active .step-number,
+        .step-card:hover .step-number {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* Step Header */
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .step-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--primary-color);
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        .step-card.active .step-icon,
+        .step-card:hover .step-icon {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: rotate(5deg);
+        }
+
+        .step-title {
+            font-family: 'Rubik', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-header);
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 36px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(73, 142, 117, 0.3);
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(73, 142, 117, 0.4);
+        }
+
+        .btn-cta:active {
+            transform: translateY(0);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(73, 142, 117, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(73, 142, 117, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(73, 142, 117, 0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            .stepper-container {
+                padding-right: 0;
+            }
+            .stepper-line {
+                display: none;
+            }
+            .step-number {
+                position: static;
+                margin-bottom: 12px;
+                display: inline-flex;
+            }
+            .step-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>איך מקימים Gemini GEM אישי? מדריך צעד אחר צעד</h1>
+            <div class="subtitle">עקבו אחר השלבים הפשוטים כדי ליצור מנטור/עוזר AI מותאם אישית משלכם ב-Gemini.</div>
+        </header>
+
+        <section class="stepper-container">
+            <div class="stepper-line"></div>
+
+            <!-- Step 1 -->
+            <div class="step-card active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-header">
+                    <div class="step-icon">
+                        <!-- Gems manager icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="step-title">צעד 1: כניסה למנהל ה-Gems</div>
+                </div>
+                <div class="step-description">
+                    היכנסו לצ'אט של Gemini, ולחצו על **Gems** בסרגל הצד (או נווטו ישירות לקישור המנהל). לחצו על כפתור **"Create a new Gem"** (יצירת Gem חדש) כדי לפתוח את מסך הגדרת הסוכן האישי.
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-header">
+                    <div class="step-icon">
+                        <!-- Pen/Instructions icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </div>
+                    <div class="step-title">צעד 2: מתן שם והזנת ה"פרומפט מאסטר"</div>
+                </div>
+                <div class="step-description">
+                    תנו שם ל-Gem שלכם (למשל: "מנטור סוקרטי לתכנות" או "מורה פרטי"). בתיבת ה-**Instructions** (הנחיות), הדביקו את הפרומפט המלא שהעתקתם משיעור 2. פרומפט זה יכתיב ל-AI כיצד ללמד אתכם מבלי לגלות לכם את התשובות מיד.
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-header">
+                    <div class="step-icon">
+                        <!-- File upload/clip icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                        </svg>
+                    </div>
+                    <div class="step-title">צעד 3: עיגון המידע (Upload Knowledge)</div>
+                </div>
+                <div class="step-description">
+                    לחצו על כפתור העלאת קבצים בתוך מסך הגדרת ה-GEM, והעלו סיכומי שיעור, מאמרים, מצגות או מסמכי PDF רלוונטיים לנושא הלמידה שלכם. קבצים אלו ישמשו כעוגן היחיד של ה-GEM לתשובותיו וימנעו ממנו להמציא עובדות.
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-header">
+                    <div class="step-icon">
+                        <!-- Play/Check icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="step-title">צעד 4: שמירה והתחלת הלמידה</div>
+                </div>
+                <div class="step-description">
+                    לחצו על **Create** (יצירה) או **Save** לשמירת ה-GEM. מעתה, ה-GEM יופיע לכם בסרגל הצד של Gemini ותוכלו להתחיל לשוחח איתו, לשאול שאלות ולקבל בחנים מהירים בכל זמן שתרצו!
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <button id="btn-gem-tutorial-cta" class="btn-cta">הבנתי את התהליך, קדימה לתרגול!</button>
+        </div>
+    </div>
+
+    <script>
+        // Interactive timeline selection
+        const cards = document.querySelectorAll('.step-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                cards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+        });
+
+        // CTA button redirect back to index.html
+        document.getElementById('btn-gem-tutorial-cta').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
