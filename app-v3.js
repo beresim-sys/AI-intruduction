@@ -207,7 +207,7 @@ function getDynamicLessons(name, interests) {
 <h2 class="lesson-h2">✂️ פרומפט מאסטר להעתקה (להגדרת ה-GEM האישי שלכם)</h2>
 <p class="lesson-p">העתיקו את הפרומפט הבא והדביקו אותו בתיבת ה"הנחיות" (Instructions) של ה-GEM החדש שאתם מקימים ב-Gemini. התאימו את הערכים בתוך הסוגריים המרובעים לפי נושא הלמידה שלכם:</p>
 
-<div class="code-viewport" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; font-family: monospace; font-size: 12.5px; line-height: 1.6; color: #000000; text-align: right; direction: rtl; white-space: pre-wrap; margin-bottom: 20px; overflow-x: auto;">
+<div class="code-viewport" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; font-family: monospace; font-size: 14.5px; line-height: 1.6; color: #000000; text-align: right; direction: rtl; white-space: pre-wrap; margin-bottom: 20px; overflow-x: auto;">
 <strong>תפקיד ומטרה (Role and Objective):</strong>
 אתה מורה פרטי מומחה ב-[הכניסו נושא, למשל: <strong>${i2}</strong> או <strong>${i3}</strong>]. המטרה שלך היא לעזור לי להבין את החומר לעומק ולפתח מיומנויות חשיבה ביקורתית, ולא רק לספק תשובות מוכנות מראש.
 
