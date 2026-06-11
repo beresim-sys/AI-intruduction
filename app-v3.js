@@ -62,28 +62,26 @@ function getDynamicLessons(name, interests) {
     <strong>הטיית מידע (Data Bias)</strong> דומה למצב שבו ה-AI נחשף רק למידע מסוים על <strong>${i4}</strong>, ולכן הוא בטוח שכל שאר הגישות לנושא אינן נכונות.
 </div>
             `,
-            actionType: "multi_capabilities",
+            actionType: "checklist",
             actionLabel: "אתגר הליבה (The AI Gauntlet)",
             placeholderText: "",
             tools: [
                 { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
             ],
             instructionText: `<strong>משימת אתגר הליבה (The AI Gauntlet):</strong><br>
-            פתחו את Gemini בלשונית חדשה ועברו את רצף משימות יכולות הליבה הבא (השתמשו במבנה ה-PROMPT):<br><br>
-            1. <strong>בדיקת כפתור ה-'+':</strong> לחצו על כפתור הפלוס, העלו קובץ או תמונה הקשורים ל-<strong>${i2}</strong>, ובקשו מ-Gemini Pro לנתח ולתאר אותה.<br>
-            2. <strong>בדיקת קלט קולי:</strong> לחצו על המיקרופון והכתיבו בקשה ל-Gemini Flash לסער מוחות להעלאת רעיונות המשלבים בין <strong>${i3}</strong> לבין <strong>${i4}</strong>.<br>
-            3. <strong>יצירת תמונות:</strong> בקשו מה-AI ליצור תמונה יצירתית ומקורית המבוססת על <strong>${i5}</strong>.<br>
-            4. <strong>תכנון משימות:</strong> בקשו מ-Gemini תוכנית שלב-אחר-שלב כדי להשיג יעד או לפתור בעיה ב-<strong>${i1}</strong>.<br>
-            5. <strong>תרגום ולוקליזציה:</strong> הדביקו או כתבו טקסט קצר על <strong>${i2}</strong> ובקשו לתרגם אותו לשפה אחרת (לדוגמה: יפנית, ספרדית או אנגלית).`,
+            פתחו את Gemini בלשונית חדשה, השלימו את חמשת התרגילים המעשיים הבאים המבוססים על תחומי העניין שלכם, וסמנו את תיבות האישור למטה.`,
+            checklistItems: [
+                `בדיקת כפתור ה-'+': העלאת קובץ או תמונה בנושא ${i2} וניתוחה ב-Gemini Pro.`,
+                `בדיקת קלט קולי: שימוש במיקרופון לסיעור מוחות המשלב בין ${i3} לבין ${i4} ב-Gemini Flash.`,
+                `יצירת תמונות: יצירת תמונה יצירתית ומקורית המבוססת על ${i5}.`,
+                `תכנון משימות: הפקת תוכנית שלבים מפורטת להשגת יעד ב-${i1}.`,
+                `תרגום ולוקליזציה: תרגום טקסט בנושא ${i2} לשפה אחרת.`
+            ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
-                return input.plusButton && input.plusButton.trim().length > 10 &&
-                       input.voiceInput && input.voiceInput.trim().length > 10 &&
-                       input.imageGen && input.imageGen.trim().length > 5 &&
-                       input.excelPlan && input.excelPlan.trim().length > 10 &&
-                       input.tvTranslation && input.tvTranslation.trim().length > 10;
+                return input.chk1 === true && input.chk2 === true && input.chk3 === true && input.chk4 === true && input.chk5 === true;
             },
-            errorMessage: "חלק מנושאי אתגר הליבה (AI Gauntlet) לא הוזנו או קצרים מדי. אנא מלאו את כל 5 שדות המשימה כנדרש!"
+            errorMessage: "אנא ודאו שביצעתם וסימנתם את כל 5 משימות אתגר הליבה ב-Gemini."
         },
         {
             id: "lesson_2",
@@ -222,7 +220,7 @@ function getDynamicLessons(name, interests) {
 - השתמש בשפה ברורה, נגישה ומעודדת.
 </div>
             `,
-            actionType: "gemini_gem_assignment",
+            actionType: "checklist",
             actionLabel: "",
             placeholderText: "",
             tools: [
@@ -230,13 +228,16 @@ function getDynamicLessons(name, interests) {
                 { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "gemini-gem-tutorial.html" }
             ],
             instructionText: `<strong>משימה מעשית - Gemini GEM:</strong><br>
-            1. בצעו את שלבי ההכנה והגדרת ה-GEM בתיבת המשימה מטה.<br>
-            2. העלו צילום מסך של ה-GEM שהקמתם או של שיחה איתו כדי להשלים את השיעור.`,
+            עקבו אחר שלבי ההכנה והתרגול מטה, וסמנו את תיבות הסימון לאישור ביצוע.`,
+            checklistItems: [
+                `פתחתי את Gemini, הקמתי GEM חדש והדבקתי את ה"פרומפט מאסטר" בתיבת ההנחיות (Instructions).`,
+                `העליתי קובץ ידע (למשל סיכום שיעור או מצגת) בנושא ${i2} או ${i3} ל-GEM והתחלתי שיחת תרגול ולמידה פעילה.`
+            ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
-                return input.chk1 === true && input.chk2 === true && input.uploaded === true;
+                return input.chk1 === true && input.chk2 === true;
             },
-            errorMessage: "אנא ודאו שסימנתם את שני שלבי ההכנה והעליתם צילום מסך של ה-GEM שהקמתם."
+            errorMessage: "אנא ודאו שסימנתם את שתי משימות התרגול ב-Gemini GEM כאישור ביצוע."
         },
         {
             id: "lesson_3",
@@ -376,7 +377,7 @@ function getDynamicLessons(name, interests) {
 <h2 class="lesson-h2">הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
 <p class="lesson-p">הסטודיו הוא מרחב העבודה הדיגיטלי שלכם בתוך NotebookLM. כאן אתם יכולים לנהל מספר "מחברות" (Notebooks) שונות במקביל, לארגן את מסמכי המקור, להנחות את ה-AI להתמקד בנושאים ספציפיים בלבד, ולייצא את התוצרים שנוצרו לפורמטים פופולריים כמו קובצי Word, PDF, מצגות או קובצי שמע בלחיצת כפתור אחת.</p>
             `,
-            actionType: "notebooklm_assignment",
+            actionType: "checklist",
             actionLabel: "",
             placeholderText: "",
             tools: [
@@ -384,13 +385,16 @@ function getDynamicLessons(name, interests) {
                 { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "notebooklm-tutorial.html" }
             ],
             instructionText: `<strong>משימה מעשית - NotebookLM:</strong><br>
-            1. בצעו את שלבי ההכנה והמשימות בתיבת המשימה מטה.<br>
-            2. העלו צילום מסך של המחברת שלכם כדי לאמת ולהשלים את השיעור.`,
+            בצעו את שלבי ההכנה והמשימות ב-NotebookLM, וסמנו את תיבות הסימון לאישור ביצוע.`,
+            checklistItems: [
+                `פתחתי מחברת חדשה (New Notebook) ב-NotebookLM והעליתי לפחות 2 מקורות מידע הקשורים לחומר הלימוד (למשל בנושא ${i2} או ${i3}).`,
+                `שאלתי את הצ'אט שאלת חיפוש ממוקדת על חומרי המקור, והשתמשתי בפאנל הסטודיו (Studio Panel) להפקת תוצר למידה אחד (כגון פודקאסט קולי, כרטיסיות לימוד, בוחן עצמי, או מצגת/סרטון/אינפוגרפיקה).`
+            ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
-                return input.chk1 === true && input.chk2 === true && input.uploaded === true;
+                return input.chk1 === true && input.chk2 === true;
             },
-            errorMessage: "אנא ודאו שסימנתם את שני שלבי ההכנה והעליתם צילום מסך של המחברת שלכם."
+            errorMessage: "אנא ודאו שסימנתם את שתי משימות התרגול ב-NotebookLM כאישור ביצוע."
         },
         {
             id: "lesson_4",
@@ -427,18 +431,22 @@ function getDynamicLessons(name, interests) {
     <strong>הערה חשובה: בשלב זה, הפרויקט או היצירה שעבדתם עליהם שמורים רק באופן מקומי על המחשב האישי או המכשיר הנייד שלכם. בשיעור הבא נלמד בדיוק איך להעלות את היצירה שלכם לרשת ולשתף אותה!</strong>
 </blockquote>
             `,
-            actionType: "canvas_two_tasks",
-            actionLabel: "הדביקו את כתובת ה-URL של הפרויקט שלכם או תארו את הפתרון הסופי שבניתם:",
-            placeholderText: "לדוגמה: הדבקתי את קישור ה-Canvas, או תיאור של מדריך שלב אחר שלב עבור...",
+            actionType: "checklist",
+            actionLabel: "",
+            placeholderText: "",
             tools: [
                 { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
             ],
-            instructionText: "שלטו ב-Gemini Canvas באמצעות שתי המשימות המעשיות שלמטה: משימה 1 (התחלה מונחית) ומשימה 2 (אתגר היוצר המעשי).",
+            instructionText: `<strong>משימה מעשית - Gemini Canvas:</strong><br>
+            שלטו ב-Gemini Canvas באמצעות ביצוע התרגול המעשי שלמטה, וסמנו את תיבת האישור.`,
+            checklistItems: [
+                `פתחתי בהצלחה Canvas ב-Gemini, יצרתי פרויקט המוקדש לתחום העניין שלי ב-${i5} (למשל מדריך שלבים או כלי אינטראקטיבי), וביצעתי עריכות ואיטרציות שיפור בעזרת המברשת וה-Adjust.`
+            ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
-                return input.task1Checkbox === true && input.task2Textarea && input.task2Textarea.trim().length > 15;
+                return input.chk1 === true;
             },
-            errorMessage: "אנא ודאו שסימנתם את תיבת הסימון של משימה 1, ושתיארתם את פרויקט משימה 2 בפירוט (לפחות 15 תווים)."
+            errorMessage: "אנא ודאו שסימנתם את תיבת האישור לביצוע תרגול ה-Canvas."
         },
         {
             id: "lesson_5",
@@ -473,23 +481,25 @@ function getDynamicLessons(name, interests) {
     <li><strong>שלב 5:</strong> לחצו על "Deploy". תוך שניות, Vercel תבנה ותספק לכם קישור חי (לדוגמה: <em>your-project.vercel.app</em>).</li>
 </ul>
             `,
-            actionType: "deploy_url",
-            actionLabel: "Paste your new live Vercel URL here:",
-            placeholderText: "https://your-project.vercel.app",
+            actionType: "checklist",
+            actionLabel: "",
+            placeholderText: "",
             tools: [
                 { name: "פתח את GitHub", url: "https://github.com" },
                 { name: "פתח את Vercel", url: "https://vercel.com" }
             ],
-            instructionText: "עקבו אחר 5 השלבים שלמעלה כדי לקחת את הפרויקט שלכם משיעור 2 ולהעלות אותו לאינטרנט.",
+            instructionText: `<strong>משימת הפריסה (Deployment Task):</strong><br>
+            עקבו אחר שלבי הפריסה מטה כדי לקחת את הפרויקט משיעור 2 ולהעלות אותו לאינטרנט. סמנו את תיבות הסימון לאישור.`,
+            checklistItems: [
+                `יצרתי Repository ב-GitHub והעליתי אליו את קובצי הפרויקט שלי.`,
+                `קישרתי את חשבון ה-Vercel שלי ל-GitHub ובחרתי ב-Repository המתאים לפריסה.`,
+                `הפרויקט נפרס (Deployed) בהצלחה וקיבלתי קישור אינטרנט חי (Live URL) פעיל ותקין.`
+            ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
-                if (!input.chk1 || !input.chk2 || !input.chk3) return false;
-                if (!input.url) return false;
-                const clean = input.url.trim().toLowerCase();
-                return (clean.startsWith("http://") || clean.startsWith("https://")) && 
-                       (clean.includes(".vercel.app") || clean.includes(".com") || clean.includes(".net") || clean.includes(".dev"));
+                return input.chk1 === true && input.chk2 === true && input.chk3 === true;
             },
-            errorMessage: "אנא ודאו שסימנתם את כל 3 משימות הפריסה בצ'קליסט, ושכתובת ה-Vercel URL שהזנתם תקינה ומתחילה ב-http:// או https://."
+            errorMessage: "אנא ודאו שסימנתם את כל 3 משימות הפריסה בצ'קליסט כאישור על ביצוע התרגול."
         },
         {
             id: "lesson_6",
@@ -549,21 +559,22 @@ function getDynamicLessons(name, interests) {
     הסוכן הוא כמו מנהל פרויקט או מתכנן בתחום <strong>${i2}</strong> או <strong>${i3}</strong> שיודע מה הוא רוצה להשיג. הכישורים הם הכלים המקצועיים העומדים לרשותו המאפשרות לו לבצע את העבודה בפועל בצורה מושלמת.
 </div>
             `,
-            actionType: "textarea",
-            actionLabel: "תארו בקצרה את הסוכן והכישור שיצרתם כדי להשלים את הקורס!",
-            placeholderText: `לדוגמה: יצרתי סוכן עבור ${i2} המשתמש בכישור Web Search כדי להביא חדשות...`,
+            actionType: "checklist",
+            actionLabel: "",
+            placeholderText: "",
             tools: [
                 { name: "פתח את סביבת הסוכנים ב-Antigravity", url: "https://antigravity.dev" }
             ],
             instructionText: `<strong>משימה מעשית בסוכני AI וכישורים:</strong><br>
-            1. נווטו למדור ה-**Agents** בתוך מרחב העבודה שלכם ב-Antigravity.<br>
-            2. הגדירו סוכן חדש והצמידו לו כישור (Skill) ספציפי (למשל: כישור חיפוש ברשת **Web Search**).<br>
-            3. המטרה של הסוכן היא למשוך באופן אוטומטי את החדשות, הנתונים או המגמות העדכניות ביותר לגבי <strong>${i2}</strong> או <strong>${i3}</strong> לתוך האתר שלכם.<br>
-            4. רשמו תיאור קצר בן משפט או שניים של הסוכן והכישור ששילבתם בקופסת הטקסט מטה.`,
+            בצעו את שלבי פיתוח הסוכן והצמדת הכישורים ב-Antigravity, וסמנו את תיבת האישור למטה.`,
+            checklistItems: [
+                `הגדרתי סוכן (Agent) חדש ב-Antigravity עבור ${i2} או ${i3}, הצמדתי לו כישור (Skill) מסוג Web Search, וביצעתי איתו שיחת בדיקה לראות שהוא פועל ומביא מידע עדכני בהצלחה.`
+            ],
             validate: (input) => {
-                return input && input.trim().length > 15;
+                if (!input || typeof input !== "object") return false;
+                return input.chk1 === true;
             },
-            errorMessage: "התיאור קצר מדי! אנא פרטו קצת יותר (לפחות 15 תווים) על סוכן ה-AI ועל ה-Skill שחיברתם לו."
+            errorMessage: "אנא סמנו את תיבת האישור כדי לאשר שהשלמתם את בניית סוכן ה-AI והכישור ב-Antigravity."
         }
     ];
 }
@@ -584,36 +595,32 @@ let overallProgress = 0;
 // Inputs store for lesson submissions
 let userSubmissions = {
     lesson_1: {
-        plusButton: "",
-        voiceInput: "",
-        imageGen: "",
-        excelPlan: "",
-        tvTranslation: ""
+        chk1: false,
+        chk2: false,
+        chk3: false,
+        chk4: false,
+        chk5: false
     },
     lesson_2: {
         chk1: false,
-        chk2: false,
-        uploaded: false,
-        fileName: ""
+        chk2: false
     },
     lesson_3: {
         chk1: false,
-        chk2: false,
-        uploaded: false,
-        fileName: ""
+        chk2: false
     },
     lesson_4: {
-        task1Checkbox: false,
-        task2Textarea: ""
+        chk1: false
     },
     lesson_5: {
         chk1: false,
         chk2: false,
-        chk3: false,
-        url: ""
+        chk3: false
     },
     lesson_6: false,
-    lesson_7: ""
+    lesson_7: {
+        chk1: false
+    }
 };
 
 // 3. Document Elements & Initialization
@@ -1194,257 +1201,25 @@ function renderActionBlock(lesson) {
     let inputHtml = "";
     const savedVal = userSubmissions[lesson.id];
     
-    if (lesson.actionType === "multi_capabilities") {
-        const data = savedVal || { plusButton: "", voiceInput: "", imageGen: "", excelPlan: "", tvTranslation: "" };
-        const i1 = userInterests[0];
-        const i2 = userInterests[1];
-        const i3 = userInterests[2];
-        const i4 = userInterests[3];
-        const i5 = userInterests[4];
+    if (lesson.actionType === "checklist") {
+        const items = lesson.checklistItems || [];
+        const data = savedVal || {};
+        
+        let checklistHtml = "";
+        items.forEach((item, idx) => {
+            const chkKey = `chk${idx + 1}`;
+            const isChecked = data[chkKey] === true;
+            checklistHtml += `
+                <label class="checkbox-container" style="margin-bottom: 10px; display: flex; align-items: flex-start; gap: 8px; text-align: right; cursor: pointer;">
+                    <input type="checkbox" id="chk-${lesson.id}-${idx + 1}" ${isChecked ? "checked" : ""} style="margin-top: 3px; min-width: 16px;">
+                    <span style="font-size: 13.5px; color: var(--text-main); line-height: 1.4;">${item}</span>
+                </label>
+            `;
+        });
         
         inputHtml = `
-            <div class="action-input-area" style="gap: 12px;">
-                <h4 style="font-size:13px; color: var(--success-color); border-bottom: 1px solid var(--border-color); padding-bottom: 4px;">הזינו את תוצאות אתגר הליבה (AI Gauntlet):</h4>
-                
-                <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 13px;">1. כפתור ה-'+' (ניתוח קובץ בנושא ${i2}):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-plus-button" placeholder="הדביקו את ניתוח ה-AI לקובץ של ${i2}...">${data.plusButton || ""}</textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 13px;">2. קלט קולי (שילוב ${i3} ו-${i4}):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-voice-input" placeholder="הדביקו את רעיונות השילוב בין ${i3} ו-${i4}...">${data.voiceInput || ""}</textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 13px;">3. יצירת תמונה (פרומפט של ${i5}):</label>
-                    <input type="text" class="input-text-standard" id="input-image-gen" placeholder="הדביקו את תיאור או פרומפט התמונה של ${i5}..." value="${data.imageGen || ""}">
-                </div>
-                
-                <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 13px;">4. פירוק משימה (תוכנית עבור ${i1}):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-excel-plan" placeholder="הדביקו את תוכנית השלבים להשגת יעד ב-${i1}...">${data.excelPlan || ""}</textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label style="color:var(--text-header); font-size: 13px;">5. תרגום (תרגום טקסט בנושא ${i2}):</label>
-                    <textarea class="textarea-monospace" style="min-height:50px;" id="input-tv-translation" placeholder="הדביקו את תרגום הטקסט העוסק ב-${i2}..." >${data.tvTranslation || ""}</textarea>
-                </div>
-            </div>
-        `;
-    } else if (lesson.actionType === "gemini_gem_assignment") {
-        const data = savedVal || { chk1: false, chk2: false, uploaded: false, fileName: "" };
-        const i2 = userInterests[1];
-        const i3 = userInterests[2];
-        inputHtml = `
-            <div class="action-input-area gemini-gem-mission-card" style="background: rgba(73, 142, 117, 0.08); border: 1.5px dashed var(--primary-color); border-radius: 20px; padding: 20px; gap: 16px; display: flex; flex-direction: column;">
-                
-                <!-- Section Header -->
-                <div class="mission-header" style="text-align: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 12px;">
-                    <h4 style="font-size: 15px; color: var(--primary-color); font-weight: 700; margin-bottom: 4px;">🚀 משימה מעשית: יוצרים מורה פרטי עם Gemini GEM!</h4>
-                    <p style="font-size: 11.5px; color: var(--text-muted);">עקבו אחר שלבי ההכנה והקימו עוזר למידה אישי.</p>
-                </div>
-
-                <!-- Setup Phase -->
-                <div class="mission-setup" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color);">
-                    <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 8px; text-align: right;">שלב 1: הגדרת ה-GEM</h5>
-                    <div style="display: flex; flex-direction: column; gap: 8px; text-align: right;">
-                        <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="gem-setup-1" ${data.chk1 ? "checked" : ""}>
-                            <span>צרו GEM חדש והדביקו את ה"פרומפט מאסטר" בתיבת ההנחיות (Instructions).</span>
-                        </label>
-                        <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="gem-setup-2" ${data.chk2 ? "checked" : ""}>
-                            <span>העלו קובץ ידע (למשל סיכום שיעור או מצגת) בנושא ${i2} או ${i3} ל-GEM.</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Core Tasks -->
-                <div class="mission-tasks" style="display: flex; flex-direction: column; gap: 12px; text-align: right;">
-                    <!-- Task A -->
-                    <div class="task-subcard" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color); transition: transform 0.2s;">
-                        <h5 style="font-size: 13px; color: var(--accent-color); font-weight: 700; margin-bottom: 6px;">משימה 1: שיח סוקרטי ולמידה פעילה</h5>
-                        <p style="font-size: 11.5px; color: var(--text-main); line-height: 1.4; margin-bottom: 6px;">התחילו שיחה עם ה-GEM שלכם בנושא שהגדרתם. שימו לב כיצד הוא אינו פותר לכם את הכל ישירות, אלא שואל שאלות מנחות ומעגן את תשובותיו בחומר שהעלתם.</p>
-                    </div>
-                </div>
-
-                <!-- Submission Component -->
-                <div class="mission-submission" style="background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid var(--border-color); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                    <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 2px;">סיימתם? שתפו אותנו!</h5>
-                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-bottom: 4px;">צלמו מסך של ה-GEM שהקמתם או של חלק מהשיחה איתו והעלו אותו כאן כדי להשלים את המשימה.</p>
-                    
-                    <input type="file" id="gem-screenshot-upload" accept="image/*" style="display: none;">
-                    <button id="btn-gem-upload-trigger" class="btn btn-primary" style="padding: 6px 16px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; border-radius: 20px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                        <span>העלאת צילום מסך (Upload Screenshot)</span>
-                    </button>
-                    
-                    <div id="gem-upload-status" style="font-size: 11px; color: var(--primary-color); font-weight: 600; margin-top: 4px; display: ${data.uploaded ? 'block' : 'none'};">
-                        ${data.uploaded ? '✓ קובץ הועלה: ' + data.fileName : ''}
-                    </div>
-                </div>
-
-            </div>
-        `;
-    } else if (lesson.actionType === "notebooklm_assignment") {
-        const data = savedVal || { chk1: false, chk2: false, uploaded: false, fileName: "" };
-        inputHtml = `
-            <div class="action-input-area notebooklm-mission-card" style="background: rgba(73, 142, 117, 0.08); border: 1.5px dashed var(--primary-color); border-radius: 20px; padding: 20px; gap: 16px; display: flex; flex-direction: column;">
-                
-                <!-- Section Header -->
-                <div class="mission-header" style="text-align: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 12px;">
-                    <h4 style="font-size: 15px; color: var(--primary-color); font-weight: 700; margin-bottom: 4px;">🚀 משימה מעשית: יוצאים לדרך עם NotebookLM!</h4>
-                    <p style="font-size: 11.5px; color: var(--text-muted);">עקבו אחר שלבי ההכנה ובצעו את שתי המשימות בתוך המחברת שלכם.</p>
-                </div>
-
-                <!-- Setup Phase -->
-                <div class="mission-setup" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color);">
-                    <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 8px; text-align: right;">שלב 1: הקמת סביבת העבודה</h5>
-                    <div style="display: flex; flex-direction: column; gap: 8px; text-align: right;">
-                        <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="nb-setup-1" ${data.chk1 ? "checked" : ""}>
-                            <span>פתחו מחברת חדשה (New Notebook) ב-NotebookLM.</span>
-                        </label>
-                        <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="nb-setup-2" ${data.chk2 ? "checked" : ""}>
-                            <span>העלו לפחות 2 מקורות מידע הקשורים לחומר הלימוד שלכם (למשל: קובץ PDF, סיכום שיעור, קישור לאתר אינטרנט או סרטון YouTube רלוונטי).</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Core Tasks -->
-                <div class="mission-tasks" style="display: flex; flex-direction: column; gap: 12px; text-align: right;">
-                    <!-- Task A -->
-                    <div class="task-subcard" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color); transition: transform 0.2s;">
-                        <h5 style="font-size: 13px; color: var(--accent-color); font-weight: 700; margin-bottom: 6px;">משימה 1: שאלת חיפוש ממוקדת</h5>
-                        <p style="font-size: 11.5px; color: var(--text-main); line-height: 1.4; margin-bottom: 6px;">הקלידו בשורת הצ'אט שאלה ספציפית וממוקדת מתוך המקורות שהעליתם (למשל: "מהם 3 הגורמים ל..." או "חלץ סיכום קצר של פרק א'").</p>
-                        <div style="font-size: 10.5px; color: var(--primary-color); background: rgba(73, 142, 117, 0.05); padding: 6px 10px; border-radius: 8px; border-right: 2px solid var(--primary-color);">
-                            <strong>טיפ מקצועי:</strong> שימו לב כיצד המערכת עונה לכם ומצרפת מספרים קטנים המפנים לציטוט המדויק מתוך חומרי הגלם שלכם.
-                        </div>
-                    </div>
-
-                    <!-- Task B -->
-                    <div class="task-subcard" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color); transition: transform 0.2s;">
-                        <h5 style="font-size: 13px; color: var(--accent-color); font-weight: 700; margin-bottom: 6px;">משימה 2: יצירת מוצר בסטודיו (לבחירתכם)</h5>
-                        <p style="font-size: 11.5px; color: var(--text-main); line-height: 1.4; margin-bottom: 6px;">פתחו את פאנל הסטודיו (Studio Panel) בצד המסך והפיקו תוצר למידה אחד לבחירתכם מתוך האפשרויות:</p>
-                        <ul style="font-size: 11px; color: var(--text-muted); padding-right: 18px; line-height: 1.4; list-style-type: disc;">
-                            <li>שיחת פודקאסט קולית (Audio Overview)</li>
-                            <li>סט כרטיסיות לימוד (Flashcards) לשינון</li>
-                            <li>בוחן אמריקאי עצמי (Quiz)</li>
-                            <li>מפת חשיבה ויזואלית (Mind Map) קשרים</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Submission Component -->
-                <div class="mission-submission" style="background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid var(--border-color); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                    <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 2px;">סיימתם? שתפו אותנו!</h5>
-                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-bottom: 4px;">צלמו מסך של מסך המחברת שלכם (הכולל את התשובה מהצ'אט ואת התוצר שיצרתם בסטודיו) והעלו אותו כאן כדי לקבל משוב מהמורה.</p>
-                    
-                    <input type="file" id="nb-screenshot-upload" accept="image/*" style="display: none;">
-                    <button id="btn-upload-trigger" class="btn btn-primary" style="padding: 6px 16px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; border-radius: 20px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                        <span>העלאת צילום מסך (Upload Screenshot)</span>
-                    </button>
-                    
-                    <div id="nb-upload-status" style="font-size: 11px; color: var(--primary-color); font-weight: 600; margin-top: 4px; display: ${data.uploaded ? 'block' : 'none'};">
-                        ${data.uploaded ? '✓ קובץ הועלה: ' + data.fileName : ''}
-                    </div>
-                </div>
-
-            </div>
-        `;
-    } else if (lesson.actionType === "canvas_two_tasks") {
-        const data = savedVal || { task1Checkbox: false, task2Textarea: "" };
-        const i1 = userInterests[0];
-        const i5 = userInterests[4];
-        
-        inputHtml = `
-            <div class="action-input-area" style="gap: 15px;">
-                <div class="task-section">
-                    <h4 style="font-size: 13px; color: var(--success-color); font-weight: bold; margin-bottom: 6px;">משימה 1: התחלה מודרכת (The Guided Start)</h4>
-                    <p style="font-size: 12px; color: var(--text-main); margin-bottom: 8px; line-height: 1.4;">
-                        פתחו את Gemini בלשונית חדשה. הדביקו את הפרומפט הבא:<br>
-                        <span style="font-family: var(--font-code); background: var(--bg-darker); padding: 4px 6px; border-radius: 6px; display: block; margin: 4px 0; font-size:11px; direction: ltr; text-align: left;">"Open a canvas and write a short professional bio for ${userName} that highlights an interest in ${i1}."</span>
-                        לאחר שהקנבס נפתח, השתמשו במברשת ה-'Edit' כדי לשנות את המשפט האחרון לטון 'רומנטי' (Romantic).
-                    </p>
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="input-task-1-checkbox" ${data.task1Checkbox ? "checked" : ""}>
-                        <span style="font-size: 12px; color: var(--text-header); font-weight: bold;">פתחתי בהצלחה את ה-Canvas וערכתי את הטקסט.</span>
-                    </label>
-                </div>
-                
-                <div style="border-top: 1px dashed var(--border-color); margin: 10px 0;"></div>
-                
-                <div class="task-section">
-                    <h4 style="font-size: 13px; color: var(--success-color); font-weight: bold; margin-bottom: 6px;">משימה 2: פרויקט יצירתי עצמאי (The Builder Challenge)</h4>
-                    <p style="font-size: 12px; color: var(--text-main); margin-bottom: 8px; line-height: 1.4;">
-                        עכשיו תורכם לבנות מאפס. בחרו באחת משלוש הקטגוריות שלמדנו (מסמך, טופס, או כלי אינטראקטיבי) וצרו פרויקט המוקדש לתחום העניין שלכם ב-<strong>${i5}</strong>.
-                    </p>
-                    <div style="font-size: 11px; color: var(--text-muted); background: var(--bg-darker); padding: 8px; border-radius: 8px; margin-bottom: 8px; line-height: 1.3;">
-                        <strong>רעיונות להשראה:</strong>
-                        <br>&bull; <strong>מסמך:</strong> מדריך שלבים להשתלטות על ${i5} (Step-by-Step Guide to Mastering ${i5}).
-                        <br>&bull; <strong>טופס:</strong> טופס RSVP למפגש חובבי ${i5} (RSVP Form for a ${i5} Enthusiasts Meetup).
-                        <br>&bull; <strong>כלי:</strong> קוד עבור לוח מעקב חי של ${i5} (Live ${i5} Tracker Dashboard).
-                    </div>
-                    <p style="font-size: 11px; color: var(--text-main); margin-bottom: 6px;">
-                        פתחו Canvas חדש, בנו את הפרויקט שלכם, ובצעו לפחות שתי איטרציות של שיפור עד שהוא יהיה מושלם.
-                    </p>
-                    <label for="input-task-2-textarea" style="font-size: 12px; color: var(--text-header); font-weight: bold; display: block; margin-bottom: 4px;">הדביקו את כתובת ה-URL של הפרויקט שלכם או תארו את הפתרון הסופי שבניתם:</label>
-                    <textarea class="textarea-monospace" id="input-task-2-textarea" placeholder="הדביקו קישור ל-Canvas או תארו את הפרויקט שעיצבתם..." style="min-height: 80px; font-size:12px;">${data.task2Textarea || ""}</textarea>
-                </div>
-            </div>
-        `;
-    } else if (lesson.actionType === "deploy_url") {
-        const data = savedVal || { chk1: false, chk2: false, chk3: false, url: "" };
-        inputHtml = `
-            <div class="action-input-area" style="gap: 12px;">
-                <h4 style="font-size: 13px; color: var(--success-color); font-weight: bold; margin-bottom: 6px;">צ'קליסט פריסה (Deployment Checklist):</h4>
-                
-                <label class="checkbox-container" style="margin-bottom: 6px;">
-                    <input type="checkbox" id="chk-deploy-1" ${data.chk1 ? "checked" : ""}>
-                    <span style="font-size:12px; color: var(--text-main); font-weight: normal;">נוצר מחסן ב-GitHub והקוד הועלה אליו.</span>
-                </label>
-                
-                <label class="checkbox-container" style="margin-bottom: 6px;">
-                    <input type="checkbox" id="chk-deploy-2" ${data.chk2 ? "checked" : ""}>
-                    <span style="font-size:12px; color: var(--text-main); font-weight: normal;">חשבון ה-Vercel קושר לחשבון ה-GitHub.</span>
-                </label>
-                
-                <label class="checkbox-container" style="margin-bottom: 6px;">
-                    <input type="checkbox" id="chk-deploy-3" ${data.chk3 ? "checked" : ""}>
-                    <span style="font-size:12px; color: var(--text-main); font-weight: normal;">הפרויקט נפרס (Deployed) בהצלחה לענן.</span>
-                </label>
-                
-                <div style="border-top: 1px dashed var(--border-color); margin: 10px 0;"></div>
-                
-                <div class="form-group">
-                    <label for="action-task-input" style="font-size: 12px; color: var(--text-header); font-weight: bold; display: block; margin-bottom: 4px;">Paste your new live Vercel URL here:</label>
-                    <input type="text" class="input-text-standard" id="action-task-input" placeholder="https://your-project.vercel.app" value="${data.url || ""}">
-                </div>
-            </div>
-        `;
-    } else if (lesson.actionType === "textarea" || lesson.actionType === "code") {
-        inputHtml = `
-            <div class="action-input-area">
-                <label for="action-task-input">${lesson.actionLabel}</label>
-                <textarea class="textarea-monospace" id="action-task-input" placeholder="${lesson.placeholderText}">${savedVal || ""}</textarea>
-            </div>
-        `;
-    } else if (lesson.actionType === "url") {
-        inputHtml = `
-            <div class="action-input-area">
-                <label for="action-task-input">${lesson.actionLabel}</label>
-                <input type="text" class="input-text-standard" id="action-task-input" placeholder="${lesson.placeholderText}" value="${savedVal || ""}">
+            <div class="action-input-area" style="display: flex; flex-direction: column; gap: 8px;">
+                ${checklistHtml}
             </div>
         `;
     } else if (lesson.actionType === "checkbox") {
@@ -1476,153 +1251,20 @@ function renderActionBlock(lesson) {
     `;
     
     // Bind auto-save listeners
-    if (lesson.actionType === "gemini_gem_assignment") {
-        const chk1El = document.getElementById("gem-setup-1");
-        const chk2El = document.getElementById("gem-setup-2");
-        const uploadEl = document.getElementById("gem-screenshot-upload");
-        const triggerEl = document.getElementById("btn-gem-upload-trigger");
-        const statusEl = document.getElementById("gem-upload-status");
-
-        const saveGemMission = () => {
-            userSubmissions[lesson.id] = {
-                chk1: chk1El ? chk1El.checked : false,
-                chk2: chk2El ? chk2El.checked : false,
-                uploaded: userSubmissions[lesson.id] ? userSubmissions[lesson.id].uploaded : false,
-                fileName: userSubmissions[lesson.id] ? userSubmissions[lesson.id].fileName : ""
-            };
-            saveAppState();
-        };
-
-        if (chk1El) chk1El.addEventListener("change", saveGemMission);
-        if (chk2El) chk2El.addEventListener("change", saveGemMission);
-
-        if (triggerEl && uploadEl) {
-            triggerEl.addEventListener("click", () => {
-                uploadEl.click();
-            });
-        }
-
-        if (uploadEl) {
-            uploadEl.addEventListener("change", (e) => {
-                const file = e.target.files[0];
-                if (file) {
+    if (lesson.actionType === "checklist") {
+        const items = lesson.checklistItems || [];
+        items.forEach((item, idx) => {
+            const chkEl = document.getElementById(`chk-${lesson.id}-${idx + 1}`);
+            if (chkEl) {
+                chkEl.addEventListener("change", () => {
                     if (!userSubmissions[lesson.id] || typeof userSubmissions[lesson.id] !== "object") {
-                        userSubmissions[lesson.id] = { chk1: false, chk2: false, uploaded: false, fileName: "" };
+                        userSubmissions[lesson.id] = {};
                     }
-                    userSubmissions[lesson.id].uploaded = true;
-                    userSubmissions[lesson.id].fileName = file.name;
-                    saveGemMission();
-                    if (statusEl) {
-                        statusEl.innerText = `✓ קובץ הועלה: ${file.name}`;
-                        statusEl.style.display = "block";
-                    }
-                    writeTerminalLine(`[System] קובץ ${file.name} הועלה בהצלחה לאימות.`, "info-msg");
-                }
-            });
-        }
-    }
-    else if (lesson.actionType === "notebooklm_assignment") {
-        const chk1El = document.getElementById("nb-setup-1");
-        const chk2El = document.getElementById("nb-setup-2");
-        const uploadEl = document.getElementById("nb-screenshot-upload");
-        const triggerEl = document.getElementById("btn-upload-trigger");
-        const statusEl = document.getElementById("nb-upload-status");
-
-        const saveNotebookLMMission = () => {
-            userSubmissions[lesson.id] = {
-                chk1: chk1El ? chk1El.checked : false,
-                chk2: chk2El ? chk2El.checked : false,
-                uploaded: userSubmissions[lesson.id] ? userSubmissions[lesson.id].uploaded : false,
-                fileName: userSubmissions[lesson.id] ? userSubmissions[lesson.id].fileName : ""
-            };
-            saveAppState();
-        };
-
-        if (chk1El) chk1El.addEventListener("change", saveNotebookLMMission);
-        if (chk2El) chk2El.addEventListener("change", saveNotebookLMMission);
-
-        if (triggerEl && uploadEl) {
-            triggerEl.addEventListener("click", () => {
-                uploadEl.click();
-            });
-        }
-
-        if (uploadEl) {
-            uploadEl.addEventListener("change", (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    if (!userSubmissions[lesson.id] || typeof userSubmissions[lesson.id] !== "object") {
-                        userSubmissions[lesson.id] = { chk1: false, chk2: false, uploaded: false, fileName: "" };
-                    }
-                    userSubmissions[lesson.id].uploaded = true;
-                    userSubmissions[lesson.id].fileName = file.name;
-                    saveNotebookLMMission();
-                    if (statusEl) {
-                        statusEl.innerText = `✓ קובץ הועלה: ${file.name}`;
-                        statusEl.style.display = "block";
-                    }
-                    writeTerminalLine(`[System] קובץ ${file.name} הועלה בהצלחה לאימות.`, "info-msg");
-                }
-            });
-        }
-    }
-    else if (lesson.actionType === "multi_capabilities") {
-        const plusEl = document.getElementById("input-plus-button");
-        const voiceEl = document.getElementById("input-voice-input");
-        const imgEl = document.getElementById("input-image-gen");
-        const excelEl = document.getElementById("input-excel-plan");
-        const tvEl = document.getElementById("input-tv-translation");
-        
-        const saveMulti = () => {
-            userSubmissions[lesson.id] = {
-                plusButton: plusEl ? plusEl.value : "",
-                voiceInput: voiceEl ? voiceEl.value : "",
-                imageGen: imgEl ? imgEl.value : "",
-                excelPlan: excelEl ? excelEl.value : "",
-                tvTranslation: tvEl ? tvEl.value : ""
-            };
-            saveAppState();
-        };
-        
-        if (plusEl) plusEl.addEventListener("input", saveMulti);
-        if (voiceEl) voiceEl.addEventListener("input", saveMulti);
-        if (imgEl) imgEl.addEventListener("input", saveMulti);
-        if (excelEl) excelEl.addEventListener("input", saveMulti);
-        if (tvEl) tvEl.addEventListener("input", saveMulti);
-    } else if (lesson.actionType === "canvas_two_tasks") {
-        const checkEl = document.getElementById("input-task-1-checkbox");
-        const textEl = document.getElementById("input-task-2-textarea");
-        
-        const saveCanvasTasks = () => {
-            userSubmissions[lesson.id] = {
-                task1Checkbox: checkEl ? checkEl.checked : false,
-                task2Textarea: textEl ? textEl.value : ""
-            };
-            saveAppState();
-        };
-        
-        if (checkEl) checkEl.addEventListener("change", saveCanvasTasks);
-        if (textEl) textEl.addEventListener("input", saveCanvasTasks);
-    } else if (lesson.actionType === "deploy_url") {
-        const chk1El = document.getElementById("chk-deploy-1");
-        const chk2El = document.getElementById("chk-deploy-2");
-        const chk3El = document.getElementById("chk-deploy-3");
-        const urlEl = document.getElementById("action-task-input");
-        
-        const saveDeployData = () => {
-            userSubmissions[lesson.id] = {
-                chk1: chk1El ? chk1El.checked : false,
-                chk2: chk2El ? chk2El.checked : false,
-                chk3: chk3El ? chk3El.checked : false,
-                url: urlEl ? urlEl.value : ""
-            };
-            saveAppState();
-        };
-        
-        if (chk1El) chk1El.addEventListener("change", saveDeployData);
-        if (chk2El) chk2El.addEventListener("change", saveDeployData);
-        if (chk3El) chk3El.addEventListener("change", saveDeployData);
-        if (urlEl) urlEl.addEventListener("input", saveDeployData);
+                    userSubmissions[lesson.id][`chk${idx + 1}`] = chkEl.checked;
+                    saveAppState();
+                });
+            }
+        });
     } else {
         const inputElement = document.getElementById("action-task-input");
         if (inputElement) {
@@ -1666,30 +1308,24 @@ function handleVerifyTask() {
         writeTerminalLine("מנתח תוצאות קלט מתוך סביבת העבודה החיצונית...", "info-msg");
         
                                 if (lesson.id === "lesson_1") {
-            writeTerminalLine("[Success] משימה 1: ניתוח כפתור + אומת בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] משימה 2: קלט קולי אומת בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] משימה 3: פרומפט יצירת תמונה אומת בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] משימה 4: תכנון ופירוק משימה אומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 1: בדיקת כפתור ה-'+' אומתה בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 2: בדיקת קלט קולי אומתה בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 3: יצירת תמונות אומתה בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] משימה 4: תכנון משימות אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 5: תרגום ולוקליזציה אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] כל 5 שלבי ה-AI Gauntlet אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_2") {
-            writeTerminalLine("[Success] ה-GEM האישי שלכם זוהה ואומת בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] עקרונות עיגון המידע והלמידה החכמה מומחשים כהלכה. שיעור 2 הושלם.", "success-msg");
+            writeTerminalLine("[Success] שלבי ההכנה והתרגול ב-Gemini GEM אומתו בהצלחה! שיעור 2 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_3") {
-            writeTerminalLine("[Success] דף הנחיתה של NotebookLM זוהה ואומת בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] עקרונות עיגון המידע (Grounding) והסטודיו מומחשים כהלכה. שיעור 3 הושלם.", "success-msg");
+            writeTerminalLine("[Success] שלבי התרגול ב-NotebookLM אומתו בהצלחה! שיעור 3 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_4") {
-            writeTerminalLine("[Success] משימה 1: אישור עריכת ה-Canvas אומת בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] משימה 2: תיאור פרויקט ה-Canvas האישי נקרא בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] פרויקטי Gemini Canvas הושלמו ואומתו בהצלחה! שיעור 4 הושלם.", "success-msg");
+            writeTerminalLine("[Success] ביצוע תרגול ה-Gemini Canvas אומת בהצלחה! שיעור 4 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_5") {
-            const urlVal = (typeof inputVal === "object" ? inputVal.url : inputVal) || "";
-            writeTerminalLine(`[Success] מנסה להתחבר לכתובת ${urlVal.trim()}...`, "info-msg");
-            writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין! שיעור 5 הושלם.", "success-msg");
+            writeTerminalLine("[Success] שלבי פריסת הפרויקט ב-GitHub וב-Vercel אומתו בהצלחה! שיעור 5 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_6") {
             writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונכרן. שיעור 6 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_7") {
-            writeTerminalLine("[Success] תיאור הסוכן נקרא. בקרת הכישורים (Skills) של סוכן Antigravity הושלמה. שיעור 7 הושלם.", "success-msg");
+            writeTerminalLine("[Success] אימות בניית סוכן ה-AI והכישור ב-Antigravity הושלם בהצלחה! שיעור 7 הושלם.", "success-msg");
         }
         // Mark current lesson as completed
         lesson.completed = true;
@@ -1734,40 +1370,14 @@ function handleResetInput() {
     
     if (lesson.actionType === "checkbox") {
         userSubmissions[lesson.id] = false;
-    } else if (lesson.actionType === "gemini_gem_assignment") {
-        userSubmissions[lesson.id] = {
-            chk1: false,
-            chk2: false,
-            uploaded: false,
-            fileName: ""
-        };
-    } else if (lesson.actionType === "notebooklm_assignment") {
-        userSubmissions[lesson.id] = {
-            chk1: false,
-            chk2: false,
-            uploaded: false,
-            fileName: ""
-        };
-    } else if (lesson.actionType === "multi_capabilities") {
-        userSubmissions[lesson.id] = {
-            plusButton: "",
-            voiceInput: "",
-            imageGen: "",
-            excelPlan: "",
-            tvTranslation: ""
-        };
-    } else if (lesson.actionType === "canvas_two_tasks") {
-        userSubmissions[lesson.id] = {
-            task1Checkbox: false,
-            task2Textarea: ""
-        };
-    } else if (lesson.actionType === "deploy_url") {
-        userSubmissions[lesson.id] = {
-            chk1: false,
-            chk2: false,
-            chk3: false,
-            url: ""
-        };
+    } else if (lesson.actionType === "checklist") {
+        if (!userSubmissions[lesson.id] || typeof userSubmissions[lesson.id] !== "object") {
+            userSubmissions[lesson.id] = {};
+        }
+        const items = lesson.checklistItems || [];
+        items.forEach((item, idx) => {
+            userSubmissions[lesson.id][`chk${idx + 1}`] = false;
+        });
     } else {
         userSubmissions[lesson.id] = "";
     }
