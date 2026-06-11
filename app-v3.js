@@ -148,21 +148,6 @@ function getDynamicLessons(name, interests) {
     </div>
 </div>
 
-<!-- Highlight Box (Special Feature: Personal Tutor vs Research Assistant) -->
-<div class="special-feature-box" style="background: linear-gradient(135deg, rgba(73, 142, 117, 0.12), rgba(53, 114, 93, 0.04)); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 20px; margin: 20px 0; text-align: right; box-shadow: 0 4px 15px rgba(73, 142, 117, 0.1);">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--accent-color);">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-            <polyline points="2 17 12 22 22 17"></polyline>
-            <polyline points="2 12 12 17 22 12"></polyline>
-        </svg>
-        <strong style="font-size: 14px; font-weight: 700;">טיפ זהב: מתי להשתמש ב-GEM ומתי ב-NotebookLM?</strong>
-    </div>
-    <p style="font-size: 12px; color: var(--text-main); line-height: 1.5; margin: 0;">
-        האם כדאי להשתמש ב-Gemini GEM או ב-NotebookLM? הנה כלל האצבע: השתמשו ב-<strong>GEM</strong> כשאתם רוצים מורה פרטי אישי שינהל אתכם שיחה אקטיבית ודינמית וילמד אתכם נושאים שלב אחר שלב באמצעות שאלות והסברים. לעומת זאת, השתמשו ב-<strong>NotebookLM</strong> כשברצונכם לחקור ולסכם כמות גדולה של מסמכי מקור שונים בו-זמנית, להצליב ביניהם, או להפיק מהם תוצרים כמו פודקאסט שמע או מדריך למידה מקיף עם מראי מקום מדויקים.
-    </p>
-</div>
-
 <h2 class="lesson-h2">2. עקרונות הלמידה החכמה (Smart Learning)</h2>
 <p class="lesson-p">מטרתו של ה-GEM היא לתפקד כמנטור אישי ולא להכין שיעורי בית במקומכם. לשם כך, מומלץ להנחות אותו לפעול לפי העקרונות הבאים:</p>
 
@@ -274,6 +259,21 @@ function getDynamicLessons(name, interests) {
 <div class="analogy-box">
     <strong>[אנלוגיית עיגון המידע]</strong>
     דמיינו שאתם מתכוננים למבחן בנושא <strong>${i1}</strong> או <strong>${i2}</strong>. במקום לשאול עובר אורח ברחוב שקרא פעם משהו בנושא (כמו מודל AI רגיל), אתם פונים לספרייה פרטית המכילה אך ורק את ספרי הלימוד המדויקים שלכם ומקבלים תשובות המבוססות על עמודים ספציפיים.
+</div>
+
+<!-- Highlight Box (Special Feature: Personal Tutor vs Research Assistant) -->
+<div class="special-feature-box" style="background: linear-gradient(135deg, rgba(73, 142, 117, 0.12), rgba(53, 114, 93, 0.04)); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 20px; margin: 20px 0; text-align: right; box-shadow: 0 4px 15px rgba(73, 142, 117, 0.1);">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--accent-color);">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <strong style="font-size: 14px; font-weight: 700;">טיפ זהב: מתי להשתמש ב-GEM ומתי ב-NotebookLM?</strong>
+    </div>
+    <p style="font-size: 12px; color: var(--text-main); line-height: 1.5; margin: 0;">
+        האם כדאי להשתמש ב-Gemini GEM או ב-NotebookLM? הנה כלל האצבע: השתמשו ב-<strong>GEM</strong> כשאתם רוצים מורה פרטי אישי שינהל אתכם שיחה אקטיבית ודינמית וילמד אתכם נושאים שלב אחר שלב באמצעות שאלות והסברים. לעומת זאת, השתמשו ב-<strong>NotebookLM</strong> כשברצונכם לחקור ולסכם כמות גדולה של מסמכי מקור שונים בו-זמנית, להצליב ביניהם, או להפיק מהם תוצרים כמו פודקאסט שמע או מדריך למידה מקיף עם מראי מקום מדויקים.
+    </p>
 </div>
 
 <h2 class="lesson-h2">אילו מקורות מידע אפשר להעלות למחברת?</h2>
