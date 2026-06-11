@@ -226,7 +226,7 @@ function getDynamicLessons(name, interests) {
             actionLabel: "",
             placeholderText: "",
             tools: [
-                { name: "פתח את מנהל ה-Gems ב-Gemini", url: "https://gemini.google.com/gems" },
+                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" },
                 { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "gemini-gem-tutorial.html" }
             ],
             instructionText: `<strong>משימה מעשית - Gemini GEM:</strong><br>
