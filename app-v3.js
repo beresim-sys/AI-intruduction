@@ -340,6 +340,9 @@ function getDynamicLessons(name, interests) {
 <h2 class="lesson-h2">יכולות המפתח של NotebookLM: מה אפשר לעשות איתו?</h2>
 <p class="lesson-p">NotebookLM מספק ארגז כלים שלם לעיבוד ולמידה של חומרים מורכבים:</p>
 
+<h2 class="lesson-h2">הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
+<p class="lesson-p">הסטודיו הוא מרחב העבודה הדיגיטלי שלכם בתוך NotebookLM. כאן אתם יכולים לנהל מספר "מחברות" (Notebooks) שונות במקביל, לארגן את מסמכי המקור, להנחות את ה-AI להתמקד בנושאים ספציפיים בלבד, ולייצא את התוצרים שנוצרו לפורמטים פופולריים כמו קובצי Word, PDF, מצגות או קובצי שמע בלחיצת כפתור אחת.</p>
+
 <div class="features-grid-notebooklm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
     <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
         <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
@@ -373,9 +376,6 @@ function getDynamicLessons(name, interests) {
         <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">יצירה אוטומטית של תסריטים וסרטוני הסבר קצרים המפשטים נושאים מורכבים ומחברים מושגים חזותיים דרך אנימציה מודרכת.</p>
     </div>
 </div>
-
-<h2 class="lesson-h2">הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
-<p class="lesson-p">הסטודיו הוא מרחב העבודה הדיגיטלי שלכם בתוך NotebookLM. כאן אתם יכולים לנהל מספר "מחברות" (Notebooks) שונות במקביל, לארגן את מסמכי המקור, להנחות את ה-AI להתמקד בנושאים ספציפיים בלבד, ולייצא את התוצרים שנוצרו לפורמטים פופולריים כמו קובצי Word, PDF, מצגות או קובצי שמע בלחיצת כפתור אחת.</p>
             `,
             actionType: "checklist",
             actionLabel: "",
