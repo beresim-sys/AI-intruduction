@@ -437,12 +437,31 @@ let userSubmissions = {
 };
 
 // 3. Document Elements & Initialization
-document.addEventListener("DOMContentLoaded", () => {
-    // Clear persisted onboarding states to guarantee a clean slate
+// Emulate component mount / useEffect hook to guarantee a completely clean, blank slate
+function resetOnboardingSlate() {
+    // Clear persisted onboarding states
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_interests");
     sessionStorage.removeItem("user_name");
     sessionStorage.removeItem("user_interests");
+
+    // Explicitly reset form input fields to empty strings
+    const nameInput = document.getElementById("user-name");
+    if (nameInput) nameInput.value = "";
+    
+    const interestInputs = document.querySelectorAll(".interest-input");
+    interestInputs.forEach(input => {
+        if (input) input.value = "";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    resetOnboardingSlate();
+    
+    // Additional delayed resets to counteract browser auto-fill/auto-complete/session restore
+    setTimeout(resetOnboardingSlate, 20);
+    setTimeout(resetOnboardingSlate, 100);
+    setTimeout(resetOnboardingSlate, 300);
 
     bindGlobalListeners();
     
@@ -453,20 +472,18 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.opacity = "1";
     }
     
-    // Explicitly reset form input fields to empty strings
-    const nameInput = document.getElementById("user-name");
-    if (nameInput) nameInput.value = "";
-    
-    const interestInputs = Array.from(document.querySelectorAll(".interest-input"));
-    interestInputs.forEach(input => {
-        if (input) input.value = "";
-    });
-    
     document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
     const skipBtn = document.getElementById("btn-skip-onboarding");
     if (skipBtn) {
         skipBtn.addEventListener("click", handleSkipOnboarding);
     }
+});
+
+// Clean slate on pageshow (such as navigating back/forward or restoring cached page state)
+window.addEventListener("pageshow", () => {
+    resetOnboardingSlate();
+    // Delayed fallback to override browser history restore behavior
+    setTimeout(resetOnboardingSlate, 50);
 });
 
 function bindGlobalListeners() {
@@ -483,6 +500,7 @@ function bindGlobalListeners() {
         const reset = confirm("האם ברצונך לאפס את תוכנית הלימודים ולהתחיל מחדש את תהליך ההתאמה האישית?");
         if (reset) {
             localStorage.clear();
+            sessionStorage.clear();
             window.location.reload();
         }
     });
@@ -495,6 +513,8 @@ function bindGlobalListeners() {
             if (confirmLogout) {
                 localStorage.removeItem("user_name");
                 localStorage.removeItem("user_interests");
+                sessionStorage.removeItem("user_name");
+                sessionStorage.removeItem("user_interests");
                 window.location.reload();
             }
         });
