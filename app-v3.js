@@ -321,6 +321,19 @@ function getDynamicLessons(name, interests) {
         <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">קובצי שמע (Audio)</h4>
         <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">יש לכם הקלטה של הרצאה או ראיון? העלו את קובץ השמע, ו-NotebookLM יתמלל אותו מאחורי הקלעים ויהפוך את התוכן הטקסטואלי שלו לזמין לחיפוש וסיכום.</p>
     </div>
+
+    <!-- Card 4 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">קישורי אינטרנט ואתרים</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הזינו קישור לאתר אינטרנט, למאמר מקוון או לבלוג. NotebookLM יקרא וינתח את התוכן של הדף, ויאפשר לכם לשאול עליו שאלות ולחקור אותו ישירות במחברת.</p>
+    </div>
 </div>
 
 <!-- Highlight Box (Special Feature: Gemini Chats) -->
