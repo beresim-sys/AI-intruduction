@@ -400,25 +400,31 @@ function getDynamicLessons(name, interests) {
             completed: false,
             content: `
 <h1 class="lesson-h1">שיעור 4: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר</h1>
-<p class="lesson-p">שלום ${name}! בשיעור זה נצלול לעומק עבודה מעשית בתוך סביבת ה-Workspace הייחודית של Gemini Canvas.</p>
+<p class="lesson-p">שלום ${name}! בשיעור זה נלמד לעבוד כמו מקצוענים ב-<strong>Gemini Canvas</strong> – סביבת עבודה מתקדמת המאפשרת ליצור, לערוך וללטש קוד ותכנים מורכבים במקביל לחלון הצ'אט הרגיל.</p>
 
-<h2 class="lesson-h2">מהו Gemini Canvas?</h2>
-<p class="lesson-p">Gemini Canvas הוא סביבת עבודה שיתופית המיועדת ליצירת תכנים ארוכים וכתיבת קוד. הוא מאפשר לכם לערוך, ללטש ולבנות מוצרים אמיתיים במקום רק לנהל שיחה רגילה בחלון הצ'אט.</p>
+<h2 class="lesson-h2">1. מהו Gemini Canvas?</h2>
+<p class="lesson-p">בניגוד לשיחה רגילה שבה התשובות נעלמות במעלה הצ'אט, Gemini Canvas פותח מסך עבודה ייעודי מפוצל (Split-screen) לצד השיחה. הקנבס מתפקד כמעבד תמלילים וסביבת פיתוח חכמה המאפשרת לכם לערוך קטעים ספציפיים, לבצע התאמות כלליות בלחיצת כפתור, ולשפר את התוצר באינטרציות מהירות ללא צורך בהעתקה והדבקה חוזרת.</p>
 
-<h2 class="lesson-h2">יכולות ליבה מרכזיות (Core Capabilities)</h2>
+<h2 class="lesson-h2">2. תכונות מפתח וכלים במרחב העבודה (Key Features)</h2>
+<p class="lesson-p">בתוך הקנבס עומדים לרשותכם כלים מתקדמים לניהול ועריכת התוכן שלכם:</p>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 8px;"><strong>מסמכים חכמים (Smart Documents):</strong> יצירת פרוטוקולים מורכבים (כמו פרוטוקול טיפול ברעלת הריון - Preeclampsia) או כתיבת קורות חיים מקצועיים וממוקדים.</li>
-    <li style="margin-bottom: 8px;"><strong>טפסים חכמים ואוטומציה (Smart Forms & Automation):</strong> חיסכון בזמן על ידי בניית מערכות לקליטת נתונים. דוגמאות: שאלון קליני להתאמת משאבות חלב (Breast Pumps) או טופס אישור הגעה (RSVP) לבת מצווה (Bat Mitzvah).</li>
-    <li style="margin-bottom: 8px;"><strong>כלים אינטראקטיביים (Interactive Tools):</strong> בניית אבות-טיפוס "חיים" ופעילים. דוגמאות: סימולטור לזיהוי סיבוכי מחלת הסוכרת (Diabetes) או דף נחיתה מקצועי לתיק העבודות שלכם.</li>
+    <li style="margin-bottom: 8px;"><strong>מסך מפוצל (Side-by-Side):</strong> השיח הלוגי וההנחיות מתבצעים בצד ימין, בעוד התוצר (הקוד או המאמר) נבנה ומתעדכן בצד שמאל בזמן אמת.</li>
+    <li style="margin-bottom: 8px;"><strong>סרגל כלים צף לעריכה ממוקדת (Targeted Selection):</strong> כאשר מסמנים קטע טקסט או קוד ספציפי בקנבס, מופיע תפריט המאפשר לכם להנחות את ה-AI לשכתב או לערוך אך ורק את החלק המסומן, מבלי לגעת בשאר המסמך.</li>
+    <li style="margin-bottom: 8px;"><strong>תפריט כיוונון מהיר (Adjust Menu):</strong> כפתור מיוחד בתחתית המאפשר לשנות בלחיצה אחת את אורך המסמך (קצר/ארוך יותר), לשנות את טון הכתיבה (למשל: מקצועי, הומוריסטי, או רומנטי) או לבצע הגהה מהירה.</li>
+    <li style="margin-bottom: 8px;"><strong>תצוגה מקדימה חיה (Live Preview):</strong> עבור קוד (כגון HTML/CSS/JS), הקנבס מאפשר להריץ ולראות את האתר שלכם בפעולה ישירות מתוך הממשק.</li>
 </ul>
 
-<h2 class="lesson-h2">תהליך העבודה ב-Canvas ב-4 שלבים</h2>
-<ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 6px;"><strong>1. הפעלה (Activate):</strong> שימוש במודל Gemini Pro.</li>
-    <li style="margin-bottom: 6px;"><strong>2. טריגר (Trigger):</strong> כתיבת פרומפט שמתחיל במילים: "Open a canvas to build..." (פתח קנבס כדי לבנות...).</li>
-    <li style="margin-bottom: 6px;"><strong>3. עריכה (Edit):</strong> שימוש במברשת ה-"עריכה" (Edit) או עריכת הטקסט והקוד ישירות בחלון ה-Canvas הצדדי.</li>
-    <li style="margin-bottom: 6px;"><strong>4. איטרציה (Iterate):</strong> שימוש בתפריט ה-"כיוונון" (Adjust) כדי לשפר את האורך, הטון (למשל שינוי לטון רומנטי) או לפתור באגים בקוד.</li>
-</ul>
+<h2 class="lesson-h2">3. הוראות עבודה שלב-אחר-שלב בקנבס (Step-by-Step Guide)</h2>
+<p class="lesson-p">בצעו את השלבים הבאים כדי לשלוט במרחב היצירה:</p>
+<ol style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
+    <li style="margin-bottom: 8px;"><strong>שלב 1: הפעלת הקנבס (The Trigger):</strong> כתבו בצ'אט הנחיה ברורה כמו: <em>"Open a canvas to build..."</em> (למשל: בניית דף נחיתה אישי או מדריך מקצועי העוסק ב-<strong>${i5}</strong>). ה-AI יזהה את הצורך ויפתח את חלון הקנבס משמאל.</li>
+    <li style="margin-bottom: 8px;"><strong>שלב 2: עריכה ממוקדת של אלמנטים:</strong> סמנו בעזרת העכבר כותרת או פסקה מסוימת בקנבס, לחצו על כפתור המברשת/העיפרון וכתבו הנחיה ממוקדת (לדוגמה: <em>"הפוך את הכותרת הזו לצבעונית ומודגשת יותר"</em> או <em>"הוסף כאן דוגמה מעשית"</em>).</li>
+    <li style="margin-bottom: 8px;"><strong>שלב 3: כיוונון המסמך השלם:</strong> השתמשו בתפריט ה-Adjust כדי לקצר את כל הטקסט או לבצע הגהה סופית.</li>
+</ol>
+
+<blockquote style="background: rgba(73, 142, 117, 0.08); border-right: 4px solid var(--accent-color); padding: 15px; margin: 20px 0; border-radius: 8px; direction: ltr; text-align: left;">
+    <strong>Important Note:</strong> At this stage, the project or creation you have just worked on is only saved locally on your personal computer or mobile device. In our next lesson, we will learn exactly how to upload your creation to the web and share it!
+</blockquote>
             `,
             actionType: "canvas_two_tasks",
             actionLabel: "הדביקו את כתובת ה-URL של הפרויקט שלכם או תארו את הפתרון הסופי שבניתם:",
