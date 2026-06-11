@@ -337,9 +337,7 @@ function getDynamicLessons(name, interests) {
     </p>
 </div>
 
-<h2 class="lesson-h2">יכולות המפתח של NotebookLM: מה אפשר לעשות איתו?</h2>
-
-<h2 class="lesson-h2">הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
+<h2 class="lesson-h2">יכולות המפתח של NotebookLM: מה אפשר לעשות איתו? – הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
 <p class="lesson-p">הסטודיו הוא מרחב העבודה הדיגיטלי שלכם בתוך NotebookLM. כאן אתם יכולים לנהל מספר "מחברות" (Notebooks) שונות במקביל, לארגן את מסמכי המקור, להנחות את ה-AI להתמקד בנושאים ספציפיים בלבד, ולייצא את התוצרים שנוצרו לפורמטים פופולריים כמו קובצי Word, PDF, מצגות או קובצי שמע בלחיצת כפתור אחת.</p>
 
 <div class="features-grid-notebooklm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
