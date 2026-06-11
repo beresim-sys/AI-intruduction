@@ -357,14 +357,18 @@
             });
         });
 
-        // CTA button redirect back to index.html with query parameter to highlight lesson 2
+        // CTA button redirect back to index.html with query parameter to highlight lesson 3
         document.getElementById('btn-tutorial-cta').addEventListener('click', () => {
-            if (window.opener || window.history.length > 1) {
-                // If opened as a new tab, try to close it or navigate
-                window.location.href = 'index.html';
-            } else {
-                window.location.href = 'index.html';
+            if (window.opener && !window.opener.closed) {
+                try {
+                    window.opener.location.href = 'index.html?resume=true&lesson=lesson_3';
+                    window.close();
+                    return;
+                } catch (e) {
+                    console.error("Failed to redirect opener:", e);
+                }
             }
+            window.location.href = 'index.html?resume=true&lesson=lesson_3';
         });
     </script>
 </body>

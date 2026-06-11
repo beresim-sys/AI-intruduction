@@ -423,8 +423,8 @@ function getDynamicLessons(name, interests) {
     <li style="margin-bottom: 8px;"><strong>שלב 3: כיוונון המסמך השלם:</strong> השתמשו בתפריט ה-Adjust כדי לקצר את כל הטקסט או לבצע הגהה סופית.</li>
 </ol>
 
-<blockquote style="background: rgba(73, 142, 117, 0.08); border-right: 4px solid var(--accent-color); padding: 15px; margin: 20px 0; border-radius: 8px; direction: ltr; text-align: left;">
-    <strong>Important Note:</strong> At this stage, the project or creation you have just worked on is only saved locally on your personal computer or mobile device. In our next lesson, we will learn exactly how to upload your creation to the web and share it!
+<blockquote style="background: rgba(73, 142, 117, 0.08); border-right: 4px solid var(--accent-color); padding: 15px; margin: 20px 0; border-radius: 8px; direction: rtl; text-align: right;">
+    <strong>הערה חשובה: בשלב זה, הפרויקט או היצירה שעבדתם עליהם שמורים רק באופן מקומי על המחשב האישי או המכשיר הנייד שלכם. בשיעור הבא נלמד בדיוק איך להעלות את היצירה שלכם לרשת ולשתף אותה!</strong>
 </blockquote>
             `,
             actionType: "canvas_two_tasks",
@@ -618,10 +618,88 @@ let userSubmissions = {
 
 // 3. Document Elements & Initialization
 // Emulate component mount / useEffect hook to guarantee a completely clean, blank slate
+function saveAppState() {
+    if (!userName) return; // Only save if we have a user session active
+    localStorage.setItem("user_name", userName);
+    localStorage.setItem("user_interests", JSON.stringify(userInterests));
+    localStorage.setItem("current_lesson_index", currentLessonIndex);
+    localStorage.setItem("active_tabs", JSON.stringify(activeTabs));
+    localStorage.setItem("active_tab", activeTab);
+    
+    const lessonsProgress = lessonsData.map(l => ({
+        id: l.id,
+        unlocked: l.unlocked,
+        completed: l.completed
+    }));
+    localStorage.setItem("lessons_progress", JSON.stringify(lessonsProgress));
+    localStorage.setItem("user_submissions", JSON.stringify(userSubmissions));
+}
+
+function restoreAppState() {
+    userName = localStorage.getItem("user_name") || "אורח/ת";
+    
+    try {
+        const rawInterests = localStorage.getItem("user_interests");
+        userInterests = rawInterests ? JSON.parse(rawInterests) : [];
+    } catch (e) {
+        userInterests = [];
+    }
+    
+    lessonsData = getDynamicLessons(userName, userInterests);
+    
+    try {
+        const rawProgress = localStorage.getItem("lessons_progress");
+        if (rawProgress) {
+            const progress = JSON.parse(rawProgress);
+            progress.forEach(p => {
+                const lesson = lessonsData.find(l => l.id === p.id);
+                if (lesson) {
+                    lesson.unlocked = p.unlocked;
+                    lesson.completed = p.completed;
+                }
+            });
+        }
+    } catch (e) {
+        console.error("Failed to restore lessons progress", e);
+    }
+    
+    try {
+        const rawSubmissions = localStorage.getItem("user_submissions");
+        if (rawSubmissions) {
+            userSubmissions = JSON.parse(rawSubmissions);
+        }
+    } catch (e) {
+        console.error("Failed to restore user submissions", e);
+    }
+    
+    const savedIdx = localStorage.getItem("current_lesson_index");
+    if (savedIdx !== null) {
+        currentLessonIndex = parseInt(savedIdx, 10);
+    }
+    
+    try {
+        const rawActiveTabs = localStorage.getItem("active_tabs");
+        if (rawActiveTabs) {
+            activeTabs = JSON.parse(rawActiveTabs);
+        }
+        const savedActiveTab = localStorage.getItem("active_tab");
+        if (savedActiveTab) {
+            activeTab = savedActiveTab;
+        }
+    } catch (e) {
+        console.error("Failed to restore active tabs", e);
+    }
+}
+
 function resetOnboardingSlate() {
     // Clear persisted onboarding states
     localStorage.removeItem("user_name");
     localStorage.removeItem("user_interests");
+    localStorage.removeItem("current_lesson_index");
+    localStorage.removeItem("active_tabs");
+    localStorage.removeItem("active_tab");
+    localStorage.removeItem("lessons_progress");
+    localStorage.removeItem("user_submissions");
     sessionStorage.removeItem("user_name");
     sessionStorage.removeItem("user_interests");
 
@@ -636,31 +714,79 @@ function resetOnboardingSlate() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    resetOnboardingSlate();
-    
-    // Additional delayed resets to counteract browser auto-fill/auto-complete/session restore
-    setTimeout(resetOnboardingSlate, 20);
-    setTimeout(resetOnboardingSlate, 100);
-    setTimeout(resetOnboardingSlate, 300);
+    const urlParams = new URLSearchParams(window.location.search);
+    const isResume = urlParams.get("resume") === "true";
+    const hasSavedSession = localStorage.getItem("user_name");
 
-    bindGlobalListeners();
-    
-    // Always render the Splash Screen (onboarding overlay) first
-    const overlay = document.getElementById("onboarding-overlay");
-    if (overlay) {
-        overlay.style.display = "flex";
-        overlay.style.opacity = "1";
-    }
-    
-    document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
-    const skipBtn = document.getElementById("btn-skip-onboarding");
-    if (skipBtn) {
-        skipBtn.addEventListener("click", handleSkipOnboarding);
+    if (isResume && hasSavedSession) {
+        // Restore state from localStorage
+        restoreAppState();
+        
+        // Target lesson from URL parameter
+        const targetLessonId = urlParams.get("lesson");
+        if (targetLessonId) {
+            const targetIdx = lessonsData.findIndex(l => l.id === targetLessonId);
+            if (targetIdx !== -1 && lessonsData[targetIdx].unlocked) {
+                currentLessonIndex = targetIdx;
+                activeTab = lessonsData[targetIdx].fileName;
+                if (!activeTabs.includes(activeTab)) {
+                    activeTabs.push(activeTab);
+                }
+            }
+        }
+        
+        bindGlobalListeners();
+        
+        // Hide onboarding overlay
+        const overlay = document.getElementById("onboarding-overlay");
+        if (overlay) {
+            overlay.style.display = "none";
+            overlay.style.opacity = "0";
+        }
+        
+        // Bind onboarding event listeners just in case
+        document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
+        const skipBtn = document.getElementById("btn-skip-onboarding");
+        if (skipBtn) {
+            skipBtn.addEventListener("click", handleSkipOnboarding);
+        }
+        
+        startApp();
+    } else {
+        resetOnboardingSlate();
+        
+        // Additional delayed resets to counteract browser auto-fill/auto-complete/session restore
+        setTimeout(resetOnboardingSlate, 20);
+        setTimeout(resetOnboardingSlate, 100);
+        setTimeout(resetOnboardingSlate, 300);
+
+        bindGlobalListeners();
+        
+        // Always render the Splash Screen (onboarding overlay) first
+        const overlay = document.getElementById("onboarding-overlay");
+        if (overlay) {
+            overlay.style.display = "flex";
+            overlay.style.opacity = "1";
+        }
+        
+        document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
+        const skipBtn = document.getElementById("btn-skip-onboarding");
+        if (skipBtn) {
+            skipBtn.addEventListener("click", handleSkipOnboarding);
+        }
     }
 });
 
 // Clean slate on pageshow (such as navigating back/forward or restoring cached page state)
 window.addEventListener("pageshow", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isResume = urlParams.get("resume") === "true";
+    const hasSavedSession = localStorage.getItem("user_name");
+    
+    if (isResume && hasSavedSession) {
+        return;
+    }
+    
     resetOnboardingSlate();
     // Delayed fallback to override browser history restore behavior
     setTimeout(resetOnboardingSlate, 50);
@@ -751,8 +877,7 @@ function handleOnboardingSubmit() {
     userInterests = interests;
     lessonsData = getDynamicLessons(userName, userInterests);
     
-    localStorage.setItem("user_name", userName);
-    localStorage.setItem("user_interests", JSON.stringify(userInterests));
+    saveAppState();
     
     // Animate onboarding overlay fade out
     const overlay = document.getElementById("onboarding-overlay");
@@ -798,8 +923,7 @@ function handleSkipOnboarding() {
     userInterests = selectedInterests;
     lessonsData = getDynamicLessons(userName, userInterests);
 
-    localStorage.setItem("user_name", userName);
-    localStorage.setItem("user_interests", JSON.stringify(userInterests));
+    saveAppState();
 
     setTimeout(() => {
         const overlay = document.getElementById("onboarding-overlay");
@@ -932,6 +1056,7 @@ function closeTab(fileName) {
         selectLesson(newLessonIndex);
     } else {
         renderTabs();
+        saveAppState();
     }
 }
 
@@ -949,6 +1074,7 @@ function selectLesson(index) {
     loadLesson(index);
     renderSidebarLessons();
     renderTabs();
+    saveAppState();
 }
 
 // 5. Load Lesson Content & Syntax Highlight Code
@@ -1364,6 +1490,7 @@ function renderActionBlock(lesson) {
                 uploaded: userSubmissions[lesson.id] ? userSubmissions[lesson.id].uploaded : false,
                 fileName: userSubmissions[lesson.id] ? userSubmissions[lesson.id].fileName : ""
             };
+            saveAppState();
         };
 
         if (chk1El) chk1El.addEventListener("change", saveGemMission);
@@ -1408,6 +1535,7 @@ function renderActionBlock(lesson) {
                 uploaded: userSubmissions[lesson.id] ? userSubmissions[lesson.id].uploaded : false,
                 fileName: userSubmissions[lesson.id] ? userSubmissions[lesson.id].fileName : ""
             };
+            saveAppState();
         };
 
         if (chk1El) chk1El.addEventListener("change", saveNotebookLMMission);
@@ -1453,6 +1581,7 @@ function renderActionBlock(lesson) {
                 excelPlan: excelEl ? excelEl.value : "",
                 tvTranslation: tvEl ? tvEl.value : ""
             };
+            saveAppState();
         };
         
         if (plusEl) plusEl.addEventListener("input", saveMulti);
@@ -1469,6 +1598,7 @@ function renderActionBlock(lesson) {
                 task1Checkbox: checkEl ? checkEl.checked : false,
                 task2Textarea: textEl ? textEl.value : ""
             };
+            saveAppState();
         };
         
         if (checkEl) checkEl.addEventListener("change", saveCanvasTasks);
@@ -1486,6 +1616,7 @@ function renderActionBlock(lesson) {
                 chk3: chk3El ? chk3El.checked : false,
                 url: urlEl ? urlEl.value : ""
             };
+            saveAppState();
         };
         
         if (chk1El) chk1El.addEventListener("change", saveDeployData);
@@ -1499,6 +1630,7 @@ function renderActionBlock(lesson) {
             inputElement.addEventListener(eventType, () => {
                 const val = lesson.actionType === "checkbox" ? inputElement.checked : inputElement.value;
                 userSubmissions[lesson.id] = val;
+                saveAppState();
             });
         }
     }
@@ -1575,6 +1707,7 @@ function handleVerifyTask() {
         renderSidebarLessons();
         renderTabs();
         updateProgressRing();
+        saveAppState();
         
         if (unlockedNext) {
             alert("✓ המשימה הושלמה בהצלחה! השיעור הבא פתוח כעת עבורכם.");
@@ -1640,6 +1773,7 @@ function handleResetInput() {
     }
     
     renderActionBlock(lesson);
+    saveAppState();
 }
 
 // 9.5. Skip Lesson / Finish Course
@@ -1679,6 +1813,7 @@ function handleSkipLesson() {
         renderSidebarLessons();
         renderTabs();
         updateProgressRing();
+        saveAppState();
         
         alert("🏆 כל הכבוד! סיימת את כל שבעת שיעורי הקורס בהצלחה!");
     }

@@ -357,9 +357,18 @@
             });
         });
 
-        // CTA button redirect back to index.html
+        // CTA button redirect back to index.html with query parameter to highlight lesson 2
         document.getElementById('btn-gem-tutorial-cta').addEventListener('click', () => {
-            window.location.href = 'index.html';
+            if (window.opener && !window.opener.closed) {
+                try {
+                    window.opener.location.href = 'index.html?resume=true&lesson=lesson_2';
+                    window.close();
+                    return;
+                } catch (e) {
+                    console.error("Failed to redirect opener:", e);
+                }
+            }
+            window.location.href = 'index.html?resume=true&lesson=lesson_2';
         });
     </script>
 </body>
