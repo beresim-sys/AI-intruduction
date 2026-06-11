@@ -87,13 +87,180 @@ function getDynamicLessons(name, interests) {
         },
         {
             id: "lesson_2",
-            fileName: "lesson_2_notebooklm.md",
-            tabLabel: "lesson_2_notebooklm.md",
-            title: "שיעור 2: למידה חכמה ועיגון מידע עם NotebookLM",
+            fileName: "lesson_2_gemini_gem.md",
+            tabLabel: "lesson_2_gemini_gem.md",
+            title: "שיעור 2: עיגון מידע ולמידה חכמה עם Gemini GEM",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 2: למידה חכמה ועיגון מידע עם NotebookLM</h1>
+<h1 class="lesson-h1">שיעור 2: עיגון מידע ולמידה חכמה עם Gemini GEM</h1>
+<p class="lesson-p">שלום ${name}! בשיעור זה נלמד כיצד ליצור עוזר AI אישי המותאם בדיוק לצרכי הלמידה שלכם באמצעות <strong>Gemini GEM</strong>. כדי להפיק ממנו את המרב ולמנוע ממנו להפוך ל"מכונת תשובות" שעושה את העבודה עבורכם, קריטי לבסס את פעילותו על שני עקרונות מובילים: <strong>עיגון מידע</strong> ו<strong>למידה חכמה</strong>.</p>
+
+<div class="tech-box">
+    <strong>מהו Gemini GEM?</strong>
+    כלי ה-Gemini GEM מאפשר לכם ליצור סוכן AI אישי המוגדר מראש עם הנחיות ייעודיות וקובצי ידע משלכם, כדי לשמש כמורה פרטי, כשותף לסיעור מוחות או כעוזר מחקר המותאם בדיוק עבורכם.
+</div>
+
+<div class="analogy-box">
+    <strong>[אנלוגיית עיגון המידע ב-GEM]</strong>
+    דמיינו שאתם מתכוננים למבחן בנושא <strong>${i2}</strong> או <strong>${i3}</strong>. במקום לשאול עובר אורח אקראי שקרא פעם משהו ברשת (כמו מודל AI רגיל), אתם פונים למורה פרטי שנמצא בחדר סגור ורשאי להציץ אך ורק בספר הלימוד הספציפי שסיפקתם לו על מנת לענות לכם.
+</div>
+
+<h2 class="lesson-h2">1. מהו "עיגון מידע" (Information Anchoring)?</h2>
+<p class="lesson-p">עיגון מידע הוא התהליך שבו אנו "מאלצים" את ה-AI להסתמך אך ורק על חומרי הלימוד והקבצים הספציפיים שהעלינו ל-GEM, במקום לשלוף מידע כללי או להמציא עובדות מומצאות (הזיות).</p>
+
+<div class="sources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 15px 0;">
+    <!-- Card 1 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">הספקת הקשר (Provide Context)</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">העלו את סיכומי השיעור, המאמרים, או המצגות שלכם ישירות ל-GEM כדי לשמש בסיס ידע בלעדי לשיחה.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+                <line x1="15" y1="3" x2="15" y2="21"></line>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">הגדרת גבולות (Define Boundaries)</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הנחו את ה-GEM במפורש להשתמש אך ורק במידע שסיפקתם לו, ולא לחפש מידע כללי מחוצה לו.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">מניעת הזיות (Prevent Hallucinations)</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">כאשר המידע מעוגן היטב, הסיכוי של ה-GEM לספק תשובות שגויות או לא רלוונטיות יורד באופן דרמטי.</p>
+    </div>
+</div>
+
+<!-- Highlight Box (Special Feature: Personal Tutor vs Research Assistant) -->
+<div class="special-feature-box" style="background: linear-gradient(135deg, rgba(73, 142, 117, 0.12), rgba(53, 114, 93, 0.04)); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 20px; margin: 20px 0; text-align: right; box-shadow: 0 4px 15px rgba(73, 142, 117, 0.1);">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--accent-color);">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <strong style="font-size: 14px; font-weight: 700;">טיפ זהב: מתי להשתמש ב-GEM ומתי ב-NotebookLM?</strong>
+    </div>
+    <p style="font-size: 12px; color: var(--text-main); line-height: 1.5; margin: 0;">
+        האם כדאי להשתמש ב-Gemini GEM או ב-NotebookLM? הנה כלל האצבע: השתמשו ב-<strong>GEM</strong> כשאתם רוצים מורה פרטי אישי שינהל אתכם שיחה אקטיבית ודינמית וילמד אתכם נושאים שלב אחר שלב באמצעות שאלות והסברים. לעומת זאת, השתמשו ב-<strong>NotebookLM</strong> כשברצונכם לחקור ולסכם כמות גדולה של מסמכי מקור שונים בו-זמנית, להצליב ביניהם, או להפיק מהם תוצרים כמו פודקאסט שמע או מדריך למידה מקיף עם מראי מקום מדויקים.
+    </p>
+</div>
+
+<h2 class="lesson-h2">2. עקרונות הלמידה החכמה (Smart Learning)</h2>
+<p class="lesson-p">מטרתו של ה-GEM היא לתפקד כמנטור אישי ולא להכין שיעורי בית במקומכם. לשם כך, מומלץ להנחות אותו לפעול לפי העקרונות הבאים:</p>
+
+<div class="features-grid-notebooklm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+    <!-- Card 1 -->
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            למידה פעילה (Active Learning)
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">הנחו את ה-GEM להשתמש בשיטה הסוקרטית - לשאול אתכם שאלות מנחות במקום לגלות לכם את התשובות הסופיות באופן מיידי.</p>
+    </div>
+    
+    <!-- Card 2 -->
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            פירוק ופישוט מושגים (Deconstruction)
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">נתקלתם במושג מסובך? בקשו מה-GEM להסביר לכם אותו "כאילו הייתם בני 10" (Explain Like I'm 10) או באמצעות אנלוגיות פשוטות מחיי היומיום.</p>
+    </div>
+    
+    <!-- Card 3 -->
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+            בחנים עצמיים ומשוב
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">בקשו מה-GEM לייצר בחנים מהירים (pop quizzes) על בסיס החומרים שהעליתם, ולקבל משוב בונה ומפורט לשיפור הלמידה.</p>
+    </div>
+    
+    <!-- Card 4 -->
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            שיח מותאם אישית
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">הגדירו ל-GEM את סגנון הדיבור המועדף עליכם (רשמי, מעודד, או הומוריסטי) והנחיות מיוחדות שמתאימות בדיוק לקצב הלמידה שלכם.</p>
+    </div>
+</div>
+
+<h2 class="lesson-h2">✂️ פרומפט מאסטר להעתקה (להגדרת ה-GEM האישי שלכם)</h2>
+<p class="lesson-p">העתיקו את הפרומפט הבא והדביקו אותו בתיבת ה"הנחיות" (Instructions) של ה-GEM החדש שאתם מקימים ב-Gemini. התאימו את הערכים בתוך הסוגריים המרובעים לפי נושא הלמידה שלכם:</p>
+
+<div class="code-viewport" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; font-family: monospace; font-size: 12.5px; line-height: 1.6; color: #d4d4d4; text-align: right; direction: rtl; white-space: pre-wrap; margin-bottom: 20px; overflow-x: auto;">
+<strong>תפקיד ומטרה (Role and Objective):</strong>
+אתה מורה פרטי מומחה ב-[הכניסו נושא, למשל: <strong>${i2}</strong> או <strong>${i3}</strong>]. המטרה שלך היא לעזור לי להבין את החומר לעומק ולפתח מיומנויות חשיבה ביקורתית, ולא רק לספק תשובות מוכנות מראש.
+
+<strong>עקרונות עיגון מידע (Information Anchoring Principles):</strong>
+- עליך לבסס את כל התשובות שלך אך ורק ורק על הטקסטים, הקבצים והחומרים שאעלה או שאספק במהלך השיחה שלנו.
+- אם אשאל שאלה שהתשובה עליה אינה נמצאת בחומרים שסיפקתי, עליך לציין זאת בבירור: "מידע זה אינו קיים בחומרים שסיפקת," ואל תמציא תשובה.
+
+<strong>עקרונות פעולה ללמידה חכמה (Operating Principles):</strong>
+- אל תיתן לי את התשובה הסופית מיד. במקום זאת, שאל אותי שאלות מנחות שיעזרו לי להגיע לתשובה בעצמי.
+- אם אענה תשובה שגויה, תקן אותי בעדינות והסבר את ההיגיון שמאחורי הטעות, בהתבסס אך ורק על חומרי הלמידה שסיפקתי.
+- בסוף כל תת-נושא, הצע לייצר עבורי 3 שאלות תרגול (שאלות אמריקאיות או פתוחות) כדי לבחון את ההבנה שלי.
+- השתמש בשפה ברורה, נגישה ומעודדת.
+</div>
+            `,
+            actionType: "gemini_gem_assignment",
+            actionLabel: "",
+            placeholderText: "",
+            tools: [
+                { name: "פתח את מנהל ה-Gems ב-Gemini", url: "https://gemini.google.com/gems" }
+            ],
+            instructionText: `<strong>משימה מעשית - Gemini GEM:</strong><br>
+            1. בצעו את שלבי ההכנה והגדרת ה-GEM בתיבת המשימה מטה.<br>
+            2. העלו צילום מסך של ה-GEM שהקמתם או של שיחה איתו כדי להשלים את השיעור.`,
+            validate: (input) => {
+                if (!input || typeof input !== "object") return false;
+                return input.chk1 === true && input.chk2 === true && input.uploaded === true;
+            },
+            errorMessage: "אנא ודאו שסימנתם את שני שלבי ההכנה והעליתם צילום מסך של ה-GEM שהקמתם."
+        },
+        {
+            id: "lesson_3",
+            fileName: "lesson_3_notebooklm.md",
+            tabLabel: "lesson_3_notebooklm.md",
+            title: "שיעור 3: למידה חכמה ועיגון מידע עם NotebookLM",
+            unlocked: false,
+            completed: false,
+            content: `
+<h1 class="lesson-h1">שיעור 3: למידה חכמה ועיגון מידע עם NotebookLM</h1>
 <p class="lesson-p">שלום ${name}! בשיעור זה נכיר כלי מהפכני מבית Google שישנה לחלוטין את הדרך שבה אתם חוקרים, לומדים ומארגנים מידע - <strong>NotebookLM</strong>.</p>
 
 <h2 class="lesson-h2">עקרון הליבה: 100% החומר שלכם, 0% המצאות (Grounding)</h2>
@@ -225,14 +392,14 @@ function getDynamicLessons(name, interests) {
             errorMessage: "אנא ודאו שסימנתם את שני שלבי ההכנה והעליתם צילום מסך של המחברת שלכם."
         },
         {
-            id: "lesson_3",
-            fileName: "lesson_3_canvas.js",
-            tabLabel: "lesson_3_canvas.js",
-            title: "שיעור 3: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר",
+            id: "lesson_4",
+            fileName: "lesson_4_canvas.js",
+            tabLabel: "lesson_4_canvas.js",
+            title: "שיעור 4: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 3: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר</h1>
+<h1 class="lesson-h1">שיעור 4: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר</h1>
 <p class="lesson-p">שלום ${name}! בשיעור זה נצלול לעומק עבודה מעשית בתוך סביבת ה-Workspace הייחודית של Gemini Canvas.</p>
 
 <h2 class="lesson-h2">מהו Gemini Canvas?</h2>
@@ -267,14 +434,14 @@ function getDynamicLessons(name, interests) {
             errorMessage: "אנא ודאו שסימנתם את תיבת הסימון של משימה 1, ושתיארתם את פרויקט משימה 2 בפירוט (לפחות 15 תווים)."
         },
         {
-            id: "lesson_4",
-            fileName: "lesson_4_deploy.yaml",
-            tabLabel: "lesson_4_deploy.yaml",
-            title: "שיעור 4: מקוד לענן – צינור הפריסה",
+            id: "lesson_5",
+            fileName: "lesson_5_deploy.yaml",
+            tabLabel: "lesson_5_deploy.yaml",
+            title: "שיעור 5: מקוד לענן – צינור הפריסה",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 4: מקוד לענן – צינור הפריסה (The Deployment Pipeline)</h1>
+<h1 class="lesson-h1">שיעור 5: מקוד לענן – צינור הפריסה (The Deployment Pipeline)</h1>
 <p class="lesson-p">שלום ${name}! בשיעור זה נלמד כיצד להוציא את הפרויקט שיצרנו ב-Gemini Canvas אל העולם באמצעות קישור אינטרנט חי (Live URL).</p>
 
 <h2 class="lesson-h2">למה אנחנו צריכים את זה?</h2>
@@ -318,14 +485,14 @@ function getDynamicLessons(name, interests) {
             errorMessage: "אנא ודאו שסימנתם את כל 3 משימות הפריסה בצ'קליסט, ושכתובת ה-Vercel URL שהזנתם תקינה ומתחילה ב-http:// או https://."
         },
         {
-            id: "lesson_5",
-            fileName: "lesson_5_antigravity.json",
-            tabLabel: "lesson_5_antigravity.json",
-            title: "שיעור 5: אוטומציה עם Antigravity",
+            id: "lesson_6",
+            fileName: "lesson_6_antigravity.json",
+            tabLabel: "lesson_6_antigravity.json",
+            title: "שיעור 6: אוטומציה עם Antigravity",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 5: אוטומציה עם Antigravity</h1>
+<h1 class="lesson-h1">שיעור 6: אוטומציה עם Antigravity</h1>
 <p class="lesson-p">בשיעור 3 ראינו את הצינור הידני: כתיבת קוד ב-AI, העתקה, דחיפה ל-GitHub, המתנה לבנייה ב-Vercel. מה אם יכולנו לבצע שינויים ישירות דרך הוראות ה-AI שלנו והאתר ישתנה <strong>בזמן אמת</strong> ללא מאמץ ידני?</p>
 
 <h2 class="lesson-h2">הכירו את Antigravity Auto-Sync</h2>
@@ -353,14 +520,14 @@ function getDynamicLessons(name, interests) {
             errorMessage: "אנא סמנו את תיבת האישור כדי לאשר שהשלמתם את ההובלה האוטומטית ב-Antigravity."
         },
         {
-            id: "lesson_6",
-            fileName: "lesson_6_agents.py",
-            tabLabel: "lesson_6_agents.py",
-            title: "שיעור 6: בינה ואוטומציה (סוכנים וכישורים)",
+            id: "lesson_7",
+            fileName: "lesson_7_agents.py",
+            tabLabel: "lesson_7_agents.py",
+            title: "שיעור 7: בינה ואוטומציה (סוכנים וכישורים)",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 6: בינה ואוטומציה (סוכנים וכישורים)</h1>
+<h1 class="lesson-h1">שיעור 7: בינה ואוטומציה (סוכנים וכישורים)</h1>
 <p class="lesson-p">עד עכשיו השתמשנו ב-AI כדי לכתוב קוד או לעצב אתרים. אבל הצעד המלהיב באמת הוא לבנות מערכות שפועלות <strong>בעצמן</strong> - מערכות היודעות לקבל החלטות ולבצע משימות. אלו הם <strong>סוכני AI (Agents)</strong>.</p>
 
 <h2 class="lesson-h2">המוח והידיים: סוכנים (Agents) מול כישורים (Skills)</h2>
@@ -423,17 +590,23 @@ let userSubmissions = {
         fileName: ""
     },
     lesson_3: {
+        chk1: false,
+        chk2: false,
+        uploaded: false,
+        fileName: ""
+    },
+    lesson_4: {
         task1Checkbox: false,
         task2Textarea: ""
     },
-    lesson_4: {
+    lesson_5: {
         chk1: false,
         chk2: false,
         chk3: false,
         url: ""
     },
-    lesson_5: false,
-    lesson_6: ""
+    lesson_6: false,
+    lesson_7: ""
 };
 
 // 3. Document Elements & Initialization
@@ -926,6 +1099,65 @@ function renderActionBlock(lesson) {
                 </div>
             </div>
         `;
+    } else if (lesson.actionType === "gemini_gem_assignment") {
+        const data = savedVal || { chk1: false, chk2: false, uploaded: false, fileName: "" };
+        const i2 = userInterests[1];
+        const i3 = userInterests[2];
+        inputHtml = `
+            <div class="action-input-area gemini-gem-mission-card" style="background: rgba(73, 142, 117, 0.08); border: 1.5px dashed var(--primary-color); border-radius: 20px; padding: 20px; gap: 16px; display: flex; flex-direction: column;">
+                
+                <!-- Section Header -->
+                <div class="mission-header" style="text-align: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 12px;">
+                    <h4 style="font-size: 15px; color: var(--primary-color); font-weight: 700; margin-bottom: 4px;">🚀 משימה מעשית: יוצרים מורה פרטי עם Gemini GEM!</h4>
+                    <p style="font-size: 11.5px; color: var(--text-muted);">עקבו אחר שלבי ההכנה והקימו עוזר למידה אישי.</p>
+                </div>
+
+                <!-- Setup Phase -->
+                <div class="mission-setup" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color);">
+                    <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 8px; text-align: right;">שלב 1: הגדרת ה-GEM</h5>
+                    <div style="display: flex; flex-direction: column; gap: 8px; text-align: right;">
+                        <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="gem-setup-1" ${data.chk1 ? "checked" : ""}>
+                            <span>צרו GEM חדש והדביקו את ה"פרומפט מאסטר" בתיבת ההנחיות (Instructions).</span>
+                        </label>
+                        <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="gem-setup-2" ${data.chk2 ? "checked" : ""}>
+                            <span>העלו קובץ ידע (למשל סיכום שיעור או מצגת) בנושא ${i2} או ${i3} ל-GEM.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Core Tasks -->
+                <div class="mission-tasks" style="display: flex; flex-direction: column; gap: 12px; text-align: right;">
+                    <!-- Task A -->
+                    <div class="task-subcard" style="background: #ffffff; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border-color); transition: transform 0.2s;">
+                        <h5 style="font-size: 13px; color: var(--accent-color); font-weight: 700; margin-bottom: 6px;">משימה 1: שיח סוקרטי ולמידה פעילה</h5>
+                        <p style="font-size: 11.5px; color: var(--text-main); line-height: 1.4; margin-bottom: 6px;">התחילו שיחה עם ה-GEM שלכם בנושא שהגדרתם. שימו לב כיצד הוא אינו פותר לכם את הכל ישירות, אלא שואל שאלות מנחות ומעגן את תשובותיו בחומר שהעלתם.</p>
+                    </div>
+                </div>
+
+                <!-- Submission Component -->
+                <div class="mission-submission" style="background: #ffffff; border-radius: 12px; padding: 16px; border: 1px solid var(--border-color); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 2px;">סיימתם? שתפו אותנו!</h5>
+                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-bottom: 4px;">צלמו מסך של ה-GEM שהקמתם או של חלק מהשיחה איתו והעלו אותו כאן כדי להשלים את המשימה.</p>
+                    
+                    <input type="file" id="gem-screenshot-upload" accept="image/*" style="display: none;">
+                    <button id="btn-gem-upload-trigger" class="btn btn-primary" style="padding: 6px 16px; font-size: 12px; display: inline-flex; align-items: center; gap: 6px; border-radius: 20px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span>העלאת צילום מסך (Upload Screenshot)</span>
+                    </button>
+                    
+                    <div id="gem-upload-status" style="font-size: 11px; color: var(--primary-color); font-weight: 600; margin-top: 4px; display: ${data.uploaded ? 'block' : 'none'};">
+                        ${data.uploaded ? '✓ קובץ הועלה: ' + data.fileName : ''}
+                    </div>
+                </div>
+
+            </div>
+        `;
     } else if (lesson.actionType === "notebooklm_assignment") {
         const data = savedVal || { chk1: false, chk2: false, uploaded: false, fileName: "" };
         inputHtml = `
@@ -942,11 +1174,11 @@ function renderActionBlock(lesson) {
                     <h5 style="font-size: 13px; color: var(--text-header); font-weight: 700; margin-bottom: 8px; text-align: right;">שלב 1: הקמת סביבת העבודה</h5>
                     <div style="display: flex; flex-direction: column; gap: 8px; text-align: right;">
                         <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="nb-setup-1" \\${data.chk1 ? "checked" : ""}>
+                            <input type="checkbox" id="nb-setup-1" ${data.chk1 ? "checked" : ""}>
                             <span>פתחו מחברת חדשה (New Notebook) ב-NotebookLM.</span>
                         </label>
                         <label class="checkbox-container" style="font-size: 12px; color: var(--text-main); font-weight: normal; margin-bottom: 0; display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="nb-setup-2" \\${data.chk2 ? "checked" : ""}>
+                            <input type="checkbox" id="nb-setup-2" ${data.chk2 ? "checked" : ""}>
                             <span>העלו לפחות 2 מקורות מידע הקשורים לחומר הלימוד שלכם (למשל: קובץ PDF, סיכום שיעור, קישור לאתר אינטרנט או סרטון YouTube רלוונטי).</span>
                         </label>
                     </div>
@@ -991,8 +1223,8 @@ function renderActionBlock(lesson) {
                         <span>העלאת צילום מסך (Upload Screenshot)</span>
                     </button>
                     
-                    <div id="nb-upload-status" style="font-size: 11px; color: var(--primary-color); font-weight: 600; margin-top: 4px; display: \\${data.uploaded ? 'block' : 'none'};">
-                        \\${data.uploaded ? '✓ קובץ הועלה: ' + data.fileName : ''}
+                    <div id="nb-upload-status" style="font-size: 11px; color: var(--primary-color); font-weight: 600; margin-top: 4px; display: ${data.uploaded ? 'block' : 'none'};">
+                        ${data.uploaded ? '✓ קובץ הועלה: ' + data.fileName : ''}
                     </div>
                 </div>
 
@@ -1111,7 +1343,51 @@ function renderActionBlock(lesson) {
     `;
     
     // Bind auto-save listeners
-    if (lesson.actionType === "notebooklm_assignment") {
+    if (lesson.actionType === "gemini_gem_assignment") {
+        const chk1El = document.getElementById("gem-setup-1");
+        const chk2El = document.getElementById("gem-setup-2");
+        const uploadEl = document.getElementById("gem-screenshot-upload");
+        const triggerEl = document.getElementById("btn-gem-upload-trigger");
+        const statusEl = document.getElementById("gem-upload-status");
+
+        const saveGemMission = () => {
+            userSubmissions[lesson.id] = {
+                chk1: chk1El ? chk1El.checked : false,
+                chk2: chk2El ? chk2El.checked : false,
+                uploaded: userSubmissions[lesson.id] ? userSubmissions[lesson.id].uploaded : false,
+                fileName: userSubmissions[lesson.id] ? userSubmissions[lesson.id].fileName : ""
+            };
+        };
+
+        if (chk1El) chk1El.addEventListener("change", saveGemMission);
+        if (chk2El) chk2El.addEventListener("change", saveGemMission);
+
+        if (triggerEl && uploadEl) {
+            triggerEl.addEventListener("click", () => {
+                uploadEl.click();
+            });
+        }
+
+        if (uploadEl) {
+            uploadEl.addEventListener("change", (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    if (!userSubmissions[lesson.id] || typeof userSubmissions[lesson.id] !== "object") {
+                        userSubmissions[lesson.id] = { chk1: false, chk2: false, uploaded: false, fileName: "" };
+                    }
+                    userSubmissions[lesson.id].uploaded = true;
+                    userSubmissions[lesson.id].fileName = file.name;
+                    saveGemMission();
+                    if (statusEl) {
+                        statusEl.innerText = `✓ קובץ הועלה: ${file.name}`;
+                        statusEl.style.display = "block";
+                    }
+                    writeTerminalLine(`[System] קובץ ${file.name} הועלה בהצלחה לאימות.`, "info-msg");
+                }
+            });
+        }
+    }
+    else if (lesson.actionType === "notebooklm_assignment") {
         const chk1El = document.getElementById("nb-setup-1");
         const chk2El = document.getElementById("nb-setup-2");
         const uploadEl = document.getElementById("nb-screenshot-upload");
@@ -1119,11 +1395,11 @@ function renderActionBlock(lesson) {
         const statusEl = document.getElementById("nb-upload-status");
 
         const saveNotebookLMMission = () => {
-            userSubmissions.lesson_2 = {
+            userSubmissions[lesson.id] = {
                 chk1: chk1El ? chk1El.checked : false,
                 chk2: chk2El ? chk2El.checked : false,
-                uploaded: userSubmissions.lesson_2 ? userSubmissions.lesson_2.uploaded : false,
-                fileName: userSubmissions.lesson_2 ? userSubmissions.lesson_2.fileName : ""
+                uploaded: userSubmissions[lesson.id] ? userSubmissions[lesson.id].uploaded : false,
+                fileName: userSubmissions[lesson.id] ? userSubmissions[lesson.id].fileName : ""
             };
         };
 
@@ -1140,11 +1416,11 @@ function renderActionBlock(lesson) {
             uploadEl.addEventListener("change", (e) => {
                 const file = e.target.files[0];
                 if (file) {
-                    if (!userSubmissions.lesson_2 || typeof userSubmissions.lesson_2 !== "object") {
-                        userSubmissions.lesson_2 = { chk1: false, chk2: false, uploaded: false, fileName: "" };
+                    if (!userSubmissions[lesson.id] || typeof userSubmissions[lesson.id] !== "object") {
+                        userSubmissions[lesson.id] = { chk1: false, chk2: false, uploaded: false, fileName: "" };
                     }
-                    userSubmissions.lesson_2.uploaded = true;
-                    userSubmissions.lesson_2.fileName = file.name;
+                    userSubmissions[lesson.id].uploaded = true;
+                    userSubmissions[lesson.id].fileName = file.name;
                     saveNotebookLMMission();
                     if (statusEl) {
                         statusEl.innerText = `✓ קובץ הועלה: ${file.name}`;
@@ -1163,7 +1439,7 @@ function renderActionBlock(lesson) {
         const tvEl = document.getElementById("input-tv-translation");
         
         const saveMulti = () => {
-            userSubmissions.lesson_1 = {
+            userSubmissions[lesson.id] = {
                 plusButton: plusEl ? plusEl.value : "",
                 voiceInput: voiceEl ? voiceEl.value : "",
                 imageGen: imgEl ? imgEl.value : "",
@@ -1182,7 +1458,7 @@ function renderActionBlock(lesson) {
         const textEl = document.getElementById("input-task-2-textarea");
         
         const saveCanvasTasks = () => {
-            userSubmissions.lesson_4 = {
+            userSubmissions[lesson.id] = {
                 task1Checkbox: checkEl ? checkEl.checked : false,
                 task2Textarea: textEl ? textEl.value : ""
             };
@@ -1197,7 +1473,7 @@ function renderActionBlock(lesson) {
         const urlEl = document.getElementById("action-task-input");
         
         const saveDeployData = () => {
-            userSubmissions.lesson_4 = {
+            userSubmissions[lesson.id] = {
                 chk1: chk1El ? chk1El.checked : false,
                 chk2: chk2El ? chk2El.checked : false,
                 chk3: chk3El ? chk3El.checked : false,
@@ -1258,20 +1534,23 @@ function handleVerifyTask() {
             writeTerminalLine("[Success] משימה 5: תרגום ולוקליזציה אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] כל 5 שלבי ה-AI Gauntlet אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_2") {
-            writeTerminalLine("[Success] דף הנחיתה של NotebookLM זוהה ואומת בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] עקרונות עיגון המידע (Grounding) והסטודיו מומחשים כהלכה. שיעור 2 הושלם.", "success-msg");
+            writeTerminalLine("[Success] ה-GEM האישי שלכם זוהה ואומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] עקרונות עיגון המידע והלמידה החכמה מומחשים כהלכה. שיעור 2 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_3") {
+            writeTerminalLine("[Success] דף הנחיתה של NotebookLM זוהה ואומת בהצלחה.", "success-msg");
+            writeTerminalLine("[Success] עקרונות עיגון המידע (Grounding) והסטודיו מומחשים כהלכה. שיעור 3 הושלם.", "success-msg");
+        } else if (lesson.id === "lesson_4") {
             writeTerminalLine("[Success] משימה 1: אישור עריכת ה-Canvas אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 2: תיאור פרויקט ה-Canvas האישי נקרא בהצלחה.", "success-msg");
-            writeTerminalLine("[Success] פרויקטי Gemini Canvas הושלמו ואומתו בהצלחה! שיעור 3 הושלם.", "success-msg");
-        } else if (lesson.id === "lesson_4") {
+            writeTerminalLine("[Success] פרויקטי Gemini Canvas הושלמו ואומתו בהצלחה! שיעור 4 הושלם.", "success-msg");
+        } else if (lesson.id === "lesson_5") {
             const urlVal = (typeof inputVal === "object" ? inputVal.url : inputVal) || "";
             writeTerminalLine(`[Success] מנסה להתחבר לכתובת ${urlVal.trim()}...`, "info-msg");
-            writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין! שיעור 4 הושלם.", "success-msg");
-        } else if (lesson.id === "lesson_5") {
-            writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונכרן. שיעור 5 הושלם.", "success-msg");
+            writeTerminalLine("[Success] תגובת שרת 200 OK. פריסת Vercel פעילה ותקינה לחלוטין! שיעור 5 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_6") {
-            writeTerminalLine("[Success] תיאור הסוכן נקרא. בקרת הכישורים (Skills) של סוכן Antigravity הושלמה. שיעור 6 הושלם.", "success-msg");
+            writeTerminalLine("[Success] אימות חיבור Antigravity ו-Webhook מול GitHub/Vercel בוצע. התיעוד מסונכרן. שיעור 6 הושלם.", "success-msg");
+        } else if (lesson.id === "lesson_7") {
+            writeTerminalLine("[Success] תיאור הסוכן נקרא. בקרת הכישורים (Skills) של סוכן Antigravity הושלמה. שיעור 7 הושלם.", "success-msg");
         }
         // Mark current lesson as completed
         lesson.completed = true;
@@ -1297,7 +1576,7 @@ function handleVerifyTask() {
         } else {
             // Course finished!
             writeTerminalLine("[הושלם] מזל טוב! השלמתם את הקורס באופן מלא!", "success-msg");
-                        alert("🏆 כל הכבוד! השלמתם את כל 6 השיעורים והמשימות המעשיות בקורס בהצלחה! למדתם כיצד לקחת רעיון, להשתמש ב-NotebookLM, לכתוב ב-Canvas, לפרוס ב-Vercel, לבצע אוטומציית Antigravity ולבנות סוכנים חכמים!");
+            alert("🏆 כל הכבוד! השלמתם את כל 7 השיעורים והמשימות המעשיות בקורס בהצלחה! למדתם כיצד לקחת רעיון, להשתמש ב-Gemini GEM, להשתמש ב-NotebookLM, לכתוב ב-Canvas, לפרוס ב-Vercel, לבצע אוטומציית Antigravity ולבנות סוכנים חכמים!");
         }
         
     }, 1200);
@@ -1314,17 +1593,23 @@ function handleResetInput() {
     writeTerminalLine(`מנקה נתוני משימה עבור ${lesson.fileName}...`, "warning-msg");
     
     if (lesson.actionType === "checkbox") {
-        // noop
-    } else if (lesson.actionType === "notebooklm_assignment") {
-        userSubmissions.lesson_2 = {
+        userSubmissions[lesson.id] = false;
+    } else if (lesson.actionType === "gemini_gem_assignment") {
+        userSubmissions[lesson.id] = {
             chk1: false,
             chk2: false,
             uploaded: false,
             fileName: ""
         };
-        userSubmissions[lesson.id] = false;
+    } else if (lesson.actionType === "notebooklm_assignment") {
+        userSubmissions[lesson.id] = {
+            chk1: false,
+            chk2: false,
+            uploaded: false,
+            fileName: ""
+        };
     } else if (lesson.actionType === "multi_capabilities") {
-        userSubmissions.lesson_1 = {
+        userSubmissions[lesson.id] = {
             plusButton: "",
             voiceInput: "",
             imageGen: "",
@@ -1332,12 +1617,12 @@ function handleResetInput() {
             tvTranslation: ""
         };
     } else if (lesson.actionType === "canvas_two_tasks") {
-        userSubmissions.lesson_4 = {
+        userSubmissions[lesson.id] = {
             task1Checkbox: false,
             task2Textarea: ""
         };
     } else if (lesson.actionType === "deploy_url") {
-        userSubmissions.lesson_4 = {
+        userSubmissions[lesson.id] = {
             chk1: false,
             chk2: false,
             chk3: false,
@@ -1388,7 +1673,7 @@ function handleSkipLesson() {
         renderTabs();
         updateProgressRing();
         
-        alert("🏆 כל הכבוד! סיימת את כל ששת שיעורי הקורס בהצלחה!");
+        alert("🏆 כל הכבוד! סיימת את כל שבעת שיעורי הקורס בהצלחה!");
     }
 }
 
