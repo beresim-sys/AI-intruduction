@@ -424,7 +424,7 @@ function getDynamicLessons(name, interests) {
 <br>&bull; <strong>מצגות וחומר הדרכה:</strong> מצגות, מערכי שיעור, תמציות מנהלים</p>
 
 <h2 class="lesson-h2">2. הוראות עבודה שלב-אחר-שלב בקנבס (Step-by-Step Guide)</h2>
-<p class="lesson-p">בצעו את השלבים הבאים כדי לשלוט במרחב היצירה:</p>
+<p class="lesson-p">על מנת ליצור את המוצר שבחרתם, פתחו את Gemini</p>
 <ol style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
     <li style="margin-bottom: 8px;"><strong>שלב 1: הפעלת הקנבס (The Trigger):</strong> כתבו בצ'אט הנחיה ברורה כמו: <em>"Open a canvas to build..."</em> (למשל: בניית דף נחיתה אישי או מדריך מקצועי העוסק ב-<strong>${i5}</strong>). ה-AI יזהה את הצורך ויפתח את חלון הקנבס משמאל.</li>
     <li style="margin-bottom: 8px;"><strong>שלב 2: עריכה ממוקדת של אלמנטים:</strong> סמנו בעזרת העכבר כותרת או פסקה מסוימת בקנבס, לחצו על כפתור המברשת/העיפרון וכתבו הנחיה ממוקדת (לדוגמה: <em>"הפוך את הכותרת הזו לצבעונית ומודגשת יותר"</em> או <em>"הוסף כאן דוגמה מעשית"</em>).</li>
