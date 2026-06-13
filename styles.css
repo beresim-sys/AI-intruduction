@@ -1008,3 +1008,42 @@ body {
     font-size: 14px;
 }
 
+/* Step 2 Interests Grid Styles */
+.interests-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 15px 0;
+    max-height: 240px;
+    overflow-y: auto;
+    padding: 6px;
+}
+
+.interest-chip {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 10px 8px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+}
+
+.interest-chip:hover {
+    background-color: var(--bg-darker);
+    border-color: var(--accent-color);
+    transform: scale(1.02);
+}
+
+.interest-chip.selected {
+    background-color: var(--accent-color);
+    border-color: var(--accent-hover);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(73, 142, 117, 0.3);
+}
+
+

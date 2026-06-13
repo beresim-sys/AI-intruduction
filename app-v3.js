@@ -637,38 +637,56 @@ let userSubmissions = {
 // Emulate component mount / useEffect hook to guarantee a completely clean, blank slate
 function saveAppState() {
     if (!userName) return; // Only save if we have a user session active
-    localStorage.setItem("user_name", userName);
-    localStorage.setItem("user_interests", JSON.stringify(userInterests));
-    localStorage.setItem("current_lesson_index", currentLessonIndex);
-    localStorage.setItem("active_tabs", JSON.stringify(activeTabs));
-    localStorage.setItem("active_tab", activeTab);
+    localStorage.setItem("current_active_user", userName);
     
     const lessonsProgress = lessonsData.map(l => ({
         id: l.id,
         unlocked: l.unlocked,
         completed: l.completed
     }));
-    localStorage.setItem("lessons_progress", JSON.stringify(lessonsProgress));
-    localStorage.setItem("user_submissions", JSON.stringify(userSubmissions));
+    
+    const profile = {
+        username: userName,
+        completedInterestsStep: userInterests.length === 5,
+        userInterests: userInterests,
+        currentLessonIndex: currentLessonIndex,
+        activeTabs: activeTabs,
+        activeTab: activeTab,
+        lessonsProgress: lessonsProgress,
+        userSubmissions: userSubmissions
+    };
+    
+    localStorage.setItem("user_profile_" + userName.toLowerCase(), JSON.stringify(profile));
 }
 
 function restoreAppState() {
-    userName = localStorage.getItem("user_name") || "אורח/ת";
+    const activeUser = localStorage.getItem("current_active_user");
+    if (!activeUser) return;
+    
+    const rawProfile = localStorage.getItem("user_profile_" + activeUser.toLowerCase());
+    if (!rawProfile) return;
     
     try {
-        const rawInterests = localStorage.getItem("user_interests");
-        userInterests = rawInterests ? JSON.parse(rawInterests) : [];
-    } catch (e) {
-        userInterests = [];
-    }
-    
-    lessonsData = getDynamicLessons(userName, userInterests);
-    
-    try {
-        const rawProgress = localStorage.getItem("lessons_progress");
-        if (rawProgress) {
-            const progress = JSON.parse(rawProgress);
-            progress.forEach(p => {
+        const profile = JSON.parse(rawProfile);
+        userName = profile.username;
+        userInterests = profile.userInterests || [];
+        currentLessonIndex = profile.currentLessonIndex || 0;
+        activeTabs = profile.activeTabs || ["lesson_1_prompt.md"];
+        activeTab = profile.activeTab || "lesson_1_prompt.md";
+        userSubmissions = profile.userSubmissions || {
+            lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
+            lesson_2: { chk1: false, chk2: false },
+            lesson_3: { chk1: false, chk2: false },
+            lesson_4: { chk1: false },
+            lesson_5: { chk1: false, chk2: false, chk3: false },
+            lesson_6: false,
+            lesson_7: { chk1: false }
+        };
+        
+        lessonsData = getDynamicLessons(userName, userInterests);
+        
+        if (profile.lessonsProgress) {
+            profile.lessonsProgress.forEach(p => {
                 const lesson = lessonsData.find(l => l.id === p.id);
                 if (lesson) {
                     lesson.unlocked = p.unlocked;
@@ -677,226 +695,222 @@ function restoreAppState() {
             });
         }
     } catch (e) {
-        console.error("Failed to restore lessons progress", e);
-    }
-    
-    try {
-        const rawSubmissions = localStorage.getItem("user_submissions");
-        if (rawSubmissions) {
-            userSubmissions = JSON.parse(rawSubmissions);
-        }
-    } catch (e) {
-        console.error("Failed to restore user submissions", e);
-    }
-    
-    const savedIdx = localStorage.getItem("current_lesson_index");
-    if (savedIdx !== null) {
-        currentLessonIndex = parseInt(savedIdx, 10);
-    }
-    
-    try {
-        const rawActiveTabs = localStorage.getItem("active_tabs");
-        if (rawActiveTabs) {
-            activeTabs = JSON.parse(rawActiveTabs);
-        }
-        const savedActiveTab = localStorage.getItem("active_tab");
-        if (savedActiveTab) {
-            activeTab = savedActiveTab;
-        }
-    } catch (e) {
-        console.error("Failed to restore active tabs", e);
+        console.error("Failed to restore app state", e);
     }
 }
 
 function resetOnboardingSlate() {
-    // Clear persisted onboarding states
-    localStorage.removeItem("user_name");
-    localStorage.removeItem("user_interests");
-    localStorage.removeItem("current_lesson_index");
-    localStorage.removeItem("active_tabs");
-    localStorage.removeItem("active_tab");
-    localStorage.removeItem("lessons_progress");
-    localStorage.removeItem("user_submissions");
-    sessionStorage.removeItem("user_name");
-    sessionStorage.removeItem("user_interests");
-
-    // Explicitly reset form input fields to empty strings
-    const nameInput = document.getElementById("user-name");
-    if (nameInput) nameInput.value = "";
+    const usernameInput = document.getElementById("login-username");
+    if (usernameInput) usernameInput.value = "";
     
-    const interestInputs = document.querySelectorAll(".interest-input");
-    interestInputs.forEach(input => {
-        if (input) input.value = "";
+    const errorContainer = document.getElementById("onboarding-error");
+    if (errorContainer) errorContainer.style.display = "none";
+}
+
+function populateInterestsGrid() {
+    const grid = document.getElementById("interests-selection-grid");
+    if (!grid) return;
+    
+    grid.innerHTML = "";
+    const selectedSet = new Set();
+    
+    PREDEFINED_INTERESTS.forEach(interest => {
+        const chip = document.createElement("div");
+        chip.className = "interest-chip";
+        chip.innerText = interest;
+        chip.addEventListener("click", () => {
+            if (selectedSet.has(interest)) {
+                selectedSet.delete(interest);
+                chip.classList.remove("selected");
+            } else {
+                if (selectedSet.size >= 5) {
+                    alert("ניתן לבחור בדיוק 5 תחומי עניין.");
+                    return;
+                }
+                selectedSet.add(interest);
+                chip.classList.add("selected");
+            }
+            
+            const count = selectedSet.size;
+            const counterMsg = document.getElementById("interests-counter-msg");
+            if (counterMsg) {
+                counterMsg.innerText = `נבחרו: ${count} מתוך 5`;
+            }
+            
+            const loginSubmitBtn = document.getElementById("btn-login-submit");
+            if (loginSubmitBtn) {
+                if (count === 5) {
+                    loginSubmitBtn.style.display = "block";
+                } else {
+                    loginSubmitBtn.style.display = "none";
+                }
+            }
+        });
+        grid.appendChild(chip);
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const isResume = urlParams.get("resume") === "true";
-    const hasSavedSession = localStorage.getItem("user_name");
-
-    if (isResume && hasSavedSession) {
-        // Restore state from localStorage
-        restoreAppState();
+function showLoginStep(step) {
+    const step1 = document.getElementById("login-step-1");
+    const step2 = document.getElementById("login-step-2");
+    const title = document.getElementById("onboarding-title");
+    const errorContainer = document.getElementById("onboarding-error");
+    
+    if (errorContainer) errorContainer.style.display = "none";
+    
+    if (step === 1) {
+        if (step1) step1.style.display = "flex";
+        if (step2) step2.style.display = "none";
+        if (title) title.innerText = "כניסה למערכת";
+    } else if (step === 2) {
+        if (step1) step1.style.display = "none";
+        if (step2) step2.style.display = "flex";
+        if (title) title.innerText = "בחירת תחומי עניין";
+        populateInterestsGrid();
         
-        // Target lesson from URL parameter
-        const targetLessonId = urlParams.get("lesson");
-        if (targetLessonId) {
-            const targetIdx = lessonsData.findIndex(l => l.id === targetLessonId);
-            if (targetIdx !== -1 && lessonsData[targetIdx].unlocked) {
-                currentLessonIndex = targetIdx;
-                activeTab = lessonsData[targetIdx].fileName;
-                if (!activeTabs.includes(activeTab)) {
-                    activeTabs.push(activeTab);
-                }
+        const counterMsg = document.getElementById("interests-counter-msg");
+        if (counterMsg) counterMsg.innerText = "נבחרו: 0 מתוך 5";
+        const loginSubmitBtn = document.getElementById("btn-login-submit");
+        if (loginSubmitBtn) loginSubmitBtn.style.display = "none";
+    }
+}
+
+function handleStep1Submit(isSkipClicked) {
+    const usernameInput = document.getElementById("login-username");
+    if (!usernameInput) return;
+    
+    const rawUsername = usernameInput.value.trim();
+    if (!rawUsername) {
+        showOnboardingError("אנא הקלידו שם משתמש.");
+        return;
+    }
+    
+    const lowerUsername = rawUsername.toLowerCase();
+    let existingProfileStr = localStorage.getItem("user_profile_" + lowerUsername);
+    
+    // Auto-migration fallback for old single-user session
+    if (!existingProfileStr) {
+        const oldUserName = localStorage.getItem("user_name");
+        if (oldUserName && oldUserName.trim().toLowerCase() === lowerUsername) {
+            try {
+                const rawInterests = localStorage.getItem("user_interests");
+                const userInterestsOld = rawInterests ? JSON.parse(rawInterests) : [];
+                
+                const rawProgress = localStorage.getItem("lessons_progress");
+                const lessonsProgressOld = rawProgress ? JSON.parse(rawProgress) : [];
+                
+                const rawSubmissions = localStorage.getItem("user_submissions");
+                const submissionsOld = rawSubmissions ? JSON.parse(rawSubmissions) : {};
+                
+                const savedIdx = localStorage.getItem("current_lesson_index");
+                const currentLessonIndexOld = savedIdx !== null ? parseInt(savedIdx, 10) : 0;
+                
+                const rawActiveTabs = localStorage.getItem("active_tabs");
+                const activeTabsOld = rawActiveTabs ? JSON.parse(rawActiveTabs) : ["lesson_1_prompt.md"];
+                
+                const savedActiveTab = localStorage.getItem("active_tab");
+                const activeTabOld = savedActiveTab || "lesson_1_prompt.md";
+                
+                const migratedProfile = {
+                    username: oldUserName,
+                    completedInterestsStep: userInterestsOld.length === 5,
+                    userInterests: userInterestsOld,
+                    currentLessonIndex: currentLessonIndexOld,
+                    activeTabs: activeTabsOld,
+                    activeTab: activeTabOld,
+                    lessonsProgress: lessonsProgressOld,
+                    userSubmissions: submissionsOld
+                };
+                
+                localStorage.setItem("user_profile_" + lowerUsername, JSON.stringify(migratedProfile));
+                existingProfileStr = JSON.stringify(migratedProfile);
+            } catch (e) {
+                console.error("Failed to migrate old user profile", e);
             }
         }
+    }
+    
+    if (existingProfileStr) {
+        // CASE A: RETURNING USER
+        localStorage.setItem("current_active_user", rawUsername);
+        restoreAppState();
         
-        bindGlobalListeners();
-        
-        // Hide onboarding overlay
         const overlay = document.getElementById("onboarding-overlay");
         if (overlay) {
-            overlay.style.display = "none";
             overlay.style.opacity = "0";
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 300);
         }
         
-        // Bind onboarding event listeners just in case
-        document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
-        const skipBtn = document.getElementById("btn-skip-onboarding");
-        if (skipBtn) {
-            skipBtn.addEventListener("click", handleSkipOnboarding);
+        startApp();
+        return;
+    }
+    
+    // CASE B: NEW USER
+    userName = rawUsername;
+    
+    if (isSkipClicked) {
+        // Skip directly to practice - auto assign 5 default interests
+        const defaultInterests = PREDEFINED_INTERESTS.slice(0, 5);
+        userInterests = defaultInterests;
+        lessonsData = getDynamicLessons(userName, userInterests);
+        currentLessonIndex = 0;
+        activeTabs = ["lesson_1_prompt.md"];
+        activeTab = "lesson_1_prompt.md";
+        userSubmissions = {
+            lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
+            lesson_2: { chk1: false, chk2: false },
+            lesson_3: { chk1: false, chk2: false },
+            lesson_4: { chk1: false },
+            lesson_5: { chk1: false, chk2: false, chk3: false },
+            lesson_6: false,
+            lesson_7: { chk1: false }
+        };
+        
+        saveAppState(); // sets current_active_user and user_profile_...
+        
+        const overlay = document.getElementById("onboarding-overlay");
+        if (overlay) {
+            overlay.style.opacity = "0";
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 300);
         }
         
         startApp();
     } else {
-        resetOnboardingSlate();
-        
-        // Additional delayed resets to counteract browser auto-fill/auto-complete/session restore
-        setTimeout(resetOnboardingSlate, 20);
-        setTimeout(resetOnboardingSlate, 100);
-        setTimeout(resetOnboardingSlate, 300);
-
-        bindGlobalListeners();
-        
-        // Always render the Splash Screen (onboarding overlay) first
-        const overlay = document.getElementById("onboarding-overlay");
-        if (overlay) {
-            overlay.style.display = "flex";
-            overlay.style.opacity = "1";
-        }
-        
-        document.getElementById("btn-start-course").addEventListener("click", handleOnboardingSubmit);
-        const skipBtn = document.getElementById("btn-skip-onboarding");
-        if (skipBtn) {
-            skipBtn.addEventListener("click", handleSkipOnboarding);
-        }
+        // Proceed to interests step
+        showLoginStep(2);
     }
-});
-
-// Clean slate on pageshow (such as navigating back/forward or restoring cached page state)
-window.addEventListener("pageshow", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const isResume = urlParams.get("resume") === "true";
-    const hasSavedSession = localStorage.getItem("user_name");
-    
-    if (isResume && hasSavedSession) {
-        return;
-    }
-    
-    resetOnboardingSlate();
-    // Delayed fallback to override browser history restore behavior
-    setTimeout(resetOnboardingSlate, 50);
-});
-
-function bindGlobalListeners() {
-    // Global Action Buttons
-    document.getElementById("btn-run-code").addEventListener("click", handleVerifyTask);
-    document.getElementById("btn-reset-sandbox").addEventListener("click", handleResetInput);
-    document.getElementById("clear-terminal").addEventListener("click", () => {
-        const term = document.getElementById("terminal-output");
-        term.innerHTML = '<div class="terminal-line system-msg">המסוף נוקה. מערכת אימות המשימות מוכנה.</div>';
-    });
-    
-    // Activity bar settings click
-    document.getElementById("btn-settings").addEventListener("click", () => {
-        const reset = confirm("האם ברצונך לאפס את תוכנית הלימודים ולהתחיל מחדש את תהליך ההתאמה האישית?");
-        if (reset) {
-            localStorage.clear();
-            sessionStorage.clear();
-            window.location.reload();
-        }
-    });
-    
-    // Persistent Log Out / Switch User Button
-    const logoutBtn = document.getElementById("btn-logout");
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", () => {
-            const confirmLogout = confirm("האם ברצונך להתנתק ולמחוק את נתוני המשתמש הנוכחי?");
-            if (confirmLogout) {
-                localStorage.removeItem("user_name");
-                localStorage.removeItem("user_interests");
-                sessionStorage.removeItem("user_name");
-                sessionStorage.removeItem("user_interests");
-                window.location.reload();
-            }
-        });
-    }
-    
-    // Skip Button
-    const skipBtn = document.getElementById("btn-skip-lesson");
-    if (skipBtn) {
-        skipBtn.addEventListener("click", handleSkipLesson);
-    }
-    
-    // Sidebar progress click
-    document.getElementById("btn-progress-sidebar").addEventListener("click", () => {
-        alert(`התקדמות נוכחית בקורס: ${overallProgress}%. עליך להשלים את משימת ה-Action Item של כל שיעור כדי לפתוח את הבא.`);
-    });
 }
 
-function startApp() {
-    renderSidebarLessons();
-    renderTabs();
-    loadLesson(currentLessonIndex);
-    updateProgressRing();
-}
-
-function handleOnboardingSubmit() {
-    const nameInput = document.getElementById("user-name");
-    const nameVal = nameInput.value.trim();
+function handleStep2Submit() {
+    const selectedChips = document.querySelectorAll(".interest-chip.selected");
+    const interests = Array.from(selectedChips).map(chip => chip.innerText);
     
-    const interestInputs = Array.from(document.querySelectorAll(".interest-input"));
-    const interests = interestInputs.map(input => input.value.trim()).filter(val => val !== "");
-    
-    if (!nameVal) {
-        showOnboardingError("אנא הקלידו את שמכם (Name).");
+    if (interests.length !== 5) {
+        showOnboardingError("אנא בחרו בדיוק 5 תחומי עניין.");
         return;
     }
     
-    if (interests.length < 5) {
-        showOnboardingError("אנא מלאו את כל 5 תחומי העניין שלכם.");
-        return;
-    }
-    
-    // Check distinct/unique interests
-    const unique = new Set(interests.map(i => i.toLowerCase()));
-    if (unique.size < 5) {
-        showOnboardingError("אנא הזינו 5 תחומי עניין שונים וייחודיים זה מזה.");
-        return;
-    }
-    
-    // Validation passed! Save state
-    const errorContainer = document.getElementById("onboarding-error");
-    if (errorContainer) errorContainer.style.display = "none";
-    
-    userName = nameVal;
     userInterests = interests;
     lessonsData = getDynamicLessons(userName, userInterests);
+    currentLessonIndex = 0;
+    activeTabs = ["lesson_1_prompt.md"];
+    activeTab = "lesson_1_prompt.md";
+    userSubmissions = {
+        lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
+        lesson_2: { chk1: false, chk2: false },
+        lesson_3: { chk1: false, chk2: false },
+        lesson_4: { chk1: false },
+        lesson_5: { chk1: false, chk2: false, chk3: false },
+        lesson_6: false,
+        lesson_7: { chk1: false }
+    };
     
     saveAppState();
     
-    // Animate onboarding overlay fade out
     const overlay = document.getElementById("onboarding-overlay");
     if (overlay) {
         overlay.style.opacity = "0";
@@ -908,52 +922,132 @@ function handleOnboardingSubmit() {
     startApp();
 }
 
-function handleSkipOnboarding() {
-    const onboardingCard = document.querySelector(".onboarding-card");
-    if (onboardingCard) {
-        onboardingCard.innerHTML = `
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; text-align: center; gap: 20px;">
-                <div style="width: 50px; height: 50px; border: 4px solid var(--border-color); border-top-color: var(--success-color); border-radius: 50%; animation: rotate 1s linear infinite;"></div>
-                <h3 style="color: var(--text-header); font-size: 18px; font-weight: 700; margin: 0;">מכינים עבורך תרגילים אישיים...</h3>
-            </div>
-        `;
+function initOnboardingFlow() {
+    const btnContinue = document.getElementById("btn-login-continue");
+    if (btnContinue) {
+        btnContinue.addEventListener("click", () => handleStep1Submit(false));
     }
+    
+    const btnSkip = document.getElementById("btn-login-skip");
+    if (btnSkip) {
+        btnSkip.addEventListener("click", () => handleStep1Submit(true));
+    }
+    
+    const btnSubmit = document.getElementById("btn-login-submit");
+    if (btnSubmit) {
+        btnSubmit.addEventListener("click", handleStep2Submit);
+    }
+    
+    const usernameInput = document.getElementById("login-username");
+    if (usernameInput) {
+        usernameInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                handleStep1Submit(false);
+            }
+        });
+    }
+}
 
-    const randomTopics = [
-        "היסטוריה אירופית של המאה ה-20",
-        "פיתוחים רפואיים ופרמקולוגיים",
-        "אוריינות פיננסית וריבית דריבית",
-        "יישומים של בינה מלאכותית",
-        "עשה זאת בעצמך, יצירה ותחזוקת הבית",
-        "צילום דיגיטלי ועריכת תמונות",
-        "ספורט ואורח חיים בריא",
-        "מוזיקה ותאוריית הצליל",
-        "בישול ואמנות הקולינריה",
-        "פיתוח אפליקציות ועיצוב ממשק"
-    ];
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isResume = urlParams.get("resume") === "true";
+    const activeUser = localStorage.getItem("current_active_user");
 
-    const shuffled = [...randomTopics].sort(() => 0.5 - Math.random());
-    const selectedInterests = shuffled.slice(0, 5);
-    const guestName = "אורח/ת";
+    bindGlobalListeners();
+    initOnboardingFlow();
 
-    userName = guestName;
-    userInterests = selectedInterests;
-    lessonsData = getDynamicLessons(userName, userInterests);
-
-    saveAppState();
-
-    setTimeout(() => {
+    if (activeUser && localStorage.getItem("user_profile_" + activeUser.toLowerCase())) {
+        restoreAppState();
+        
+        if (isResume) {
+            const targetLessonId = urlParams.get("lesson");
+            if (targetLessonId) {
+                const targetIdx = lessonsData.findIndex(l => l.id === targetLessonId);
+                if (targetIdx !== -1) {
+                    lessonsData[targetIdx].unlocked = true;
+                    currentLessonIndex = targetIdx;
+                    activeTab = lessonsData[targetIdx].fileName;
+                    if (!activeTabs.includes(activeTab)) {
+                        activeTabs.push(activeTab);
+                    }
+                }
+            }
+        }
+        
         const overlay = document.getElementById("onboarding-overlay");
         if (overlay) {
+            overlay.style.display = "none";
             overlay.style.opacity = "0";
-            setTimeout(() => {
-                overlay.style.display = "none";
-                startApp();
-            }, 300);
-        } else {
-            startApp();
         }
-    }, 1500);
+        
+        startApp();
+    } else {
+        resetOnboardingSlate();
+        setTimeout(resetOnboardingSlate, 20);
+        setTimeout(resetOnboardingSlate, 100);
+        
+        const overlay = document.getElementById("onboarding-overlay");
+        if (overlay) {
+            overlay.style.display = "flex";
+            overlay.style.opacity = "1";
+        }
+        showLoginStep(1);
+    }
+});
+
+window.addEventListener("pageshow", () => {
+    const activeUser = localStorage.getItem("current_active_user");
+    if (activeUser) {
+        return;
+    }
+    resetOnboardingSlate();
+    setTimeout(resetOnboardingSlate, 50);
+});
+
+function bindGlobalListeners() {
+    document.getElementById("btn-run-code").addEventListener("click", handleVerifyTask);
+    document.getElementById("btn-reset-sandbox").addEventListener("click", handleResetInput);
+    document.getElementById("clear-terminal").addEventListener("click", () => {
+        const term = document.getElementById("terminal-output");
+        term.innerHTML = '<div class="terminal-line system-msg">המסוף נוקה. מערכת אימות המשימות מוכנה.</div>';
+    });
+    
+    document.getElementById("btn-settings").addEventListener("click", () => {
+        const reset = confirm("האם ברצונך לאפס את תוכנית הלימודים ולהתחיל מחדש את תהליך ההתאמה האישית?");
+        if (reset) {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.reload();
+        }
+    });
+    
+    const logoutBtn = document.getElementById("btn-logout");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            const confirmLogout = confirm("האם ברצונך להתנתק מהמשתמש הנוכחי?");
+            if (confirmLogout) {
+                localStorage.removeItem("current_active_user");
+                window.location.reload();
+            }
+        });
+    }
+    
+    const skipBtn = document.getElementById("btn-skip-lesson");
+    if (skipBtn) {
+        skipBtn.addEventListener("click", handleSkipLesson);
+    }
+    
+    document.getElementById("btn-progress-sidebar").addEventListener("click", () => {
+        alert(`התקדמות נוכחית בקורס: ${overallProgress}%. עליך להשלים את משימת ה-Action Item של כל שיעור כדי לפתוח את הבא.`);
+    });
+}
+
+function startApp() {
+    renderSidebarLessons();
+    renderTabs();
+    loadLesson(currentLessonIndex);
+    updateProgressRing();
 }
 
 function showOnboardingError(msg) {

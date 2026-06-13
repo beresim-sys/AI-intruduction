@@ -156,85 +156,47 @@
 
     <!-- Onboarding Overlay (Module 0) -->
     <div id="onboarding-overlay" class="onboarding-overlay">
-        <div class="onboarding-card">
-            <div class="onboarding-header">
-                <h2>בחרו את דרך הלמידה שלכם</h2>
+        <div class="onboarding-card" style="width: 480px;">
+            <div class="onboarding-header" style="text-align: center;">
+                <h2 id="onboarding-title">כניסה למערכת</h2>
                 <div class="onboarding-subtitle">AI ליוצרים: מפרומפט למוצר</div>
             </div>
+            
             <div class="onboarding-body">
-                <p style="font-size: 14px; color: var(--text-main); margin-bottom: 10px; line-height: 1.5; text-align: center;">
-                    ברוכים הבאים! בחרו כיצד תרצו להתחיל את החוויה שלכם היום. תוכלו לקבל תוכנית לימודים אישית וממוקדת או לעבור ישירות לתרגול.
-                </p>
-                
-                <div class="onboarding-choices-container">
-                    
-                    <!-- Option A: Personalized -->
-                    <div class="onboarding-choice-box option-personalized">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; color: var(--success-color);">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                                </svg>
-                                <h3 style="font-size: 16px; font-weight: 700; margin: 0;">אפשרות א': למידה מותאמת אישית (מומלץ)</h3>
-                            </div>
-                            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px;">
-                                הזינו את שמכם ו-5 תחומי עניין. מערכת ה-AI תנסח את כל הדוגמאות, המונחים והתרגילים בקורס במיוחד עבורכם!
-                            </p>
-                            
-                            <div class="onboarding-form">
-                                <div class="form-group">
-                                    <label for="user-name">שם מלא / כינוי (Name):</label>
-                                    <input type="text" id="user-name" value="" autocomplete="off" class="input-text-standard" placeholder="הקלידו את שמכם...">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>חמישה תחומי עניין (5 Areas of Interest):</label>
-                                    <div class="interests-grid">
-                                        <input type="text" value="" autocomplete="off" class="interest-input input-text-standard" placeholder="תחום 1 (לדוגמה: אקסל)...">
-                                        <input type="text" value="" autocomplete="off" class="interest-input input-text-standard" placeholder="תחום 2 (לדוגמה: לגו)...">
-                                        <input type="text" value="" autocomplete="off" class="interest-input input-text-standard" placeholder="תחום 3 (לדוגמה: שוק ההון)...">
-                                        <input type="text" value="" autocomplete="off" class="interest-input input-text-standard" placeholder="תחום 4 (לדוגמה: מוזיקה)...">
-                                        <input type="text" value="" autocomplete="off" class="interest-input input-text-standard" placeholder="תחום 5 (לדוגמה: צילום)..." style="grid-column: span 2;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 15px;">
-                            <button id="btn-start-course" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 10px 16px;">בנה לי תוכנית לימודים אישית (Start)</button>
-                        </div>
+                <!-- Step 1: Login Form -->
+                <div id="login-step-1" class="onboarding-form">
+                    <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px; text-align: center;">
+                        הקלידו שם משתמש כדי להתחיל או להמשיך את הלמידה שלכם.
+                    </p>
+                    <div class="form-group">
+                        <label for="login-username">שם משתמש (Username):</label>
+                        <input type="text" id="login-username" autocomplete="off" class="input-text-standard" placeholder="שם משתמש..." style="text-align: center; font-size: 15px; font-weight: bold; letter-spacing: 0.5px;">
                     </div>
-                    
-                    <!-- Option B: Quick Start -->
-                    <div class="onboarding-choice-box option-quick">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; color: var(--accent-color);">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                                </svg>
-                                <h3 style="font-size: 16px; font-weight: 700; margin: 0;">אפשרות ב': מעבר מהיר לתרגול</h3>
-                            </div>
-                            <p style="font-size: 12.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 25px;">
-                                רוצים לתרגל מיד ללא הגדרות? לחצו למעבר מהיר ישירות לתרגול עם משימות ונושאים מגוונים מוכנים מראש.
-                            </p>
-                            
-                            <!-- Illustration -->
-                            <div style="display: flex; justify-content: center; align-items: center; padding: 25px 0; color: var(--text-muted); opacity: 0.35;">
-                                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 18 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"></path>
-                                    <path d="M3 18a3 3 0 0 0 3 3h9V6H6a3 3 0 0 0-3 3v9z"></path>
-                                    <path d="M9 17v-4a3 3 0 0 1 6 0v4H9z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <button id="btn-skip-onboarding" class="btn btn-secondary" style="width: 100%; justify-content: center; padding: 10px 16px;">דלגו ישר לתרגול</button>
-                        </div>
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+                        <button id="btn-login-continue" class="btn btn-primary" style="justify-content: center; padding: 10px 16px; font-weight: bold;">המשך (Continue)</button>
+                        <button id="btn-login-skip" class="btn btn-secondary" style="justify-content: center; padding: 10px 16px;">דילוג ישיר לתרגול (Skip to practice)</button>
                     </div>
-                    
                 </div>
-                
+
+                <!-- Step 2: Interests Selection (Grid of pre-defined chips) -->
+                <div id="login-step-2" style="display: none; flex-direction: column; gap: 12px;">
+                    <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5; text-align: center; margin-bottom: 10px;">
+                        בחרו <strong>בדיוק 5</strong> תחומי עניין מתוך הרשימה כדי להתאים אישית את תרגולי ה-AI שלכם:
+                    </p>
+                    
+                    <div id="interests-selection-grid" class="interests-selection-grid">
+                        <!-- Populated dynamically by JavaScript -->
+                    </div>
+                    
+                    <div id="interests-counter-msg" style="text-align: center; font-size: 12.5px; color: var(--accent-color); font-weight: bold; margin-bottom: 5px;">
+                        נבחרו: 0 מתוך 5
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <button id="btn-login-submit" class="btn btn-primary" style="display: none; width: 100%; justify-content: center; padding: 10px 16px; font-weight: bold; animation: slideUp 0.2s ease-out;">כניסה לקורס (Login)</button>
+                    </div>
+                </div>
+
                 <div id="onboarding-error" class="onboarding-error-msg" style="display: none; margin-top: 15px;"></div>
             </div>
         </div>
