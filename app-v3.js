@@ -433,7 +433,7 @@ function getDynamicLessons(name, interests) {
 </ol>
 
 <blockquote style="background: rgba(73, 142, 117, 0.08); border-right: 4px solid var(--accent-color); padding: 15px; margin: 20px 0; border-radius: 8px; direction: rtl; text-align: right;">
-    <strong>הערה חשובה: בשלב זה, הפרויקט או היצירה שעבדתם עליהם שמורים רק באופן מקומי על המחשב האישי או המכשיר הנייד שלכם. בשיעור הבא נלמד בדיוק איך להעלות את היצירה שלכם לרשת ולשתף אותה!</strong>
+    <strong>הערה חשובה: בשלב זה, מוצרים דיגיטליים נשמרים רק באופן מקומי על המחשב האישי או המכשיר הנייד שלכם. בשיעור הבא נלמד בדיוק איך להעלות את היצירה שלכם לרשת ולשתף אותה!</strong>
 </blockquote>
             `,
             actionType: "checklist",
