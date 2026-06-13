@@ -593,6 +593,21 @@ function getDynamicLessons(name, interests) {
 
 
 // 2. Global State Variables
+const PREDEFINED_INTERESTS = [
+    "בינה מלאכותית יוצרת",
+    "למידת מכונה",
+    "פיתוח אפליקציות",
+    "עיצוב ממשק וחווית משתמש (UI/UX)",
+    "שיווק ופרסום דיגיטלי",
+    "יזמות וסטארטאפים",
+    "מדע הנתונים ואנליטיקה",
+    "ניהול מוצר",
+    "עיצוב גרפי ואמנות דיגיטלית",
+    "כתיבת תוכן וקריאייטיב",
+    "יצירת סרטונים ומדיה",
+    "פיתוח משחקי מחשב"
+];
+
 let userName = "";
 let userInterests = [];
 let lessonsData = [];
