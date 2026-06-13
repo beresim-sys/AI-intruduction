@@ -404,13 +404,15 @@ function getDynamicLessons(name, interests) {
                 `תוצר סטודיו 1 - סיכומים ומפות חשיבה: הפקתי מהסטודיו מדריך למידה מובנה, מפת חשיבה או סיכום מקיף של החומר המבוסס על המקורות שהעליתי.`,
                 `תוצר סטודיו 2 - בחנים וכרטיסיות למידה: יצרתי בוחן עצמי או כרטיסיות לימוד אינטראקטיביות (Flashcards) לשינון ובדיקת ההבנה שלי.`,
                 `תוצר סטודיו 3 - פודקאסט לימודי (Audio Overview): יצרתי שיחת שמע של שני מנחי ה-AI והקשבתי להסבר שלהם על הנושא.`,
-                `תוצר סטודיו 4 - סקירת וידאו קולנועית (Video Script): הפקתי תסריט או מסמך תדרוך המפשט את החומר ומחבר מושגים חזותיים עבור סרטון הסבר.`
+                `תוצר סטודיו 4 - סקירת וידאו קולנועית (Video Script): הפקתי תסריט או מסמך תדרוך המפשט את החומר ומחבר מושגים חזותיים עבור סרטון הסבר.`,
+                `תוצר סטודיו 5 - אינפוגרפיקה: הפקתי פוסטר הדרכה או אינפוגרפיקה המארגנת את נקודות המפתח של החומר בצורה חזותית.`,
+                `תוצר סטודיו 6 - מצגת: יצרתי מצגת מסודרת המציגה את עיקרי המקורות לעיון והרצאה.`
             ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
-                return input.chk1 === true && input.chk2 === true && input.chk3 === true && input.chk4 === true && input.chk5 === true;
+                return input.chk1 === true && input.chk2 === true && input.chk3 === true && input.chk4 === true && input.chk5 === true && input.chk6 === true && input.chk7 === true;
             },
-            errorMessage: "אנא ודאו שביצעתם וסימנתם את כל 5 משימות התרגול ב-NotebookLM כאישור ביצוע."
+            errorMessage: "אנא ודאו שביצעתם וסימנתם את כל 7 משימות התרגול ב-NotebookLM כאישור ביצוע."
         },
         {
             id: "lesson_4",
@@ -645,7 +647,9 @@ let userSubmissions = {
         chk2: false,
         chk3: false,
         chk4: false,
-        chk5: false
+        chk5: false,
+        chk6: false,
+        chk7: false
     },
     lesson_4: {
         chk1: false,
@@ -715,7 +719,7 @@ function restoreAppState() {
         userSubmissions = profile.userSubmissions || {
             lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
             lesson_2: { chk1: false, chk2: false },
-            lesson_3: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
+            lesson_3: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false, chk6: false, chk7: false },
             lesson_4: {
                 chk1: false,
                 chk2: false,
