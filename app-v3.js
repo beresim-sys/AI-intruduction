@@ -445,13 +445,18 @@ function getDynamicLessons(name, interests) {
             instructionText: `<strong>משימה מעשית - Gemini Canvas:</strong><br>
             שלטו ב-Gemini Canvas באמצעות ביצוע התרגול המעשי שלמטה, וסמנו את תיבת האישור.`,
             checklistItems: [
-                `פתחתי בהצלחה Canvas ב-Gemini, יצרתי פרויקט המוקדש לתחום העניין שלי ב-${i5} (למשל מדריך שלבים או כלי אינטראקטיבי), וביצעתי עריכות ואיטרציות שיפור.`
+                `תוכנית עבודה: בניתי ב-Canvas תוכנית עבודה מפורטת לפרויקט בתחום ה-${i1}, המחולקת לשלבים ולוחות זמנים.`,
+                `מדריך למשתמש: יצרתי מדריך למשתמש (User Guide) שלם ומובנה לתוכן או מוצר העוסק ב-${i2}.`,
+                `מצגת: ניסחתי מבנה שלם ושקפים מפורטים למצגת מקצועית המציגה את נושא ה-${i3}.`,
+                `מערך שיעור: הכנתי מערך שיעור מתוכנן היטב ללימוד נושא מתוך עולם ה-${i4}.`,
+                `חידון: חיברתי חידון אינטראקטיבי מעניין עם שאלות ותשובות מוסברות לבחינת ידע בתחום ה-${i5}.`,
+                `אפליקציה פשוטה: כתבתי בקנבס קוד (HTML/JS) עבור אפליקציה פשוטה (כגון מחשבון או כלי עזר) הקשורה ל-${i1}.`
             ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
-                return input.chk1 === true;
+                return input.chk1 === true && input.chk2 === true && input.chk3 === true && input.chk4 === true && input.chk5 === true && input.chk6 === true;
             },
-            errorMessage: "אנא ודאו שסימנתם את תיבת האישור לביצוע תרגול ה-Canvas."
+            errorMessage: "אנא ודאו שביצעתם וסימנתם את כל 6 משימות התרגול ב-Gemini Canvas."
         },
         {
             id: "lesson_5",
@@ -630,7 +635,12 @@ let userSubmissions = {
         chk2: false
     },
     lesson_4: {
-        chk1: false
+        chk1: false,
+        chk2: false,
+        chk3: false,
+        chk4: false,
+        chk5: false,
+        chk6: false
     },
     lesson_5: {
         chk1: false,
@@ -687,7 +697,14 @@ function restoreAppState() {
             lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
             lesson_2: { chk1: false, chk2: false },
             lesson_3: { chk1: false, chk2: false },
-            lesson_4: { chk1: false },
+            lesson_4: {
+                chk1: false,
+                chk2: false,
+                chk3: false,
+                chk4: false,
+                chk5: false,
+                chk6: false
+            },
             lesson_5: { chk1: false, chk2: false, chk3: false },
             lesson_6: false,
             lesson_7: { chk1: false }
@@ -872,7 +889,14 @@ function handleStep1Submit(isSkipClicked) {
             lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
             lesson_2: { chk1: false, chk2: false },
             lesson_3: { chk1: false, chk2: false },
-            lesson_4: { chk1: false },
+            lesson_4: {
+                chk1: false,
+                chk2: false,
+                chk3: false,
+                chk4: false,
+                chk5: false,
+                chk6: false
+            },
             lesson_5: { chk1: false, chk2: false, chk3: false },
             lesson_6: false,
             lesson_7: { chk1: false }
@@ -913,7 +937,14 @@ function handleStep2Submit() {
         lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
         lesson_2: { chk1: false, chk2: false },
         lesson_3: { chk1: false, chk2: false },
-        lesson_4: { chk1: false },
+        lesson_4: {
+            chk1: false,
+            chk2: false,
+            chk3: false,
+            chk4: false,
+            chk5: false,
+            chk6: false
+        },
         lesson_5: { chk1: false, chk2: false, chk3: false },
         lesson_6: false,
         lesson_7: { chk1: false }
