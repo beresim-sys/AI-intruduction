@@ -398,16 +398,19 @@ function getDynamicLessons(name, interests) {
             ],
             instructionText: `<strong>משימה מעשית - NotebookLM:</strong><br>
             <strong>הנחיית בחירת תחום:</strong> בחרו תחום שמעניין אתכם (כגון תחביב, מקצוע, תחום לימוד, פוליטיקה, ספורט וכדומה) ובססו עליו את התרגול שלכם במשימה זו.<br><br>
-            בצעו את שלבי ההכנה והמשימות ב-NotebookLM, וסמנו את תיבות הסימון לאישור ביצוע.`,
+            בצעו את שלבי ההכנה והמשימות ב-NotebookLM לכל אחד מתוצרי הסטודיו, וסמנו את תיבות הסימון לאישור ביצוע.`,
             checklistItems: [
-                `פתחתי מחברת חדשה (New Notebook) ב-NotebookLM והעליתי לפחות 2 מקורות מידע הקשורים לתחום שבחרתם.`,
-                `שאלתי את הצ'אט שאלת חיפוש ממוקדת על חומרי המקור, והשתמשתי בפאנל הסטודיו (Studio Panel) להפקת תוצר למידה אחד (כגון פודקאסט קולי, כרטיסיות לימוד, בוחן עצמי, או מצגת/סרטון/אינפוגרפיקה).`
+                `פתחתי מחברת חדשה (New Notebook) ב-NotebookLM והעליתי לפחות 2 מקורות מידע הקשורים לתחום שבחרתי (למשל מסמכים, קישורי אינטרנט או קובצי שמע).`,
+                `תוצר סטודיו 1 - סיכומים ומפות חשיבה: הפקתי מהסטודיו מדריך למידה מובנה, מפת חשיבה או סיכום מקיף של החומר המבוסס על המקורות שהעליתי.`,
+                `תוצר סטודיו 2 - בחנים וכרטיסיות למידה: יצרתי בוחן עצמי או כרטיסיות לימוד אינטראקטיביות (Flashcards) לשינון ובדיקת ההבנה שלי.`,
+                `תוצר סטודיו 3 - פודקאסט לימודי (Audio Overview): יצרתי שיחת שמע של שני מנחי ה-AI והקשבתי להסבר שלהם על הנושא.`,
+                `תוצר סטודיו 4 - סקירת וידאו קולנועית (Video Script): הפקתי תסריט או מסמך תדרוך המפשט את החומר ומחבר מושגים חזותיים עבור סרטון הסבר.`
             ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
-                return input.chk1 === true && input.chk2 === true;
+                return input.chk1 === true && input.chk2 === true && input.chk3 === true && input.chk4 === true && input.chk5 === true;
             },
-            errorMessage: "אנא ודאו שסימנתם את שתי משימות התרגול ב-NotebookLM כאישור ביצוע."
+            errorMessage: "אנא ודאו שביצעתם וסימנתם את כל 5 משימות התרגול ב-NotebookLM כאישור ביצוע."
         },
         {
             id: "lesson_4",
@@ -639,7 +642,10 @@ let userSubmissions = {
     },
     lesson_3: {
         chk1: false,
-        chk2: false
+        chk2: false,
+        chk3: false,
+        chk4: false,
+        chk5: false
     },
     lesson_4: {
         chk1: false,
@@ -709,7 +715,7 @@ function restoreAppState() {
         userSubmissions = profile.userSubmissions || {
             lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
             lesson_2: { chk1: false, chk2: false },
-            lesson_3: { chk1: false, chk2: false },
+            lesson_3: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
             lesson_4: {
                 chk1: false,
                 chk2: false,
