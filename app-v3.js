@@ -387,6 +387,22 @@ function getDynamicLessons(name, interests) {
         </h3>
         <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">יצירה אוטומטית של תסריטים וסרטוני הסבר קצרים המפשטים נושאים מורכבים ומחברים מושגים חזותיים דרך אנימציה מודרכת.</p>
     </div>
+
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 16 16" width="14" height="14" style="vertical-align: middle; margin-left: 6px;"><path fill="currentColor" d="M0 0h16v16H0V0zm1 1v14h14V1H1zm2 10h3v3H3v-3zm4-4h3v7H7V7zm4-3h3v10h-3V4z"></path></svg>
+            אינפוגרפיקות ופוסטרים חזותיים
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">הפקת פוסטר או סיכום חזותי המרכז את נקודות המפתח ומושגי היסוד מתוך המקורות שלכם, ומסדר אותם בצורה גרפית נוחה לעין.</p>
+    </div>
+
+    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
+        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
+            <svg viewBox="0 0 16 16" width="14" height="14" style="vertical-align: middle; margin-left: 6px;"><path fill="currentColor" d="M0 2h16v10H0V2zm1 1v8h14V3H1zm3 9h8v1H4v-1zm2 1h4v1H6v-1z"></path></svg>
+            מצגות מקצועיות ומסודרות
+        </h3>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">יצירת שקפים מובנים ונקודות דיון מדויקות על בסיס המידע המעוגן, המכינות אתכם להצגה נוחה והרצאה קולחת מול קהל.</p>
+    </div>
 </div>
             `,
             actionType: "checklist",
