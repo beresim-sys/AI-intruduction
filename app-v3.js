@@ -423,16 +423,7 @@ function getDynamicLessons(name, interests) {
 <br>&bull; <strong>אפליקציות אינטראקטיביות:</strong> דפי נחיתה, אפליקציות, מחשבונים, משחקים, מחולל כרטיסי ברכה
 <br>&bull; <strong>מצגות וחומר הדרכה:</strong> מצגות, מערכי שיעור, תמציות מנהלים</p>
 
-<h2 class="lesson-h2">2. תכונות מפתח וכלים במרחב העבודה (Key Features)</h2>
-<p class="lesson-p">בתוך הקנבס עומדים לרשותכם כלים מתקדמים לניהול ועריכת התוכן שלכם:</p>
-<ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 8px;"><strong>מסך מפוצל (Side-by-Side):</strong> השיח הלוגי וההנחיות מתבצעים בצד ימין, בעוד התוצר (הקוד או המאמר) נבנה ומתעדכן בצד שמאל בזמן אמת.</li>
-    <li style="margin-bottom: 8px;"><strong>סרגל כלים צף לעריכה ממוקדת (Targeted Selection):</strong> כאשר מסמנים קטע טקסט או קוד ספציפי בקנבס, מופיע תפריט המאפשר לכם להנחות את ה-AI לשכתב או לערוך אך ורק את החלק המסומן, מבלי לגעת בשאר המסמך.</li>
-    <li style="margin-bottom: 8px;"><strong>תפריט כיוונון מהיר (Adjust Menu):</strong> כפתור מיוחד בתחתית המאפשר לשנות בלחיצה אחת את אורך המסמך (קצר/ארוך יותר), לשנות את טון הכתיבה (למשל: מקצועי, הומוריסטי, או רומנטי) או לבצע הגהה מהירה.</li>
-    <li style="margin-bottom: 8px;"><strong>תצוגה מקדימה חיה (Live Preview):</strong> עבור קוד (כגון HTML/CSS/JS), הקנבס מאפשר להריץ ולראות את האתר שלכם בפעולה ישירות מתוך הממשק.</li>
-</ul>
-
-<h2 class="lesson-h2">3. הוראות עבודה שלב-אחר-שלב בקנבס (Step-by-Step Guide)</h2>
+<h2 class="lesson-h2">2. הוראות עבודה שלב-אחר-שלב בקנבס (Step-by-Step Guide)</h2>
 <p class="lesson-p">בצעו את השלבים הבאים כדי לשלוט במרחב היצירה:</p>
 <ol style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
     <li style="margin-bottom: 8px;"><strong>שלב 1: הפעלת הקנבס (The Trigger):</strong> כתבו בצ'אט הנחיה ברורה כמו: <em>"Open a canvas to build..."</em> (למשל: בניית דף נחיתה אישי או מדריך מקצועי העוסק ב-<strong>${i5}</strong>). ה-AI יזהה את הצורך ויפתח את חלון הקנבס משמאל.</li>
