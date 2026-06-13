@@ -655,10 +655,15 @@ let userSubmissions = {
 
 // 3. Document Elements & Initialization
 // Emulate component mount / useEffect hook to guarantee a completely clean, blank slate
+const DEFAULT_INTERESTS = [
+    "בינה מלאכותית יוצרת",
+    "למידת מכונה",
+    "פיתוח אפליקציות",
+    "עיצוב ממשק וחווית משתמש (UI/UX)",
+    "ניהול מוצר"
+];
+
 function saveAppState() {
-    if (!userName) return; // Only save if we have a user session active
-    localStorage.setItem("current_active_user", userName);
-    
     const lessonsProgress = lessonsData.map(l => ({
         id: l.id,
         unlocked: l.unlocked,
@@ -666,9 +671,9 @@ function saveAppState() {
     }));
     
     const profile = {
-        username: userName,
-        completedInterestsStep: userInterests.length === 5,
-        userInterests: userInterests,
+        username: "אורח/ת",
+        completedInterestsStep: true,
+        userInterests: DEFAULT_INTERESTS,
         currentLessonIndex: currentLessonIndex,
         activeTabs: activeTabs,
         activeTab: activeTab,
@@ -676,20 +681,21 @@ function saveAppState() {
         userSubmissions: userSubmissions
     };
     
-    localStorage.setItem("user_profile_" + userName.toLowerCase(), JSON.stringify(profile));
+    localStorage.setItem("guest_course_progress", JSON.stringify(profile));
 }
 
 function restoreAppState() {
-    const activeUser = localStorage.getItem("current_active_user");
-    if (!activeUser) return;
+    userName = "אורח/ת";
+    userInterests = DEFAULT_INTERESTS;
     
-    const rawProfile = localStorage.getItem("user_profile_" + activeUser.toLowerCase());
-    if (!rawProfile) return;
+    const rawProfile = localStorage.getItem("guest_course_progress");
+    if (!rawProfile) {
+        lessonsData = getDynamicLessons(userName, userInterests);
+        return;
+    }
     
     try {
         const profile = JSON.parse(rawProfile);
-        userName = profile.username;
-        userInterests = profile.userInterests || [];
         currentLessonIndex = profile.currentLessonIndex || 0;
         activeTabs = profile.activeTabs || ["lesson_1_prompt.md"];
         activeTab = profile.activeTab || "lesson_1_prompt.md";
@@ -723,327 +729,39 @@ function restoreAppState() {
         }
     } catch (e) {
         console.error("Failed to restore app state", e);
-    }
-}
-
-function resetOnboardingSlate() {
-    const usernameInput = document.getElementById("login-username");
-    if (usernameInput) usernameInput.value = "";
-    
-    const errorContainer = document.getElementById("onboarding-error");
-    if (errorContainer) errorContainer.style.display = "none";
-}
-
-function populateInterestsGrid() {
-    const grid = document.getElementById("interests-selection-grid");
-    if (!grid) return;
-    
-    grid.innerHTML = "";
-    const selectedSet = new Set();
-    
-    PREDEFINED_INTERESTS.forEach(interest => {
-        const chip = document.createElement("div");
-        chip.className = "interest-chip";
-        chip.innerText = interest;
-        chip.addEventListener("click", () => {
-            if (selectedSet.has(interest)) {
-                selectedSet.delete(interest);
-                chip.classList.remove("selected");
-            } else {
-                if (selectedSet.size >= 5) {
-                    alert("ניתן לבחור בדיוק 5 תחומי עניין.");
-                    return;
-                }
-                selectedSet.add(interest);
-                chip.classList.add("selected");
-            }
-            
-            const count = selectedSet.size;
-            const counterMsg = document.getElementById("interests-counter-msg");
-            if (counterMsg) {
-                counterMsg.innerText = `נבחרו: ${count} מתוך 5`;
-            }
-            
-            const loginSubmitBtn = document.getElementById("btn-login-submit");
-            if (loginSubmitBtn) {
-                if (count === 5) {
-                    loginSubmitBtn.style.display = "block";
-                } else {
-                    loginSubmitBtn.style.display = "none";
-                }
-            }
-        });
-        grid.appendChild(chip);
-    });
-}
-
-function showLoginStep(step) {
-    const step1 = document.getElementById("login-step-1");
-    const step2 = document.getElementById("login-step-2");
-    const title = document.getElementById("onboarding-title");
-    const errorContainer = document.getElementById("onboarding-error");
-    
-    if (errorContainer) errorContainer.style.display = "none";
-    
-    if (step === 1) {
-        if (step1) step1.style.display = "flex";
-        if (step2) step2.style.display = "none";
-        if (title) title.innerText = "כניסה למערכת";
-    } else if (step === 2) {
-        if (step1) step1.style.display = "none";
-        if (step2) step2.style.display = "flex";
-        if (title) title.innerText = "בחירת תחומי עניין";
-        populateInterestsGrid();
-        
-        const counterMsg = document.getElementById("interests-counter-msg");
-        if (counterMsg) counterMsg.innerText = "נבחרו: 0 מתוך 5";
-        const loginSubmitBtn = document.getElementById("btn-login-submit");
-        if (loginSubmitBtn) loginSubmitBtn.style.display = "none";
-    }
-}
-
-function handleStep1Submit(isSkipClicked) {
-    const usernameInput = document.getElementById("login-username");
-    if (!usernameInput) return;
-    
-    const rawUsername = usernameInput.value.trim();
-    if (!rawUsername) {
-        showOnboardingError("אנא הקלידו שם משתמש.");
-        return;
-    }
-    
-    const lowerUsername = rawUsername.toLowerCase();
-    let existingProfileStr = localStorage.getItem("user_profile_" + lowerUsername);
-    
-    // Auto-migration fallback for old single-user session
-    if (!existingProfileStr) {
-        const oldUserName = localStorage.getItem("user_name");
-        if (oldUserName && oldUserName.trim().toLowerCase() === lowerUsername) {
-            try {
-                const rawInterests = localStorage.getItem("user_interests");
-                const userInterestsOld = rawInterests ? JSON.parse(rawInterests) : [];
-                
-                const rawProgress = localStorage.getItem("lessons_progress");
-                const lessonsProgressOld = rawProgress ? JSON.parse(rawProgress) : [];
-                
-                const rawSubmissions = localStorage.getItem("user_submissions");
-                const submissionsOld = rawSubmissions ? JSON.parse(rawSubmissions) : {};
-                
-                const savedIdx = localStorage.getItem("current_lesson_index");
-                const currentLessonIndexOld = savedIdx !== null ? parseInt(savedIdx, 10) : 0;
-                
-                const rawActiveTabs = localStorage.getItem("active_tabs");
-                const activeTabsOld = rawActiveTabs ? JSON.parse(rawActiveTabs) : ["lesson_1_prompt.md"];
-                
-                const savedActiveTab = localStorage.getItem("active_tab");
-                const activeTabOld = savedActiveTab || "lesson_1_prompt.md";
-                
-                const migratedProfile = {
-                    username: oldUserName,
-                    completedInterestsStep: userInterestsOld.length === 5,
-                    userInterests: userInterestsOld,
-                    currentLessonIndex: currentLessonIndexOld,
-                    activeTabs: activeTabsOld,
-                    activeTab: activeTabOld,
-                    lessonsProgress: lessonsProgressOld,
-                    userSubmissions: submissionsOld
-                };
-                
-                localStorage.setItem("user_profile_" + lowerUsername, JSON.stringify(migratedProfile));
-                existingProfileStr = JSON.stringify(migratedProfile);
-            } catch (e) {
-                console.error("Failed to migrate old user profile", e);
-            }
-        }
-    }
-    
-    if (existingProfileStr) {
-        // CASE A: RETURNING USER
-        localStorage.setItem("current_active_user", rawUsername);
-        restoreAppState();
-        
-        const overlay = document.getElementById("onboarding-overlay");
-        if (overlay) {
-            overlay.style.opacity = "0";
-            setTimeout(() => {
-                overlay.style.display = "none";
-            }, 300);
-        }
-        
-        startApp();
-        return;
-    }
-    
-    // CASE B: NEW USER
-    userName = rawUsername;
-    
-    if (isSkipClicked) {
-        // Skip directly to practice - auto assign 5 default interests
-        const defaultInterests = PREDEFINED_INTERESTS.slice(0, 5);
-        userInterests = defaultInterests;
         lessonsData = getDynamicLessons(userName, userInterests);
-        currentLessonIndex = 0;
-        activeTabs = ["lesson_1_prompt.md"];
-        activeTab = "lesson_1_prompt.md";
-        userSubmissions = {
-            lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
-            lesson_2: { chk1: false, chk2: false },
-            lesson_3: { chk1: false, chk2: false },
-            lesson_4: {
-                chk1: false,
-                chk2: false,
-                chk3: false,
-                chk4: false,
-                chk5: false,
-                chk6: false
-            },
-            lesson_5: { chk1: false, chk2: false, chk3: false },
-            lesson_6: false,
-            lesson_7: { chk1: false }
-        };
-        
-        saveAppState(); // sets current_active_user and user_profile_...
-        
-        const overlay = document.getElementById("onboarding-overlay");
-        if (overlay) {
-            overlay.style.opacity = "0";
-            setTimeout(() => {
-                overlay.style.display = "none";
-            }, 300);
-        }
-        
-        startApp();
-    } else {
-        // Proceed to interests step
-        showLoginStep(2);
-    }
-}
-
-function handleStep2Submit() {
-    const selectedChips = document.querySelectorAll(".interest-chip.selected");
-    const interests = Array.from(selectedChips).map(chip => chip.innerText);
-    
-    if (interests.length !== 5) {
-        showOnboardingError("אנא בחרו בדיוק 5 תחומי עניין.");
-        return;
-    }
-    
-    userInterests = interests;
-    lessonsData = getDynamicLessons(userName, userInterests);
-    currentLessonIndex = 0;
-    activeTabs = ["lesson_1_prompt.md"];
-    activeTab = "lesson_1_prompt.md";
-    userSubmissions = {
-        lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
-        lesson_2: { chk1: false, chk2: false },
-        lesson_3: { chk1: false, chk2: false },
-        lesson_4: {
-            chk1: false,
-            chk2: false,
-            chk3: false,
-            chk4: false,
-            chk5: false,
-            chk6: false
-        },
-        lesson_5: { chk1: false, chk2: false, chk3: false },
-        lesson_6: false,
-        lesson_7: { chk1: false }
-    };
-    
-    saveAppState();
-    
-    const overlay = document.getElementById("onboarding-overlay");
-    if (overlay) {
-        overlay.style.opacity = "0";
-        setTimeout(() => {
-            overlay.style.display = "none";
-        }, 300);
-    }
-    
-    startApp();
-}
-
-function initOnboardingFlow() {
-    const btnContinue = document.getElementById("btn-login-continue");
-    if (btnContinue) {
-        btnContinue.addEventListener("click", () => handleStep1Submit(false));
-    }
-    
-    const btnSkip = document.getElementById("btn-login-skip");
-    if (btnSkip) {
-        btnSkip.addEventListener("click", () => handleStep1Submit(true));
-    }
-    
-    const btnSubmit = document.getElementById("btn-login-submit");
-    if (btnSubmit) {
-        btnSubmit.addEventListener("click", handleStep2Submit);
-    }
-    
-    const usernameInput = document.getElementById("login-username");
-    if (usernameInput) {
-        usernameInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                e.preventDefault();
-                handleStep1Submit(false);
-            }
-        });
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const isResume = urlParams.get("resume") === "true";
-    const activeUser = localStorage.getItem("current_active_user");
 
     bindGlobalListeners();
-    initOnboardingFlow();
-
-    if (activeUser && localStorage.getItem("user_profile_" + activeUser.toLowerCase())) {
-        restoreAppState();
-        
-        if (isResume) {
-            const targetLessonId = urlParams.get("lesson");
-            if (targetLessonId) {
-                const targetIdx = lessonsData.findIndex(l => l.id === targetLessonId);
-                if (targetIdx !== -1) {
-                    lessonsData[targetIdx].unlocked = true;
-                    currentLessonIndex = targetIdx;
-                    activeTab = lessonsData[targetIdx].fileName;
-                    if (!activeTabs.includes(activeTab)) {
-                        activeTabs.push(activeTab);
-                    }
+    restoreAppState();
+    
+    if (isResume) {
+        const targetLessonId = urlParams.get("lesson");
+        if (targetLessonId) {
+            const targetIdx = lessonsData.findIndex(l => l.id === targetLessonId);
+            if (targetIdx !== -1) {
+                lessonsData[targetIdx].unlocked = true;
+                currentLessonIndex = targetIdx;
+                activeTab = lessonsData[targetIdx].fileName;
+                if (!activeTabs.includes(activeTab)) {
+                    activeTabs.push(activeTab);
                 }
             }
         }
-        
-        const overlay = document.getElementById("onboarding-overlay");
-        if (overlay) {
-            overlay.style.display = "none";
-            overlay.style.opacity = "0";
-        }
-        
-        startApp();
-    } else {
-        resetOnboardingSlate();
-        setTimeout(resetOnboardingSlate, 20);
-        setTimeout(resetOnboardingSlate, 100);
-        
-        const overlay = document.getElementById("onboarding-overlay");
-        if (overlay) {
-            overlay.style.display = "flex";
-            overlay.style.opacity = "1";
-        }
-        showLoginStep(1);
     }
-});
-
-window.addEventListener("pageshow", () => {
-    const activeUser = localStorage.getItem("current_active_user");
-    if (activeUser) {
-        return;
+    
+    const overlay = document.getElementById("onboarding-overlay");
+    if (overlay) {
+        overlay.style.display = "none";
+        overlay.style.opacity = "0";
     }
-    resetOnboardingSlate();
-    setTimeout(resetOnboardingSlate, 50);
+    
+    startApp();
 });
 
 function bindGlobalListeners() {
@@ -1055,7 +773,7 @@ function bindGlobalListeners() {
     });
     
     document.getElementById("btn-settings").addEventListener("click", () => {
-        const reset = confirm("האם ברצונך לאפס את תוכנית הלימודים ולהתחיל מחדש את תהליך ההתאמה האישית?");
+        const reset = confirm("האם ברצונך לאפס את כל התקדמות הלמידה ולהתחיל מחדש?");
         if (reset) {
             localStorage.clear();
             sessionStorage.clear();
@@ -1066,9 +784,9 @@ function bindGlobalListeners() {
     const logoutBtn = document.getElementById("btn-logout");
     if (logoutBtn) {
         logoutBtn.addEventListener("click", () => {
-            const confirmLogout = confirm("האם ברצונך להתנתק מהמשתמש הנוכחי?");
+            const confirmLogout = confirm("האם ברצונך לאפס את כל התקדמות הלמידה ולהתחיל מחדש?");
             if (confirmLogout) {
-                localStorage.removeItem("current_active_user");
+                localStorage.clear();
                 window.location.reload();
             }
         });
@@ -1089,14 +807,6 @@ function startApp() {
     renderTabs();
     loadLesson(currentLessonIndex);
     updateProgressRing();
-}
-
-function showOnboardingError(msg) {
-    const errorContainer = document.getElementById("onboarding-error");
-    if (errorContainer) {
-        errorContainer.innerText = msg;
-        errorContainer.style.display = "block";
-    }
 }
 
 // 4. Render Sidebar and Tabs with Locking Mechanics
