@@ -445,7 +445,7 @@ function getDynamicLessons(name, interests) {
             instructionText: `<strong>משימה מעשית - Gemini Canvas:</strong><br>
             שלטו ב-Gemini Canvas באמצעות ביצוע התרגול המעשי שלמטה, וסמנו את תיבת האישור.`,
             checklistItems: [
-                `פתחתי בהצלחה Canvas ב-Gemini, יצרתי פרויקט המוקדש לתחום העניין שלי ב-${i5} (למשל מדריך שלבים או כלי אינטראקטיבי), וביצעתי עריכות ואיטרציות שיפור בעזרת המברשת וה-Adjust.`
+                `פתחתי בהצלחה Canvas ב-Gemini, יצרתי פרויקט המוקדש לתחום העניין שלי ב-${i5} (למשל מדריך שלבים או כלי אינטראקטיבי), וביצעתי עריכות ואיטרציות שיפור.`
             ],
             validate: (input) => {
                 if (!input || typeof input !== "object") return false;
