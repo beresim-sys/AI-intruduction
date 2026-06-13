@@ -426,9 +426,9 @@ function getDynamicLessons(name, interests) {
 <h2 class="lesson-h2">2. הוראות עבודה שלב-אחר-שלב בקנבס (Step-by-Step Guide)</h2>
 <p class="lesson-p">על מנת ליצור את המוצר שבחרתם, פתחו את Gemini</p>
 <ol style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
-    <li style="margin-bottom: 8px;"><strong>שלב 1: הפעלת הקנבס (The Trigger):</strong> כתבו בצ'אט הנחיה ברורה כמו: <em>"Open a canvas to build..."</em> (למשל: בניית דף נחיתה אישי או מדריך מקצועי העוסק ב-<strong>${i5}</strong>). ה-AI יזהה את הצורך ויפתח את חלון הקנבס משמאל.</li>
-    <li style="margin-bottom: 8px;"><strong>שלב 2: עריכה ממוקדת של אלמנטים:</strong> סמנו בעזרת העכבר כותרת או פסקה מסוימת בקנבס, לחצו על כפתור המברשת/העיפרון וכתבו הנחיה ממוקדת (לדוגמה: <em>"הפוך את הכותרת הזו לצבעונית ומודגשת יותר"</em> או <em>"הוסף כאן דוגמה מעשית"</em>).</li>
-    <li style="margin-bottom: 8px;"><strong>שלב 3: כיוונון המסמך השלם:</strong> השתמשו בתפריט ה-Adjust כדי לקצר את כל הטקסט או לבצע הגהה סופית.</li>
+    <li style="margin-bottom: 8px;"><strong>שלב 1: הפעלת הקנבס:</strong> לחצו על כפתור ה-'+', ובחרו את Canvas. ודאו שאתם עובדים במודל Pro.</li>
+    <li style="margin-bottom: 8px;"><strong>שלב 2: ניסוח פרומפט לבניית המוצר שבחרתם ליצור:</strong> היעזרו בג'מיני על מנת לנסח את הפרומפט. יפתח מסך מפוצל – חלק ימני לשיחה וחלק שמאלי יציג את המוצר שיצרתם.</li>
+    <li style="margin-bottom: 8px;"><strong>שלב 3: דיוק המוצר:</strong> תוכלו לדייק את המוצר בהנחיות נוספות במשך השיחה – שינוי תצוגה, שינוי טקסט או כל שיפור אחר שתרצו להכניס.</li>
 </ol>
 
 <blockquote style="background: rgba(73, 142, 117, 0.08); border-right: 4px solid var(--accent-color); padding: 15px; margin: 20px 0; border-radius: 8px; direction: rtl; text-align: right;">
