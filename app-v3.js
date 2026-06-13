@@ -1006,22 +1006,10 @@ function loadLesson(index) {
     // Update run/verify button text dynamically
     const runBtn = document.getElementById("btn-run-code");
     if (runBtn) {
-                if (lesson.id === "lesson_3") {
-            runBtn.innerHTML = `
-                <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M12.5 1h-9c-.8 0-1.5.7-1.5 1.5v11c0 .8.7 1.5 1.5 1.5h9c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5zm-.5 12h-8V3h8v10z"></path></svg>
-                <span>הגש פרויקט (Submit Project)</span>
-            `;
-        } else if (lesson.id === "lesson_4") {
-            runBtn.innerHTML = `
-                <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0z"></path></svg>
-                <span>אמת פריסה (Verify Deployment)</span>
-            `;
-        } else {
-            runBtn.innerHTML = `
-                <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M12 2H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-1 9H5V5h6v6z"></path></svg>
-                <span>אשר והשלם משימה (Verify Task)</span>
-            `;
-        }
+        runBtn.innerHTML = `
+            <svg viewBox="0 0 16 16" width="14" height="14" style="margin-left: 6px;"><path fill="currentColor" d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"></path></svg>
+            <span>המשימה הושלמה</span>
+        `;
     }
     
     // Update skip button text dynamically based on the lesson index
