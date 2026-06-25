@@ -1,4 +1,4 @@
-﻿// AI for Builders: From Prompt to Production - Core Application Logic
+// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -19,10 +19,16 @@ function getDynamicLessons(name, interests) {
             completed: false,
             content: `
 <h1 class="lesson-h1">שלום ${name}! ברוכים הבאים לשיעור 1: ניווט ב-Gemini ואמנות הפרומפט</h1>
-<p class="lesson-p">ברוכים הבאים לצעד הראשון שלכם בעולם ה-AI! כמתכנתים עם רקע בסיסי בתכנות (משתנים, לולאות ולוגיקה), כתיבת פרומפט (Prompt) ל-AI תרגיש לכם טבעית לחלוטין. מדובר בהגדרת קלט לוגי ומובנה כדי לקבל פלט איכותי ומדויק.</p>
+<p class="lesson-p">ברוכים הבאים לצעד הראשון שלכם בעולם ה-AI! אין צורך ברקע בתכנות, רק דימיון ויצירתיות.</p>
 
 <h2 class="lesson-h2">שליטה בממשק של Gemini</h2>
 <p class="lesson-p">לפני שנתחיל לכתוב פרומפטים, נלמד כיצד לנצל את כלי הממשק השונים בתוך Gemini:</p>
+<div style="margin: 12px 0 18px 0;">
+    <a href="https://gemini.google.com" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; text-decoration: none; font-size: 13px; font-weight: bold; border-radius: 20px; gap: 6px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        פתח את Gemini בלשונית חדשה
+    </a>
+</div>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
     <li><strong>כפתור הפלוס ('+'):</strong> מאפשר להעלות קבצים ותמונות לניתוח (למשל: העלאת מסמך או קובץ הקשור ל-<strong>${i1}</strong> כדי לנתח מגמות או מידע).</li>
     <li><strong>קלט קולי (Voice Input - המיקרופון):</strong> מאפשר לכם להכתיב את הפרומפטים בקולכם לצורך סיעור מוחות מהיר, טבעי וללא שימוש בידיים.</li>
@@ -32,7 +38,7 @@ function getDynamicLessons(name, interests) {
         <br>&bull; <em>Gemini Pro:</em> מנוע הדגל לפתרון בעיות מורכבות, מצוין לחשיבה לוגית עמוקה, כתיבת קוד מתקדם וניתוח מעמיק.</li>
 </ul>
 
-<h2 class="lesson-h2">יכולות הליבה של כלי ה-AI היומיומיים</h2>
+<h2 class="lesson-h2">יכולות הליבה של Gemini או ChatGPT</h2>
 <p class="lesson-p">מודלי שפה ו-AI מודרניים מצטיינים במגוון יכולות מפתח, אותן ניתן להמחיש באמצעות תחומי העניין שלך:</p>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
     <li><strong>יצירת תמונות (Image Generation):</strong> הפקת ייצוגים חזותיים מתיאור טקסטואלי. למשל, ליצור תמונה יצירתית ומרהיבה של <strong>${i5}</strong>.</li>
@@ -685,7 +691,7 @@ function restoreAppState() {
     
     try {
         const profile = JSON.parse(rawProfile);
-        currentLessonIndex = profile.currentLessonIndex || 0;
+        currentLessonIndex = Number(profile.currentLessonIndex) || 0;
         activeTabs = profile.activeTabs || ["lesson_1_prompt.md"];
         activeTab = profile.activeTab || "lesson_1_prompt.md";
         userSubmissions = profile.userSubmissions || {
@@ -914,7 +920,7 @@ function closeTab(fileName) {
 function selectLesson(index) {
     if (!lessonsData[index].unlocked) return; // Prevent selection of locked lessons
     
-    currentLessonIndex = index;
+    currentLessonIndex = Number(index);
     const lesson = lessonsData[index];
     
     if (!activeTabs.includes(lesson.fileName)) {
@@ -1163,7 +1169,7 @@ function handleVerifyTask() {
         lesson.completed = true;
         
         // Unlock next lesson
-        const nextIndex = currentLessonIndex + 1;
+        const nextIndex = Number(currentLessonIndex) + 1;
         let unlockedNext = false;
         if (nextIndex < lessonsData.length) {
             lessonsData[nextIndex].unlocked = true;
@@ -1220,44 +1226,49 @@ function handleResetInput() {
 
 // 9.5. Skip Lesson / Finish Course
 function handleSkipLesson() {
-    const lesson = lessonsData[currentLessonIndex];
-    const term = document.getElementById("terminal-output");
-    
-    // Append skip command to terminal
-    const cmdLine = document.createElement("div");
-    cmdLine.className = "terminal-line cmd-prompt";
-    cmdLine.innerText = `antigravity skip-lesson ${lesson.id}`;
-    term.appendChild(cmdLine);
-    
-    writeTerminalLine(`מבצע מעבר/דילוג על שיעור ${currentLessonIndex + 1}...`, "info-msg");
-    
-    // Mark current lesson as completed
-    lesson.completed = true;
-    
-    const nextIndex = currentLessonIndex + 1;
-    if (nextIndex < lessonsData.length) {
-        // Unlock next lesson
-        lessonsData[nextIndex].unlocked = true;
-        writeTerminalLine(`שיעור ${nextIndex + 1} נפתח בעקבות דילוג.`, "success-msg");
+    try {
+        const lesson = lessonsData[currentLessonIndex];
+        const term = document.getElementById("terminal-output");
         
-        // Refresh UI state
-        renderSidebarLessons();
-        renderTabs();
-        updateProgressRing();
+        // Append skip command to terminal
+        const cmdLine = document.createElement("div");
+        cmdLine.className = "terminal-line cmd-prompt";
+        cmdLine.innerText = `antigravity skip-lesson ${lesson.id}`;
+        term.appendChild(cmdLine);
         
-        alert("✓ דילגת על השיעור הנוכחי. השיעור הבא פתוח כעת עבורך.");
-        selectLesson(nextIndex);
-    } else {
-        // Finish course!
-        writeTerminalLine("[הושלם] מזל טוב! השלמתם את הקורס באופן מלא!", "success-msg");
+        writeTerminalLine(`מבצע מעבר/דילוג על שיעור ${Number(currentLessonIndex) + 1}...`, "info-msg");
         
-        // Refresh UI state
-        renderSidebarLessons();
-        renderTabs();
-        updateProgressRing();
-        saveAppState();
+        // Mark current lesson as completed
+        lesson.completed = true;
         
-        alert("🏆 כל הכבוד! סיימת את כל שבעת שיעורי הקורס בהצלחה!");
+        const nextIndex = Number(currentLessonIndex) + 1;
+        if (nextIndex < lessonsData.length) {
+            // Unlock next lesson
+            lessonsData[nextIndex].unlocked = true;
+            writeTerminalLine(`שיעור ${nextIndex + 1} נפתח בעקבות דילוג.`, "success-msg");
+            
+            // Refresh UI state
+            renderSidebarLessons();
+            renderTabs();
+            updateProgressRing();
+            
+            alert("✓ דילגת על השיעור הנוכחי. השיעור הבא פתוח כעת עבורך.");
+            selectLesson(nextIndex);
+        } else {
+            // Finish course!
+            writeTerminalLine("[הושלם] מזל טוב! השלמתם את הקורס באופן מלא!", "success-msg");
+            
+            // Refresh UI state
+            renderSidebarLessons();
+            renderTabs();
+            updateProgressRing();
+            saveAppState();
+            
+            alert("🏆 כל הכבוד! סיימת את כל שבעת שיעורי הקורס בהצלחה!");
+        }
+    } catch (e) {
+        console.error("Error in handleSkipLesson:", e);
+        alert("שגיאה במעבר שיעור: " + e.message);
     }
 }
 
