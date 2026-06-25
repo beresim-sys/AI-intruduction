@@ -141,6 +141,15 @@ function getDynamicLessons(name, interests) {
     </div>
 </div>
 
+<h2 class="lesson-h2">כלי עזר מיוחד לבניית ה-GEM שלכם</h2>
+<p class="lesson-p">בנינו עבורכם סוכן GEM מיוחד שיעזור לכם לבנות ולנסח את סוכני ה-GEM שלכם בצורה הטובה ביותר! תוכלו להשתמש בו כבר עכשיו:</p>
+<div style="text-align: center; margin: 15px 0;">
+    <a href="https://gemini.google.com/gem/1a2eHoPBeVZfvQMh-JmOrFCluCO9Ho6-c?usp=sharing" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 20px;">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        מעבר לסוכן GEM Builder המסייע
+    </a>
+</div>
+
 <h2 class="lesson-h2">דוגמאות לסוכני GEMS מעשיים</h2>
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
     <li><strong>סוכן סידור עבודה:</strong> מייצר סידור עבודה למחלקה של 100 אחיות, תוך התחשבות בהעדפות אישיות, היקפי משרה, ימי חופש וימי השתלמות של כל אחת.</li>
@@ -161,14 +170,7 @@ function getDynamicLessons(name, interests) {
     </ul>
 </div>
 
-<h2 class="lesson-h2">כלי עזר מיוחד לבניית ה-GEM שלכם</h2>
-<p class="lesson-p">בנינו עבורכם סוכן GEM מיוחד שיעזור לכם לבנות ולנסח את סוכני ה-GEM שלכם בצורה הטובה ביותר! תוכלו להשתמש בו כבר עכשיו:</p>
-<div style="text-align: center; margin: 15px 0;">
-    <a href="https://gemini.google.com/gem/1a2eHoPBeVZfvQMh-JmOrFCluCO9Ho6-c?usp=sharing" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 20px;">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        מעבר לסוכן GEM Builder המסייע
-    </a>
-</div>
+
             `,
             actionType: "checklist",
             actionLabel: "",
