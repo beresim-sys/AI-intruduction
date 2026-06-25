@@ -51,7 +51,7 @@ function getDynamicLessons(name, interests) {
 
 
 <h2 class="lesson-h2">עקרונות כתיבת הפרומפט ותבנית ה-PROMPT</h2>
-<p class="lesson-p">כדי לרתום את יכולות הליבה הללו בצורה הטובה ביותר, נשתמש בארבעת עמודי התווך של הפרומפט:</p>
+<p class="lesson-p">פרומפט הוא דרך התקשורת שלנו עם ה-AI – השאלה, ההוראה או המשימה שאנו מבקשים ממנו לבצע. כדי לכתוב פרומפט מדוייק נגדיר:</p>
 <ul style="margin-right: 20px; margin-bottom: 12px; line-height: 1.6;">
     <li><strong>Role (תפקיד המודל):</strong> הגדרת ה"אישיות" וההקשר המקצועי של ה-AI (למשל: <em>"פעל כמעצב מומחה בתחום ${i5}"</em>).</li>
     <li><strong>Task (משימה):</strong> מה בדיוק ה-AI צריך לבצע (למשל: <em>"נסח שלבים לתחילת עבודה"</em>).</li>
