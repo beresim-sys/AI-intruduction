@@ -718,6 +718,16 @@ function restoreAppState() {
                 }
             });
         }
+        
+        // Filter out legacy filenames that no longer exist in our lessonsData
+        const validFileNames = lessonsData.map(l => l.fileName);
+        activeTabs = activeTabs.filter(t => validFileNames.includes(t));
+        if (activeTabs.length === 0) {
+            activeTabs = ["lesson_1_prompt.md"];
+        }
+        if (!validFileNames.includes(activeTab)) {
+            activeTab = activeTabs[0];
+        }
     } catch (e) {
         console.error("Failed to restore app state", e);
         lessonsData = getDynamicLessons(userName, userInterests);
@@ -875,7 +885,9 @@ function renderTabs() {
     
     activeTabs.forEach(tabFileName => {
         const lessonIndex = lessonsData.findIndex(l => l.fileName === tabFileName);
+        if (lessonIndex === -1) return; // Skip invalid legacy tabs
         const lesson = lessonsData[lessonIndex];
+        if (!lesson) return;
         
         const tab = document.createElement("div");
         tab.className = `editor-tab ${tabFileName === activeTab ? "active" : ""}`;
@@ -914,10 +926,12 @@ function closeTab(fileName) {
 }
 
 function selectLesson(index) {
-    if (!lessonsData[index].unlocked) return; // Prevent selection of locked lessons
+    const idx = Number(index);
+    if (isNaN(idx) || idx < 0 || idx >= lessonsData.length) return;
+    if (!lessonsData[idx].unlocked) return; // Prevent selection of locked lessons
     
-    currentLessonIndex = Number(index);
-    const lesson = lessonsData[index];
+    currentLessonIndex = idx;
+    const lesson = lessonsData[idx];
     
     if (!activeTabs.includes(lesson.fileName)) {
         activeTabs.push(lesson.fileName);
