@@ -39,7 +39,7 @@ function getDynamicLessons(name, interests) {
 </ul>
 
 <h2 class="lesson-h2">יכולות הליבה של Gemini או ChatGPT</h2>
-<p class="lesson-p">מודלי שפה ו-AI מודרניים מצטיינים במגוון יכולות מפתח, אותן ניתן להמחיש באמצעות תחומי העניין שלך:</p>
+
 <ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
     <li><strong>יצירת תמונות (Image Generation):</strong> הפקת ייצוגים חזותיים מתיאור טקסטואלי. למשל, ליצור תמונה יצירתית ומרהיבה של <strong>${i5}</strong>.</li>
     <li><strong>תכנון ופירוק משימות (Task Planning & Breakdown):</strong> פירוק תהליכים מורכבים לשלבים מעשיים ברורים. למשל, תכנון פרויקט או מטרה מורכבת בתחום <strong>${i1}</strong>.</li>
