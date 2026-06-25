@@ -1,4 +1,4 @@
-// AI for Builders: From Prompt to Production - Core Application Logic
+﻿// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -84,162 +84,114 @@ function getDynamicLessons(name, interests) {
             },
             errorMessage: "אנא ודאו שביצעתם וסימנתם את כל 5 משימות אתגר הליבה ב-Gemini."
         },
-        {
-            id: "lesson_2",
-            fileName: "lesson_2_gemini_gem.md",
-            tabLabel: "lesson_2_gemini_gem.md",
-            title: "שיעור 2: עיגון מידע ולמידה חכמה עם Gemini GEM",
-            unlocked: false,
-            completed: false,
-            content: `
-<h1 class="lesson-h1">שיעור 2: עיגון מידע ולמידה חכמה עם Gemini GEM</h1>
-<p class="lesson-p">שלום ${name}! בשיעור זה נלמד כיצד ליצור עוזר AI אישי המותאם בדיוק לצרכי הלמידה שלכם באמצעות <strong>Gemini GEM</strong>. כדי להפיק ממנו את המרב ולמנוע ממנו להפוך ל"מכונת תשובות" שעושה את העבודה עבורכם, קריטי לבסס את פעילותו על שני עקרונות מובילים: <strong>עיגון מידע</strong> ו<strong>למידה חכמה</strong>.</p>
-
-<div class="tech-box">
-    <strong>מהו Gemini GEM?</strong>
-    כלי ה-Gemini GEM מאפשר לכם ליצור סוכן AI אישי המוגדר מראש עם הנחיות ייעודיות וקובצי ידע משלכם, כדי לשמש כמורה פרטי, כשותף לסיעור מוחות או כעוזר מחקר המותאם בדיוק עבורכם.
-</div>
-
-<div class="analogy-box">
-    <strong>[אנלוגיית עיגון המידע ב-GEM]</strong>
-    דמיינו שאתם מתכוננים למבחן בנושא <strong>${i2}</strong> או <strong>${i3}</strong>. במקום לשאול עובר אורח אקראי שקרא פעם משהו ברשת (כמו מודל AI רגיל), אתם פונים למורה פרטי שנמצא בחדר סגור ורשאי להציץ אך ורק בספר הלימוד הספציפי שסיפקתם לו על מנת לענות לכם.
-</div>
-
-<h2 class="lesson-h2">1. מהו "עיגון מידע" (Information Anchoring)?</h2>
-<p class="lesson-p">עיגון מידע הוא התהליך שבו אנו "מאלצים" את ה-AI להסתמך אך ורק על חומרי הלימוד והקבצים הספציפיים שהעלינו ל-GEM, במקום לשלוף מידע כללי או להמציא עובדות מומצאות (הזיות).</p>
-
-<div class="sources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 15px 0;">
-    <!-- Card 1 -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17 8 12 3 7 8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-            </svg>
-        </div>
-        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">הספקת הקשר (Provide Context)</h4>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">העלו את סיכומי השיעור, המאמרים, או המצגות שלכם ישירות ל-GEM כדי לשמש בסיס ידע בלעדי לשיחה.</p>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="9" y1="3" x2="9" y2="21"></line>
-                <line x1="15" y1="3" x2="15" y2="21"></line>
-            </svg>
-        </div>
-        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">הגדרת גבולות (Define Boundaries)</h4>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הנחו את ה-GEM במפורש להשתמש אך ורק במידע שסיפקתם לו, ולא לחפש מידע כללי מחוצה לו.</p>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-        </div>
-        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">מניעת הזיות (Prevent Hallucinations)</h4>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">כאשר המידע מעוגן היטב, הסיכוי של ה-GEM לספק תשובות שגויות או לא רלוונטיות יורד באופן דרמטי.</p>
-    </div>
-</div>
-
-<h2 class="lesson-h2">2. עקרונות הלמידה החכמה (Smart Learning)</h2>
-<p class="lesson-p">מטרתו של ה-GEM היא לתפקד כמנטור אישי ולא להכין שיעורי בית במקומכם. לשם כך, מומלץ להנחות אותו לפעול לפי העקרונות הבאים:</p>
-
-<div class="features-grid-notebooklm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
-    <!-- Card 1 -->
-    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
-        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-            </svg>
-            למידה פעילה (Active Learning)
-        </h3>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">הנחו את ה-GEM להשתמש בשיטה הסוקרטית - לשאול אתכם שאלות מנחות במקום לגלות לכם את התשובות הסופיות באופן מיידי.</p>
-    </div>
-    
-    <!-- Card 2 -->
-    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
-        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-            </svg>
-            פירוק ופישוט מושגים (Deconstruction)
-        </h3>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">נתקלתם במושג מסובך? בקשו מה-GEM להסביר לכם אותו "כאילו הייתם בני 10" (Explain Like I'm 10) או באמצעות אנלוגיות פשוטות מחיי היומיום.</p>
-    </div>
-    
-    <!-- Card 3 -->
-    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
-        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <polyline points="9 11 12 14 22 4"></polyline>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-            </svg>
-            בחנים עצמיים ומשוב
-        </h3>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">בקשו מה-GEM לייצר בחנים מהירים (pop quizzes) על בסיס החומרים שהעליתם, ולקבל משוב בונה ומפורט לשיפור הלמידה.</p>
-    </div>
-    
-    <!-- Card 4 -->
-    <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
-        <h3 style="font-size: 14px; color: var(--success-color); margin-bottom: 8px;">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            שיח מותאם אישית
-        </h3>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4;">הגדירו ל-GEM את סגנון הדיבור המועדף עליכם (רשמי, מעודד, או הומוריסטי) והנחיות מיוחדות שמתאימות בדיוק לקצב הלמידה שלכם.</p>
-    </div>
-</div>
-
-<h2 class="lesson-h2">✂️ פרומפט מאסטר להעתקה (להגדרת ה-GEM האישי שלכם)</h2>
-<p class="lesson-p">העתיקו את הפרומפט הבא והדביקו אותו בתיבת ה"הנחיות" (Instructions) של ה-GEM החדש שאתם מקימים ב-Gemini. התאימו את הערכים בתוך הסוגריים המרובעים לפי נושא הלמידה שלכם:</p>
-
-<div class="code-viewport" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; font-family: var(--font-hebrew); font-size: 14.5px; line-height: 1.6; color: #000000; text-align: right; direction: rtl; white-space: pre-wrap; margin-bottom: 20px; overflow-x: auto;">
-<strong>תפקיד ומטרה (Role and Objective):</strong>
-אתה מורה פרטי מומחה ב-[הכניסו נושא, למשל: <strong>${i2}</strong> או <strong>${i3}</strong>]. המטרה שלך היא לעזור לי להבין את החומר לעומק ולפתח מיומנויות חשיבה ביקורתית, ולא רק לספק תשובות מוכנות מראש.
-
-<strong>עקרונות עיגון מידע (Information Anchoring Principles):</strong>
-- עליך לבסס את כל התשובות שלך אך ורק ורק על הטקסטים, הקבצים והחומרים שאעלה או שאספק במהלך השיחה שלנו.
-- אם אשאל שאלה שהתשובה עליה אינה נמצאת בחומרים שסיפקתי, עליך לציין זאת בבירור: "מידע זה אינו קיים בחומרים שסיפקת," ואל תמציא תשובה.
-
-<strong>עקרונות פעולה ללמידה חכמה (Operating Principles):</strong>
-- אל תיתן לי את התשובה הסופית מיד. במקום זאת, שאל אותי שאלות מנחות שיעזרו לי להגיע לתשובה בעצמי.
-- אם אענה תשובה שגויה, תקן אותי בעדינות והסבר את ההיגיון שמאחורי הטעות, בהתבסס אך ורק על חומרי הלמידה שסיפקתי.
-- בסוף כל תת-נושא, הצע לייצר עבורי 3 שאלות תרגול (שאלות אמריקאיות או פתוחות) כדי לבחון את ההבנה שלי.
-- השתמש בשפה ברורה, נגישה ומעודדת.
-</div>
-            `,
-            actionType: "checklist",
-            actionLabel: "",
-            placeholderText: "",
-            tools: [
-                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" },
-                { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "gemini-gem-tutorial.html" }
-            ],
-            instructionText: `<strong>משימה מעשית - Gemini GEM:</strong><br>
-            <strong>הנחיית בחירת תחום:</strong> בחרו תחום שמעניין אתכם (כגון תחביב, מקצוע, תחום לימוד, פוליטיקה, ספורט וכדומה) ובססו עליו את התרגול שלכם במשימה זו.<br><br>
-            עקבו אחר שלבי ההכנה והתרגול מטה, וסמנו את תיבות הסימון לאישור ביצוע.`,
-            checklistItems: [
-                `פתחתי את Gemini, הקמתי GEM חדש והדבקתי את ה"פרומפט מאסטר" בתיבת ההנחיות (Instructions).`,
-                `העליתי ל-GEM קובץ ידע (למשל סיכום, מסמך או מצגת) הקשור לתחום שבחרתם והתחלתי שיחת תרגול ולמידה פעילה.`
-            ],
-            validate: (input) => {
-                if (!input || typeof input !== "object") return false;
-                return input.chk1 === true && input.chk2 === true;
-            },
-            errorMessage: "אנא ודאו שסימנתם את שתי משימות התרגול ב-Gemini GEM כאישור ביצוע."
+        {
+            id: "lesson_2",
+            fileName: "lesson_2_gem_agent.md",
+            tabLabel: "lesson_2_gem_agent.md",
+            title: "שיעור 2: בניית סוכן חכם GEM",
+            unlocked: false,
+            completed: false,
+            content: `
+<h1 class="lesson-h1">שיעור 2: בניית סוכן חכם GEM</h1>
+<p class="lesson-p">שלום \${name}! בשיעור זה נלמד כיצד לבנות סוכן AI אישי ומקצועי משלנו באמצעות <strong>Gemini GEMS</strong>. סוכן GEM הוא בעצם עובד מסור, מיומן ומקצועי שכבר מכיר את הכל. הוא יכול להיות מומחה עולמי לאילוף כלבים, מומחה רפואי, עורך ספרותי, אחות אחראית במחלקה, עיתונאי חוקר מוביל, פסיכולוג שמתמחה בקהילה, סוכן נסיעות ותיק, או מורה שמכין מערכי שיעור ומערכות הכנה לבגרות.</p>
+
+<div class="tech-box">
+    <strong>למה לבנות סוכן GEM?</strong>
+    הערך המרכזי של סוכן GEM הוא המעבר משיחות פשוטות וגנריות עם ג'מיני לדיוק מקסימלי, שחוסך שעות עבודה, מונע כמעט לחלוטין הזיות (המצאת מידע) ומתבסס אך ורק על המקורות שאתם מספקים לו.
+</div>
+
+<h2 class="lesson-h2">הנוסחה המנצחת לבניית סוכן GEM: iCOSTAR</h2>
+<p class="lesson-p">כדי שהסוכן שלנו יפעל בדיוק מרבי, נבנה את ההנחיות שלו (Instructions) לפי נוסחת ה-<strong>iCOSTAR</strong>:</p>
+
+<div class="sources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 15px 0;">
+    <!-- I: Identity -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">I - Identity (זהות)</div>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת התפקיד והמומחיות של הסוכן (למשל: "פרופסור לכלכלה" או "מאלף כלבים בכיר"). במקום לנחש תשובה מתוך כל האינטרנט, הוא מסנן רק את הידע הרלוונטי לזהות המקצועית שלו.</p>
+    </div>
+
+    <!-- C: Context -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">C - Context (הקשר)</div>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הרקע המלא למשימה. למשל: "אנחנו חברה שחוותה השבתת שרתים, הלקוחות כועסים, והמטרה היא להתנצל מבלי לקחת אחריות משפטית" - הסוכן יבין את הדחיפות והרגישות הנדרשת.</p>
+    </div>
+
+    <!-- O: Objective -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">O - Objective (מטרה)</div>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">מהי התוצאה הסופית הנדרשת? (למשל: "לאמן את אנשי המכירות", "לבנות תוכנית אילוף" או "ליצור סידור עבודה שבועי").</p>
+    </div>
+
+    <!-- S & T: Style & Tone -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">S & T - Style & Tone</div>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת סגנון וטון הדיבור: האם הסוכן יישמע אמפתי, סמכותי, עוקצני, או אולי "דוד חכם ומנוסה"?</p>
+    </div>
+
+    <!-- A: Audience -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">A - Audience (קהל יעד)</div>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">למי התוצר מיועד? הסבר לילד בן 10 דורש עולם מושגים שונה לחלוטין מהסבר המיועד למנכ"ל החברה.</p>
+    </div>
+
+    <!-- R: Response -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">R - Response (תגובה)</div>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת פורמט התוצאה הרצויה – האם מדובר בטבלה, קוד תוכנה, סיכום נקודות, מצגת, או אולי מייל רשמי?</p>
+    </div>
+</div>
+
+<h2 class="lesson-h2">דוגמאות לסוכני GEMS מעשיים</h2>
+<ul style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
+    <li><strong>סוכן סידור עבודה:</strong> מייצר סידור עבודה למחלקה של 100 אחיות, תוך התחשבות בהעדפות אישיות, היקפי משרה, ימי חופש וימי השתלמות של כל אחת.</li>
+    <li><strong>סוכן עורך ספרותי:</strong> מתפקד כעורך ספרותי מקצועי לפי סגנון כתיבה שיוגדר לו מראש, מבצע תחקיר לספר בהתאם לקהל היעד ולאורך הרצוי.</li>
+    <li><strong>סוכן מסחר בשוק ההון:</strong> סורק אתרי מניות, המלצות אנליסטים ושיטות מסחר, ומספק המלצות מבוססות לבחירת ניירות ערך.</li>
+    <li><strong>סוכן מומחה לאילוף כלבים:</strong> נבנה במיוחד עבור משפחה שאימצה גור נושך בשם במבי. הסוכן מקבל זהות של מנטור בכיר בעל 25 שנות ניסיון, משתמש בפסיכולוגיה התנהגותית, מונחה לענות במבנה קבוע שמתחיל ב"זריקת הרגעה", מציג את המצב דרך "המשקפיים של הכלב" ומספק תוכנית פעולה מעשית.</li>
+</ul>
+
+<div class="special-feature-box" style="background: linear-gradient(135deg, rgba(73, 142, 117, 0.12), rgba(53, 114, 93, 0.04)); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 20px; margin: 20px 0; text-align: right; box-shadow: 0 4px 15px rgba(73, 142, 117, 0.1);">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--accent-color);">
+        <strong style="font-size: 16px; font-weight: 700;">טיפים של אלופים לסוכני GEM</strong>
+    </div>
+    <ul style="margin-right: 20px; line-height: 1.5; font-size: 13.5px; color: var(--text-main); margin-bottom: 0;">
+        <li><strong>סנכרון עם גוגל דרייב:</strong> תוכלו להעלות קבצים (Docs, Sheets, Slides) או אפילו מחברת מ-NotebookLM. אם עדכנתם את קובץ המכירות בדרייב או הוספתם מקור למחברת – סוכן ה-GEM שלכם יתעדכן אוטומטית!</li>
+        <li><strong>חוק הברזל למניעת הזיות:</strong> כדי להבטיח אמינות של 100%, תנו לסוכן הוראה מפורשת בהנחיות: <em>"אם המידע לא נמצא בקבצים המצורפים – אל תמציא אותו!"</em>. זה הכלי הכי חזק שלכם להבטיח אמינות של 100%.</li>
+        <li><strong>שמות קבצים ברורים:</strong> קראו לקבצי המקור שלכם בשמות פשוטים (למשל: "מחירון_2024") כדי שהסוכן ימצא וישלוף מהם מידע ברגע.</li>
+        <li><strong>הסתייגויות והגדרת שליליות:</strong> אל תגידו לסוכן רק מה לעשות, אלא גם מה *לא* לעשות (למשל: "אל תשתמש בשפה משפטית מסובכת").</li>
+    </ul>
+</div>
+
+<h2 class="lesson-h2">כלי עזר מיוחד לבניית ה-GEM שלכם</h2>
+<p class="lesson-p">בנינו עבורכם סוכן GEM מיוחד שיעזור לכם לבנות ולנסח את סוכני ה-GEM שלכם בצורה הטובה ביותר! תוכלו להשתמש בו כבר עכשיו:</p>
+<div style="text-align: center; margin: 15px 0;">
+    <a href="https://gemini.google.com/gem/1a2eHoPBeVZfvQMh-JmOrFCluCO9Ho6-c?usp=sharing" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 20px;">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        מעבר לסוכן GEM Builder המסייע
+    </a>
+</div>
+            `,
+            actionType: "checklist",
+            actionLabel: "",
+            placeholderText: "",
+            tools: [
+                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" },
+                { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "gemini-gem-tutorial.html" },
+                { name: "סוכן GEM עוזר לבניית סוכנים", url: "https://gemini.google.com/gem/1a2eHoPBeVZfvQMh-JmOrFCluCO9Ho6-c?usp=sharing" }
+            ],
+            instructionText: `<strong>משימה מעשית - בניית סוכן חכם GEM:</strong><br>
+            <strong>הנחיית בחירת תחום:</strong> בחרו תחום שמעניין אתכם (כגון תחביב, מקצוע, תחום לימוד, פוליטיקה, ספורט וכדומה) ובססו עליו את התרגול שלכם במשימה זו.<br><br>
+            עקבו אחר שלבי ההכנה והתרגול מטה, וסמנו את תיבות הסימון לאישור ביצוע.`,
+            checklistItems: [
+                "הקמתי סוכן GEM חדש במערכת Gemini ונתתי לו שם ותפקיד ברורים (I - Identity).",
+                "כתבתי עבור הסוכן הנחיות מדויקות בתיבת ההנחיות המבוססות על נוסחת ה-iCOSTAR.",
+                "העליתי לסוכן קובצי ידע רלוונטיים (למשל מדרייב או קובץ מקומי) והוספתי את חוק הברזל למניעת הזיות (\"אם המידע לא נמצא בקבצים - אל תמציא\").",
+                "ביצעתי שיחת בדיקה (תרגול) עם הסוכן כדי לוודא שהוא עונה במדויק ומתבסס רק על המקורות שסופקו."
+            ],
+            validate: (input) => {
+                if (!input || typeof input !== "object") return false;
+                return input.chk1 === true && input.chk2 === true && input.chk3 === true && input.chk4 === true;
+            },
+            errorMessage: "אנא ודאו שסימנתם את ארבע משימות התרגול בבניית סוכן GEM כאישור ביצוע."
         },
         {
             id: "lesson_3",
@@ -736,7 +688,7 @@ function restoreAppState() {
         activeTab = profile.activeTab || "lesson_1_prompt.md";
         userSubmissions = profile.userSubmissions || {
             lesson_1: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false },
-            lesson_2: { chk1: false, chk2: false },
+            lesson_2: { chk1: false, chk2: false, chk3: false, chk4: false },
             lesson_3: { chk1: false, chk2: false, chk3: false, chk4: false, chk5: false, chk6: false, chk7: false, chk8: false },
             lesson_4: {
                 chk1: false,
@@ -1192,8 +1144,8 @@ function handleVerifyTask() {
             writeTerminalLine("[Success] משימה 4: תכנון משימות אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] משימה 5: תרגום ולוקליזציה אומת בהצלחה.", "success-msg");
             writeTerminalLine("[Success] כל 5 שלבי ה-AI Gauntlet אומתו בהצלחה! שיעור 1 הושלם.", "success-msg");
-        } else if (lesson.id === "lesson_2") {
-            writeTerminalLine("[Success] שלבי ההכנה והתרגול ב-Gemini GEM אומתו בהצלחה! שיעור 2 הושלם.", "success-msg");
+        } else if (lesson.id === "lesson_2") {
+            writeTerminalLine("[Success] בניית סוכן חכם GEM אומתה בהצלחה! שיעור 2 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_3") {
             writeTerminalLine("[Success] שלבי התרגול ב-NotebookLM אומתו בהצלחה! שיעור 3 הושלם.", "success-msg");
         } else if (lesson.id === "lesson_4") {
