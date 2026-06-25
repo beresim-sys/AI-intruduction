@@ -107,31 +107,31 @@ function getDynamicLessons(name, interests) {
     <!-- I: Identity -->
     <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
         <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">1. I - Identity (זהות)</div>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת התפקיד והמומחיות של הסוכן (למשל: "פרופסור לכלכלה" או "מאלף כלבים בכיר"). במקום לנחש תשובה מתוך כל האינטרנט, הוא מסנן רק את הידע הרלוונטי לזהות המקצועית שלו.</p>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת התפקיד והמומחיות של הסוכן (למשל: "פרופסור לכלכלה" או "מאלף כלבים בכיר"). במקום לנחש תשובה מתוך כל האינטרנט, הוא מסנן רק את הידע הרלוונטי לזהות המקצועית שלו.</p>
     </div>
 
     <!-- C: Context -->
     <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
         <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">2. C - Context (הקשר)</div>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הרקע המלא למשימה. למשל: "אנחנו חברה שחוותה השבתת שרתים, הלקוחות כועסים, והמטרה היא להתנצל מבלי לקחת אחריות משפטית" - הסוכן יבין את הדחיפות והרגישות הנדרשת.</p>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">הרקע המלא למשימה. למשל: "אנחנו חברה שחוותה השבתת שרתים, הלקוחות כועסים, והמטרה היא להתנצל מבלי לקחת אחריות משפטית" - הסוכן יבין את הדחיפות והרגישות הנדרשת.</p>
     </div>
 
     <!-- O: Objective -->
     <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
         <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">3. O - Objective (מטרה)</div>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">מהי התוצאה הסופית הנדרשת? (למשל: "לאמן את אנשי המכירות", "לבנות תוכנית אילוף" או "ליצור סידור עבודה שבועי").</p>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">מהי התוצאה הסופית הנדרשת? (למשל: "לאמן את אנשי המכירות", "לבנות תוכנית אילוף" או "ליצור סידור עבודה שבועי").</p>
     </div>
 
     <!-- S & T: Style & Tone -->
     <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
         <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">4. S & T - Style & Tone</div>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת סגנון וטון הדיבור: האם הסוכן יישמע אמפתי, סמכותי, עוקצני, או אולי "דוד חכם ומנוסה"?</p>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת סגנון וטון הדיבור: האם הסוכן יישמע אמפתי, סמכותי, עוקצני, או אולי "דוד חכם ומנוסה"?</p>
     </div>
 
     <!-- A: Audience -->
     <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
         <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">5. A - Audience (קהל יעד)</div>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">למי התוצר מיועד? הסבר לילד בן 10 דורש עולם מושגים שונה לחלוטין מהסבר המיועד למנכ"ל החברה.</p>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">למי התוצר מיועד? הסבר לילד בן 10 דורש עולם מושגים שונה לחלוטין מהסבר המיועד למנכ"ל החברה.</p>
     </div>
 
     <!-- R: Response -->
