@@ -1,4 +1,4 @@
-// AI for Builders: From Prompt to Production - Core Application Logic
+﻿// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -95,7 +95,8 @@ function getDynamicLessons(name, interests) {
             completed: false,
             content: `
 <h1 class="lesson-h1">שיעור 2: בניית סוכן חכם GEM</h1>
-<p class="lesson-p">בשיעור זה נלמד כיצד לבנות סוכן AI אישי ומקצועי משלנו באמצעות <strong>Gemini GEMS</strong>. סוכן GEM הוא בעצם עובד מסור, מיומן ומקצועי שכבר מכיר את הכל. הוא יכול להיות מומחה עולמי לאילוף כלבים, מומחה רפואי, עורך ספרותי, אחות אחראית במחלקה, עיתונאי חוקר מוביל, פסיכולוג שמתמחה בקהילה, סוכן נסיעות ותיק, או מורה שמכין מערכי שיעור ומערכות הכנה לבגרות.</p>
+<p class="lesson-p">תמיד רצית להתייעץ עם המומחה הכי טוב בתחום? רצית את העובד הכי חרוץ? את היועץ הכי אמין? 
+בשיעור זה נלמד כיצד לבנות סוכן AI אישי ומקצועי משלנו באמצעות <strong>Gemini GEMS</strong>. סוכן GEM הוא בעצם עובד מסור, מיומן ומקצועי שכבר מכיר את הכל. הוא יכול להיות מומחה עולמי לאילוף כלבים, מומחה רפואי, עורך ספרותי, אחות אחראית במחלקה, עיתונאי חוקר מוביל, פסיכולוג שמתמחה בקהילה, סוכן נסיעות ותיק, או מורה שמכין מערכי שיעור ומערכות הכנה לבגרות.</p>
 
 <div class="tech-box">
     <strong>למה לבנות סוכן GEM?</strong>
@@ -160,31 +161,18 @@ function getDynamicLessons(name, interests) {
     <li><strong>סוכן מומחה לאילוף כלבים:</strong> נבנה במיוחד עבור משפחה שאימצה גור נושך בשם במבי. הסוכן מקבל זהות של מנטור בכיר בעל 25 שנות ניסיון, משתמש בפסיכולוגיה התנהגותית, מונחה לענות במבנה קבוע שמתחיל ב"זריקת הרגעה", מציג את המצב דרך "המשקפיים של הכלב" ומספק תוכנית פעולה מעשית.</li>
 </ul>
 
-<div class="special-feature-box" style="background: linear-gradient(135deg, rgba(73, 142, 117, 0.12), rgba(53, 114, 93, 0.04)); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 20px; margin: 20px 0; text-align: right; box-shadow: 0 4px 15px rgba(73, 142, 117, 0.1);">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--accent-color);">
-        <strong style="font-size: 16px; font-weight: 700;">טיפים של אלופים לסוכני GEM</strong>
-    </div>
-    <ul style="margin-right: 20px; line-height: 1.5; font-size: 13.5px; color: var(--text-main); margin-bottom: 0;">
-        <li><strong>סנכרון עם גוגל דרייב:</strong> תוכלו להעלות קבצים (Docs, Sheets, Slides) או אפילו מחברת מ-NotebookLM. אם עדכנתם את קובץ המכירות בדרייב או הוספתם מקור למחברת – סוכן ה-GEM שלכם יתעדכן אוטומטית!</li>
-        <li><strong>חוק הברזל למניעת הזיות:</strong> כדי להבטיח אמינות של 100%, תנו לסוכן הוראה מפורשת בהנחיות: <em>"אם המידע לא נמצא בקבצים המצורפים – אל תמציא אותו!"</em>. זה הכלי הכי חזק שלכם להבטיח אמינות של 100%.</li>
-        <li><strong>שמות קבצים ברורים:</strong> קראו לקבצי המקור שלכם בשמות פשוטים (למשל: "מחירון_2024") כדי שהסוכן ימצא וישלוף מהם מידע ברגע.</li>
-        <li><strong>הסתייגויות והגדרת שליליות:</strong> אל תגידו לסוכן רק מה לעשות, אלא גם מה *לא* לעשות (למשל: "אל תשתמש בשפה משפטית מסובכת").</li>
-    </ul>
-</div>
-
-
-            `,
+`,
             actionType: "checklist",
             actionLabel: "",
             placeholderText: "",
-            tools: [
-                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" },
-                { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "gemini-gem-tutorial.html" },
-                { name: "סוכן GEM עוזר לבניית סוכנים", url: "https://gemini.google.com/gem/1a2eHoPBeVZfvQMh-JmOrFCluCO9Ho6-c?usp=sharing" }
+            tools: [
+                { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "gemini-gem-tutorial.html" },
+                { name: "סוכן GEM עוזר לבניית סוכנים", url: "https://gemini.google.com/gem/1a2eHoPBeVZfvQMh-JmOrFCluCO9Ho6-c?usp=sharing" },
+                { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
             ],
-            instructionText: `<strong>משימה מעשית - בניית סוכן חכם GEM:</strong><br>
-            <strong>הנחיית בחירת תחום:</strong> בחרו תחום שמעניין אתכם (כגון תחביב, מקצוע, תחום לימוד, פוליטיקה, ספורט וכדומה) ובססו עליו את התרגול שלכם במשימה זו.<br><br>
-            עקבו אחר שלבי ההכנה והתרגול מטה, וסמנו את תיבות הסימון לאישור ביצוע.`,
+            instructionText: `<strong>משימה מעשית - בניית סוכן חכם GEM:</strong><br>
+            אתה בונה סוכן שמפענח נוריות הזהרה שנדלקת ברכב, מה משמעותה וכיצד לפעול.<br>
+            עקוב אחרי ההנחיות במדריך האינטראקטיבי צעד אחר צעד. תוכל להעזר בכלי העזר לבניית סוכן ה GEM.`,
             checklistItems: [
                 "הקמתי סוכן GEM חדש במערכת Gemini ונתתי לו שם ותפקיד ברורים (I - Identity).",
                 "כתבתי עבור הסוכן הנחיות מדויקות בתיבת ההנחיות המבוססות על נוסחת ה-iCOSTAR.",
