@@ -1,4 +1,4 @@
-﻿// AI for Builders: From Prompt to Production - Core Application Logic
+// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -147,7 +147,7 @@ function getDynamicLessons(name, interests) {
 <h2 class="lesson-h2">כלי עזר מיוחד לבניית ה-GEM שלכם</h2>
 <p class="lesson-p">כדי להתחיל לבנות את סוכן ה GEM שלכם, הכנסו לקישור הבא. הסוכן שיצרנו יעביר אתכם, שלב אחרי שלב בנוסחא, על מנת לבנות את הסוכן המוצלח ביותר עבורכם</p>
 <div style="text-align: center; margin: 15px 0;">
-    <a href="https://gemini.google.com/gem/1a2eHoPBeVZfvQMh-JmOrFCluCO9Ho6-c?usp=sharing" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 20px;">
+    <a href="https://gemini.google.com/gem/16j4MAOCP6FE2YLTN1R_-CShSRWrrinPH?usp=sharing" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; text-decoration: none; font-size: 14px; font-weight: bold; border-radius: 20px;">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
         מעבר לסוכן GEM Builder המסייע
     </a>
@@ -169,7 +169,7 @@ function getDynamicLessons(name, interests) {
             placeholderText: "",
             tools: [
                 { name: "מדריך אינטראקטיבי צעד אחר צעד", url: "gemini-gem-tutorial.html" },
-                { name: "סוכן GEM עוזר לבניית סוכנים", url: "https://gemini.google.com/gem/1a2eHoPBeVZfvQMh-JmOrFCluCO9Ho6-c?usp=sharing" },
+                { name: "סוכן GEM עוזר לבניית סוכנים", url: "https://gemini.google.com/gem/16j4MAOCP6FE2YLTN1R_-CShSRWrrinPH?usp=sharing" },
                 { name: "פתח את Gemini בלשונית חדשה", url: "https://gemini.google.com" }
             ],
             instructionText: `<strong>משימה מעשית - בניית סוכן חכם GEM:</strong><br>
