@@ -20,6 +20,7 @@ function getDynamicLessons(name, interests) {
             content: `
 <h1 class="lesson-h1">שלום ${name}! ברוכים הבאים לשיעור 1: ניווט ב-Gemini ואמנות הפרומפט</h1>
 <p class="lesson-p">ברוכים הבאים לצעד הראשון שלכם בעולם ה-AI! אין צורך ברקע בתכנות, רק דימיון ויצירתיות.</p>
+<p class="lesson-p" style="color: #800020; font-weight: 500; margin-top: -10px; margin-bottom: 15px;">הגרסה החינמית של ג'מיני תאפשר לעבוד עם כל הכלים שמוצגים באתר. יחד עם זאת, מומלץ לרכוש מנוי בסיסי כדי לנצל היטב את יכולות הכלים.</p>
 
 <h2 class="lesson-h2">שליטה בממשק של Gemini</h2>
 <p class="lesson-p">לפני שנתחיל לכתוב פרומפטים, נלמד כיצד לנצל את כלי הממשק השונים בתוך Gemini:</p>
