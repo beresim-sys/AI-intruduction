@@ -199,7 +199,7 @@ function getDynamicLessons(name, interests) {
 <h1 class="lesson-h1">שיעור 3: למידה חכמה עם NotebookLM</h1>
 <p class="lesson-p">שלום ${name}! בשיעור זה נכיר כלי מהפכני מבית Google שישנה לחלוטין את הדרך שבה אתם חוקרים, לומדים ומארגנים מידע - <strong>NotebookLM</strong>.</p>
 
-<h2 class="lesson-h2">עקרון הליבה: 100% החומר שלכם, 0% המצאות (Grounding)</h2>
+<h2 class="lesson-h2">עקרון הליבה: 100% החומר שלכם, 0% המצאות</h2>
 <p class="lesson-p">החיסרון הגדול של מודלי שפה מסורתיים הוא "הזיות" (Hallucinations) - מצב שבו המודל ממציא עובדות שנראות משכנעות אך אינן נכונות במציאות. בלימודים אקדמיים או במחקר מקצועי, להזיות כאלו יכול להיות מחיר כבד.</p>
 
 <div class="tech-box">
