@@ -1,4 +1,4 @@
-// AI for Builders: From Prompt to Production - Core Application Logic
+﻿// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -205,15 +205,9 @@ function getDynamicLessons(name, interests) {
 <h2 class="lesson-h2">עקרון הליבה: 100% החומר שלכם, 0% המצאות</h2>
 <p class="lesson-p">NotebookLM  הוא עוזר חכם שקורא, מנתח ומבין רק את המקורות שאתם מספקים לו (כמו קובצי PDF מסמכי גוגל דרייב, הקלטות שמע, קישורים וטקסטים). הוא יכול לקלוט וליצור תוצרים שונים מכמות עצומה של חומר כמו ספרי לימוד שלמים, 600 מקורות שונים, קישורים לשיחות וסוכנים מ Gemini).</p>
 
-<div class="tech-box">
-    <strong>מהו עיגון מידע (Grounding)?</strong>
-    NotebookLM פותר את בעיית ההזיות על ידי עיגון (Grounding) של מודל ה-AI אך ורק במסמכים ובמקורות שאתם מעלים אליו. כאשר אתם שואלים אותו שאלה, הוא אינו שואב מידע מרחבי האינטרנט, אלא מצטט ישירות מתוך המקורות שלכם, תוך הצגת קישורים ומספרי עמודים מדויקים לאימות מהיר.
-</div>
 
-<div class="analogy-box">
-    <strong>[אנלוגיית עיגון המידע]</strong>
-    דמיינו שאתם מתכוננים למבחן בנושא <strong>${i1}</strong> או <strong>${i2}</strong>. במקום לשאול עובר אורח ברחוב שקרא פעם משהו בנושא (כמו מודל AI רגיל), אתם פונים לספרייה פרטית המכילה אך ורק את ספרי הלימוד המדויקים שלכם ומקבלים תשובות המבוססות על עמודים ספציפיים.
-</div>
+
+
 
 <!-- Highlight Box (Special Feature: Personal Tutor vs Research Assistant) -->
 <div class="special-feature-box" style="background: linear-gradient(135deg, rgba(73, 142, 117, 0.12), rgba(53, 114, 93, 0.04)); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 20px; margin: 20px 0; text-align: right; box-shadow: 0 4px 15px rgba(73, 142, 117, 0.1);">
@@ -226,7 +220,7 @@ function getDynamicLessons(name, interests) {
         <strong style="font-size: 16px; font-weight: 700;">טיפ זהב: מתי להשתמש ב-GEM ומתי ב-NotebookLM?</strong>
     </div>
     <p style="font-size: 14px; color: var(--text-main); line-height: 1.5; margin: 0;">
-        האם כדאי להשתמש ב-Gemini GEM או ב-NotebookLM? הנה כלל האצבע: השתמשו ב-<strong>GEM</strong> כשאתם רוצים מורה פרטי אישי שינהל אתכם שיחה אקטיבית ודינמית וילמד אתכם נושאים שלב אחר שלב באמצעות שאלות והסברים. לעומת זאת, השתמשו ב-<strong>NotebookLM</strong> כשברצונכם לחקור ולסכם כמות גדולה של מסמכי מקור שונים בו-זמנית, להצליב ביניהם, או להפיק מהם תוצרים כמו פודקאסט שמע או מדריך למידה מקיף עם מראי מקום מדויקים.
+        האם כדאי להשתמש ב-Gemini GEM או ב-NotebookLM? הנה כלל האצבע: השתמשו ב-<strong>GEM</strong> כשאתם רוצים סוכן ייעודי עם הוראות מותאמות אישית ואישיות מוגדרת שישמש כעוזר אישי קבוע למשימה מוגדרת מראש (כמו מפיק אירועים, מנטור אילוף או עורך ספרותי), או מורה פרטי אישי שינהל אתכם שיחה אקטיבית ודינמית וילמד אתכם נושאים שלב אחר שלב באמצעות שאלות והסברים. לעומת זאת, השתמשו ב-<strong>NotebookLM</strong> כשברצונכם לחקור ולסכם כמות גדולה של מסמכי מקור שונים בו-זמנית, להצליב ביניהם, או להפיק מהם תוצרים כמו פודקאסט שמע או מדריך למידה מקיף עם מראי מקום מדויקים.
     </p>
 </div>
 
@@ -274,6 +268,29 @@ function getDynamicLessons(name, interests) {
         <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">יש לכם הקלטה של הרצאה או ראיון? העלו את קובץ השמע, ו-NotebookLM יתמלל אותו מאחורי הקלעים ויהפוך את התוכן הטקסטואלי שלו לזמין לחיפוש וסיכום.</p>
     </div>
 
+    <!-- Card 5 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">טקסט מועתק</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">העתיקו והדביקו טקסטים ישירות לתוך המחברת - מתאים במיוחד להערות מהירות, פסקאות בודדות או רעיונות ספונטניים שכתבתם.</p>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
+        <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </div>
+        <h4 style="font-size: 14px; color: var(--text-header); font-weight: 700; margin: 0;">קישור שיחות מ-Gemini</h4>
+        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">ייבאו שיחות קודמות וסיעור מוחות שקיימתם בצ'אט של Gemini, והשתמשו בהם כבסיס ידע לכל דבר בתוך המחברת שלכם.</p>
+    </div>
+
     <!-- Card 4 -->
     <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; text-align: right;">
         <div class="source-icon" style="color: var(--accent-color); display: flex; align-items: center; justify-content: flex-start;">
@@ -288,22 +305,10 @@ function getDynamicLessons(name, interests) {
     </div>
 </div>
 
-<!-- Highlight Box (Special Feature: Gemini Chats) -->
-<div class="special-feature-box" style="background: linear-gradient(135deg, rgba(73, 142, 117, 0.12), rgba(53, 114, 93, 0.04)); border: 1.5px solid var(--accent-color); border-radius: 16px; padding: 20px; margin: 20px 0; text-align: right; box-shadow: 0 4px 15px rgba(73, 142, 117, 0.1);">
-    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--accent-color);">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 7.92c.11.047.22.094.33.141a1 1 0 0 1 0 1.876c-.11.047-.22.094-.33.141a7.5 7.5 0 0 0-7.92 7.92c-.047.11-.094.22-.141.33a1 1 0 0 1-1.876 0c-.047-.11-.094-.22-.141-.33a7.5 7.5 0 0 0-7.92-7.92c-.11-.047-.22-.094-.33-.141a1 1 0 0 1 0-1.876c.11-.047.22-.094.33-.141a7.5 7.5 0 0 0 7.92-7.92c.047-.11.094-.22.141-.33A1 1 0 0 1 12 3z"></path>
-        </svg>
-        <strong style="font-size: 16px; font-weight: 700;">פיצ'ר מתקדם: קישור שיחות מ-Gemini כמקור מידע</strong>
-    </div>
-    <p style="font-size: 14px; color: var(--text-main); line-height: 1.5; margin: 0;">
-        ידעתם שאתם יכולים להשתמש בשיחות קודמות שלכם כחומר גלם? אם ניהלתם סיעור מוחות, חקרתם נושא לעומק, או יצרתם תוכן בעזרת הצ'אט של Gemini, תוכלו לייבא את השיחה הזו ישירות אל תוך המחברת ב-NotebookLM.
-        <br><strong style="color: var(--accent-color);">איך זה עוזר?</strong> המערכת תתייחס לכל הרעיונות והתובנות שעלו בשיחה ההיא כבסיס ידע לגיטימי לכל דבר, ותשלב אותם עם שאר המאמרים והמסמכים שלכם ליצירת תמונה מלאה ועשירה יותר של הפרויקט.
-    </p>
-</div>
+
 
 <h2 class="lesson-h2">יכולות המפתח של NotebookLM: מה אפשר לעשות איתו? – הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
-<p class="lesson-p">הסטודיו הוא מרחב העבודה הדיגיטלי שלכם בתוך NotebookLM. כאן אתם יכולים לנהל מספר "מחברות" (Notebooks) שונות במקביל, לארגן את מסמכי המקור, להנחות את ה-AI להתמקד בנושאים ספציפיים בלבד, ולייצא את התוצרים שנוצרו לפורמטים פופולריים כמו קובצי Word, PDF, מצגות או קובצי שמע בלחיצת כפתור אחת.</p>
+<p class="lesson-p">כאן ההזדמנות שלכם להיות באמת יצירתיים. כנסו לסטודיו והתחילו לייצר תוצרים שונים:</p>
 
 <div class="features-grid-notebooklm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
     <div class="feature-card-nb" style="background: var(--bg-darker); border: 1px solid var(--border-color); border-radius: 16px; padding: 15px;">
