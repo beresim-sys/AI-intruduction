@@ -1,4 +1,4 @@
-﻿// AI for Builders: From Prompt to Production - Core Application Logic
+// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -24,6 +24,9 @@ function getDynamicLessons(name, interests) {
 
 <h2 class="lesson-h2">שליטה בממשק של Gemini</h2>
 <p class="lesson-p">לפני שנתחיל לכתוב פרומפטים, נלמד כיצד לנצל את כלי הממשק השונים בתוך Gemini:</p>
+<div style="margin: 15px 0; text-align: center;">
+    <img src="gemini-interface.png" alt="ממשק Gemini" style="max-width: 100%; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+</div>
 <div style="margin: 12px 0 18px 0;">
     <a href="https://gemini.google.com" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 16px; text-decoration: none; font-size: 13px; font-weight: bold; border-radius: 20px; gap: 6px;">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left: 6px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
