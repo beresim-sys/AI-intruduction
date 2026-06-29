@@ -1,4 +1,4 @@
-﻿// AI for Builders: From Prompt to Production - Core Application Logic
+// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -18,7 +18,7 @@ function getDynamicLessons(name, interests) {
             unlocked: true,
             completed: false,
             content: `
-<h1 class="lesson-h1">שלום ${name}! ברוכים הבאים לשיעור 1: ניווט ב-Gemini ואמנות הפרומפט</h1>
+<h1 class="lesson-h1">${name && name !== 'אורח/ת' ? `שלום ${name}! ` : ''}ברוכים הבאים לשיעור 1: ניווט ב-Gemini ואמנות הפרומפט</h1>
 <p class="lesson-p">ברוכים הבאים לצעד הראשון שלכם בעולם ה-AI! אין צורך ברקע בתכנות, רק דימיון ויצירתיות.</p>
 <p class="lesson-p" style="color: #800020; font-weight: 500; margin-top: -10px; margin-bottom: 15px;">הגרסה החינמית של ג'מיני תאפשר לעבוד עם כל הכלים שמוצגים באתר. יחד עם זאת, מומלץ לרכוש מנוי בסיסי כדי לנצל היטב את יכולות הכלים.</p>
 
@@ -189,7 +189,7 @@ function getDynamicLessons(name, interests) {
             completed: false,
             content: `
 <h1 class="lesson-h1">שיעור 3: למידה חכמה עם NotebookLM</h1>
-<p class="lesson-p">שלום ${name}! בשיעור זה נכיר כלי מהפכני מבית Google שישנה לחלוטין את הדרך שבה אתם חוקרים, לומדים ומארגנים מידע - <strong>NotebookLM</strong>.</p>
+<p class="lesson-p">${name && name !== 'אורח/ת' ? `שלום ${name}! ` : ''}בשיעור זה נכיר כלי מהפכני מבית Google שישנה לחלוטין את הדרך שבה אתם חוקרים, לומדים ומארגנים מידע - <strong>NotebookLM</strong>.</p>
 <p class="lesson-p" style="color: #800020; font-weight: 500; margin-top: -10px; margin-bottom: 15px;">הגרסה החינמית של ג'מיני תאפשר לעבוד עם כל הכלים שמוצגים באתר. יחד עם זאת, מומלץ לרכוש מנוי בסיסי כדי לנצל היטב את יכולות הכלים.</p>
 
 <h2 class="lesson-h2">עקרון הליבה: 100% החומר שלכם, 0% המצאות</h2>
@@ -385,7 +385,7 @@ function getDynamicLessons(name, interests) {
             completed: false,
             content: `
 <h1 class="lesson-h1">שיעור 4: שליטה ב-Gemini Canvas – הצעד הראשון שלך ליצירת תוכן איכותי</h1>
-<p class="lesson-p">שלום ${name}! בשיעור זה נלמד לעבוד כמו מקצוענים ב-<strong>Gemini Canvas</strong> – סביבת עבודה מתקדמת המאפשרת ליצור, לערוך וללטש קוד ותכנים מורכבים במקביל לחלון הצ'אט הרגיל.</p>
+<p class="lesson-p">${name && name !== 'אורח/ת' ? `שלום ${name}! ` : ''}בשיעור זה נלמד לעבוד כמו מקצוענים ב-<strong>Gemini Canvas</strong> – סביבת עבודה מתקדמת המאפשרת ליצור, לערוך וללטש קוד ותכנים מורכבים במקביל לחלון הצ'אט הרגיל.</p>
 <p class="lesson-p" style="color: #800020; font-weight: 500; margin-top: -10px; margin-bottom: 15px;">הגרסה החינמית של ג'מיני תאפשר לעבוד עם כל הכלים שמוצגים באתר. יחד עם זאת, מומלץ לרכוש מנוי בסיסי כדי לנצל היטב את יכולות הכלים.</p>
 
 <h2 class="lesson-h2">1. מהו Gemini Canvas?</h2>
@@ -439,7 +439,7 @@ function getDynamicLessons(name, interests) {
             completed: false,
             content: `
 <h1 class="lesson-h1">שיעור 5: מקוד לענן – צינור הפריסה (The Deployment Pipeline)</h1>
-<p class="lesson-p">שלום ${name}! בשיעור זה נלמד כיצד להוציא את הפרויקט שיצרנו ב-Gemini Canvas אל העולם באמצעות קישור אינטרנט חי (Live URL).</p>
+<p class="lesson-p">${name && name !== 'אורח/ת' ? `שלום ${name}! ` : ''}בשיעור זה נלמד כיצד להוציא את הפרויקט שיצרנו ב-Gemini Canvas אל העולם באמצעות קישור אינטרנט חי (Live URL).</p>
 <p class="lesson-p" style="color: #800020; font-weight: 500; margin-top: -10px; margin-bottom: 15px;">הגרסה החינמית של ג'מיני תאפשר לעבוד עם כל הכלים שמוצגים באתר. יחד עם זאת, מומלץ לרכוש מנוי בסיסי כדי לנצל היטב את יכולות הכלים.</p>
 
 <h2 class="lesson-h2">למה אנחנו צריכים את זה?</h2>
