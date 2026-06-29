@@ -192,11 +192,11 @@ function getDynamicLessons(name, interests) {
             id: "lesson_3",
             fileName: "lesson_3_notebooklm.md",
             tabLabel: "lesson_3_notebooklm.md",
-            title: "שיעור 3: למידה חכמה ועיגון מידע עם NotebookLM",
+            title: "שיעור 3: למידה חכמה עם NotebookLM",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 3: למידה חכמה ועיגון מידע עם NotebookLM</h1>
+<h1 class="lesson-h1">שיעור 3: למידה חכמה עם NotebookLM</h1>
 <p class="lesson-p">שלום ${name}! בשיעור זה נכיר כלי מהפכני מבית Google שישנה לחלוטין את הדרך שבה אתם חוקרים, לומדים ומארגנים מידע - <strong>NotebookLM</strong>.</p>
 
 <h2 class="lesson-h2">עקרון הליבה: 100% החומר שלכם, 0% המצאות (Grounding)</h2>
