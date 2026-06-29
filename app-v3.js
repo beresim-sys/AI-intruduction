@@ -1,4 +1,4 @@
-﻿// AI for Builders: From Prompt to Production - Core Application Logic
+// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -386,11 +386,11 @@ function getDynamicLessons(name, interests) {
             id: "lesson_4",
             fileName: "lesson_4_canvas.js",
             tabLabel: "lesson_4_canvas.js",
-            title: "שיעור 4: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר",
+            title: "שיעור 4: שליטה ב-Gemini Canvas – הצעד הראשון שלך ליצירת תוכן איכותי",
             unlocked: false,
             completed: false,
             content: `
-<h1 class="lesson-h1">שיעור 4: שליטה ב-Gemini Canvas – סביבת העבודה של היוצר</h1>
+<h1 class="lesson-h1">שיעור 4: שליטה ב-Gemini Canvas – הצעד הראשון שלך ליצירת תוכן איכותי</h1>
 <p class="lesson-p">שלום ${name}! בשיעור זה נלמד לעבוד כמו מקצוענים ב-<strong>Gemini Canvas</strong> – סביבת עבודה מתקדמת המאפשרת ליצור, לערוך וללטש קוד ותכנים מורכבים במקביל לחלון הצ'אט הרגיל.</p>
 <p class="lesson-p" style="color: #800020; font-weight: 500; margin-top: -10px; margin-bottom: 15px;">הגרסה החינמית של ג'מיני תאפשר לעבוד עם כל הכלים שמוצגים באתר. יחד עם זאת, מומלץ לרכוש מנוי בסיסי כדי לנצל היטב את יכולות הכלים.</p>
 
