@@ -1,4 +1,4 @@
-// AI for Builders: From Prompt to Production - Core Application Logic
+﻿// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -102,6 +102,13 @@ function getDynamicLessons(name, interests) {
     הערך המרכזי של סוכן GEM הוא המעבר משיחות פשוטות וגנריות עם ג'מיני לדיוק מקסימלי, שחוסך שעות עבודה, מונע כמעט לחלוטין הזיות (המצאת מידע) ומתבסס אך ורק על המקורות שאתם מספקים לו.
 </div>
 
+<div style="margin: 25px 0; text-align: center;">
+    <video controls style="max-width: 100%; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);">
+        <source src="gem-agent-video.mp4" type="video/mp4">
+        הדפדפן שלך אינו תומך בהפעלת סרטונים.
+    </video>
+</div>
+
 <h2 class="lesson-h2">הנוסחה המנצחת לבניית סוכן GEM: iCOSTAR</h2>
 <p class="lesson-p">כדי שהסוכן שלנו יפעל בדיוק מרבי, נבנה את ההנחיות שלו (Instructions) לפי נוסחת ה-<strong>iCOSTAR</strong>:</p>
 
