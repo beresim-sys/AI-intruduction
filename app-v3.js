@@ -407,7 +407,12 @@ function getDynamicLessons(name, interests) {
     <li style="margin-bottom: 8px;"><strong>שלב 1: הפעלת הקנבס:</strong> לחצו על כפתור ה-'+', ובחרו את Canvas. ודאו שאתם עובדים במודל Pro.</li>
     <li style="margin-bottom: 8px;"><strong>שלב 2: ניסוח פרומפט לבניית המוצר שבחרתם ליצור:</strong> היעזרו בג'מיני על מנת לנסח את הפרומפט (ניתן להוסיף קבצים, תמונות ואפילו מחברות Notebook). יפתח מסך מפוצל – חלק ימני לשיחה וחלק שמאלי יציג את המוצר שיצרתם. <strong>(שימו לב: בניית קוד היא תהליך מורכב, ולכן יש להמתין בסבלנות מספר דקות עד אשר Gemini יסיים לבנות את המוצר).</strong></li>
     <li style="margin-bottom: 8px;"><strong>שלב 3: דיוק המוצר:</strong> תוכלו לדייק את המוצר בהנחיות נוספות במשך השיחה – שינוי תצוגה, שינוי טקסט או כל שיפור אחר שתרצו להכניס.</li>
-    <li style="margin-bottom: 8px;"><strong>שלב 4: שימוש במוצר:</strong> כעת ניתן להוריד את המוצר (Download), להשתמש בו ישירות מתוך Gemini או לשתף קישור שלו לחברים.</li>
+    <li style="margin-bottom: 8px;">
+        <strong>שלב 4: שימוש במוצר:</strong> כעת ניתן להוריד את המוצר (Download), להשתמש בו ישירות מתוך Gemini או לשתף קישור שלו לחברים.
+        <div style="margin: 10px 0; text-align: center;">
+            <img src="canvas-share.png" alt="שיתוף מוצר בקנבס" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        </div>
+    </li>
 </ol>
 
 <blockquote style="background: rgba(73, 142, 117, 0.08); border-right: 4px solid var(--accent-color); padding: 15px; margin: 20px 0; border-radius: 8px; direction: rtl; text-align: right;">
