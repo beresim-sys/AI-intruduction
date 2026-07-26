@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -295,43 +295,12 @@
             <div class="subtitle">עקבו אחר השלבים הפשוטים כדי ליצור מנטור/עוזר AI מותאם אישית משלכם ב-Gemini.</div>
         </header>
 
-                <section class="stepper-container">
+                        <section class="stepper-container">
             <div class="stepper-line"></div>
 
             <!-- Step 1 -->
             <div class="step-card active" data-step="1">
                 <div class="step-number">1</div>
-                <div class="step-header">
-                    <div class="step-icon">
-                        <!-- iCOSTAR configuration icon -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
-                    </div>
-                    <div class="step-title">צעד 1: הגדרת ה GEM לפי נוסחאת iCOSTAR</div>
-                </div>
-                <div class="step-description">
-                    העזר בכלי העזר לבניית ה-GEM על מנת לבנות את הגדרות הסוכן לפי הנוסחא. התחל את השיחה עם תיאור קצר של הסוכן שאתה רוצה לבנות. הכלי יוביל אותך צעד צעד לאורך הנוסחא, ובסוף התהליך יספק לך את הקוד לבניית הסוכן. העתק את הקוד באמצעות בחירת כל הקוד (<strong>CTRL A</strong>), והעתקה (<strong>CTRL C</strong>).
-                    <div style="margin-top: 4px;">
-                        <a href="https://gemini.google.com/gem/16j4MAOCP6FE2YLTN1R_-CShSRWrrinPH?usp=sharing" target="_blank" class="btn-step">
-                            <span>מעבר לכלי העזר לבניית ה-GEM</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="step-card" data-step="2">
-                <div class="step-number">2</div>
                 <div class="step-header">
                     <div class="step-icon">
                         <!-- Gems manager icon -->
@@ -341,16 +310,16 @@
                             <polyline points="2 12 12 17 22 12"></polyline>
                         </svg>
                     </div>
-                    <div class="step-title">צעד 2: כניסה למנהל ה-Gems</div>
+                    <div class="step-title">צעד 1: כניסה למנהל ה-Gems</div>
                 </div>
                 <div class="step-description">
                     היכנסו לצ'אט של Gemini, ולחצו על **Gems** בסרגל הצד (מופיע לידו סמל של יהלום - 💎). לחצו על כפתור **"Create a new Gem"** (יצירת Gem חדש) כדי לפתוח את מסך הגדרת הסוכן האישי. במידה ואינך מוצא את סמל ה GEM, רד לסמל גלגל השיניים (⚙️) בתחתית הרשימה מצד שמאל. לחיצה עליו תפתח חלון שבו אתה אמור למצוא את סמל היהלום
                 </div>
             </div>
 
-            <!-- Step 3 -->
-            <div class="step-card" data-step="3">
-                <div class="step-number">3</div>
+            <!-- Step 2 -->
+            <div class="step-card" data-step="2">
+                <div class="step-number">2</div>
                 <div class="step-header">
                     <div class="step-icon">
                         <!-- Pen/Instructions icon -->
@@ -359,10 +328,27 @@
                             <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                         </svg>
                     </div>
-                    <div class="step-title">צעד 3: בניית סוכן ה GEM</div>
+                    <div class="step-title">צעד 2: בניית סוכן ה GEM</div>
                 </div>
                 <div class="step-description">
-                    תנו שם ל-Gem שלכם (למשל: "מדריך לזיהוי נורות הזהרה ברכב", "מאלף כלבים מקצועי" או "מורה פרטי לאנגלית"), ותיאור קצר (למשל: "המומחה יעזור לפענח נורית הזהרה ברכב לפי סוג היצרן, וייתן המלצות מה לעשות" או "תוכנית אילוף לכלב במבי ומענה על בעיות התנהגות"). הדבק את הקוד שהעתקת מכלי העזר לחלון הנחיות הבסיס (<strong>CTRL V</strong>).
+                    תנו שם ל-Gem שלכם (למשל: "מדריך לזיהוי נורות הזהרה ברכב", "מאלף כלבים מקצועי" או "מורה פרטי לאנגלית"), ותיאור קצר (למשל: "המומחה יעזור לפענח נורית הזהרה ברכב לפי סוג היצרן, וייתן המלצות מה לעשות" או "תוכנית אילוף לכלב במבי ומענה על בעיות התנהגות"). כתבו או הדביקו את ההנחיות לסוכן בחלון הנחיות הבסיס (Instructions).
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-header">
+                    <div class="step-icon">
+                        <!-- File upload/clip icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                        </svg>
+                    </div>
+                    <div class="step-title">צעד 3: הוספת קובצי מידע לסוכן ה GEM</div>
+                </div>
+                <div class="step-description">
+                    במידה ותרצה הוסף קובצי מידע שונים ע"י לחיצה על סמל ה +. שים לב שכדאי להוסיף קבצים מתוך google drive על מנת שהסוכן יתעדכן כאשר הקבצים יעודכנו.
                 </div>
             </div>
 
@@ -371,29 +357,12 @@
                 <div class="step-number">4</div>
                 <div class="step-header">
                     <div class="step-icon">
-                        <!-- File upload/clip icon -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
-                        </svg>
-                    </div>
-                    <div class="step-title">צעד 4: הוספת קובצי מידע לסוכן ה GEM</div>
-                </div>
-                <div class="step-description">
-                    במידה ותרצה הוסף קובצי מידע שונים ע"י לחיצה על סמל ה +. שים לב שכדאי להוסיף קבצים מתוך google drive על מנת שהסוכן יתעדכן כאשר הקבצים יעודכנו.
-                </div>
-            </div>
-
-            <!-- Step 5 -->
-            <div class="step-card" data-step="5">
-                <div class="step-number">5</div>
-                <div class="step-header">
-                    <div class="step-icon">
                         <!-- Play/Check icon -->
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                     </div>
-                    <div class="step-title">צעד 5: שמירה והתחלת הלמידה</div>
+                    <div class="step-title">צעד 4: שמירה והתחלת הלמידה</div>
                 </div>
                 <div class="step-description">
                     לחצו על **Create** (יצירה) או **Save** לשמירת ה-GEM. מעתה, ה-GEM יופיע לכם בסרגל הצד של Gemini ותוכלו להתחיל לשוחח איתו, לשאול שאלות ולתת לו משימות לביצוע!
