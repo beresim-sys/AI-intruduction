@@ -1,4 +1,4 @@
-// AI for Builders: From Prompt to Production - Core Application Logic
+﻿// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -109,47 +109,6 @@ function getDynamicLessons(name, interests) {
     </video>
 </div>
 
-<h2 class="lesson-h2">הנוסחה המנצחת לבניית סוכן GEM: iCOSTAR</h2>
-<p class="lesson-p">כדי שהסוכן שלנו יפעל בדיוק מרבי, נבנה את ההנחיות שלו (Instructions) לפי נוסחת ה-<strong>iCOSTAR</strong>:</p>
-
-<div class="sources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 15px 0;">
-    <!-- I: Identity -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">1. I - Identity (זהות)</div>
-        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת התפקיד והמומחיות של הסוכן (למשל: "פרופסור לכלכלה" או "מאלף כלבים בכיר"). במקום לנחש תשובה מתוך כל האינטרנט, הוא מסנן רק את הידע הרלוונטי לזהות המקצועית שלו.</p>
-    </div>
-
-    <!-- C: Context -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">2. C - Context (הקשר)</div>
-        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">הרקע המלא למשימה. למשל: "אנחנו חברה שחוותה השבתת שרתים, הלקוחות כועסים, והמטרה היא להתנצל מבלי לקחת אחריות משפטית" - הסוכן יבין את הדחיפות והרגישות הנדרשת.</p>
-    </div>
-
-    <!-- O: Objective -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">3. O - Objective (מטרה)</div>
-        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">מהי התוצאה הסופית הנדרשת? (למשל: "לאמן את אנשי המכירות", "לבנות תוכנית אילוף" או "ליצור סידור עבודה שבועי").</p>
-    </div>
-
-    <!-- S & T: Style & Tone -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">4. S & T - Style & Tone</div>
-        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת סגנון וטון הדיבור: האם הסוכן יישמע אמפתי, סמכותי, עוקצני, או אולי "דוד חכם ומנוסה"?</p>
-    </div>
-
-    <!-- A: Audience -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">5. A - Audience (קהל יעד)</div>
-        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">למי התוצר מיועד? הסבר לילד בן 10 דורש עולם מושגים שונה לחלוטין מהסבר המיועד למנכ"ל החברה.</p>
-    </div>
-
-    <!-- R: Response -->
-    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right;">
-        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">6. R - Response (תגובה)</div>
-        <p style="font-size: 12px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדרת פורמט התוצאה הרצויה – האם מדובר בטבלה, קוד תוכנה, סיכום נקודות, מצגת, או אולי מייל רשמי?</p>
-    </div>
-</div>
-
 <h2 class="lesson-h2">כלי עזר מיוחד לבניית ה-GEM שלכם</h2>
 <p class="lesson-p">תוכלו להתחיל לבנות את סוכן ה GEM בעצמכם, או להעזר בסוכן שבניתי עבורכם במשימה לביצוע</p>
 <h2 class="lesson-h2">דוגמאות לסוכני GEMS מעשיים</h2>
