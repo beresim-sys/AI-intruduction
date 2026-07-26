@@ -109,6 +109,32 @@ function getDynamicLessons(name, interests) {
     </video>
 </div>
 
+<h2 class="lesson-h2">הנחיות לסוכן</h2>
+<p class="lesson-p">כדי שהסוכן יפיק את התוצאות הטובות ביותר, מומלץ לכלול את המרכיבים הבאים בהגדרות שלו:</p>
+
+<div class="sources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 20px 0; direction: rtl;">
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">👤 זהות</div>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">מי הסוכן ומה המומחיות שלו ומה מטרתו. למשל - "יועץ גיוס עובדים בכיר", "יועץ מס מנוסה" או "מפיק אירועים עם ניסיון בתחום חתונות יוקרה".</p>
+    </div>
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">📋 הוראות ספציפיות</div>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">הנחיות מדויקות וברורות לגבי האופן שבו המומחה יפעל צעד אחר צעד, כיצד לגשת למשימות או לענות על שאלות.</p>
+    </div>
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">✨ סגנון</div>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">איך תרצה שהסוכן יתנסח. תשובות רשמיות ומקצועיות? קלילות והומוריסטיות? או אולי אמפתיות ותומכות?</p>
+    </div>
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">🛡️ מגבלות וחוקים</div>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">הגדר גבולות גזרה. מה הסוכן לא צריך לעשות, ומאילו נושאים עליו להימנע. למשל – ענה בפסקה קצרה, או תן תשובה בנקודות.</p>
+    </div>
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 15px; margin: 0;">📚 ידע ספציפי</div>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">ניתן לצרף מידע מקורות עליהם הסוכן חייב להתבסס. למשל - נהלי חברה, טקסטים אקדמיים, או חוקים ספציפיים.</p>
+    </div>
+</div>
+
 <h2 class="lesson-h2">כלי עזר מיוחד לבניית ה-GEM שלכם</h2>
 <p class="lesson-p">תוכלו להתחיל לבנות את סוכן ה GEM בעצמכם, או להעזר בסוכן שבניתי עבורכם במשימה לביצוע</p>
 <h2 class="lesson-h2">דוגמאות לסוכני GEMS מעשיים</h2>
