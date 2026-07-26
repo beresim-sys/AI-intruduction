@@ -396,10 +396,22 @@ function getDynamicLessons(name, interests) {
 <p class="lesson-p" style="color: #800020; font-weight: 500; margin-top: -10px; margin-bottom: 15px;">הגרסה החינמית של ג'מיני תאפשר לעבוד עם כל הכלים שמוצגים באתר. יחד עם זאת, מומלץ לרכוש מנוי בסיסי כדי לנצל היטב את יכולות הכלים.</p>
 
 <h2 class="lesson-h2">1. מהו Gemini Canvas?</h2>
-<p class="lesson-p">בניגוד לשיחה רגילה שבה התשובות נעלמות במעלה הצ'אט, Gemini Canvas פותח מסך עבודה ייעודי מפוצל (Split-screen) לצד השיחה. <strong><u>הקנבס בונה קוד</u></strong> ליצירת תוצרים רבים, ממש כאילו היית מתכנת אמיתי מבלי הצורך לדעת שפות קוד או ניסיון קודם בתכנות: 
-<br>&bull; <strong>מסמכים ותוכן כתוב:</strong> תוכניות עבודה, פוסטים, מדריך למשתמש, קורות חיים
-<br>&bull; <strong>אפליקציות אינטראקטיביות:</strong> דפי נחיתה, אפליקציות, מחשבונים, משחקים, מחולל כרטיסי ברכה
-<br>&bull; <strong>מצגות וחומר הדרכה:</strong> מצגות, מערכי שיעור, תמציות מנהלים</p>
+<p class="lesson-p">בניגוד לשיחה רגילה שבה התשובות נעלמות במעלה הצ'אט, Gemini Canvas פותח מסך עבודה ייעודי מפוצל (Split-screen) לצד השיחה. <strong><u>הקנבס בונה קוד</u></strong> ליצירת תוצרים רבים, ממש כאילו היית מתכנת אמיתי מבלי הצורך לדעת שפות קוד או ניסיון קודם בתכנות:</p>
+
+<div class="sources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin: 20px 0; direction: rtl;">
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 16px; margin: 0;">📄 מסמכים ותוכן כתוב</div>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">תוכניות עבודה, פוסטים, מדריך למשתמש, קורות חיים</p>
+    </div>
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 16px; margin: 0;">💻 אפליקציות אינטראקטיביות</div>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">דפי נחיתה, אפליקציות, מחשבונים, משחקים, מחולל כרטיסי ברכה</p>
+    </div>
+    <div class="source-card" style="background: rgba(73, 142, 117, 0.04); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: right; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+        <div class="source-icon" style="color: var(--accent-color); font-weight: 800; font-size: 16px; margin: 0;">📊 מצגות וחומר הדרכה</div>
+        <p style="font-size: 14px; color: var(--text-main); line-height: 1.4; margin: 0;">מצגות, מערכי שיעור, תמציות מנהלים</p>
+    </div>
+</div>
 
 <h2 class="lesson-h2">2. הוראות עבודה שלב-אחר-שלב בקנבס (Step-by-Step Guide)</h2>
 <p class="lesson-p">על מנת ליצור את המוצר שבחרתם, פתחו את Gemini</p>
