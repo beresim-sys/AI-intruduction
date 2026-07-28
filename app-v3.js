@@ -1,4 +1,4 @@
-﻿// AI for Builders: From Prompt to Production - Core Application Logic
+// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -414,6 +414,14 @@ function getDynamicLessons(name, interests) {
 </div>
 
 <h2 class="lesson-h2">2. הוראות עבודה שלב-אחר-שלב בקנבס (Step-by-Step Guide)</h2>
+
+<div style="margin: 25px 0; text-align: center;">
+    <video controls style="max-width: 100%; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);">
+        <source src="gemini-canvas-review.mp4" type="video/mp4">
+        הדפדפן שלך אינו תומך בהפעלת סרטונים.
+    </video>
+</div>
+
 <p class="lesson-p">על מנת ליצור את המוצר שבחרתם, פתחו את Gemini</p>
 <ol style="margin-right: 20px; margin-bottom: 15px; line-height: 1.6;">
     <li style="margin-bottom: 8px;"><strong>שלב 1: הפעלת הקנבס:</strong> לחצו על כפתור ה-'+', ובחרו את Canvas. ודאו שאתם עובדים במודל Pro.</li>
