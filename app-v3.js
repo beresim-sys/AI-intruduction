@@ -298,6 +298,13 @@ function getDynamicLessons(name, interests) {
 
 
 <h2 class="lesson-h2">יכולות המפתח של NotebookLM: מה אפשר לעשות איתו? – הסטודיו (The Studio Panel) - מרכז הבקרה שלכם</h2>
+<div style="margin: 25px 0; text-align: center;">
+    <video controls style="max-width: 100%; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);">
+        <source src="studio-tools.mp4" type="video/mp4">
+        הדפדפן שלך אינו תומך בהפעלת סרטונים.
+    </video>
+</div>
+
 <p class="lesson-p">כאן ההזדמנות שלכם להיות באמת יצירתיים. כנסו לסטודיו והתחילו לייצר תוצרים שונים:</p>
 
 <div class="features-grid-notebooklm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
