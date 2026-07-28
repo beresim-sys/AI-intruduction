@@ -1,4 +1,4 @@
-﻿// AI for Builders: From Prompt to Production - Core Application Logic
+// AI for Builders: From Prompt to Production - Core Application Logic
 // This script customizes the curriculum based on user interests collected in Module 0 onboarding.
 
 // 1. Function to generate custom lesson content based on Name and 5 Interests
@@ -436,7 +436,6 @@ function getDynamicLessons(name, interests) {
             },
             errorMessage: "אנא ודאו שביצעתם וסימנתם את כל 6 משימות התרגול ב-Gemini Canvas."
         },
-        /*
         {
             id: "lesson_5",
             fileName: "lesson_5_deploy.yaml",
@@ -571,7 +570,6 @@ function getDynamicLessons(name, interests) {
             },
             errorMessage: "אנא סמנו את תיבת האישור כדי לאשר שהשלמתם את בניית סוכן ה-AI והכישור ב-Antigravity."
         }
-        */
     ];
 }
 
