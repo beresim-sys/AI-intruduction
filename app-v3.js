@@ -49,6 +49,13 @@ function getDynamicLessons(name, interests) {
 
 
 <h2 class="lesson-h2">עקרונות כתיבת הפרומפט ותבנית ה-PROMPT</h2>
+
+<div style="margin: 25px 0; text-align: center;">
+    <video controls style="max-width: 100%; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);">
+        <source src="winning-prompt-secret.mp4" type="video/mp4">
+        הדפדפן שלך אינו תומך בהפעלת סרטונים.
+    </video>
+</div>
 <p class="lesson-p">פרומפט הוא דרך התקשורת שלנו עם ה-AI – השאלה, ההוראה או המשימה שאנו מבקשים ממנו לבצע. כדי לכתוב פרומפט מדוייק נגדיר:</p>
 <ul style="margin-right: 20px; margin-bottom: 12px; line-height: 1.6;">
     <li><strong>Role (תפקיד המודל):</strong> הגדרת ה"אישיות" וההקשר המקצועי של ה-AI (למשל: <em>"פעל כמעצב מומחה בתחום ${i5}"</em>).</li>
